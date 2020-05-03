@@ -2,7 +2,8 @@ define([], function () {
   return {
     onSave: function () {
       console.log("external on save");
-      console.log(pipelinesArr[0], groupsArr[0]);
+      console.log(pipelinesArr[0]);
+      console.log(groupsArr[0]);
     },
     settings: async (self) => {
       pipelinesArr = [];
