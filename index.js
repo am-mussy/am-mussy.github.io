@@ -14,10 +14,10 @@ define([], function () {
 
           <div class="mm_mainSettings">
             <div class="mm_piplineSettings">
-              test pip
+              
             </div>
             <div class="mm_userSettings">
-               test user
+               
             </div>
           </div>
         `
