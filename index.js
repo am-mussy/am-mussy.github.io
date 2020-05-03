@@ -4,6 +4,23 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
+      let test = {
+        123: {
+          name: "V",
+          id: "123123",
+          option: "Воронка -1",
+        },
+        124: {
+          name: "V1",
+          id: "231",
+          option: "Воронка -2",
+        },
+        1233: {
+          name: "V3",
+          id: "1231233",
+          option: "Воронка -2",
+        },
+      };
       let subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       let linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
       let salesFunnels;
@@ -69,12 +86,12 @@ define([], function () {
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
-          name: pipelines,
-          items: pipelines,
-          value: pipelines,
-          title_numeral: pipelines,
-          title_empty: pipelines,
-          text: pipelines,
+          name: test,
+          items: test,
+          value: test,
+          title_numeral: test,
+          title_empty: test,
+          text: test,
         }
       );
       $(".widget_settings_block__descr").append("<br>" + data + "<br>");
