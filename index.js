@@ -38,7 +38,7 @@ define([], function () {
       async function getGroups(linkGroups) {
         let response = await fetch(linkGroups);
         let Groups = await response.json();
-        Groups = Groups._embedded.roups;
+        Groups = Groups._embedded.groups;
         console.log(Groups);
         return Groups;
       }
