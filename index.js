@@ -69,7 +69,7 @@ define([], function () {
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
-          items: arr,
+          items: pipelines,
         }
       );
       $(".widget_settings_block__descr").append("<br>" + data + "<br>");
