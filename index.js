@@ -3,7 +3,7 @@ define([], function () {
     onSave: function () {
       console.log("external on save");
 
-      for (const key of pipelinesArr) {
+      for (const key in pipelinesArr) {
         console.log(pipelinesArr[key]);
       }
 
