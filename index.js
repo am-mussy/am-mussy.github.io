@@ -36,16 +36,23 @@ define([], function () {
       //Формируем чек-боксы из воронок
       for (const key in pipelines) {
         var data = self.render(
-          { ref: "/tmpl/controls/checkbox.twig" },
+          { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
           {
-            note_text: pipelines[key].id,
-            text: pipelines[key].name,
-            class_name: "mm_users",
-            text_class_name: "text_class_name",
-            input_class_name: "mm_chk_" + pipelines[key].id,
-            id: "mm_chk_" + pipelines[key].id,
-            checked: false,
-            small: true,
+            name: pipelines,
+            items: pipelines,
+            value: pipelines,
+            title_numeral: pipelines,
+            title_empty: pipelines,
+            text: pipelines,
+
+            // note_text: pipelines[key].id,
+            // text: pipelines[key].name,
+            // class_name: "mm_users",
+            // text_class_name: "text_class_name",
+            // input_class_name: "mm_chk_" + pipelines[key].id,
+            // id: "mm_chk_" + pipelines[key].id,
+            // checked: false,
+            // small: true,
           }
         );
 
@@ -67,16 +74,22 @@ define([], function () {
       //Формируем чек-боксы из групп
       for (const key in Groups) {
         var data = self.render(
-          { ref: "/tmpl/controls/checkbox.twig" },
+          { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
           {
-            note_text: Groups[key].id,
-            text: Groups[key].name,
-            class_name: "mm_groups",
-            text_class_name: "text_class_name",
-            input_class_name: "mm_chk_" + Groups[key].id,
-            id: "mm_chk_" + Groups[key].id,
-            checked: false,
-            small: true,
+            name: Groups,
+            items: Groups,
+            value: Groups,
+            title_numeral: Groups,
+            title_empty: Groups,
+            text: Groups,
+            // note_text: Groups[key].id,
+            // text: Groups[key].name,
+            // class_name: "mm_groups",
+            // text_class_name: "text_class_name",
+            // input_class_name: "mm_chk_" + Groups[key].id,
+            // id: "mm_chk_" + Groups[key].id,
+            // checked: false,
+            // small: true,
           }
         );
         Groups[key].option = Groups[key].name;
