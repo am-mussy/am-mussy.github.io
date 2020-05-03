@@ -69,7 +69,7 @@ define([], function () {
       var data = self.render(
         { ref: "/tmpl/controls/multiselect.twig" },
         {
-          values: arr,
+          values: "world",
           name: "mis2sasslti",
         }
       );
