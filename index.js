@@ -44,8 +44,7 @@ define([], function () {
           name: pipelines,
           items: pipelines,
           value: pipelines,
-          title_numeral: "test1",
-          title_empty: "test2",
+          title_empty: "Выбрате воронку",
           text: pipelines,
 
           // note_text: pipelines[key].id,
@@ -82,8 +81,8 @@ define([], function () {
           name: Groups,
           items: Groups,
           value: Groups,
-          title_numeral: "test1",
-          title_empty: "test2",
+
+          title_empty: "Выбрате группу пользователей",
           text: Groups,
           // note_text: Groups[key].id,
           // text: Groups[key].name,
