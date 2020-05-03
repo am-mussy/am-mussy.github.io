@@ -97,10 +97,14 @@ define([], function () {
         pipelinesArr = [];
         groupsArr = [];
         pipelinesArr.push(
-          $(".pipelines .is-checked:not(.js-master-checkbox-wrapper)")
+          $(
+            ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
+          )
         );
         groupsArr.push(
-          $(".groups .is-checked:not(.js-master-checkbox-wrapper)")
+          $(
+            ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
+          )
         );
 
         $("input[name = idgroup]").val(inputGroupID);
