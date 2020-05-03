@@ -99,12 +99,12 @@ define([], function () {
         pipelinesArr.push(
           $(
             ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
-          )
+          )[0]
         );
         groupsArr.push(
           $(
             ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
-          )
+          )[0]
         );
 
         $("input[name = idgroup]").val(inputGroupID);
