@@ -88,7 +88,8 @@ define([], function () {
         inputGroupID = $(".inputGroupID").val();
         inputGroupID = Number.parseInt(inputGroupID);
         console.log("tix");
-        console.log(document.getElementsByClassName("is - checked"));
+        console.log($(".is - checked"));
+
         $("input[name = idgroup]").val(inputGroupID);
       });
 
