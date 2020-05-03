@@ -44,8 +44,6 @@ define([], function () {
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           class_name: "pipelines",
-          text_class_name: "text_class_name",
-          control_class_name: "control_class_name",
           name: pipelines,
           items: pipelines,
           value: pipelines,
@@ -76,8 +74,6 @@ define([], function () {
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           class_name: "groups",
-          text_class_name: "text_class_name",
-          control_class_name: "control_class_name",
           name: Groups,
           items: Groups,
           value: Groups,
