@@ -44,7 +44,7 @@ define([], function () {
       }
 
       const Groups = await getGroups(linkGroups);
-
+      //Формируем чек-боксы из групп
       for (const key in Groups) {
         console.log(Groups[key]);
         var data = self.render(
@@ -62,8 +62,6 @@ define([], function () {
         );
         $(".widget_settings_block__descr").append("<br>" + data + "<br>");
       }
-
-      $(".widget_settings_block__descr").append("<br>" + data + "<br>");
 
       $(".widget_settings_block__descr").after(
         `
