@@ -70,6 +70,7 @@ define([], function () {
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           items: pipelines,
+          value: pipelines,
         }
       );
       $(".widget_settings_block__descr").append("<br>" + data + "<br>");
