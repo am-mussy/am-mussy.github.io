@@ -3,11 +3,11 @@ define([], function () {
     onSave: function () {
       console.log("external on save");
       pipelinesArr.forEach((element) => {
-        console.log(element.value);
+        console.log(element);
       });
 
       groupsArr.forEach((element) => {
-        console.log(element.value);
+        console.log(element);
       });
 
       console.log(pipelinesArr[0]);
