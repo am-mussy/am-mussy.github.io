@@ -2,10 +2,12 @@ define([], function () {
   return {
     onSave: function () {
       console.log("external on save");
+      console.log(pipelinesArr, groupsArr);
     },
     settings: async (self) => {
       pipelinesArr = [];
       groupsArr = [];
+
       $(".widget_settings_block__descr").after(
         `
           <div class="widget_settings_block__item_field" id="users">
@@ -92,10 +94,14 @@ define([], function () {
         inputGroupID = $(".inputGroupID").val();
         inputGroupID = Number.parseInt(inputGroupID);
         //console.log(users.getElementsByClassName("is-checked"));
-        console.log(
+        pipelinesArr = [];
+        groupsArr = [];
+        pipelinesArr.push(
           $(".pipelines .is-checked:not(.js-master-checkbox-wrapper)")
         );
-        console.log($(".groups .is-checked:not(.js-master-checkbox-wrapper)"));
+        groupsArr.push(
+          $(".groups .is-checked:not(.js-master-checkbox-wrapper)")
+        );
 
         $("input[name = idgroup]").val(inputGroupID);
       });
