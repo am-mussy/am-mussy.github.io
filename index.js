@@ -4,6 +4,24 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
+      $(".widget_settings_block__descr").after(
+        `
+          <div class="widget_settings_block__item_field" id="users">
+          <br>
+          
+          <p>ID Группы пользователей:</p>
+          <input name="group" id="group" class="inputGroupID" type="number" placeholder="id group" />
+
+          <div class="mm_mainSettings">
+            <div class="mm_piplineSettings">
+              test pip
+            </div>
+            <div class="mm_userSettings">
+               test user
+            </div>
+          </div>
+        `
+      );
       const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
       // Отправляем GET на получение списка воронок
@@ -31,7 +49,7 @@ define([], function () {
           }
         );
 
-        $(".widget_settings_block__descr").append("<br>" + data + "<br>");
+        $(".mm_piplineSettings").append("<br>" + data + "<br>");
       }
       // Отправляем GET на получение списка групп
       const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
@@ -60,27 +78,8 @@ define([], function () {
             small: true,
           }
         );
-        $(".widget_settings_block__descr").append("<br>" + data + "<br>");
+        $(".mm_userSettings").append("<br>" + data + "<br>");
       }
-
-      $(".widget_settings_block__descr").after(
-        `
-          <div class="widget_settings_block__item_field" id="users">
-          <br>
-          
-          <p>ID Группы пользователей:</p>
-          <input name="group" id="group" class="inputGroupID" type="number" placeholder="id group" />
-
-          <div class="mm_mainSettings">
-            <div class="mm_piplineSettings">
-              test pip
-            </div>
-            <div class="mm_userSettings">
-               test user
-            </div>
-          </div>
-        `
-      );
       //$(".widget_settings_block__descr").after(data);
       $(".inputGroupID").val($("input[name = idgroup]").val());
 
