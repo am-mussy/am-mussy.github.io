@@ -4,6 +4,8 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
+      pipelinesArr = [];
+      groupsArr = [];
       $(".widget_settings_block__descr").after(
         `
           <div class="widget_settings_block__item_field" id="users">
@@ -41,10 +43,11 @@ define([], function () {
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
+          class_name: "pipelines",
           name: pipelines,
           items: pipelines,
           value: pipelines,
-          title_empty: "Выбрате воронку",
+          title_empty: "Выбрате воронку", // Название списка
           text: pipelines,
         }
       );
@@ -70,6 +73,7 @@ define([], function () {
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
+          class_name: "groups",
           name: Groups,
           items: Groups,
           value: Groups,
