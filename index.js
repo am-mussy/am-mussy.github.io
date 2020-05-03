@@ -74,6 +74,7 @@ define([], function () {
           value: pipelines,
           title_numeral: pipelines,
           title_empty: pipelines,
+          text: pipelines,
         }
       );
       $(".widget_settings_block__descr").append("<br>" + data + "<br>");
