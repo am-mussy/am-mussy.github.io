@@ -87,7 +87,7 @@ define([], function () {
       $(".inputGroupID").change(function () {
         inputGroupID = $(".inputGroupID").val();
         inputGroupID = Number.parseInt(inputGroupID);
-        console.log(users.getElementsByClassName("is-checked"));
+        //console.log(users.getElementsByClassName("is-checked"));
         console.log($(".mm_mainSettings .is-checked"));
 
         $("input[name = idgroup]").val(inputGroupID);
