@@ -45,7 +45,6 @@ define([], function () {
         {
           class_name: "pipelines",
           text_class_name: "text_class_name",
-          input_class_name: "input_class_name",
           control_class_name: "control_class_name",
           name: pipelines,
           items: pipelines,
@@ -78,7 +77,6 @@ define([], function () {
         {
           class_name: "groups",
           text_class_name: "text_class_name",
-          input_class_name: "input_class_name",
           control_class_name: "control_class_name",
           name: Groups,
           items: Groups,
@@ -98,11 +96,9 @@ define([], function () {
         inputGroupID = $(".inputGroupID").val();
         inputGroupID = Number.parseInt(inputGroupID);
         //console.log(users.getElementsByClassName("is-checked"));
-        // console.log(
-        //   $(
-        //     ".mm_mainSettings .mm_userSettings .checkboxes_dropdown__item .is-cheked"
-        //   )
-        // );
+        console.log(
+          $(".mm_userSettings .is-cheked:not(.js-master-checkbox-wrapper)")
+        );
         // console.log(
         //   $(
         //     ".mm_mainSettings .mm_piplineSettings .checkboxes_dropdown__item .is-cheked"
