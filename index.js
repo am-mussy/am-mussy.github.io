@@ -2,7 +2,7 @@ define([], function () {
   return {
     onSave: function () {
       console.log("external on save");
-      let x = document.getElementsByClassName("is - checked");
+      let x = document.getElementsByClassName("is-checked");
       console.log(x);
     },
     settings: async (self) => {
@@ -90,7 +90,7 @@ define([], function () {
         inputGroupID = $(".inputGroupID").val();
         inputGroupID = Number.parseInt(inputGroupID);
         console.log("tix");
-        console.log($(".is - checked"));
+        console.log($(".is-checked"));
 
         $("input[name = idgroup]").val(inputGroupID);
       });
