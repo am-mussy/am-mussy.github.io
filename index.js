@@ -2,19 +2,6 @@ define([], function () {
   return {
     onSave: function () {
       console.log("external on save");
-
-      for (const key in pipelinesArr) {
-        if (pipelinesArr[key].value != undefined) {
-          console.log(pipelinesArr[key].value);
-        }
-      }
-
-      // groupsArr.forEach((element) => {
-      //   console.log(element);
-      // });
-
-      // console.log(pipelinesArr[0]);
-      // console.log(groupsArr[0]);
     },
     settings: async (self) => {
       pipelinesArr = [];
@@ -120,7 +107,13 @@ define([], function () {
           )
         );
         groupsArr = groupsArr[0];
-        $("input[name = idgroup]").val(inputGroupID);
+
+        for (const key in pipelinesArr) {
+          if (pipelinesArr[key].value != undefined) {
+            console.log(pipelinesArr[key].value);
+          }
+        }
+        //$("input[name = idgroup]").val(inputGroupID);
       });
 
       //$(".inputGroupID").val($("input[name = idgroup]").val());
