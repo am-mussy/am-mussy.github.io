@@ -67,10 +67,9 @@ define([], function () {
       }
 
       var data = self.render(
-        { ref: "/tmpl/controls/multiselect.twig" },
+        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
-          values: Groups,
-          name: "mis2sasslti",
+          items: Groups,
         }
       );
       $(".widget_settings_block__descr").append("<br>" + data + "<br>");
