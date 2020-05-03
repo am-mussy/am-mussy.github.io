@@ -88,18 +88,14 @@ define([], function () {
       $(".inputGroupID").val($("input[name = idgroup]").val());
 
       let inputGroupID;
-      $(".inputGroupID").change(function () {
+      $(".mm_mainSettings").change(function () {
         inputGroupID = $(".inputGroupID").val();
         inputGroupID = Number.parseInt(inputGroupID);
         //console.log(users.getElementsByClassName("is-checked"));
         console.log(
-          $(".mm_userSettings.is-checked:not(.js-master-checkbox-wrapper)")
+          $(".pipelines .is-checked:not(.js-master-checkbox-wrapper)")
         );
-        // console.log(
-        //   $(
-        //     ".mm_mainSettings.mm_piplineSettings.checkboxes_dropdown__item .is-cheked"
-        //   )
-        // );
+        console.log($(".groups .is-checked:not(.js-master-checkbox-wrapper)"));
 
         $("input[name = idgroup]").val(inputGroupID);
       });
