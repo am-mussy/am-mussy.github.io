@@ -46,6 +46,7 @@ define([], function () {
           class_name: "pipelines",
           text_class_name: "text_class_name",
           input_class_name: "input_class_name",
+          control_class_name: "control_class_name",
           name: pipelines,
           items: pipelines,
           value: pipelines,
