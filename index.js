@@ -2,8 +2,6 @@ define([], function () {
   return {
     onSave: function () {
       console.log("external on save");
-      let x = document.getElementsByClassName("is-checked");
-      console.log(x);
     },
     settings: async (self) => {
       $(".widget_settings_block__descr").after(
@@ -89,8 +87,7 @@ define([], function () {
       $(".inputGroupID").change(function () {
         inputGroupID = $(".inputGroupID").val();
         inputGroupID = Number.parseInt(inputGroupID);
-        console.log("tix");
-        console.log($(".is-checked"));
+        console.log(users.getElementsByClassName("is-checked"));
 
         $("input[name = idgroup]").val(inputGroupID);
       });
