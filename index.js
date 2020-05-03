@@ -91,16 +91,8 @@ define([], function () {
       $(".inputGroupID").change(function () {
         inputGroupID = $(".inputGroupID").val();
         inputGroupID = Number.parseInt(inputGroupID);
-        //console.log(users.getElementsByClassName("is-checked"));
-        console.log(
-          $(".mm_userSettings.is-cheked:not(.js-master-checkbox-wrapper)")
-        );
-        // console.log(
-        //   $(
-        //     ".mm_mainSettings.mm_piplineSettings.checkboxes_dropdown__item .is-cheked"
-        //   )
-        // );
-
+        
+        console.log($(".is-cheked"));
         $("input[name = idgroup]").val(inputGroupID);
       });
 
