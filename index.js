@@ -4,7 +4,9 @@ define([], function () {
       console.log("external on save");
 
       for (const key in pipelinesArr) {
-        console.log(pipelinesArr[key].value);
+        if (pipelinesArr[key].value != undefined) {
+          console.log(pipelinesArr[key].value);
+        }
       }
 
       // groupsArr.forEach((element) => {
@@ -27,7 +29,7 @@ define([], function () {
           <input name="group" id="group" class="inputGroupID" type="number" placeholder="id group" />
 
           <div class="mm_mainSettings">
-            <div class="mm_piplineSettings">
+            <div class="mm_pip lineSettings">
               
             </div>
             <div class="mm_userSettings">
