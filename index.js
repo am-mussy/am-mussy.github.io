@@ -2,7 +2,7 @@ define([], function () {
   return {
     onSave: function () {
       console.log("external on save");
-      pipelinesArr[0].forEach((element, index, pArr) => {
+      pipelinesArr.forEach((element, index, pArr) => {
         console.log(element);
         console.log(index);
         console.log(pArr);
@@ -112,12 +112,13 @@ define([], function () {
             ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
           )
         );
+        pipelinesArr = pipelinesArr[0];
         groupsArr.push(
           $(
             ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
           )
         );
-
+        groupsArr = groupsArr[0];
         $("input[name = idgroup]").val(inputGroupID);
       });
 
