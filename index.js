@@ -4,37 +4,18 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
-      let test = {
-        123: {
-          name: "V",
-          id: "123123",
-          option: "Воронка -1",
-        },
-        124: {
-          name: "V1",
-          id: "231",
-          option: "Воронка -2",
-        },
-        1233: {
-          name: "V3",
-          id: "1231233",
-          option: "Воронка -2",
-        },
-      };
-      let subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
-      let linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
-      let salesFunnels;
+      const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
+      const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
+      // Отправляем GET на получение списка воронок
       async function getSalesF(linkPiplines) {
         let response = await fetch(linkPiplines);
         let salesFunnels = await response.json();
         salesFunnels = salesFunnels._embedded.items;
         return salesFunnels;
       }
-
+      //Записываем список воронок в piplines
       const pipelines = await getSalesF(linkPiplines);
-      console.log(pipelines);
-      let arr = [];
-
+      //Формируем чек-боксы из воронок
       for (const key in pipelines) {
         console.log(pipelines[key]);
         var data = self.render(
@@ -50,12 +31,11 @@ define([], function () {
             small: true,
           }
         );
-        arr.push(pipelines[key].name);
+
         $(".widget_settings_block__descr").append("<br>" + data + "<br>");
       }
-      console.log(arr);
-      let linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
-
+      // Отправляем GET на получение списка групп
+      const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
       async function getGroups(linkGroups) {
         let response = await fetch(linkGroups);
         let Groups = await response.json();
@@ -83,17 +63,6 @@ define([], function () {
         $(".widget_settings_block__descr").append("<br>" + data + "<br>");
       }
 
-      var data = self.render(
-        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-        {
-          name: test,
-          items: test,
-          value: test,
-          title_numeral: test,
-          title_empty: test,
-          text: test,
-        }
-      );
       $(".widget_settings_block__descr").append("<br>" + data + "<br>");
 
       $(".widget_settings_block__descr").after(
