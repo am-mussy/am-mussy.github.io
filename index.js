@@ -46,19 +46,11 @@ define([], function () {
           value: pipelines,
           title_empty: "Выбрате воронку",
           text: pipelines,
-
-          // note_text: pipelines[key].id,
-          // text: pipelines[key].name,
-          // class_name: "mm_users",
-          // text_class_name: "text_class_name",
-          // input_class_name: "mm_chk_" + pipelines[key].id,
-          // id: "mm_chk_" + pipelines[key].id,
-          // checked: false,
-          // small: true,
         }
       );
 
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
+
       // Отправляем GET на получение списка групп
       const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
       async function getGroups(linkGroups) {
@@ -81,17 +73,8 @@ define([], function () {
           name: Groups,
           items: Groups,
           value: Groups,
-
           title_empty: "Выбрате группу пользователей",
           text: Groups,
-          // note_text: Groups[key].id,
-          // text: Groups[key].name,
-          // class_name: "mm_groups",
-          // text_class_name: "text_class_name",
-          // input_class_name: "mm_chk_" + Groups[key].id,
-          // id: "mm_chk_" + Groups[key].id,
-          // checked: false,
-          // small: true,
         }
       );
       $(".mm_userSettings").append("<br>" + data + "<br>");
