@@ -79,6 +79,7 @@ define([], function () {
           class_name: "groups",
           text_class_name: "text_class_name",
           input_class_name: "input_class_name",
+          control_class_name: "control_class_name",
           name: Groups,
           items: Groups,
           value: Groups,
