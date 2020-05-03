@@ -35,29 +35,30 @@ define([], function () {
       const pipelines = await getSalesF(linkPiplines);
       //Формируем чек-боксы из воронок
       for (const key in pipelines) {
-        var data = self.render(
-          { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-          {
-            name: pipelines,
-            items: pipelines,
-            value: pipelines,
-            title_numeral: pipelines,
-            title_empty: pipelines,
-            text: pipelines,
-
-            // note_text: pipelines[key].id,
-            // text: pipelines[key].name,
-            // class_name: "mm_users",
-            // text_class_name: "text_class_name",
-            // input_class_name: "mm_chk_" + pipelines[key].id,
-            // id: "mm_chk_" + pipelines[key].id,
-            // checked: false,
-            // small: true,
-          }
-        );
-
         pipelines[key].option = pipelines[key].name;
       }
+
+      var data = self.render(
+        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+        {
+          name: pipelines,
+          items: pipelines,
+          value: pipelines,
+          title_numeral: pipelines,
+          title_empty: pipelines,
+          text: pipelines,
+
+          // note_text: pipelines[key].id,
+          // text: pipelines[key].name,
+          // class_name: "mm_users",
+          // text_class_name: "text_class_name",
+          // input_class_name: "mm_chk_" + pipelines[key].id,
+          // id: "mm_chk_" + pipelines[key].id,
+          // checked: false,
+          // small: true,
+        }
+      );
+
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
       // Отправляем GET на получение списка групп
       const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
@@ -73,27 +74,27 @@ define([], function () {
 
       //Формируем чек-боксы из групп
       for (const key in Groups) {
-        var data = self.render(
-          { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-          {
-            name: Groups,
-            items: Groups,
-            value: Groups,
-            title_numeral: Groups,
-            title_empty: Groups,
-            text: Groups,
-            // note_text: Groups[key].id,
-            // text: Groups[key].name,
-            // class_name: "mm_groups",
-            // text_class_name: "text_class_name",
-            // input_class_name: "mm_chk_" + Groups[key].id,
-            // id: "mm_chk_" + Groups[key].id,
-            // checked: false,
-            // small: true,
-          }
-        );
         Groups[key].option = Groups[key].name;
       }
+      var data = self.render(
+        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+        {
+          name: Groups,
+          items: Groups,
+          value: Groups,
+          title_numeral: Groups,
+          title_empty: Groups,
+          text: Groups,
+          // note_text: Groups[key].id,
+          // text: Groups[key].name,
+          // class_name: "mm_groups",
+          // text_class_name: "text_class_name",
+          // input_class_name: "mm_chk_" + Groups[key].id,
+          // id: "mm_chk_" + Groups[key].id,
+          // checked: false,
+          // small: true,
+        }
+      );
       $(".mm_userSettings").append("<br>" + data + "<br>");
       console.log(Groups);
       console.log(pipelines);
