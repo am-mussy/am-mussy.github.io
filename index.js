@@ -57,8 +57,8 @@ define([], function () {
         );
 
         pipelines[key].option = pipelines[key].name;
-        $(".mm_piplineSettings").append("<br>" + data + "<br>");
       }
+      $(".mm_piplineSettings").append("<br>" + data + "<br>");
       // Отправляем GET на получение списка групп
       const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
       async function getGroups(linkGroups) {
@@ -93,9 +93,8 @@ define([], function () {
           }
         );
         Groups[key].option = Groups[key].name;
-        $(".mm_userSettings").append("<br>" + data + "<br>");
       }
-
+      $(".mm_userSettings").append("<br>" + data + "<br>");
       console.log(Groups);
       console.log(pipelines);
 
