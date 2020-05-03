@@ -17,13 +17,12 @@ define([], function () {
       const pipelines = await getSalesF(linkPiplines);
       //Формируем чек-боксы из воронок
       for (const key in pipelines) {
-        console.log(pipelines[key]);
         var data = self.render(
           { ref: "/tmpl/controls/checkbox.twig" },
           {
             note_text: pipelines[key].id,
             text: pipelines[key].name,
-            value: "value",
+            class_name: "mm_users",
             text_class_name: "text_class_name",
             input_class_name: "mm_chk_" + pipelines[key].id,
             id: "mm_chk_" + pipelines[key].id,
@@ -52,7 +51,7 @@ define([], function () {
           {
             note_text: Groups[key].id,
             text: Groups[key].name,
-            value: "value",
+            class_name: "mm_groups",
             text_class_name: "text_class_name",
             input_class_name: "mm_chk_" + Groups[key].id,
             id: "mm_chk_" + Groups[key].id,
