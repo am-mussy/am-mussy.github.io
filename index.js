@@ -4,7 +4,7 @@ define([], function () {
       console.log("external on save");
 
       for (const key in pipelinesArr) {
-        console.log(pipelinesArr[key]);
+        console.log(pipelinesArr[key].value);
       }
 
       // groupsArr.forEach((element) => {
