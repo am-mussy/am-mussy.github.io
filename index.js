@@ -6,12 +6,12 @@ define([], function () {
         console.log(element);
       });
 
-      groupsArr.forEach((element) => {
-        console.log(element);
-      });
+      // groupsArr.forEach((element) => {
+      //   console.log(element);
+      // });
 
-      console.log(pipelinesArr[0]);
-      console.log(groupsArr[0]);
+      // console.log(pipelinesArr[0]);
+      // console.log(groupsArr[0]);
     },
     settings: async (self) => {
       pipelinesArr = [];
