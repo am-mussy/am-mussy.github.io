@@ -2,6 +2,8 @@ define([], function () {
   return {
     onSave: function () {
       console.log("external on save");
+      let x = document.getElementsByClassName("is - checked");
+      console.log(x);
     },
     settings: async (self) => {
       $(".widget_settings_block__descr").after(
