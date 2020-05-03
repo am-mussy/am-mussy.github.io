@@ -69,6 +69,7 @@ define([], function () {
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
+          name: pipelines,
           items: pipelines,
           value: pipelines,
         }
