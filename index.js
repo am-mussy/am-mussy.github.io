@@ -39,6 +39,7 @@ define([], function () {
         let response = await fetch(linkGroups);
         let Groups = await response.json();
         Groups = Groups._embedded.roups;
+        console.log(Groups);
         return Groups;
       }
 
