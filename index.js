@@ -2,8 +2,10 @@ define([], function () {
   return {
     onSave: function () {
       console.log("external on save");
-      pipelinesArr.forEach((element) => {
+      pipelinesArr.forEach((element, index, pArr) => {
         console.log(element);
+        console.log(index);
+        console.log(pArr);
       });
 
       // groupsArr.forEach((element) => {
