@@ -49,6 +49,7 @@ define([], function () {
           }
         );
 
+        pipelines[key].option = pipelines[key].name;
         $(".mm_piplineSettings").append("<br>" + data + "<br>");
       }
       // Отправляем GET на получение списка групп
@@ -57,14 +58,14 @@ define([], function () {
         let response = await fetch(linkGroups);
         let Groups = await response.json();
         Groups = Groups._embedded.groups;
-        console.log(Groups);
+
         return Groups;
       }
 
       const Groups = await getGroups(linkGroups);
+
       //Формируем чек-боксы из групп
       for (const key in Groups) {
-        console.log(Groups[key]);
         var data = self.render(
           { ref: "/tmpl/controls/checkbox.twig" },
           {
@@ -78,14 +79,17 @@ define([], function () {
             small: true,
           }
         );
+        Groups[key].option = Groups[key].name;
         $(".mm_userSettings").append("<br>" + data + "<br>");
       }
-      //$(".widget_settings_block__descr").after(data);
+
+      console.log(Groups);
+      console.log(pipelines);
+
       $(".inputGroupID").val($("input[name = idgroup]").val());
 
       let inputGroupID;
       $(".inputGroupID").change(function () {
-        console.log("change");
         inputGroupID = $(".inputGroupID").val();
         inputGroupID = Number.parseInt(inputGroupID);
         $("input[name = idgroup]").val(inputGroupID);
