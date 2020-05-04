@@ -92,7 +92,12 @@ define([], function () {
           )
         );
         pipelinesArr = pipelinesArr[0];
-        console.log(pipelinesArr);
+
+        for (const key in pipelinesArr) {
+          console.log(pipelinesArr[key]);
+        }
+
+        //console.log(pipelinesArr);
       });
 
       $(".groups").change(function () {
@@ -104,7 +109,12 @@ define([], function () {
         );
 
         groupsArr = groupsArr[0];
-        console.log(groupsArr);
+
+        for (const key in groupsArr) {
+          console.log(groupsArr[key]);
+        }
+
+        //console.log(groupsArr);
       });
 
       $(".mm_mainSettings").trigger("change");
