@@ -101,7 +101,7 @@ define([], function () {
         for (const key in pipelinesArr) {
           if (pipelinesArr[key].value != undefined) {
             mm_settings.pipelines.push(pipelinesArr[key].value);
-            //console.log(pipelinesArr[key].value);
+            console.log(pipelinesArr[key].value);
           }
         }
 
