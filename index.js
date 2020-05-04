@@ -91,6 +91,7 @@ define([], function () {
 
       $(".pipelines").change(function () {
         pipelinesArr = [];
+        mm_settings.piplines = [];
         pipelinesArr.push(
           $(
             ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
@@ -109,6 +110,7 @@ define([], function () {
 
       $(".groups").change(function () {
         groupsArr = [];
+        mm_settings.groups = [];
         groupsArr.push(
           $(
             ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
