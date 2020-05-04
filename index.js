@@ -21,18 +21,22 @@ define([], function () {
 
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
-      // Отправляем GET на получение списка воронок
+      //GET на получение списка ВОРОНОК
       async function getSalesF(linkPiplines) {
         let response = await fetch(linkPiplines);
         let salesFunnels = await response.json();
         salesFunnels = salesFunnels._embedded.items;
+
         return salesFunnels;
       }
-      //Записываем список воронок в piplines
+
+      //Записываем список ВОРОНОК в piplines
       const pipelines = await getSalesF(linkPiplines);
-      //Формируем чек-боксы из воронок
+
+      //ВОРОНКИ
       for (const key in pipelines) {
         pipelines[key].option = pipelines[key].name;
+        console.log(pipelines[key]);
       }
 
       var data = self.render(
@@ -49,7 +53,7 @@ define([], function () {
 
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
-      // Отправляем GET на получение списка групп
+      //GET на получение списка ГРУПП
       const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
       async function getGroups(linkGroups) {
         let response = await fetch(linkGroups);
@@ -59,9 +63,10 @@ define([], function () {
         return Groups;
       }
 
+      //Записываем список ГРУПП в Groups
       const Groups = await getGroups(linkGroups);
 
-      //Формируем чек-боксы из групп
+      //ГРУППЫ
       for (const key in Groups) {
         Groups[key].option = Groups[key].name;
       }
