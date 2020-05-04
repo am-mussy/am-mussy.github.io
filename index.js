@@ -118,7 +118,6 @@ define([], function () {
 
 
 
-      $("input[name = idgroup]").val(JSON.stringify(mm_settings));
 
       $(".mm_mainSettings").change(function () {
         mm_settings.piplines = [];
