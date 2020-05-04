@@ -42,6 +42,7 @@ define([], function () {
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           class_name: "pipelines",
+          name: pipelines,
           items: pipelines,
           value: pipelines,
           title_empty: "Выбрате воронку", // Название списка
