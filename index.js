@@ -149,7 +149,7 @@ define([], function () {
 
 
         $("input[name = idgroup]").val(JSON.stringify(mm_settings));
-
+        console.log(JSON.parse($("input[name = idgroup]").val));
       });
 
 
