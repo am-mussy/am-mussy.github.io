@@ -14,8 +14,14 @@ define([], function () {
       let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
       let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
 
+
+      // console.log(JSON.parse($("input[name = idgroup]").val()).piplines[value]);
       for (const value in JSON.parse($("input[name = idgroup]").val()).piplines) {
-        console.log(JSON.parse($("input[name = idgroup]").val()).piplines[value]);
+        for (const id in allPiplinesCheckBox) {
+          if (JSON.parse($("input[name = idgroup]").val()).piplines[value] === allPiplinesCheckBox[id]) {
+            console.log("нашли:" + allPiplinesCheckBox[id]);
+          }
+        }
       }
 
 
