@@ -86,7 +86,8 @@ define([], function () {
 
       $(".mm_mainSettings").change(function () {
         console.log("mix");
-        pipelinesArr = groupsArr = [];
+        pipelinesArr = [];
+        groupsArr = [];
 
         pipelinesArr.push(
           $(
