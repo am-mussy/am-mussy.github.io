@@ -98,7 +98,7 @@ define([], function () {
       for (const value in JSON.parse($("input[name = idgroup]").val()).piplines) {
         for (const id in allPiplinesCheckBox) {
           if (JSON.parse($("input[name = idgroup]").val()).piplines[value] === allPiplinesCheckBox[id].value) {
-            console.log("нашли:" + allPiplinesCheckBox[id]);
+            JSON.parse($("input[name = idgroup]").val()).piplines[value].checked = true;
           }
         }
       }
