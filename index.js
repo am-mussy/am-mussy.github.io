@@ -5,6 +5,9 @@ define([], function () {
     },
     settings: async (self) => {
 
+      console.log($("input[name = idgroup]").val());
+      console.log(JSON.parse($("input[name = idgroup]").val()));
+
       const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
 
       $(".widget_settings_block__descr").after(
@@ -83,7 +86,7 @@ define([], function () {
       $(".mm_userSettings").append("<br>" + data + "<br>");
 
 
-      console.log($("input[name = idgroup]").val());
+
 
       let mm_settings = {
         piplines: [],
