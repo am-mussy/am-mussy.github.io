@@ -4,10 +4,6 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
-
-      console.log($("input[name = idgroup]").val());
-      console.log(JSON.parse($("input[name = idgroup]").val()));
-
       const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
 
       $(".widget_settings_block__descr").after(
@@ -97,26 +93,21 @@ define([], function () {
       let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
       let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
 
-      for (const value in JSON.parse($("input[name = idgroup]").val()).piplines) {
-        for (const id in allPiplinesCheckBox) {
+      for (let value in JSON.parse($("input[name = idgroup]").val()).piplines) {
+        for (let id in allPiplinesCheckBox) {
           if (JSON.parse($("input[name = idgroup]").val()).piplines[value] === allPiplinesCheckBox[id].value) {
             allPiplinesCheckBox[id].checked = true;
           }
         }
       }
 
-      for (const value in JSON.parse($("input[name = idgroup]").val()).groups) {
-        for (const id in allGroupsCheckBox) {
+      for (let value in JSON.parse($("input[name = idgroup]").val()).groups) {
+        for (let id in allGroupsCheckBox) {
           if (JSON.parse($("input[name = idgroup]").val()).groups[value] === allGroupsCheckBox[id].value) {
             allGroupsCheckBox[id].checked = true;
           }
         }
       }
-
-
-
-
-
 
 
       $(".mm_mainSettings").change(function () {
@@ -137,9 +128,6 @@ define([], function () {
           }
         }
 
-
-
-
         groupsArr.push(
           $(".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox")
         );
@@ -152,9 +140,7 @@ define([], function () {
           }
         }
 
-
         $("input[name = idgroup]").val(JSON.stringify(mm_settings));
-
 
         console.log($("input[name = idgroup]").val());
         console.log(JSON.parse($("input[name = idgroup]").val()));
