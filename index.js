@@ -104,13 +104,13 @@ define([], function () {
         }
       }
 
-      // for (let i in JSON.parse($("input[name = idgroup]").val()).piplines) {
-      //   for (let id in allPiplinesCheckBox) {
-      //     if (JSON.parse($("input[name = idgroup]").val()).piplines[i] === allPiplinesCheckBox[id].value) {
-      //       allPiplinesCheckBox[id].checked = true;
-      //     }
-      //   }
-      // }
+      for (let i in JSON.parse($("input[name = idgroup]").val()).piplines) {
+        for (let id in allPiplinesCheckBox) {
+          if (JSON.parse($("input[name = idgroup]").val()).piplines[i] === allPiplinesCheckBox[id].value) {
+            allPiplinesCheckBox[id].checked = true;
+          }
+        }
+      }
 
       $(".mm_mainSettings").change(function () {
         mm_settings.piplines = [];
