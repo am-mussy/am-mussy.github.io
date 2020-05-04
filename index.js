@@ -18,6 +18,9 @@ define([], function () {
         console.log(JSON.parse($("input[name = idgroup]").val().pipelines[value]));
       }
 
+      console.log(JSON.parse($("input[name = idgroup]").val().pipelines[0]));
+
+
       let pipelinesArr = [];
       let groupsArr = [];
 
