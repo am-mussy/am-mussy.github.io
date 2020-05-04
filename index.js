@@ -9,12 +9,6 @@ define([], function () {
 
       $(".widget_settings_block__descr").after(
         `
-          <div class="widget_settings_block__item_field" id="users">
-          <br>
-          
-          <p>ID Группы пользователей:</p>
-          <input name="group" id="group" class="inputGroupID" type="number" placeholder="id group" />
-
           <div class="mm_mainSettings">
             <div class="mm_pip lineSettings">
               
@@ -27,6 +21,7 @@ define([], function () {
       );
       const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
+
       // Отправляем GET на получение списка воронок
       async function getSalesF(linkPiplines) {
         let response = await fetch(linkPiplines);
@@ -92,23 +87,17 @@ define([], function () {
       $(".mm_mainSettings").change(function () {
         inputGroupID = $(".inputGroupID").val();
         inputGroupID = Number.parseInt(inputGroupID);
-        //console.log(users.getElementsByClassName("is-checked"));
 
-          $(
-            ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
-          )
-      
-       
-        groupsArr.push(
-          $(
-            ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
-          )
+        // $(
+        //   ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
+        // )
 
-        //$("input[name = idgroup]").val(inputGroupID);
+        // $(
+        //   ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
+        // )
       });
 
-      //$(".inputGroupID").val($("input[name = idgroup]").val());
-      $('input[name="group"]').trigger("change");
+      $(".mm_mainSettings").trigger("change");
     },
   };
 });
