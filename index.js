@@ -4,10 +4,7 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
-      let mm_settings = {
-        pipelines: [],
-        groups: [],
-      };
+      let mm_settings = [];
 
       let pipelinesArr = [];
       let groupsArr = [];
@@ -100,12 +97,12 @@ define([], function () {
 
         for (const key in pipelinesArr) {
           if (pipelinesArr[key].value != undefined) {
-            mm_settings.pipelines.push(pipelinesArr[key].value);
+            mm_settings[0].push(pipelinesArr[key].value);
             console.log(pipelinesArr[key].value);
           }
         }
 
-        //console.log(pipelinesArr);
+        console.log(mm_settings);
       });
 
       $(".groups").change(function () {
@@ -120,12 +117,12 @@ define([], function () {
 
         for (const key in groupsArr) {
           if (pipelinesArr[key].value != undefined) {
-            mm_settings.groups.push(pipelinesArr[key].value);
+            mm_settings[1].push(groupsArr[key].value);
             console.log(groupsArr[key].value);
           }
         }
 
-        //console.log(groupsArr);
+        console.log(mm_settings);
       });
 
       $(".mm_mainSettings").trigger("change");
