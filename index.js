@@ -4,6 +4,9 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
+      let pipelinesArr = [];
+      let groupsArr = [];
+
       const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
 
       $(".widget_settings_block__descr").after(
@@ -82,12 +85,23 @@ define([], function () {
       $(".mm_userSettings").append("<br>" + data + "<br>");
 
       $(".mm_mainSettings").change(function () {
-        // $(
-        //   ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
-        // )
-        // $(
-        //   ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
-        // )
+        pipelinesArr = groupsArr = [];
+
+        pipelinesArr.push(
+          $(
+            ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
+          )
+        );
+
+        pipelinesArr = pipelinesArr[0];
+
+        groups.push(
+          $(
+            ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
+          )
+        );
+
+        groupsArr = groupsArr[0];
       });
 
       $(".mm_mainSettings").trigger("change");
