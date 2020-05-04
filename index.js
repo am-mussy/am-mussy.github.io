@@ -85,6 +85,7 @@ define([], function () {
       $(".mm_userSettings").append("<br>" + data + "<br>");
 
       $(".mm_mainSettings").change(function () {
+        console.log("mix");
         pipelinesArr = groupsArr = [];
 
         pipelinesArr.push(
@@ -95,7 +96,7 @@ define([], function () {
 
         pipelinesArr = pipelinesArr[0];
 
-        groups.push(
+        groupsArr.push(
           $(
             ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
           )
