@@ -9,7 +9,7 @@ define([], function () {
       $(".widget_settings_block__descr").after(
         `
           <div class="mm_mainSettings">
-            <div class="mm_pip lineSettings">
+            <div class="mm_piplineSettings">
               
             </div>
             <div class="mm_userSettings">
@@ -36,14 +36,12 @@ define([], function () {
       //ВОРОНКИ
       for (const key in pipelines) {
         pipelines[key].option = pipelines[key].name;
-        console.log(pipelines[key]);
       }
 
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           class_name: "pipelines",
-          name: pipelines,
           items: pipelines,
           value: pipelines,
           title_empty: "Выбрате воронку", // Название списка
