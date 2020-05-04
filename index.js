@@ -96,13 +96,13 @@ define([], function () {
 
 
 
-      // for (let i in JSON.parse($("input[name = idgroup]").val()).groups) {
-      //   for (let id in allGroupsCheckBox) {
-      //     if (JSON.parse($("input[name = idgroup]").val()).groups[i] === allGroupsCheckBox[id].value) {
-      //       allGroupsCheckBox[id].checked = true;
-      //     }
-      //   }
-      // }
+      for (let i in JSON.parse($("input[name = idgroup]").val()).groups) {
+        for (let id in allGroupsCheckBox) {
+          if (JSON.parse($("input[name = idgroup]").val()).groups[i] === allGroupsCheckBox[id].value) {
+            allGroupsCheckBox[id].checked = true;
+          }
+        }
+      }
 
       // for (let i in JSON.parse($("input[name = idgroup]").val()).piplines) {
       //   for (let id in allPiplinesCheckBox) {
@@ -111,7 +111,6 @@ define([], function () {
       //     }
       //   }
       // }
-      //
 
       $(".mm_mainSettings").change(function () {
         mm_settings.piplines = [];
