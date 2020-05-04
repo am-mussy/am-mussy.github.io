@@ -93,26 +93,17 @@ define([], function () {
         inputGroupID = $(".inputGroupID").val();
         inputGroupID = Number.parseInt(inputGroupID);
         //console.log(users.getElementsByClassName("is-checked"));
-        pipelinesArr = [];
-        groupsArr = [];
-        pipelinesArr.push(
+
           $(
             ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
           )
-        );
-        pipelinesArr = pipelinesArr[0];
+      
+       
         groupsArr.push(
           $(
             ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
           )
-        );
-        groupsArr = groupsArr[0];
 
-        for (const key in pipelinesArr) {
-          if (pipelinesArr[key].value != undefined) {
-            console.log(pipelinesArr[key].value);
-          }
-        }
         //$("input[name = idgroup]").val(inputGroupID);
       });
 
