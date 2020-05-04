@@ -4,31 +4,6 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
-      console.log($("input[name = idgroup]").val());
-
-      let mm_settings = {
-        piplines: [],
-        groups: [],
-      };
-
-      let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
-      let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
-
-
-      // console.log(JSON.parse($("input[name = idgroup]").val()).piplines[value]);
-      for (const value in JSON.parse($("input[name = idgroup]").val()).piplines) {
-        for (const id in allPiplinesCheckBox) {
-          if (JSON.parse($("input[name = idgroup]").val()).piplines[value] === allPiplinesCheckBox[id]) {
-            console.log("нашли:" + allPiplinesCheckBox[id]);
-          }
-        }
-      }
-
-
-
-
-      let pipelinesArr = [];
-      let groupsArr = [];
 
       const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
 
@@ -106,6 +81,48 @@ define([], function () {
         }
       );
       $(".mm_userSettings").append("<br>" + data + "<br>");
+
+
+      console.log($("input[name = idgroup]").val());
+
+      let mm_settings = {
+        piplines: [],
+        groups: [],
+      };
+
+      let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
+      let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
+
+
+      // console.log(JSON.parse($("input[name = idgroup]").val()).piplines[value]);
+      for (const value in JSON.parse($("input[name = idgroup]").val()).piplines) {
+        for (const id in allPiplinesCheckBox) {
+          if (JSON.parse($("input[name = idgroup]").val()).piplines[value] === allPiplinesCheckBox[id]) {
+            console.log("нашли:" + allPiplinesCheckBox[id]);
+          }
+        }
+      }
+
+
+
+
+      let pipelinesArr = [];
+      let groupsArr = [];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       $(".pipelines").change(function () {
         pipelinesArr = [];
