@@ -15,9 +15,7 @@ define([], function () {
       let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
 
       for (const value in JSON.parse($("input[name = idgroup]").val()).pipelines) {
-
-
-        console.log(JSON.parse($("input[name = idgroup]").val()).pipelines[value]);
+        console.log(JSON.parse($("input[name = idgroup]").val().pipelines[value]));
       }
 
       let pipelinesArr = [];
