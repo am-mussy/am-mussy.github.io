@@ -95,7 +95,7 @@ define([], function () {
 
         pipelinesArr = pipelinesArr[0];
 
-        groups.push(
+        groupsArr.push(
           $(
             ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
           )
