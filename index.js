@@ -126,6 +126,7 @@ define([], function () {
         }
 
         console.log(mm_settings);
+        $("input[name = idgroup]").val(mm_settings);
       });
 
       $(".mm_mainSettings").trigger("change");
