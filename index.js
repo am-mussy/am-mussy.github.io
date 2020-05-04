@@ -121,7 +121,7 @@ define([], function () {
         groupsArr = groupsArr[0];
 
         for (const key in groupsArr) {
-          if (pipelinesArr[key].value != undefined) {
+          if (groupsArr[key].value != undefined) {
             mm_settings.groups.push(groupsArr[key].value);
           }
         }
