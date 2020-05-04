@@ -116,7 +116,7 @@ define([], function () {
 
 
 
-      $(".pipelines").change(function () {
+      $(".mm_mainSettings").change(function () {
 
         let pipelinesArr = [];
         mm_settings.piplines = [];
@@ -149,7 +149,11 @@ define([], function () {
 
 
         $("input[name = idgroup]").val(JSON.stringify(mm_settings));
-        console.log(JSON.parse($("input[name = idgroup]").val));
+        console.log(mm_settings);
+        console.log(JSON.stringify(mm_settings));
+        console.log($("input[name = idgroup]"));
+        console.log($JSON.parse($("input[name = idgroup]").val()));
+
       });
 
 
