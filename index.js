@@ -121,9 +121,11 @@ define([], function () {
       $("input[name = idgroup]").val(JSON.stringify(mm_settings));
 
       $(".mm_mainSettings").change(function () {
-
-        let pipelinesArr = [];
         mm_settings.piplines = [];
+        mm_settings.groups = [];
+        let pipelinesArr = [];
+        let groupsArr = [];
+
         pipelinesArr.push(
           $(".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox")
         );
@@ -137,8 +139,8 @@ define([], function () {
         }
 
 
-        let groupsArr = [];
-        mm_settings.groups = [];
+
+
         groupsArr.push(
           $(".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox")
         );
