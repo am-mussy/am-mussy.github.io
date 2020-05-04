@@ -4,7 +4,10 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
-      let mm_settings = [];
+      let mm_settings = {
+        piplines: [],
+        groups: [],
+      };
 
       let pipelinesArr = [];
       let groupsArr = [];
@@ -97,8 +100,7 @@ define([], function () {
 
         for (const key in pipelinesArr) {
           if (pipelinesArr[key].value != undefined) {
-            mm_settings[0].push(pipelinesArr[key].value);
-            console.log(pipelinesArr[key].value);
+            mm_settings.piplines.push(groupsArr[key].value);
           }
         }
 
@@ -117,7 +119,7 @@ define([], function () {
 
         for (const key in groupsArr) {
           if (pipelinesArr[key].value != undefined) {
-            mm_settings[1].push(groupsArr[key].value);
+            mm_settings.groups.push(groupsArr[key].value);
             console.log(groupsArr[key].value);
           }
         }
