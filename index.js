@@ -103,6 +103,14 @@ define([], function () {
         }
       }
 
+      for (const value in JSON.parse($("input[name = idgroup]").val()).piplines) {
+        for (const id in allGroupsCheckBox) {
+          if (JSON.parse($("input[name = idgroup]").val()).piplines[value] === allGroupsCheckBox[id].value) {
+            allGroupsCheckBox[id].checked = true;
+          }
+        }
+      }
+
 
 
 
