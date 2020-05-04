@@ -4,8 +4,7 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
-      pipelinesArr = [];
-      groupsArr = [];
+      const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
 
       $(".widget_settings_block__descr").after(
         `
@@ -19,7 +18,7 @@ define([], function () {
           </div>
         `
       );
-      const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
+
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
       // Отправляем GET на получение списка воронок
@@ -78,20 +77,11 @@ define([], function () {
         }
       );
       $(".mm_userSettings").append("<br>" + data + "<br>");
-      console.log(Groups);
-      console.log(pipelines);
 
-      $(".inputGroupID").val($("input[name = idgroup]").val());
-
-      let inputGroupID;
       $(".mm_mainSettings").change(function () {
-        inputGroupID = $(".inputGroupID").val();
-        inputGroupID = Number.parseInt(inputGroupID);
-
         // $(
         //   ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
         // )
-
         // $(
         //   ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
         // )
