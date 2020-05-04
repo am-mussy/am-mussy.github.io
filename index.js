@@ -84,19 +84,19 @@ define([], function () {
       );
       $(".mm_userSettings").append("<br>" + data + "<br>");
 
-      $(".mm_mainSettings").change(function () {
-        console.log("mix");
+      $(".pipelines").change(function () {
         pipelinesArr = [];
-        groupsArr = [];
-
         pipelinesArr.push(
           $(
             ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
           )
         );
-
         pipelinesArr = pipelinesArr[0];
+        console.log(pipelinesArr);
+      });
 
+      $(".groups").change(function () {
+        groupsArr = [];
         groupsArr.push(
           $(
             ".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
@@ -104,8 +104,6 @@ define([], function () {
         );
 
         groupsArr = groupsArr[0];
-
-        console.log(pipelinesArr);
         console.log(groupsArr);
       });
 
