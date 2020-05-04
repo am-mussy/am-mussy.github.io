@@ -4,11 +4,10 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
-
-      let mm_settings{
-        pipelines : [],
+      let mm_settings = {
+        pipelines: [],
         groups: [],
-      }
+      };
 
       let pipelinesArr = [];
       let groupsArr = [];
