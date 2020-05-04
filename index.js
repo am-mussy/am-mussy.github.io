@@ -111,6 +111,7 @@ define([], function () {
       //     }
       //   }
       // }
+      //
 
       $(".mm_mainSettings").change(function () {
         mm_settings.piplines = [];
