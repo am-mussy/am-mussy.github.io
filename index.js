@@ -94,7 +94,9 @@ define([], function () {
         pipelinesArr = pipelinesArr[0];
 
         for (const key in pipelinesArr) {
-          console.log(pipelinesArr[key]);
+          if (pipelinesArr[key].value != undefined) {
+            console.log(pipelinesArr[key].value);
+          }
         }
 
         //console.log(pipelinesArr);
@@ -111,7 +113,9 @@ define([], function () {
         groupsArr = groupsArr[0];
 
         for (const key in groupsArr) {
-          console.log(groupsArr[key]);
+          if (pipelinesArr[key].value != undefined) {
+            console.log(groupsArr[key].value);
+          }
         }
 
         //console.log(groupsArr);
