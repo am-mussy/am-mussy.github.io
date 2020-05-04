@@ -117,12 +117,11 @@ define([], function () {
 
 
       $(".pipelines").change(function () {
+
         let pipelinesArr = [];
         mm_settings.piplines = [];
         pipelinesArr.push(
-          $(
-            ".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox"
-          )
+          $(".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox")
         );
 
         pipelinesArr = pipelinesArr[0];
@@ -133,13 +132,7 @@ define([], function () {
           }
         }
 
-        console.log(mm_settings);
-        $("input[name = idgroup]").val(JSON.stringify(mm_settings));
-      });
 
-
-
-      $(".groups").change(function () {
         let groupsArr = [];
         mm_settings.groups = [];
         groupsArr.push(
@@ -153,8 +146,12 @@ define([], function () {
             mm_settings.groups.push(groupsArr[key].value);
           }
         }
+
+
         $("input[name = idgroup]").val(JSON.stringify(mm_settings));
+
       });
+
 
       $(".mm_mainSettings").trigger("change");
     },
