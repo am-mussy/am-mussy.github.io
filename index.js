@@ -85,30 +85,30 @@ define([], function () {
 
       console.log($("input[name = idgroup]").val());
 
-      // let mm_settings = {
-      //   piplines: [],
-      //   groups: [],
-      // };
+      let mm_settings = {
+        piplines: [],
+        groups: [],
+      };
 
-      // //Отрисовываем галочки из памяти
-      // let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
-      // let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
+      //Отрисовываем галочки из памяти
+      let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
+      let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
 
-      // for (const value in JSON.parse($("input[name = idgroup]").val()).piplines) {
-      //   for (const id in allPiplinesCheckBox) {
-      //     if (JSON.parse($("input[name = idgroup]").val()).piplines[value] === allPiplinesCheckBox[id].value) {
-      //       allPiplinesCheckBox[id].checked = true;
-      //     }
-      //   }
-      // }
+      for (const value in JSON.parse($("input[name = idgroup]").val()).piplines) {
+        for (const id in allPiplinesCheckBox) {
+          if (JSON.parse($("input[name = idgroup]").val()).piplines[value] === allPiplinesCheckBox[id].value) {
+            allPiplinesCheckBox[id].checked = true;
+          }
+        }
+      }
 
-      // for (const value in JSON.parse($("input[name = idgroup]").val()).groups) {
-      //   for (const id in allGroupsCheckBox) {
-      //     if (JSON.parse($("input[name = idgroup]").val()).groups[value] === allGroupsCheckBox[id].value) {
-      //       allGroupsCheckBox[id].checked = true;
-      //     }
-      //   }
-      // }
+      for (const value in JSON.parse($("input[name = idgroup]").val()).groups) {
+        for (const id in allGroupsCheckBox) {
+          if (JSON.parse($("input[name = idgroup]").val()).groups[value] === allGroupsCheckBox[id].value) {
+            allGroupsCheckBox[id].checked = true;
+          }
+        }
+      }
 
 
 
@@ -118,32 +118,6 @@ define([], function () {
       $("input[name = idgroup]").val(JSON.stringify(mm_settings));
 
       $(".mm_mainSettings").change(function () {
-
-
-        let mm_settings = {
-          piplines: [],
-          groups: [],
-        };
-
-        //Отрисовываем галочки из памяти
-        let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
-        let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
-
-        for (const value in JSON.parse($("input[name = idgroup]").val()).piplines) {
-          for (const id in allPiplinesCheckBox) {
-            if (JSON.parse($("input[name = idgroup]").val()).piplines[value] === allPiplinesCheckBox[id].value) {
-              allPiplinesCheckBox[id].checked = true;
-            }
-          }
-        }
-
-        for (const value in JSON.parse($("input[name = idgroup]").val()).groups) {
-          for (const id in allGroupsCheckBox) {
-            if (JSON.parse($("input[name = idgroup]").val()).groups[value] === allGroupsCheckBox[id].value) {
-              allGroupsCheckBox[id].checked = true;
-            }
-          }
-        }
 
         let pipelinesArr = [];
         mm_settings.piplines = [];
