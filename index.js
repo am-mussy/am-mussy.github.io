@@ -126,8 +126,9 @@ define([], function () {
           }
         }
 
-        console.log(mm_settings);
+        console.log("obj: ", mm_settings);
         $("input[name = idgroup]").val(mm_settings);
+        console.log("$:", $("input[name = idgroup]").val());
       });
 
       $(".mm_mainSettings").trigger("change");
