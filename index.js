@@ -8,6 +8,28 @@ define([], function () {
         piplines: [],
         groups: [],
       };
+      $("input[name = idgroup]").val(JSON.stringify(mm_settings));
+
+      let allPiplinesCheckBox = $(
+        ".pipelines .control-checkbox__body .js-item-checkbox"
+      );
+      let allGroupsCheckBox = $(
+        ".groups .control-checkbox__body .js-item-checkbox"
+      );
+
+      pip = $(".pipelines .control-checkbox__body .js-item-checkbox");
+
+      for (const value in JSON.parse($("input[name = idgroup]").val())
+        .pipelines) {
+        for (const id in allPiplinesCheckBox) {
+          if (
+            allPiplinesCheckBox[id].value ===
+            JSON.parse($("input[name = idgroup]").val()).pipelines[value]
+          ) {
+            console.log(allPiplinesCheckBox[id].value);
+          }
+        }
+      }
 
       let pipelinesArr = [];
       let groupsArr = [];
@@ -125,8 +147,6 @@ define([], function () {
             mm_settings.groups.push(groupsArr[key].value);
           }
         }
-
-        console.log("obj: ", mm_settings);
         $("input[name = idgroup]").val(JSON.stringify(mm_settings));
       });
 
