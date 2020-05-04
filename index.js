@@ -14,11 +14,11 @@ define([], function () {
       let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
       let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
 
-      for (const value in JSON.parse($("input[name = idgroup]").val()).pipelines) {
-        console.log(JSON.parse($("input[name = idgroup]").val()).pipelines[value]);
+      for (const value in JSON.parse($("input[name = idgroup]").val()).piplines) {
+        console.log(JSON.parse($("input[name = idgroup]").val()).piplines[value]);
       }
 
-    
+
 
 
       let pipelinesArr = [];
