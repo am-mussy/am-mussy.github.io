@@ -5,31 +5,18 @@ define([], function () {
     },
     settings: async (self) => {
       console.log($("input[name = idgroup]").val());
+
       let mm_settings = {
         piplines: [],
         groups: [],
       };
-      $("input[name = idgroup]").val(JSON.stringify(mm_settings));
 
-      let allPiplinesCheckBox = $(
-        ".pipelines .control-checkbox__body .js-item-checkbox"
-      );
-      let allGroupsCheckBox = $(
-        ".groups .control-checkbox__body .js-item-checkbox"
-      );
+      let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
+      let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
 
-      pip = $(".pipelines .control-checkbox__body .js-item-checkbox");
+      for (const value in JSON.parse($("input[name = idgroup]").val()).pipelines) {
 
-      for (const value in JSON.parse($("input[name = idgroup]").val())
-        .pipelines) {
-        for (const id in allPiplinesCheckBox) {
-          if (
-            allPiplinesCheckBox[id].value ===
-            JSON.parse($("input[name = idgroup]").val()).pipelines[value]
-          ) {
-            console.log(allPiplinesCheckBox[id].value);
-          }
-        }
+        console.log(JSON.parse($("input[name = idgroup]").val()));
       }
 
       let pipelinesArr = [];
