@@ -94,13 +94,7 @@ define([], function () {
       let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
       let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
 
-      for (let value in JSON.parse($("input[name = idgroup]").val()).piplines) {
-        for (let id in allPiplinesCheckBox) {
-          if (JSON.parse($("input[name = idgroup]").val()).piplines[value] === allPiplinesCheckBox[id].value) {
-            allPiplinesCheckBox[id].checked = true;
-          }
-        }
-      }
+
 
       for (let value in JSON.parse($("input[name = idgroup]").val()).groups) {
         for (let id in allGroupsCheckBox) {
@@ -110,6 +104,13 @@ define([], function () {
         }
       }
 
+      for (let value in JSON.parse($("input[name = idgroup]").val()).piplines) {
+        for (let id in allPiplinesCheckBox) {
+          if (JSON.parse($("input[name = idgroup]").val()).piplines[value] === allPiplinesCheckBox[id].value) {
+            allPiplinesCheckBox[id].checked = true;
+          }
+        }
+      }
 
       $(".mm_mainSettings").change(function () {
         mm_settings.piplines = [];
