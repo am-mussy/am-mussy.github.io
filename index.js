@@ -4,6 +4,7 @@ define([], function () {
       console.log("external on save");
     },
     settings: async (self) => {
+      console.log($("input[name = idgroup]").val());
       let mm_settings = {
         piplines: [],
         groups: [],
