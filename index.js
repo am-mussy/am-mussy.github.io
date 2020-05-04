@@ -104,6 +104,9 @@ define([], function () {
         );
 
         groupsArr = groupsArr[0];
+
+        console.log(pipelinesArr);
+        console.log(groupsArr);
       });
 
       $(".mm_mainSettings").trigger("change");
