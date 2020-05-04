@@ -100,7 +100,7 @@ define([], function () {
 
         for (const key in pipelinesArr) {
           if (pipelinesArr[key].value != undefined) {
-            mm_settings.piplines.push(groupsArr[key].value);
+            mm_settings.piplines.push(pipelinesArr[key].value);
           }
         }
 
@@ -120,7 +120,6 @@ define([], function () {
         for (const key in groupsArr) {
           if (pipelinesArr[key].value != undefined) {
             mm_settings.groups.push(groupsArr[key].value);
-            console.log(groupsArr[key].value);
           }
         }
 
