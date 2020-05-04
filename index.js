@@ -134,7 +134,7 @@ define([], function () {
 
         groupsArr = groupsArr[0];
 
-        for (const key in groupsArr) {
+        for (let key in groupsArr) {
           if (groupsArr[key].value != undefined) {
             mm_settings.groups.push(groupsArr[key].value);
           }
