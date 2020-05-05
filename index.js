@@ -45,7 +45,8 @@ define([], function () {
           option: pipelines[key].name,
           name: pipelines[key].name,
           checked: false,
-          id: pipelines[key].id
+          id: pipelines[key].id,
+          prefix: 'pipelinechkbx'
         })
       }
 
@@ -53,7 +54,6 @@ define([], function () {
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
-          text_class_name: "pipeline_checkbox",
           items: pipelines_arr
         }
       );
