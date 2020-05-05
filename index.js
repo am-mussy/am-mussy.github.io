@@ -50,6 +50,7 @@ define([], function () {
         })
       }
 
+      console.log({pipelines_arr})
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
