@@ -2,6 +2,7 @@ define([], function () {
   return {
     onSave: function () {
       console.log("external on save");
+      $("input[name = idgroup]").val(JSON.stringify(mm_settings));
     },
     settings: async (self) => {
       const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
@@ -146,7 +147,7 @@ define([], function () {
           }
         }
 
-        $("input[name = idgroup]").val(JSON.stringify(mm_settings));
+
 
         console.log($("input[name = idgroup]").val());
         console.log(JSON.parse($("input[name = idgroup]").val()));
