@@ -1,4 +1,10 @@
 define([], function () {
+  var mm_settings = {
+    piplines: [],
+    groups: [],
+  };
+
+
   return {
     onSave: function () {
       console.log("external on save");
@@ -86,10 +92,7 @@ define([], function () {
 
 
 
-      var mm_settings = {
-        piplines: [],
-        groups: [],
-      };
+
       let pipelinesArr = [];
       let groupsArr = [];
 
