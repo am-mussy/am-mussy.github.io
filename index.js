@@ -118,8 +118,8 @@ define([], function () {
 
 
 
-        mm_settings.piplines = [];
-        mm_settings.groups = [];
+        // mm_settings.piplines = [];
+        // mm_settings.groups = [];
         pipelinesArr = [];
         groupsArr = [];
 
