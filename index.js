@@ -86,7 +86,7 @@ define([], function () {
 
 
 
-      let mm_settings = {
+      var mm_settings = {
         piplines: [],
         groups: [],
       };
