@@ -37,17 +37,17 @@ define([], function () {
       //Записываем список ВОРОНОК в piplines
       const pipelines = await getSalesF(linkPiplines);
 
-      console.log({pipelines_before: pipelines})
+      console.log({before: pipelines})
 
       //ВОРОНКИ
       for (const key in pipelines) {
         pipelines[key].option = pipelines[key].name;
       }
 
-      console.log({pipelines_after: pipelines})
+      console.log({after: pipelines})
 
       console.log(pipelines)
-      
+
 
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
