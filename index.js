@@ -6,6 +6,9 @@ define([], function () {
 
     },
     settings: async (self) => {
+      let mm_settings = {
+        checked_pipelines: []
+      }
       const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
 
       $(".widget_settings_block__descr").after(
@@ -58,7 +61,7 @@ define([], function () {
 
       let heddenValue = JSON.parse(mm_settings);
       console.log(heddenValue);
-      
+
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
       //GET на получение списка ГРУПП
