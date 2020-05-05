@@ -37,7 +37,7 @@ define([], function () {
 
 
       const pipelines_arr = []
-      //ВОРОНКИ
+      //ыВОРОНКИ
       for (const key in pipelines) {
         pipelines_arr.push({
           option: pipelines[key].name,
