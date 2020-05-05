@@ -69,91 +69,21 @@ define([], function () {
         return Groups;
       }
 
-
       let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
-
-      /*  //Записываем список ГРУПП в Groups
-       const Groups = await getGroups(linkGroups);
-       //ГРУППЫ
-       for (const key in Groups) {
-         Groups[key].option = Groups[key].name;
-       }
-       var data = self.render(
-         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-         {
-           class_name: "groups",
-           name: Groups,
-           items: Groups,
-           value: Groups,
-           title_empty: "Выбрате группу пользователей",
-           text: Groups,
-         }
-       );
-       $(".mm_userSettings").append("<br>" + data + "<br>"); */
-
-      let mm_settings = {
-        piplines: [],
-        groups: [],
-      };
-
-      let pipelinesArr = [];
-      let groupsArr = [];
-
-
-
-
-
-      // for (let i in JSON.parse($("input[name = idgroup]").val()).groups) {
-      //   for (let id in allGroupsCheckBox) {
-      //     if (JSON.parse($("input[name = idgroup]").val()).groups[i] === allGroupsCheckBox[id].value) {
-      //       allGroupsCheckBox[id].checked = true;
-      //     }
-      //   }
-      // }
-
-      // for (let i in JSON.parse($("input[name = idgroup]").val()).piplines) {
-      //   for (let id in allPiplinesCheckBox) {
-      //     if (JSON.parse($("input[name = idgroup]").val()).piplines[i] === allPiplinesCheckBox[id].value) {
-      //       allPiplinesCheckBox[id].checked = true;
-      //     }
-      //   }
-      // }
 
       $(".mm_mainSettings").change(function () {
 
-        mm_settings.piplines = [];
-        mm_settings.groups = [];
-        pipelinesArr = [];
-        groupsArr = [];
+        hecked_pipelines = [];
 
-        pipelinesArr.push(
-          $(".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox")
-        );
+        $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
-        pipelinesArr = pipelinesArr[0];
-
-        for (const key in pipelinesArr) {
-          if (pipelinesArr[key].value != undefined) {
-            mm_settings.piplines.push(pipelinesArr[key].value);
+          if ($(this).parent().parent().hasClass('is-checked')) {
+            hecked_pipelines.push($(this).attr('value'));
           }
-        }
 
-        groupsArr.push(
-          $(".groups .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox")
-        );
+        })
 
-        groupsArr = groupsArr[0];
-
-        for (let key in groupsArr) {
-          if (groupsArr[key].value != undefined) {
-            mm_settings.groups.push(groupsArr[key].value);
-          }
-        }
-
-
-
-        console.log($("input[name = idgroup]").val());
-        console.log(JSON.parse($("input[name = idgroup]").val()));
+        console.log(hecked_pipelines);
         $("input[name = idgroup]").val(JSON.stringify(mm_settings));
       });
 
