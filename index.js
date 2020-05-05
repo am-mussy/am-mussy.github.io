@@ -59,6 +59,7 @@ define([], function () {
           text: pipelines,
         }
       );
+      
 
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
