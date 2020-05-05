@@ -96,23 +96,41 @@ define([], function () {
 
 
 
-      for (let i in JSON.parse($("input[name = idgroup]").val()).groups) {
-        for (let id in allGroupsCheckBox) {
-          if (JSON.parse($("input[name = idgroup]").val()).groups[i] === allGroupsCheckBox[id].value) {
-            allGroupsCheckBox[id].checked = true;
-          }
-        }
-      }
+      // for (let i in JSON.parse($("input[name = idgroup]").val()).groups) {
+      //   for (let id in allGroupsCheckBox) {
+      //     if (JSON.parse($("input[name = idgroup]").val()).groups[i] === allGroupsCheckBox[id].value) {
+      //       allGroupsCheckBox[id].checked = true;
+      //     }
+      //   }
+      // }
 
-      for (let i in JSON.parse($("input[name = idgroup]").val()).piplines) {
-        for (let id in allPiplinesCheckBox) {
-          if (JSON.parse($("input[name = idgroup]").val()).piplines[i] === allPiplinesCheckBox[id].value) {
-            allPiplinesCheckBox[id].checked = true;
-          }
-        }
-      }
+      // for (let i in JSON.parse($("input[name = idgroup]").val()).piplines) {
+      //   for (let id in allPiplinesCheckBox) {
+      //     if (JSON.parse($("input[name = idgroup]").val()).piplines[i] === allPiplinesCheckBox[id].value) {
+      //       allPiplinesCheckBox[id].checked = true;
+      //     }
+      //   }
+      // }
 
       $(".mm_mainSettings").change(function () {
+
+
+        for (let i in JSON.parse($("input[name = idgroup]").val()).groups) {
+          for (let id in allGroupsCheckBox) {
+            if (JSON.parse($("input[name = idgroup]").val()).groups[i] === allGroupsCheckBox[id].value) {
+              allGroupsCheckBox[id].checked = true;
+            }
+          }
+        }
+
+        for (let i in JSON.parse($("input[name = idgroup]").val()).piplines) {
+          for (let id in allPiplinesCheckBox) {
+            if (JSON.parse($("input[name = idgroup]").val()).piplines[i] === allPiplinesCheckBox[id].value) {
+              allPiplinesCheckBox[id].checked = true;
+            }
+          }
+        }
+
         mm_settings.piplines = [];
         mm_settings.groups = [];
         let pipelinesArr = [];
