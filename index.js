@@ -1,7 +1,5 @@
 define([], function () {
 
-
-
   return {
     onSave: function () {
       console.log("external on save");
