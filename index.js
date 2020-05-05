@@ -44,7 +44,7 @@ define([], function () {
         pipelines_arr.push({
           option: pipelines[key].name,
           name: pipelines[key].name,
-          checked: true,
+          checked: false,
           id: pipelines[key].id,
           prefix: 'pipelinechkbx' + pipelines[key].id
         })
