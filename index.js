@@ -37,7 +37,7 @@ define([], function () {
       //Записываем список ВОРОНОК в piplines
       const pipelines = await getSalesF(linkPiplines);
 
-      
+
       const pipelines_arr = []
       //ВОРОНКИ
       for (const key in pipelines) {
@@ -46,11 +46,11 @@ define([], function () {
           name: pipelines[key].name,
           checked: false,
           id: pipelines[key].id,
-          prefix: 'pipelinechkbx'
+          prefix: 'pipelinechkbx' + pipelines[key].id 
         })
       }
 
-      console.log({pipelines_arr})
+      console.log({ pipelines_arr })
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
@@ -71,25 +71,24 @@ define([], function () {
         return Groups;
       }
 
-     /*  //Записываем список ГРУПП в Groups
-      const Groups = await getGroups(linkGroups);
-
-      //ГРУППЫ
-      for (const key in Groups) {
-        Groups[key].option = Groups[key].name;
-      }
-      var data = self.render(
-        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-        {
-          class_name: "groups",
-          name: Groups,
-          items: Groups,
-          value: Groups,
-          title_empty: "Выбрате группу пользователей",
-          text: Groups,
-        }
-      );
-      $(".mm_userSettings").append("<br>" + data + "<br>"); */
+      /*  //Записываем список ГРУПП в Groups
+       const Groups = await getGroups(linkGroups);
+       //ГРУППЫ
+       for (const key in Groups) {
+         Groups[key].option = Groups[key].name;
+       }
+       var data = self.render(
+         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+         {
+           class_name: "groups",
+           name: Groups,
+           items: Groups,
+           value: Groups,
+           title_empty: "Выбрате группу пользователей",
+           text: Groups,
+         }
+       );
+       $(".mm_userSettings").append("<br>" + data + "<br>"); */
 
       let mm_settings = {
         piplines: [],
