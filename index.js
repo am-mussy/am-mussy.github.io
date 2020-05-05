@@ -62,8 +62,9 @@ define([], function () {
 
       let heddenValue = JSON.parse($("input[name = idgroup]").val());
 
-      
+
       console.log(heddenValue);
+      console.log(JSON.parse(heddenValue).checked_pipelines);
 
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
