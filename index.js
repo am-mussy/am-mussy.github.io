@@ -72,18 +72,20 @@ define([], function () {
       let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
 
       $(".mm_mainSettings").change(function () {
+        mm_settings = {
+          hecked_pipelines: []
+        }
 
-        hecked_pipelines = [];
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
           if ($(this).parent().parent().hasClass('is-checked')) {
-            hecked_pipelines.push($(this).attr('value'));
+            mm_settings.hecked_pipelines.push($(this).attr('value'));
           }
 
         })
 
-        console.log(hecked_pipelines);
+        console.log(mm_settings);
         //$("input[name = idgroup]").val(JSON.stringify(mm_settings));
       });
 
