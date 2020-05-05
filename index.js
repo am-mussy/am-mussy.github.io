@@ -46,7 +46,7 @@ define([], function () {
           name: pipelines[key].name,
           checked: false,
           id: pipelines[key].id,
-          prefix: 'pipelinechkbx' + pipelines[key].id 
+          prefix: 'pipelinechkbx' + pipelines[key].id
         })
       }
 
@@ -70,6 +70,9 @@ define([], function () {
 
         return Groups;
       }
+
+
+      let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
 
       /*  //Записываем список ГРУПП в Groups
        const Groups = await getGroups(linkGroups);
@@ -99,8 +102,8 @@ define([], function () {
       let groupsArr = [];
 
       //Отрисовываем галочки из памяти
-      let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
-      let allGroupsCheckBox = $(".groups .control-checkbox__body .js-item-checkbox");
+      let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
+
 
 
       for (let i in JSON.parse($("input[name = idgroup]").val()).groups) {
