@@ -47,6 +47,7 @@ define([], function () {
       console.log({pipelines_after: pipelines})
 
       console.log(pipelines)
+      
 
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
@@ -59,7 +60,7 @@ define([], function () {
           text: pipelines,
         }
       );
-      
+
 
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
