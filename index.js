@@ -101,8 +101,7 @@ define([], function () {
       let pipelinesArr = [];
       let groupsArr = [];
 
-      //Отрисовываем галочки из памяти
-      let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
+
 
 
 
