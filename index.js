@@ -45,8 +45,7 @@ define([], function () {
           option: pipelines[key].name,
           name: pipelines[key].name,
           checked: false,
-          id: pipelines[key].id,
-          text_class_name: "pipelines_checkbox"
+          id: pipelines[key].id
         })
       }
 
@@ -54,7 +53,7 @@ define([], function () {
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
-          class_name: "pipelines",
+          text_class_name: "pipeline_checkbox",
           items: pipelines_arr
         }
       );
@@ -72,7 +71,7 @@ define([], function () {
         return Groups;
       }
 
-      //Записываем список ГРУПП в Groups
+     /*  //Записываем список ГРУПП в Groups
       const Groups = await getGroups(linkGroups);
 
       //ГРУППЫ
@@ -90,7 +89,7 @@ define([], function () {
           text: Groups,
         }
       );
-      $(".mm_userSettings").append("<br>" + data + "<br>");
+      $(".mm_userSettings").append("<br>" + data + "<br>"); */
 
       let mm_settings = {
         piplines: [],
