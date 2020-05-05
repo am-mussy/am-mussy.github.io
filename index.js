@@ -37,7 +37,7 @@ define([], function () {
       //Записываем список ВОРОНОК в piplines
       const pipelines = await getSalesF(linkPiplines);
 
-      console.log({before: pipelines})
+      console.log({before_: pipelines})
 
       //ВОРОНКИ
       for (const key in pipelines) {
