@@ -1,8 +1,5 @@
 define([], function () {
-  var mm_settings = {
-    piplines: [],
-    groups: [],
-  };
+
 
 
   return {
@@ -89,7 +86,10 @@ define([], function () {
       );
       $(".mm_userSettings").append("<br>" + data + "<br>");
 
-
+      let mm_settings = {
+        piplines: [],
+        groups: [],
+      };
 
 
 
