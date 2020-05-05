@@ -91,8 +91,6 @@ define([], function () {
         groups: [],
       };
 
-
-
       let pipelinesArr = [];
       let groupsArr = [];
 
@@ -118,8 +116,6 @@ define([], function () {
       }
 
       $(".mm_mainSettings").change(function () {
-
-
 
         mm_settings.piplines = [];
         mm_settings.groups = [];
