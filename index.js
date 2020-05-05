@@ -89,6 +89,8 @@ define([], function () {
         piplines: [],
         groups: [],
       };
+      let pipelinesArr = [];
+      let groupsArr = [];
 
       //Отрисовываем галочки из памяти
       let allPiplinesCheckBox = $(".pipelines .control-checkbox__body .js-item-checkbox");
@@ -118,8 +120,8 @@ define([], function () {
 
         mm_settings.piplines = [];
         mm_settings.groups = [];
-        let pipelinesArr = [];
-        let groupsArr = [];
+        pipelinesArr = [];
+        groupsArr = [];
 
         pipelinesArr.push(
           $(".pipelines .is-checked:not(.js-master-checkbox-wrapper) .control-checkbox__body .js-item-checkbox")
