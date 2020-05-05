@@ -62,7 +62,7 @@ define([], function () {
 
       let heddenValue = JSON.parse($("input[name = idgroup]").val());
 
-      let heddenValue = JSON.parse(mm_settings);
+      
       console.log(heddenValue);
 
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
