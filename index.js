@@ -56,7 +56,9 @@ define([], function () {
         }
       );
 
-
+      let heddenValue = JSON.parse(mm_settings);
+      console.log(heddenValue);
+      
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
       //GET на получение списка ГРУПП
@@ -73,20 +75,20 @@ define([], function () {
 
       $(".mm_mainSettings").change(function () {
         mm_settings = {
-          hecked_pipelines: []
+          checked_pipelines: []
         }
 
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
           if ($(this).parent().parent().hasClass('is-checked')) {
-            mm_settings.hecked_pipelines.push($(this).attr('value'));
+            mm_settings.checked_pipelines.push($(this).attr('value'));
           }
 
         })
 
         console.log(mm_settings);
-        //$("input[name = idgroup]").val(JSON.stringify(mm_settings));
+        $("input[name = idgroup]").val(JSON.stringify(mm_settings));
       });
 
 
