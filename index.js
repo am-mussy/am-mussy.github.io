@@ -37,27 +37,24 @@ define([], function () {
       //Записываем список ВОРОНОК в piplines
       const pipelines = await getSalesF(linkPiplines);
 
-      console.log({before_: pipelines})
-
+      
+      const pipelines_arr = []
       //ВОРОНКИ
       for (const key in pipelines) {
-        pipelines[key].option = pipelines[key].name;
+        pipelines_arr.push({
+          option: pipelines[key].name,
+          name: pipelines[key].name,
+          checked: false,
+          id: pipelines[key].id,
+          text_class_name: "pipelines_checkbox"
+        })
       }
-
-      console.log({after: pipelines})
-
-      console.log(pipelines)
-
 
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           class_name: "pipelines",
-          name: pipelines,
-          items: pipelines,
-          value: pipelines,
-          title_empty: "Выбрате воронку", // Название списка
-          text: pipelines,
+          items: pipelines_arr
         }
       );
 
