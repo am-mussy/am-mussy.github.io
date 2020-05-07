@@ -60,12 +60,12 @@ define([], function () {
       );
 
 
-      let heddenValue = JSON.parse($("input[name = idgroup]").val());
+      let old_settings = JSON.parse($("input[name = idgroup]").val());
 
 
       console.log(heddenValue);
       console.log(heddenValue.checked_pipelines);
-    
+
 
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
@@ -86,6 +86,9 @@ define([], function () {
           checked_pipelines: []
         }
 
+        old_settings.pipelines = mm_settings.checked_pipelines;
+
+
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
@@ -96,7 +99,7 @@ define([], function () {
         })
 
         console.log(mm_settings);
-        $("input[name = idgroup]").val(JSON.stringify(mm_settings));
+        $("input[name = idgroup]").val(JSON.stringify(old_settings));
       });
 
 
