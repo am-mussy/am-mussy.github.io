@@ -38,7 +38,6 @@ define([], function () {
       //Записываем список ВОРОНОК в piplines
       const pipelines = await getSalesF(linkPiplines);
 
-
       const pipelines_arr = []
       //ыВОРОНКИ
       for (const key in pipelines) {
@@ -59,11 +58,7 @@ define([], function () {
         }
       );
 
-
       let old_settings = JSON.parse($("input[name = idgroup]").val());
-
-
-
 
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
@@ -85,8 +80,6 @@ define([], function () {
         }
 
         old_settings.pipelines = mm_settings.checked_pipelines;
-
-
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
