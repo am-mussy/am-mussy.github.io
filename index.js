@@ -63,8 +63,6 @@ define([], function () {
       let old_settings = JSON.parse($("input[name = idgroup]").val());
 
 
-      console.log(heddenValue);
-      console.log(heddenValue.checked_pipelines);
 
 
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
