@@ -76,7 +76,7 @@ define([], function () {
 
 
 
-
+      console.log(pipelines_arr[0][3]);
       for (let i in pipelines_arr) {
         for (let j in old_settings.checked_pipelines) {
 
