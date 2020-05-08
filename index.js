@@ -79,7 +79,7 @@ define([], function () {
           checked_pipelines: []
         }
 
-        old_settings = mm_settings.checked_pipelines;
+        old_settings.checked_pipelines = mm_settings.checked_pipelines;
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
