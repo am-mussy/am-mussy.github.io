@@ -39,7 +39,7 @@ define([], function () {
       const pipelines = await getSalesF(linkPiplines);
 
       const pipelines_arr = []
-      //ыВОРОНКИ
+      //ВОРОНКИ
       for (const key in pipelines) {
         pipelines_arr.push({
           option: pipelines[key].name,
@@ -50,7 +50,8 @@ define([], function () {
         })
       }
 
-      console.log({ pipelines_arr })
+      console.log("Все воронки:", { pipelines_arr })
+
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
@@ -59,31 +60,29 @@ define([], function () {
       );
 
       let old_settings = JSON.parse($("input[name = idgroup]").val());
-      console.log(old_settings);
+     
+
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
-      //GET на получение списка ГРУПП
-      const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
-      async function getGroups(linkGroups) {
-        let response = await fetch(linkGroups);
-        let Groups = await response.json();
-        Groups = Groups._embedded.groups;
 
-        return Groups;
-      }
-      let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
+      // //GET на получение списка ГРУПП
+      // const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
+      // async function getGroups(linkGroups) {
+      //   let response = await fetch(linkGroups);
+      //   let Groups = await response.json();
+      //   Groups = Groups._embedded.groups;
+
+      //   return Groups;
+      // }
+
+
+      // let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
 
 
 
-      for (let i in pipelines_arr) {
-        for (let j in old_settings.checked_pipelines) {
 
-          if (pipelines_arr[i].id === old_settings.checked_pipelines[j]) {
-            console.log(pipelines_arr[i].id);
-          }
 
-        }
-      }
+
 
 
 
@@ -91,8 +90,6 @@ define([], function () {
         mm_settings = {
           checked_pipelines: []
         }
-
-
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
@@ -105,7 +102,7 @@ define([], function () {
         old_settings.checked_pipelines = mm_settings.checked_pipelines;
 
         $("input[name = idgroup]").val(JSON.stringify(old_settings));
-        console.log(mm_settings);
+        console.log($("input[name = idgroup]").val());
 
       });
 
