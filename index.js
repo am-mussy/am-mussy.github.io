@@ -75,9 +75,6 @@ define([], function () {
 
 
 
-
-      console.log(pipelines_arr[0][3]);
-      console.log(pipelines_arr[0].id);
       for (let i in pipelines_arr) {
         for (let j in old_settings.checked_pipelines) {
 
@@ -95,7 +92,7 @@ define([], function () {
           checked_pipelines: []
         }
 
-        old_settings.checked_pipelines = mm_settings.checked_pipelines;
+
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
@@ -105,9 +102,10 @@ define([], function () {
 
         })
 
-        console.log(mm_settings);
-        $("input[name = idgroup]").val(JSON.stringify(old_settings));
+        old_settings.checked_pipelines = mm_settings.checked_pipelines;
 
+        $("input[name = idgroup]").val(JSON.stringify(old_settings));
+        console.log(mm_settings);
 
       });
 
