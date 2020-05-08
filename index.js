@@ -80,7 +80,7 @@ define([], function () {
 
 
       //let old_settings = JSON.parse($("input[name = idgroup]").val());
-
+      console.log($("input[name = idgroup]").val());
       let old_settings;
       $(".mm_mainSettings").change(function () {
         mm_settings = {
