@@ -79,7 +79,7 @@ define([], function () {
 
 
 
-      let old_settings = JSON.parse($("input[name = idgroup]").val());
+      //let old_settings = JSON.parse($("input[name = idgroup]").val());
 
 
       $(".mm_mainSettings").change(function () {
