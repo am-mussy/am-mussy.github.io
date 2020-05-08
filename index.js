@@ -58,10 +58,6 @@ define([], function () {
           items: pipelines_arr
         }
       );
-
-      let old_settings = JSON.parse($("input[name = idgroup]").val());
-     
-
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
@@ -83,7 +79,7 @@ define([], function () {
 
 
 
-
+      let old_settings = JSON.parse($("input[name = idgroup]").val());
 
 
       $(".mm_mainSettings").change(function () {
