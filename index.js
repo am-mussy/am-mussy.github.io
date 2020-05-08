@@ -92,8 +92,8 @@ define([], function () {
         console.log(mm_settings);
         $("input[name = idgroup]").val(JSON.stringify(old_settings));
 
-        for (key of mm_settings.checked_pipelines) {
-          console.log(mm_settings.checked_pipelines)
+        for (key in mm_settings.checked_pipelines) {
+          console.log(mm_settings.checked_pipelines[key])
         }
       });
 
