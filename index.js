@@ -3,7 +3,9 @@ define([], function () {
   return {
     onSave: function () {
       console.log("external on save");
-
+      for (key of mm_settings.checked_pipelines) {
+        console.log(mm_settings.checked_pipelines)
+      }
     },
     settings: async (self) => {
       let mm_settings = {
@@ -44,9 +46,9 @@ define([], function () {
         pipelines_arr.push({
           option: pipelines[key].name,
           name: pipelines[key].name,
-          is_checked: true,
+          is_checked: false,
           id: pipelines[key].id,
-          prefix: 'pipelinechkbx' + pipelines[key].id
+          prefix: `pipelinechkbx + ${pipelines[key].id}`
         })
       }
 
