@@ -81,7 +81,7 @@ define([], function () {
 
       //let old_settings = JSON.parse($("input[name = idgroup]").val());
 
-      let old_settings
+      let old_settings;
       $(".mm_mainSettings").change(function () {
         mm_settings = {
           checked_pipelines: []
@@ -95,7 +95,7 @@ define([], function () {
 
         })
 
-        old_settings.checked_pipelines = mm_settings.checked_pipelines;
+        old_settings = mm_settings;
 
         $("input[name = idgroup]").val(JSON.stringify(old_settings));
         console.log($("input[name = idgroup]").val());
