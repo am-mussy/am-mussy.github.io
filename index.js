@@ -80,7 +80,7 @@ define([], function () {
         for (let i in pipelines_arr) {
           for (let j in old_settings.checked_pipelines) {
 
-            if (pipelines_arr[i].id === old_settings.checked_pipelines[j]{
+            if (pipelines_arr[i].id === old_settings.checked_pipelines[j]) {
               console.log(pipelines_arr[i].id);
             }
 
