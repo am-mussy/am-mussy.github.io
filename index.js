@@ -112,6 +112,6 @@ define([], function () {
 
 
         $(".mm_mainSettings").trigger("change");
-      },
+      }
     };
   });
