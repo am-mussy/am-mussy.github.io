@@ -70,33 +70,48 @@ define([], function () {
         Groups = Groups._embedded.groups;
 
         return Groups;
-      }
 
-      let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
+        let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
 
-      $(".mm_mainSettings").change(function () {
-        mm_settings = {
-          checked_pipelines: []
+
+
+
+
+        for (let i in pipelines_arr) {
+          for (let j in old_settings.checked_pipelines) {
+
+            if (pipelines_arr[i].id === old_settings.checked_pipelines[j]{
+              console.log(pipelines_arr[i].id);
+            }
+
+          }
         }
 
-        old_settings.checked_pipelines = mm_settings.checked_pipelines;
 
-        $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
-          if ($(this).parent().parent().hasClass('is-checked')) {
-            mm_settings.checked_pipelines.push($(this).attr('value'));
+        $(".mm_mainSettings").change(function () {
+          mm_settings = {
+            checked_pipelines: []
           }
 
-        })
+          old_settings.checked_pipelines = mm_settings.checked_pipelines;
 
-        console.log(mm_settings);
-        $("input[name = idgroup]").val(JSON.stringify(old_settings));
+          $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
+
+            if ($(this).parent().parent().hasClass('is-checked')) {
+              mm_settings.checked_pipelines.push($(this).attr('value'));
+            }
+
+          })
+
+          console.log(mm_settings);
+          $("input[name = idgroup]").val(JSON.stringify(old_settings));
 
 
-      });
+        });
 
 
-      $(".mm_mainSettings").trigger("change");
-    },
-  };
-});
+        $(".mm_mainSettings").trigger("change");
+      },
+    };
+  });
