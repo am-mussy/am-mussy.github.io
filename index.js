@@ -46,7 +46,7 @@ define([], function () {
           name: pipelines[key].name,
           is_checked: false,
           id: pipelines[key].id,
-          prefix: `pipelinechkbx + ${pipelines[key].id}`
+          prefix: `pipelinechkbx${pipelines[key].id}`
         })
       }
 
@@ -59,7 +59,7 @@ define([], function () {
       );
 
       let old_settings = JSON.parse($("input[name = idgroup]").val());
-
+      console.log(old_settings);
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
       //GET на получение списка ГРУПП
