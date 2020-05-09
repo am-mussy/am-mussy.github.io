@@ -76,7 +76,7 @@ define([], function () {
 
       old_settings = JSON.parse($("input[name = idgroup]").val());
       console.log("Все воронки:", { pipelines_arr })
-      console.log(`Сохраненные настройки: ${old_settings}`);
+      console.log(`Сохраненные настройки:`, `${old_settings}`);
 
 
 
