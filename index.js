@@ -94,6 +94,13 @@ define([], function () {
         }
       );
 
+      var data = self.render(
+        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+        {
+          items: pipelines_arr
+        }
+      );
+
       $(".mm_mainSettings").change(function () {
         mm_settings = {
           checked_pipelines: []
