@@ -50,12 +50,12 @@ define([], function () {
         })
       }
 
-      var data = self.render(
-        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-        {
-          items: pipelines_arr
-        }
-      );
+      // var data = self.render(
+      //   { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+      //   {
+      //     items: pipelines_arr
+      //   }
+      // );
 
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
@@ -86,13 +86,6 @@ define([], function () {
         }
       }
 
-
-      var data = self.render(
-        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-        {
-          items: pipelines_arr
-        }
-      );
 
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
