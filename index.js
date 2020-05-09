@@ -70,18 +70,12 @@ define([], function () {
 
       //   return Groups;
       // }
-
-
       // let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
-
-
-
-
-
-
-      //let old_settings = JSON.parse($("input[name = idgroup]").val());
-      console.log($("input[name = idgroup]").val());
       let old_settings;
+
+      old_settings = JSON.parse($("input[name = idgroup]").val());
+      console.log($("input[name = idgroup]").val(), old_settings);
+
       $(".mm_mainSettings").change(function () {
         mm_settings = {
           checked_pipelines: []
