@@ -81,7 +81,7 @@ define([], function () {
       for (let i in pipelines_arr) {
         for (let j in old_settings.checked_pipelines) {
           if (old_settings.checked_pipelines[j] === String(pipelines_arr[i].id)) {
-            console.log('mussy')
+            pipelines_arr[i].is_checked = true;
           }
         }
       }
