@@ -50,7 +50,6 @@ define([], function () {
         })
       }
 
-      console.log("Все воронки:", { pipelines_arr })
 
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
@@ -71,10 +70,16 @@ define([], function () {
       //   return Groups;
       // }
       // let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
+
+
       let old_settings;
 
       old_settings = JSON.parse($("input[name = idgroup]").val());
-      console.log($("input[name = idgroup]").val(), old_settings);
+      console.log("Все воронки:", { pipelines_arr })
+      console.log(`Сохраненные настройки: ${old_settings}`);
+
+
+
 
       $(".mm_mainSettings").change(function () {
         mm_settings = {
