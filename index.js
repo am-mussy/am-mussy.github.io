@@ -50,13 +50,13 @@ define([], function () {
         })
       }
 
-
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           items: pipelines_arr
         }
       );
+
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
@@ -78,8 +78,8 @@ define([], function () {
       console.log("Все воронки:", { pipelines_arr })
       console.log(`Сохраненные настройки:`, old_settings);
 
-      for (i in pipelines_arr) {
-        for (j in old_settings.checked_pipelines) {
+      for (let i in pipelines_arr) {
+        for (let j in old_settings.checked_pipelines) {
           if (old_settings.checked_pipelines[j] === pipelines_arr[i].id) {
             console.log('mussy')
           }
