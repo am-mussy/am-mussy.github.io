@@ -57,7 +57,7 @@ define([], function () {
       //   }
       // );
 
-      $(".mm_piplineSettings").append("<br>" + data + "<br>");
+
 
 
       // //GET на получение списка ГРУПП
@@ -86,7 +86,7 @@ define([], function () {
             console.log(pipelines_arr[i].id)
 
 
-            //pipelines_arr[i].is_checked = true; // меняю параметр на true
+            pipelines_arr[i].is_checked = true; // меняю параметр на true
           }
         }
       }
@@ -98,7 +98,7 @@ define([], function () {
           items: pipelines_arr
         }
       );
-
+      $(".mm_piplineSettings").append("<br>" + data + "<br>");
       $(".mm_mainSettings").change(function () {
         mm_settings = {
           checked_pipelines: []
