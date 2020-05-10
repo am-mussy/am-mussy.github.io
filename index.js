@@ -137,10 +137,10 @@ define([], function () {
       );
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
-      console.log("Все воронки:", pipelines_arr)
-      console.log(`Сохраненные настройки:`, old_settings);
+      // console.log("Все воронки:", pipelines_arr)
+      // console.log(`Сохраненные настройки:`, old_settings);
 
-      console.log(pipelines_arr);
+      // console.log(pipelines_arr);
 
       $(".mm_mainSettings").change(function () { //дублирование кода?
         mm_settings = {
