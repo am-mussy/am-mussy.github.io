@@ -17,8 +17,6 @@ define([], function () {
                 destroy: function () {
                 }
             });
-            // ...
-            return true;
         }
     }
 });
