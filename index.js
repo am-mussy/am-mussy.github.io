@@ -78,9 +78,9 @@ define([], function () {
       console.log("Все воронки:", pipelines_arr)
       console.log(`Сохраненные настройки:`, old_settings);
 
-      for (let i in pipelines_arr) {  //прохожусь по массиву пайплайнов
+      for (let i of pipelines_arr) {  //прохожусь по массиву пайплайнов
         for (let j in old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
-          if (old_settings.checked_pipelines[j].includes(String(pipelines_arr[i].id))) { // если текущий id пайплайна есть в нажатых чекбоксах
+          if (old_settings.checked_pipelines[j].includes(String(i.id))) { // если текущий id пайплайна есть в нажатых чекбоксах
 
             console.log(old_settings.checked_pipelines[j])
             console.log(pipelines_arr[i].id)
@@ -90,6 +90,19 @@ define([], function () {
           }
         }
       }
+
+      // for (let i in pipelines_arr) {  //прохожусь по массиву пайплайнов
+      //   for (let j in old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
+      //     if (old_settings.checked_pipelines[j].includes(String(pipelines_arr[i].id))) { // если текущий id пайплайна есть в нажатых чекбоксах
+
+      //       console.log(old_settings.checked_pipelines[j])
+      //       console.log(pipelines_arr[i].id)
+
+
+      //       pipelines_arr[i].is_checked = true; // меняю параметр на true
+      //     }
+      //   }
+      // }
 
       console.log(pipelines_arr);
       var data = self.render(
