@@ -12,8 +12,25 @@ define([], function () {
       }
       const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       let old_settings;
+
       if ($("input[name = idgroup]").val().length > 0) {
         old_settings = JSON.parse($("input[name = idgroup]").val());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       }
 
 
@@ -46,11 +63,34 @@ define([], function () {
 
       const pipelines_arr = [];
       //ВОРОНКИ
+
+      function mm_checkedP() {
+        try {
+          old_settings.checked_pipelines.includes(String(pipelines[i].id));
+        } catch (error) {
+          return false;
+        }
+
+        return true;
+      }
+
+      function mm_checkedG() {
+        try {
+          old_settings.checked_groups.includes(String(groups[i].id));
+        } catch (error) {
+          return false;
+        }
+
+        return true;
+      }
+
+
+
       for (let i of Object.keys(pipelines)) { //дублирование кода?
         pipelines_arr.push({
           option: pipelines[i].name,
           name: pipelines[i].name,
-          is_checked: old_settings.checked_pipelines.includes(String(pipelines[i].id)),
+          is_checked: mm_checkedP(),
           id: pipelines[i].id,
           prefix: `pipelinechkbx${pipelines[i].id}`
         })
@@ -83,7 +123,7 @@ define([], function () {
         groups_arr.push({
           option: groups[i].name,
           name: groups[i].name,
-          is_checked: old_settings.checked_groups.includes(String(groups[i].id)),
+          is_checked: mm_checkedG(),
           id: groups[i].id,
           prefix: `groupschkbx${groups[i].id}`
         })
