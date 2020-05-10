@@ -64,33 +64,17 @@ define([], function () {
       const pipelines_arr = [];
       //ВОРОНКИ
 
-      function mm_checkedP() {
-        try {
-          old_settings.checked_pipelines.includes(String(pipelines[i].id));
-        } catch (error) {
-          return false;
-        }
-
-        return true;
-      }
-
-      function mm_checkedG() {
-        try {
-          old_settings.checked_groups.includes(String(groups[i].id));
-        } catch (error) {
-          return false;
-        }
-
-        return true;
-      }
-
-
-
       for (let i of Object.keys(pipelines)) { //дублирование кода?
         pipelines_arr.push({
           option: pipelines[i].name,
           name: pipelines[i].name,
-          is_checked: mm_checkedP(),
+          is_checked: () => {
+            try {
+              return old_settings.checked_pipelines.includes(String(pipelines[i].id));
+            } catch (error) {
+              return false;
+            }
+          },
           id: pipelines[i].id,
           prefix: `pipelinechkbx${pipelines[i].id}`
         })
@@ -123,7 +107,13 @@ define([], function () {
         groups_arr.push({
           option: groups[i].name,
           name: groups[i].name,
-          is_checked: mm_checkedG(),
+          is_checked: () => {
+            try {
+              return old_settings.checked_groups.includes(String(groups[i].id));
+            } catch (error) {
+              return false;
+            }
+          },
           id: groups[i].id,
           prefix: `groupschkbx${groups[i].id}`
         })
@@ -137,10 +127,10 @@ define([], function () {
       );
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
-      // console.log("Все воронки:", pipelines_arr)
-      // console.log(`Сохраненные настройки:`, old_settings);
+      console.log("Все воронки:", pipelines_arr)
+      console.log(`Сохраненные настройки:`, old_settings);
 
-      // console.log(pipelines_arr);
+      console.log(pipelines_arr);
 
       $(".mm_mainSettings").change(function () { //дублирование кода?
         mm_settings = {
