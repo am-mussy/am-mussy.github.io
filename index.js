@@ -43,13 +43,13 @@ define([], function () {
 
       const pipelines_arr = []
       //ВОРОНКИ
-      for (let i of pipelines) {
+      for (let i in pipelines) {
         pipelines_arr.push({
-          option: i.name,
-          name: i.name,
+          option: pipelines[i].name,
+          name: pipelines[i].name,
           is_checked: false,
-          id: i.id,
-          prefix: `pipelinechkbx${i.id}`
+          id: pipelines[i].id,
+          prefix: `pipelinechkbx${pipelines[i].id}`
         })
 
         for (let j of old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
