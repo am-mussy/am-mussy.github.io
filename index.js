@@ -47,16 +47,17 @@ define([], function () {
 
         for (let j of old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
           if (j.includes(String(pipelines[i].id))) { // если текущий id пайплайна есть в нажатых чекбоксах
-            let is_checked = true;
+            var is_checked = true;
           }
-          pipelines_arr.push({
-            option: pipelines[i].name,
-            name: pipelines[i].name,
-            is_checked: is_checked,
-            id: pipelines[i].id,
-            prefix: `pipelinechkbx${pipelines[i].id}`
-          })
         }
+        pipelines_arr.push({
+          option: pipelines[i].name,
+          name: pipelines[i].name,
+          is_checked: is_checked,
+          id: pipelines[i].id,
+          prefix: `pipelinechkbx${pipelines[i].id}`
+        })
+
       }
 
 
