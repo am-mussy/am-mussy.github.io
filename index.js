@@ -12,7 +12,10 @@ define([], function () {
       }
       const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       let old_settings;
-      old_settings = JSON.parse($("input[name = idgroup]").val());
+      if ($("input[name = idgroup]").val().length > 0) {
+        old_settings = JSON.parse($("input[name = idgroup]").val());
+      }
+
 
 
       $(".widget_settings_block__descr").after(
