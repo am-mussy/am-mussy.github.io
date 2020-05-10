@@ -71,8 +71,8 @@ define([], function () {
       console.log(`Сохраненные настройки:`, old_settings);
 
       for (let i of pipelines_arr) {  //прохожусь по массиву пайплайнов
-        for (let j in old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
-          if (old_settings.checked_pipelines[j].includes(String(i.id))) { // если текущий id пайплайна есть в нажатых чекбоксах
+        for (let j of old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
+          if (j.checked_pipelines.includes(String(i.id))) { // если текущий id пайплайна есть в нажатых чекбоксах
 
             // console.log(old_settings.checked_pipelines[j])
             // console.log(i.id)
@@ -82,19 +82,19 @@ define([], function () {
           }
         }
       }
-
-      // for (let i in pipelines_arr) {  //прохожусь по массиву пайплайнов
+      // for (let i of pipelines_arr) {  //прохожусь по массиву пайплайнов
       //   for (let j in old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
-      //     if (old_settings.checked_pipelines[j].includes(String(pipelines_arr[i].id))) { // если текущий id пайплайна есть в нажатых чекбоксах
+      //     if (old_settings.checked_pipelines[j].includes(String(i.id))) { // если текущий id пайплайна есть в нажатых чекбоксах
 
-      //       console.log(old_settings.checked_pipelines[j])
-      //       console.log(pipelines_arr[i].id)
+      //       // console.log(old_settings.checked_pipelines[j])
+      //       // console.log(i.id)
 
 
-      //       pipelines_arr[i].is_checked = true; // меняю параметр на true
+      //       i.is_checked = true; // меняю параметр на true
       //     }
       //   }
       // }
+
 
       console.log(pipelines_arr);
       var data = self.render(
