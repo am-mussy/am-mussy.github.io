@@ -43,7 +43,7 @@ define([], function () {
 
       const pipelines_arr = []
       //ВОРОНКИ
-      for (let i in Object.keys(pipelines)) {
+      for (let i of Object.keys(pipelines)) {
         pipelines_arr.push({
           option: pipelines[i].name,
           name: pipelines[i].name,
