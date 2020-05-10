@@ -78,7 +78,7 @@ define([], function () {
             // console.log(i.id)
 
 
-            pipelines_arr[i].is_checked = true; // меняю параметр на true
+            i.is_checked = true; // меняю параметр на true
           }
         }
       }
