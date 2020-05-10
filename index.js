@@ -59,81 +59,81 @@ define([], function () {
           }
 
         }
-
-
-
-        // for (const key in pipelines) {
-        //   pipelines_arr.push({
-        //     option: pipelines[key].name,
-        //     name: pipelines[key].name,
-        //     is_checked: false,
-        //     id: pipelines[key].id,
-        //     prefix: `pipelinechkbx${pipelines[key].id}`
-        //   })
-        // }
-
-
-
-        // //GET на получение списка ГРУПП
-        // const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
-        // async function getGroups(linkGroups) {
-        //   let response = await fetch(linkGroups);
-        //   let Groups = await response.json();
-        //   Groups = Groups._embedded.groups;
-
-        //   return Groups;
-        // }
-        // let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
-
-
-
-        console.log("Все воронки:", pipelines_arr)
-        console.log(`Сохраненные настройки:`, old_settings);
-
-        // for (let i of pipelines_arr) {  //прохожусь по массиву пайплайнов
-        //   for (let j of old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
-        //     if (j.includes(String(i.id))) { // если текущий id пайплайна есть в нажатых чекбоксах
-
-        //       // console.log(old_settings.checked_pipelines[j])
-        //       // console.log(i.id)
-
-
-        //       i.is_checked = true; // меняю параметр на true
-        //     }
-        //   }
-        // }
-
-
-        console.log(pipelines_arr);
-        var data = self.render(
-          { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-          {
-            items: pipelines_arr
-          }
-        );
-        $(".mm_piplineSettings").append("<br>" + data + "<br>");
-        $(".mm_mainSettings").change(function () {
-          mm_settings = {
-            checked_pipelines: []
-          }
-
-          $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
-
-            if ($(this).parent().parent().hasClass('is-checked')) {
-              mm_settings.checked_pipelines.push($(this).attr('value'));
-            }
-
-          })
-
-          old_settings = mm_settings;
-
-          $("input[name = idgroup]").val(JSON.stringify(old_settings));
-          console.log($("input[name = idgroup]").val());
-
-        });
-
-
-        $(".mm_mainSettings").trigger("change");
       }
-    };
-  });
+
+
+      // for (const key in pipelines) {
+      //   pipelines_arr.push({
+      //     option: pipelines[key].name,
+      //     name: pipelines[key].name,
+      //     is_checked: false,
+      //     id: pipelines[key].id,
+      //     prefix: `pipelinechkbx${pipelines[key].id}`
+      //   })
+      // }
+
+
+
+      // //GET на получение списка ГРУПП
+      // const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
+      // async function getGroups(linkGroups) {
+      //   let response = await fetch(linkGroups);
+      //   let Groups = await response.json();
+      //   Groups = Groups._embedded.groups;
+
+      //   return Groups;
+      // }
+      // let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
+
+
+
+      console.log("Все воронки:", pipelines_arr)
+      console.log(`Сохраненные настройки:`, old_settings);
+
+      // for (let i of pipelines_arr) {  //прохожусь по массиву пайплайнов
+      //   for (let j of old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
+      //     if (j.includes(String(i.id))) { // если текущий id пайплайна есть в нажатых чекбоксах
+
+      //       // console.log(old_settings.checked_pipelines[j])
+      //       // console.log(i.id)
+
+
+      //       i.is_checked = true; // меняю параметр на true
+      //     }
+      //   }
+      // }
+
+
+      console.log(pipelines_arr);
+      var data = self.render(
+        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+        {
+          items: pipelines_arr
+        }
+      );
+      $(".mm_piplineSettings").append("<br>" + data + "<br>");
+      $(".mm_mainSettings").change(function () {
+        mm_settings = {
+          checked_pipelines: []
+        }
+
+        $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
+
+          if ($(this).parent().parent().hasClass('is-checked')) {
+            mm_settings.checked_pipelines.push($(this).attr('value'));
+          }
+
+        })
+
+        old_settings = mm_settings;
+
+        $("input[name = idgroup]").val(JSON.stringify(old_settings));
+        console.log($("input[name = idgroup]").val());
+
+      });
+
+
+      $(".mm_mainSettings").trigger("change");
+    }
+  };
+});
