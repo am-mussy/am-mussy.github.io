@@ -53,7 +53,6 @@ define([], function () {
           pipelines_arr.push({
             option: pipelines[i].name,
             name: pipelines[i].name,
-            is_checked: false,
             id: pipelines[i].id,
             prefix: `pipelinechkbx${pipelines[i].id}`
           })
