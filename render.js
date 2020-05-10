@@ -1,7 +1,7 @@
 define([], function () {
 
     return {
-        render: (self) => {
+        render: (self, Modal) => {
             console.log('OK');
             var data = '<h1>Test</h1><p>Some text</p>';
             modal = new Modal({
