@@ -80,7 +80,7 @@ define([], function () {
         groups_arr.push({
           option: groups[i].name,
           name: groups[i].name,
-          is_checked: old_settings.checked_pipelines.includes(String(groups[i].id)),
+          is_checked: old_settings.checked_groups.includes(String(groups[i].id)),
           id: groups[i].id,
           prefix: `groupschkbx${groups[i].id}`
         })
