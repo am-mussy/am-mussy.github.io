@@ -43,7 +43,7 @@ define([], function () {
 
       const pipelines_arr = [];
       //ВОРОНКИ
-      for (let i of Object.keys(pipelines)) {
+      for (let i of Object.keys(pipelines)) { //дублирование кода?
         pipelines_arr.push({
           option: pipelines[i].name,
           name: pipelines[i].name,
@@ -53,7 +53,7 @@ define([], function () {
         })
       }
 
-      var data = self.render(
+      var data = self.render( //дублирование кода?
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           items: pipelines_arr
@@ -65,7 +65,7 @@ define([], function () {
       //GET на получение списка ГРУПП
       const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
 
-      async function getGroups(linkGroups) {
+      async function getGroups(linkGroups) {  //дублирование кода?
         let response = await fetch(linkGroups);
         let Groups = await response.json();
         Groups = Groups._embedded.groups;
@@ -76,7 +76,7 @@ define([], function () {
 
       const groups_arr = [];
 
-      for (let i of Object.keys(groups)) {
+      for (let i of Object.keys(groups)) { //дублирование кода?
         groups_arr.push({
           option: groups[i].name,
           name: groups[i].name,
@@ -86,7 +86,7 @@ define([], function () {
         })
       }
 
-      var data = self.render(
+      var data = self.render( //дублирование кода?
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           items: groups_arr
@@ -99,28 +99,25 @@ define([], function () {
 
       console.log(pipelines_arr);
 
-      $(".mm_mainSettings").change(function () {
+      $(".mm_mainSettings").change(function () { //дублирование кода?
         mm_settings = {
           checked_pipelines: [],
           checked_groups: [],
         }
 
-        $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
+        $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) { //дублирование кода?
 
           if ($(this).parent().parent().hasClass('is-checked')) {
             mm_settings.checked_pipelines.push($(this).attr('value'));
           }
         })
 
-        $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
+        $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) { //дублирование кода?
 
           if ($(this).parent().parent().hasClass('is-checked')) {
             mm_settings.checked_groups.push($(this).attr('value'));
           }
         })
-
-
-
 
         old_settings = mm_settings;
 
