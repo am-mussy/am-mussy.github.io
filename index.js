@@ -7,7 +7,8 @@ define([], function () {
     },
     settings: async (self) => {
       let mm_settings = {
-        checked_pipelines: []
+        checked_pipelines: [],
+        checked_groups: [],
       }
       const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       let old_settings;
@@ -34,14 +35,13 @@ define([], function () {
         let response = await fetch(linkPiplines);
         let salesFunnels = await response.json();
         salesFunnels = salesFunnels._embedded.items;
-
         return salesFunnels;
       }
 
       //Записываем список ВОРОНОК в piplines
       const pipelines = await getSalesF(linkPiplines);
 
-      const pipelines_arr = []
+      const pipelines_arr = [];
       //ВОРОНКИ
       for (let i of Object.keys(pipelines)) {
         pipelines_arr.push({
@@ -53,24 +53,6 @@ define([], function () {
         })
       }
 
-
-      // //GET на получение списка ГРУПП
-      // const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
-      // async function getGroups(linkGroups) {
-      //   let response = await fetch(linkGroups);
-      //   let Groups = await response.json();
-      //   Groups = Groups._embedded.groups;
-
-      //   return Groups;
-      // }
-      // let allPiplinesCheckBox = $('[ID *= "cbx_drop_pipelinechkbx"]');
-
-
-
-      console.log("Все воронки:", pipelines_arr)
-      console.log(`Сохраненные настройки:`, old_settings);
-
-      console.log(pipelines_arr);
       var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
@@ -78,9 +60,49 @@ define([], function () {
         }
       );
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
+
+
+      //GET на получение списка ГРУПП
+      const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
+
+      async function getGroups(linkGroups) {
+        let response = await fetch(linkGroups);
+        let Groups = await response.json();
+        Groups = Groups._embedded.groups;
+        return Groups;
+      }
+
+      const groups = await getGroups(linkGroups);
+
+      const groups_arr = [];
+
+      for (let i of Object.keys(groups)) {
+        groups_arr.push({
+          option: groups[i].name,
+          name: groups[i].name,
+          is_checked: old_settings.checked_pipelines.includes(String(groups[i].id)),
+          id: groups[i].id,
+          prefix: `groupschkbx${groups[i].id}`
+        })
+      }
+
+      var data = self.render(
+        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+        {
+          items: groups_arr
+        }
+      );
+      $(".mm_piplineSettings").append("<br>" + data + "<br>");
+
+      console.log("Все воронки:", pipelines_arr)
+      console.log(`Сохраненные настройки:`, old_settings);
+
+      console.log(pipelines_arr);
+
       $(".mm_mainSettings").change(function () {
         mm_settings = {
-          checked_pipelines: []
+          checked_pipelines: [],
+          checked_groups: [],
         }
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
@@ -88,8 +110,17 @@ define([], function () {
           if ($(this).parent().parent().hasClass('is-checked')) {
             mm_settings.checked_pipelines.push($(this).attr('value'));
           }
-
         })
+
+        $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
+
+          if ($(this).parent().parent().hasClass('is-checked')) {
+            mm_settings.checked_groups.push($(this).attr('value'));
+          }
+        })
+
+
+
 
         old_settings = mm_settings;
 
