@@ -50,14 +50,6 @@ define([], function () {
         })
       }
 
-      // var data = self.render(
-      //   { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-      //   {
-      //     items: pipelines_arr
-      //   }
-      // );
-
-
 
 
       // //GET на получение списка ГРУПП
@@ -82,8 +74,8 @@ define([], function () {
         for (let j in old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
           if (old_settings.checked_pipelines[j].includes(String(i.id))) { // если текущий id пайплайна есть в нажатых чекбоксах
 
-            console.log(old_settings.checked_pipelines[j])
-            console.log(pipelines_arr[i].id)
+            // console.log(old_settings.checked_pipelines[j])
+            // console.log(i.id)
 
 
             pipelines_arr[i].is_checked = true; // меняю параметр на true
