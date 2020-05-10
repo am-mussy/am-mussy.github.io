@@ -72,7 +72,7 @@ define([], function () {
 
       for (let i of pipelines_arr) {  //прохожусь по массиву пайплайнов
         for (let j of old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
-          if (j.checked_pipelines.includes(String(i.id))) { // если текущий id пайплайна есть в нажатых чекбоксах
+          if (j.includes(String(i.id))) { // если текущий id пайплайна есть в нажатых чекбоксах
 
             // console.log(old_settings.checked_pipelines[j])
             // console.log(i.id)
