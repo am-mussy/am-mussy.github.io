@@ -44,7 +44,7 @@ define([], function () {
       const pipelines_arr = []
       //ВОРОНКИ
       for (let i in pipelines) {
-
+        is_checked = false;
         for (let j of old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
           if (j.includes(String(pipelines[i].id))) { // если текущий id пайплайна есть в нажатых чекбоксах
             var is_checked = true;
