@@ -44,20 +44,19 @@ define([], function () {
       const pipelines_arr = []
       //ВОРОНКИ
       for (let i in pipelines) {
-        pipelines_arr.push({
-          option: pipelines[i].name,
-          name: pipelines[i].name,
-          is_checked: false,
-          id: pipelines[i].id,
-          prefix: `pipelinechkbx${pipelines[i].id}`
-        })
-
+        
         for (let j of old_settings.checked_pipelines) { // прохожусь по массиву нажатых чекбоксов
           if (j.includes(String(pipelines[i].id))) { // если текущий id пайплайна есть в нажатых чекбоксах
-
+            
             pipelines[i].is_checked = true; // меняю параметр на true
-          }
-
+          }   
+          pipelines_arr.push({
+            option: pipelines[i].name,
+            name: pipelines[i].name,
+            is_checked: false,
+            id: pipelines[i].id,
+            prefix: `pipelinechkbx${pipelines[i].id}`
+          })
         }
       }
 
