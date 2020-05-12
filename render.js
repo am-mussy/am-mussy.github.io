@@ -30,7 +30,7 @@ define([], function () {
 
 
 
-            $(".mm_boxbody").append("<br>" + mm_select + "<br>");
+            $(".modal-body").append("<br>" + mm_select + "<br>");
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
