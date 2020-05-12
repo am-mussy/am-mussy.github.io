@@ -3,9 +3,9 @@ define([], function () {
     return {
         render: (self, Modal) => {
             console.log('OK');
-            var data = '<div class="mm_boxbody"> </div>';
 
-            m_data = [
+
+            let m_data = [
                 {
                     option: 'option1',
                     id: 'id1'
@@ -30,7 +30,7 @@ define([], function () {
 
 
 
-            $(".modal-body").append("<br>" + mm_select + "<br>");
+            var data = m_data;
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
