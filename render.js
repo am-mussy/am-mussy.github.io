@@ -24,8 +24,8 @@ define([], function () {
                 { ref: '/tmpl/controls/select.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     items: m_data,      //данные
-                    class_name: 'subs_w',  //указание класса
-                    id: w_code + '_list'   //указание id
+                    class_name: 'test_select',  //указание класса
+                    id: 'test_select'   //указание id
                 });
 
 
