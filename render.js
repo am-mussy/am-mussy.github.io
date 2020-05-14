@@ -30,7 +30,7 @@ define([], function () {
 
 
 
-            var data = m_data;
+            var data = mm_select;
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
