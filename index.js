@@ -10,7 +10,7 @@ define([], function () {
         checked_pipelines: [],
         checked_groups: [],
       }
-      const subdomain = "amotestredbox"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
+      const subdomain = "metop97204"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       let old_settings;
 
       if ($("input[name = idgroup]").val().length > 0) {
