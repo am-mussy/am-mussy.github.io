@@ -7,20 +7,18 @@ define([], function () {
 
             let m_data = [
                 {
-                    option: 'option1',
+                    option: 'Отдел продаж',
                     id: 'id1',
                     disabled: true,
-                },
-                {
-                    option: 'option2',
-                    id: 'id2',
-                    is_selected: true
-                },
-                {
-                    option: 'option3',
-                    id: 'id3',
                     bg_color: '#f503b3',
-                    disabled: true,
+                },
+                {
+                    option: 'Вадим',
+                    id: 'id2',
+                },
+                {
+                    option: 'Анастасия',
+                    id: 'id3',
                 }
             ]; //массив данных, передаваемых для шаблона
 
