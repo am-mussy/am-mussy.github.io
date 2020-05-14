@@ -18,7 +18,7 @@ define([], function () {
                     option: 'option3',
                     id: 'id3',
                     bg_color: '#f503b3',
-                    is_selected: true,
+                    disabled: true,
                 }
             ]; //массив данных, передаваемых для шаблона
 
