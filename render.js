@@ -8,11 +8,13 @@ define([], function () {
             let m_data = [
                 {
                     option: 'option1',
-                    id: 'id1'
+                    id: 'id1',
+                    disabled: true,
                 },
                 {
                     option: 'option2',
-                    id: 'id2'
+                    id: 'id2',
+                    is_selected: true
                 },
                 {
                     option: 'option3',
