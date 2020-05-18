@@ -35,7 +35,7 @@ define([], function () {
 
             console.log(mm_usersArr);
 
-
+            //Cортируем по id
             mm_usersArr.sort(function (a, b) {
                 if (a.group_id > b.group_id) {
                     return 1;
@@ -45,7 +45,7 @@ define([], function () {
                 }
             });
 
-
+            //Сортируем по Имени
             mm_usersArr.sort(function (a, b) {
                 if (a.group_id === b.group_id && a.name > b.name) {
                     return 1;
@@ -54,6 +54,27 @@ define([], function () {
                     return -1;
                 }
             });
+
+
+            const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
+
+            async function getGroups(linkGroups) {  //дублирование кода?
+                let response = await fetch(linkGroups);
+                let Groups = await response.json();
+                Groups = Groups._embedded.groups;
+                return Groups;
+            }
+
+            const groups = await getGroups(linkGroups);
+
+            const groups_arr = [];
+
+            console.log(groups);
+
+
+
+
+
             console.log(mm_usersArr);
             let m_data = [
                 {

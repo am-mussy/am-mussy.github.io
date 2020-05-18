@@ -1,32 +1,32 @@
 <script>
-  const arr = [{
+  let UserArr = [{
       name: "Bitard",
-      id: 3
+      id: 0
     }, {
       name: "Astahov",
-      id: 2
+      id: 0
     }, {
       name: "Aydogan",
-      id: 1
+      id: 0
     }, {
       name: "Cisco",
-      id: 5
+      id: 123
     },
     {
       name: "Bitmer",
-      id: 2
+      id: 123
     },
     {
       name: "Alex",
-      id: 10
+      id: 15125
     },
     {
       name: "Aid",
-      id: 5
+      id: 15125
     },
   ]
 
-  arr.sort(function (a, b) {
+  UserArr.sort(function (a, b) {
     if (a.id > b.id) {
       return 1;
     }
@@ -35,16 +35,60 @@
     }
   });
 
-  arr.sort(function (a, b) {
+  UserArr.sort(function (a, b) {
     if (a.id === b.id && a.name > b.name) {
       return 1;
     }
     if (a.id === b.id && a.name < b.name) {
       return -1;
     }
-    console.log(a, b)
   });
 
+  console.log(UserArr);
 
-  console.log(arr);
+
+  let GroupsArr = [{
+    id: 0,
+    name: "Отдел продаж"
+  }, {
+    id: 123,
+    name: "Программисты"
+  }, {
+    id: 15125,
+    name: "Единороги"
+  }, ]
+
+  GroupsArr.sort();
+
+  console.log(GroupsArr)
+
+
+
+  let data = [];
+  console.log(data.length)
+
+  for (let i of GroupsArr) {
+
+    data.push({
+      option: i.name,
+      disable: true,
+      color: "#" + ((1 << 24) * Math.random() | 0).toString(16)
+    })
+
+    for (let j of UserArr) {
+      if (j.id === i.id) {
+        data.push({
+          option: j.name,
+          disable: false
+        })
+      }
+    }
+
+  }
+  console.log(data);
+
+  let color = "#" + ((1 << 24) * Math.random() | 0).toString(16)
+
+  console.log(color);
+  console.log((4360181).toString(16))
 </script>
