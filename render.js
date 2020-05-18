@@ -28,8 +28,8 @@ define([], function () {
             for (let i of Object.keys(mm_users)) {
 
                 mm_usersArr.push({
-                    name: i.name,
-                    group_id: i.group_id
+                    name: mm_users[i].name,
+                    group_id: mm_users[i].group_id
                 })
             }
 
