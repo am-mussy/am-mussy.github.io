@@ -75,7 +75,7 @@ define([], function () {
 
                 m_data.push({
                     option: groups[i].name,
-                    id,
+                    id: groups[i].id,
                     disabled: true,
                     bg_color: "#" + ((1 << 24) * Math.random() | 0).toString(16)
                 })
