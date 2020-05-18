@@ -81,10 +81,10 @@ define([], function () {
                 })
 
                 for (let j of mm_usersArr) {
-                    if (groups[i].id === j.id) {
+                    if (groups[i].id === j.group_id) {
                         m_data.push({
                             option: j.name,
-                            id,
+                            id: j.group_id,
                             disabled: false
                         })
                     }
