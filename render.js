@@ -22,10 +22,18 @@ define([], function () {
 
             console.log(mm_users);
 
+            let mm_usersArr = [];
 
-            for (const i of Object.keys(mm_users)) {
-                console.log(i);
+
+            for (let i of Object.keys(mm_users)) {
+
+                mm_usersArr.push({
+                    name: i.name,
+                    group_id: i.group_id
+                })
             }
+
+            console.log(mm_usersArr);
 
 
             let m_data = [
