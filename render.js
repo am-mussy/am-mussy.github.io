@@ -36,6 +36,25 @@ define([], function () {
             console.log(mm_usersArr);
 
 
+            mm_usersArr.sort(function (a, b) {
+                if (a.id > b.id) {
+                    return 1;
+                }
+                if (a.id < b.id) {
+                    return -1;
+                }
+            });
+
+            arr.sort(function (a, b) {
+                if (a.group_id === b.group_id && a.name > b.name) {
+                    return 1;
+                }
+                if (a.group_id === b.group_id && a.name < b.name) {
+                    return -1;
+                }
+                console.log(a, b)
+            });
+
             let m_data = [
                 {
                     option: 'Отдел продаж',
