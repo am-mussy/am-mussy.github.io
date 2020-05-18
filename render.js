@@ -22,7 +22,7 @@ define([], function () {
 
             console.log(mm_users);
 
-            let mm_usersArr = [];
+            const mm_usersArr = [];
 
 
             for (let i of Object.keys(mm_users)) {
