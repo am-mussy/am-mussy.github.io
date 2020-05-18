@@ -5,6 +5,24 @@ define([], function () {
             console.log('OK');
 
 
+            const subdomain = "metop97204";
+            const linkUsers = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`;
+
+            //GET на получение списка ВОРОНОК
+            async function getUsers(linkUsers) {
+
+                let response = await fetch(linkUsers);
+                let mm_users = await response.json();
+                mm_users = mm_users._embedded.users;
+                return mm_users;
+            }
+
+            //Записываем список ВОРОНОК в piplines
+            const mm_users = await getUsers(linkUsers);
+
+            console.log(mm_users);
+
+
             let m_data = [
                 {
                     option: 'Отдел продаж',
