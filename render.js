@@ -33,7 +33,7 @@ define([], function () {
                 })
             }
 
-            console.log(mm_usersArr);
+
 
 
             mm_usersArr.sort(function (a, b) {
@@ -53,9 +53,8 @@ define([], function () {
                 if (a.group_id === b.group_id && a.name < b.name) {
                     return -1;
                 }
-                console.log(a, b)
             });
-
+            console.log(mm_usersArr);
             let m_data = [
                 {
                     option: 'Отдел продаж',
