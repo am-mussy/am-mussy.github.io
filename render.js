@@ -45,7 +45,8 @@ define([], function () {
                 }
             });
 
-            arr.sort(function (a, b) {
+
+            mm_usersArr.sort(function (a, b) {
                 if (a.group_id === b.group_id && a.name > b.name) {
                     return 1;
                 }
