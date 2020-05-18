@@ -33,7 +33,7 @@ define([], function () {
                 })
             }
 
-
+            console.log(mm_usersArr);
 
 
             mm_usersArr.sort(function (a, b) {
