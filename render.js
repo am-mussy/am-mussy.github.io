@@ -23,6 +23,11 @@ define([], function () {
             console.log(mm_users);
 
 
+            for (const i of Object.keys(mm_users)) {
+                console.log(i);
+            }
+
+
             let m_data = [
                 {
                     option: 'Отдел продаж',
