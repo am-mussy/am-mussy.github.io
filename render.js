@@ -67,31 +67,51 @@ define([], function () {
 
             const groups = await getGroups(linkGroups);
 
-            const groups_arr = [];
-
             console.log(groups);
 
+            let m_data = []
 
+            for (const i of Object.keys(groups)) {
 
+                m_data.push({
+                    option: groups[i].name,
+                    id,
+                    disabled: true,
+                    bg_color: "#" + ((1 << 24) * Math.random() | 0).toString(16)
+                })
+
+                for (let j of mm_usersArr) {
+                    if (groups[i].id === j.id) {
+                        m_data.push({
+                            option: j.name,
+                            id,
+                            disabled: false
+                        })
+                    }
+                }
+
+            }
+
+            console.log(m_data);
 
 
             console.log(mm_usersArr);
-            let m_data = [
-                {
-                    option: 'Отдел продаж',
-                    id: 'id1',
-                    disabled: true,
-                    bg_color: '#f503b3',
-                },
-                {
-                    option: 'Вадим',
-                    id: 'id2',
-                },
-                {
-                    option: 'Анастасия',
-                    id: 'id3',
-                }
-            ]; //массив данных, передаваемых для шаблона
+            // m_data = [
+            //     {
+            //         option: 'Отдел продаж',
+            //         id: 'id1',
+            //         disabled: true,
+            //         bg_color: '#f503b3',
+            //     },
+            //     {
+            //         option: 'Вадим',
+            //         id: 'id2',
+            //     },
+            //     {
+            //         option: 'Анастасия',
+            //         id: 'id3',
+            //     }
+            // ]; //массив данных, передаваемых для шаблона
 
             var mm_select = self.render(
                 { ref: '/tmpl/controls/select.twig' }, // объект data в данном случае содержит только ссылку на шаблон
