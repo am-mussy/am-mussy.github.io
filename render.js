@@ -1,7 +1,7 @@
 define([], function () {
 
     return {
-        render: (self, Modal) => {
+        render: async (self, Modal) => {
             console.log('OK');
 
 
