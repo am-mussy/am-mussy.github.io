@@ -73,22 +73,25 @@ define([], function () {
 
             for (const i of Object.keys(groups)) {
 
-                m_data.push({
-                    option: groups[i].name,
-                    id: groups[i].id + groups[i].name,
-                    disabled: true,
-                    bg_color: "#" + ((1 << 24) * Math.random() | 0).toString(16)
-                })
+                // m_data.push({
+                //     option: groups[i].name,
+                //     id: groups[i].id + groups[i].name,
+                //     disabled: true,
+                //     bg_color: "#" + ((1 << 24) * Math.random() | 0).toString(16)
+                // })
 
                 for (let j of mm_usersArr) {
                     if (groups[i].id === j.group_id) {
                         m_data.push({
                             option: j.name,
                             id: j.group_id + j.name,
-                            disabled: false
+                            disabled: false,
+                            is_selected: true
                         })
                     }
                 }
+
+
 
             }
 
@@ -123,7 +126,7 @@ define([], function () {
 
 
 
-            var data = mm_select;
+            var data = mm_select + mm_select;
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
