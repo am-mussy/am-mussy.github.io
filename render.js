@@ -75,7 +75,7 @@ define([], function () {
 
                 m_data.push({
                     option: groups[i].name,
-                    id: groups[i].id,
+                    id: groups[i].id + groups[i].name,
                     disabled: true,
                     bg_color: "#" + ((1 << 24) * Math.random() | 0).toString(16)
                 })
@@ -84,7 +84,7 @@ define([], function () {
                     if (groups[i].id === j.group_id) {
                         m_data.push({
                             option: j.name,
-                            id: j.group_id,
+                            id: j.group_id + j.name,
                             disabled: false
                         })
                     }
