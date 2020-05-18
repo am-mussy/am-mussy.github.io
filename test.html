@@ -1,5 +1,5 @@
 <script>
-  let arr = [{
+  const arr = [{
       name: "Bitard",
       id: 3
     }, {
@@ -34,7 +34,7 @@
       return -1;
     }
   });
-  
+
   arr.sort(function (a, b) {
     if (a.id === b.id && a.name > b.name) {
       return 1;

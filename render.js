@@ -37,10 +37,10 @@ define([], function () {
 
 
             mm_usersArr.sort(function (a, b) {
-                if (a.id > b.id) {
+                if (a.group_id > b.group_id) {
                     return 1;
                 }
-                if (a.id < b.id) {
+                if (a.group_id < b.group_id) {
                     return -1;
                 }
             });
