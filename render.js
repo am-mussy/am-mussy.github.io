@@ -5,7 +5,7 @@ define([], function () {
             console.log('OK');
 
 
-            const subdomain = "metop97204";
+            const subdomain = "redboxamo";
             const linkUsers = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`;
 
             //GET на получение списка ВОРОНОК

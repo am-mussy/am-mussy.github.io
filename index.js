@@ -10,7 +10,7 @@ define([], function () {
         checked_pipelines: [],
         checked_groups: [],
       }
-      const subdomain = "metop97204"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
+      const subdomain = "redboxamo"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       let old_settings;
 
       if ($("input[name = idgroup]").val().length > 0) {
@@ -112,44 +112,7 @@ define([], function () {
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
-
-      testData = [
-        {
-          id: 123,
-          value: "value",
-        },
-        {
-          id: 3123,
-          value: "value2",
-        }
-      ]
-
-
-
-      var data = self.render( //дублирование кода?
-        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-        {
-          items: testData
-        }
-      );
-
-
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
       console.log("Все воронки:", pipelines_arr)
