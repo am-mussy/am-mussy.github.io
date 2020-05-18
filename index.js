@@ -111,6 +111,47 @@ define([], function () {
       );
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
+
+
+      testData = [
+        {
+          id: 123,
+          value: "value",
+        },
+        {
+          id: 3123,
+          value: "value2",
+        }
+      ]
+
+
+
+      var data = self.render( //дублирование кода?
+        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+        {
+          items: testData
+        }
+      );
+
+
+      $(".mm_piplineSettings").append("<br>" + data + "<br>");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       console.log("Все воронки:", pipelines_arr)
       console.log(`Сохраненные настройки:`, old_settings);
 
