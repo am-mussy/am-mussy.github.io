@@ -118,6 +118,19 @@ define([], function () {
           value: 'value',
           name: 'name',
 
+        },
+        {
+          id: 'id',
+          value: 'menu',
+          name: 'name',
+          disabled: true
+
+        },
+        {
+          id: 'id',
+          value: 'Petr',
+          name: 'name',
+
         }
       ]
 
