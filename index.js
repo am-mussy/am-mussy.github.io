@@ -112,46 +112,10 @@ define([], function () {
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
-      let testdata = [
-        {
-          id: 'id',
-          value: 'value',
-          name: 'name',
+      // console.log("Все воронки:", pipelines_arr)
+      // console.log(`Сохраненные настройки:`, old_settings);
 
-        },
-        {
-          id: 'id',
-          value: 'menu',
-          name: 'name',
-          disabled: true
-
-        },
-        {
-          id: 'id',
-          value: 'Petr',
-          name: 'name',
-
-        }
-      ]
-
-
-
-
-
-      var data = self.render( //дублирование кода?
-        { ref: "/tmpl/controls/suggest.twig" },
-        {
-          items: testdata
-        }
-      );
-
-      $(".mm_piplineSettings").append("<br>" + data + "<br>");
-
-
-      console.log("Все воронки:", pipelines_arr)
-      console.log(`Сохраненные настройки:`, old_settings);
-
-      console.log(pipelines_arr);
+      // console.log(pipelines_arr);
 
       $(".mm_mainSettings").change(function () { //дублирование кода?
         mm_settings = {
@@ -176,7 +140,7 @@ define([], function () {
         old_settings = mm_settings;
 
         $("input[name = idgroup]").val(JSON.stringify(old_settings));
-        console.log($("input[name = idgroup]").val());
+        // console.log($("input[name = idgroup]").val());
 
       });
 

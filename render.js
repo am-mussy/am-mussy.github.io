@@ -33,8 +33,6 @@ define([], function () {
                 })
             }
 
-            console.log(mm_usersArr);
-
             //Cортируем по id
             mm_usersArr.sort(function (a, b) {
                 if (a.group_id > b.group_id) {
@@ -67,7 +65,7 @@ define([], function () {
 
             const groups = await getGroups(linkGroups);
 
-            console.log(groups);
+
 
             let m_data = []
 
@@ -95,27 +93,9 @@ define([], function () {
 
             }
 
-            console.log(m_data);
 
 
-            console.log(mm_usersArr);
-            // m_data = [
-            //     {
-            //         option: 'Отдел продаж',
-            //         id: 'id1',
-            //         disabled: true,
-            //         bg_color: '#f503b3',
-            //     },
-            //     {
-            //         option: 'Вадим',
-            //         id: 'id2',
-            //     },
-            //     {
-            //         option: 'Анастасия',
-            //         id: 'id3',
-            //     }
-            // ]; //массив данных, передаваемых для шаблона
-
+            //Список пользователей
             var mm_select = self.render(
                 { ref: '/tmpl/controls/select.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
@@ -125,8 +105,18 @@ define([], function () {
                 });
 
 
+            mm_html =
+                `
+            <div>
 
-            var data = mm_select + mm_select;
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            
+            </div>
+            `
+
+
+
+            var data = mm_select + mm_html;
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
