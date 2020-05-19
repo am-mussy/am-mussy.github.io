@@ -112,6 +112,26 @@ define([], function () {
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
+      let testdata = [
+        {
+          id: 'id',
+          value: 'value',
+          name: 'name',
+
+        }
+      ]
+
+
+
+
+
+      var data = self.render( //дублирование кода?
+        { ref: "/tmpl/controls/suggest.twig" },
+        {
+          items: testdata
+        }
+      );
+
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
