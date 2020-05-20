@@ -152,10 +152,15 @@ define([], function () {
                     text: 'Поставить задачу'
                 });
 
+            var test = self.render(
+                { ref: '/tmpl/controls/date_field.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                {
+
+                });
 
 
 
-            var data = mm_select + mm_taskType + mm_textaria + mm_button;
+            var data = mm_select + mm_taskType + mm_textaria + mm_button + test;
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
