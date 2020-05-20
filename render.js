@@ -161,7 +161,7 @@ define([], function () {
                 });
 
 
-            var data = mm_select + mm_dataField + mm_taskType + mm_textaria + mm_button + test;
+            var data = mm_select + mm_dataField + mm_taskType + mm_textaria + mm_button;
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
