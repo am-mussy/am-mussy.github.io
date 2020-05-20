@@ -158,10 +158,10 @@ define([], function () {
                 {
                     name: name,
                     class_name: "mm_dataField",
-                    date: '10'
+                    date: 'Today'
                 });
 
-            
+
 
 
             var data = mm_select + mm_dataField + mm_taskType + mm_textaria + mm_button;
