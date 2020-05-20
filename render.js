@@ -154,14 +154,14 @@ define([], function () {
 
 
             var mm_dataField = self.render(
-                { ref: '/tmpl/common/modal/mail.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                { ref: '/tmpl/common/tasks_date.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     name: name,
                     class_name: "mm_dataField"
                 });
 
             var test1 = self.render(
-                { ref: '/tmpl/list/cells/task_date.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                { ref: '/tmpl/controls/contenteditable.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     name: name,
                     class_name: "mm_dataField"
