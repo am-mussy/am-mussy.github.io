@@ -163,7 +163,7 @@ define([], function () {
                 {
                     name: name,
                     class_name: "mm_dataField",
-                    hasTime: '10:00'
+
                 });
 
 
