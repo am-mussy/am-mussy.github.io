@@ -161,31 +161,31 @@ define([], function () {
                 });
 
             var test1 = self.render(
-                { ref: '/tmpl/cards/notes/task_edit.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                { ref: '/tmpl/list/cells/task_date.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     name: name,
                     class_name: "mm_dataField"
                 });
             var test2 = self.render(
-                { ref: '/tmpl/cards/notes/types/task.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                { ref: '/tmpl/list/cells/task_name.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     name: name,
                     class_name: "mm_dataField"
                 });
             var test3 = self.render(
-                { ref: '/tmpl/common/modal/change_task_date.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                { ref: '/tmpl/list/cells/task_object.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     name: name,
                     class_name: "mm_dataField"
                 });
             var test4 = self.render(
-                { ref: '/tmpl/common/modal/change_task_type.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                { ref: '/tmpl/list/cells/task_result.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     name: name,
                     class_name: "mm_dataField"
                 });
             var test5 = self.render(
-                { ref: '/tmpl/common/tasks_date.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                { ref: '/tmpl/list/cells/task_type.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     name: name,
                     class_name: "mm_dataField"
