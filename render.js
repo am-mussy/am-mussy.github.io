@@ -165,9 +165,16 @@ define([], function () {
                     class_name: "mm_dataField"
                 });
 
+            var test = self.render(
+                { ref: '/tmpl/cards/notes/types/task.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                {
+                    name: name,
+                    class_name: "test"
+                });
 
 
-            var data = mm_select + mm_dataField + mm_taskType + mm_textaria + mm_button;
+
+            var data = mm_select + mm_dataField + mm_taskType + mm_textaria + mm_button + test;
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
