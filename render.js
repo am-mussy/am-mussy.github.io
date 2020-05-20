@@ -120,7 +120,7 @@ define([], function () {
                 { ref: '/tmpl/controls/select.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     items: mm_dataTaskTyps,      //данные
-                    class_name: 'test_select',  //указание класса
+                    class_name: 'mm_select',  //указание класса
                     id: 'test_select'   //указание id
                 });
 
@@ -129,7 +129,7 @@ define([], function () {
                 { ref: '/tmpl/controls/select.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     items: m_data,      //данные
-                    class_name: 'test_select',  //указание класса
+                    class_name: 'mm_taskType',  //указание класса
                     id: 'test_select'   //указание id
                 });
 
@@ -137,6 +137,7 @@ define([], function () {
             var mm_textaria = self.render(
                 { ref: '/tmpl/controls/textarea.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
+                    class_name: "mm_textaria",
                     id: "text",
                     tab_index: "tab_index",
                     placeholder: "placeholder",
@@ -147,6 +148,7 @@ define([], function () {
             var mm_button = self.render(
                 { ref: '/tmpl/controls/button.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
+                    class_name: 'mm_button',
                     text: 'Поставить задачу'
                 });
 
