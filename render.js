@@ -144,7 +144,7 @@ define([], function () {
 
                 });
 
-            var mm_textaria = self.render(
+            var mm_button = self.render(
                 { ref: '/tmpl/controls/button.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     text: 'Поставить задачу'
@@ -153,7 +153,7 @@ define([], function () {
 
 
 
-            var data = mm_select + mm_taskType + mm_textaria;
+            var data = mm_select + mm_taskType + mm_textaria + mm_button;
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
