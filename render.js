@@ -153,24 +153,19 @@ define([], function () {
                 });
 
 
-            let name = {
-                from: 0,
-                to: 100,
+            // var mm_dataField = self.render(
+            //     { ref: '/tmpl/common/tasks_date.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+            //     {
+            //         name: name,
+            //         class_name: "mm_dataField"
+            //     });
 
-            }
-            var mm_dataField = self.render(
-                { ref: '/tmpl/common/tasks_date.twig' }, // объект data в данном случае содержит только ссылку на шаблон
-                {
-                    name: name,
-                    class_name: "mm_dataField"
-                });
-
-            var test = self.render(
-                { ref: '/tmpl/cards/notes/types/task.twig' }, // объект data в данном случае содержит только ссылку на шаблон
-                {
-                    name: name,
-                    class_name: "test"
-                });
+            // var test = self.render(
+            //     { ref: '/tmpl/cards/notes/types/task.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+            //     {
+            //         name: name,
+            //         class_name: "test"
+            //     });
 
 
 
