@@ -140,7 +140,7 @@ define([], function () {
                     class_name: "mm_textaria",
                     id: "text",
                     tab_index: "tab_index",
-                    placeholder: "placeholder",
+                    placeholder: "Текст задачи",
                     additional_data: "additional_data",
 
                 });
