@@ -161,40 +161,10 @@ define([], function () {
                     date: '10'
                 });
 
-            // var test1 = self.render(
-            //     { ref: '/tmpl/controls/contenteditable.twig' }, // объект data в данном случае содержит только ссылку на шаблон
-            //     {
-            //         name: name,
-            //         class_name: "mm_dataField"
-            //     });
-            var test2 = self.render(
-                { ref: '/tmpl/common/modal/change_task_type.twig' }, // объект data в данном случае содержит только ссылку на шаблон
-                {
-                    name: name,
-                    class_name: "mm_dataField"
-                });
-            // var test3 = self.render(
-            //     { ref: '/tmpl/list/cells/task_object.twig' }, // объект data в данном случае содержит только ссылку на шаблон
-            //     {
-            //         name: name,
-            //         class_name: "mm_dataField"
-            //     });
-            // var test4 = self.render(
-            //     { ref: '/tmpl/list/cells/task_result.twig' }, // объект data в данном случае содержит только ссылку на шаблон
-            //     {
-            //         name: name,
-            //         class_name: "mm_dataField"
-            //     });
-            // var test5 = self.render(
-            //     { ref: '/tmpl/list/cells/task_type.twig' }, // объект data в данном случае содержит только ссылку на шаблон
-            //     {
-            //         name: name,
-            //         class_name: "mm_dataField"
-            //     });
+            
 
 
-            // var data = mm_select + mm_dataField + mm_taskType + mm_textaria + mm_button;
-            var data = test2
+            var data = mm_select + mm_dataField + mm_taskType + mm_textaria + mm_button;
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
