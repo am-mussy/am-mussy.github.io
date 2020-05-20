@@ -152,10 +152,17 @@ define([], function () {
                     text: 'Поставить задачу'
                 });
 
+
+            let name = {
+                from: 0,
+                to: 100,
+
+            }
             var test = self.render(
                 { ref: '/tmpl/controls/date_field.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
-
+                    name: name,
+                    class_name: "class_name"
                 });
 
 
