@@ -171,6 +171,12 @@ define([], function () {
             });
 
 
+            $(".modal-body").css({ "display": "grid", "grid-template-columns": "1fr 1fr 1fr" });
+            $(".mm_select").css({ "grid-column-start": "1", "grid-column-end": "2" });
+            $(".mm_taskType").css({ "grid-column-start": "2", "grid-column-end": "4" });
+
+            $(".mm_textaria").css({ "grid-column-start": "1", "grid-column-end": "4" });
+            $(".mm_button").css({ "grid-column-start": "3", "grid-column-end": "4" });
 
 
 
