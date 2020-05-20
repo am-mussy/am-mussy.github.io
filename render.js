@@ -162,8 +162,7 @@ define([], function () {
                 { ref: '/tmpl/common/tasks_date.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     name: name,
-                    class_name: "mm_dataField",
-
+                    class_name: "mm_dataField"
                 });
 
 
