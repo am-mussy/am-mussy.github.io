@@ -93,10 +93,38 @@ define([], function () {
 
             }
 
+            const linkTaskTypes = `https://${subdomain}.amocrm.ru/api/v2/account?with=task_types`;
 
+            async function getTaskTypes(linkTaskTypes) {  //дублирование кода?
+                let response = await fetch(linkTaskTypes);
+                let taskTyps = await response.json();
+                taskTyps = taskTyps._embedded.task_types;
+                return taskTyps;
+            }
+
+
+            const taskTypes = await getTaskTypes(linkTaskTypes);
+
+            let mm_dataTaskTyps = [];
+
+            for (const i of Object.keys(taskTypes)) {
+                mm_dataTaskTyps.push({
+                    option: taskTypes[i].name,
+                    id: taskTypes[i].name
+                })
+
+            }
 
             //Список пользователей
             var mm_select = self.render(
+                { ref: '/tmpl/controls/select.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                {
+                    items: mm_dataTaskTyps,      //данные
+                    class_name: 'test_select',  //указание класса
+                    id: 'test_select'   //указание id
+                });
+
+            var mm_taskType = self.render(
                 { ref: '/tmpl/controls/select.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     items: m_data,      //данные
@@ -104,7 +132,7 @@ define([], function () {
                     id: 'test_select'   //указание id
                 });
 
-
+            //текст задачи
             var mm_textaria = self.render(
                 { ref: '/tmpl/controls/textarea.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
@@ -118,7 +146,7 @@ define([], function () {
 
 
 
-            var data = mm_select + mm_textaria;
+            var data = mm_select + mm_taskType + mm_textaria;
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
@@ -132,6 +160,11 @@ define([], function () {
                 destroy: function () {
                 }
             });
+
+
+
+
+
         }
     }
 });
