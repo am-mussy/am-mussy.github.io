@@ -171,7 +171,7 @@ define([], function () {
             });
 
 
-            $(".modal-body").css({ "display": "grid", "grid-template-columns": "1fr 1fr 1fr" });
+            $(".modal-body").css({ "display": "grid", "grid-template-columns": "1fr 1fr 1fr", "grid-column-gap": "10px"; });
             $(".mm_select").css({ "grid-column-start": "1", "grid-column-end": "2" });
             $(".mm_taskType").css({ "grid-column-start": "2", "grid-column-end": "4" });
 
