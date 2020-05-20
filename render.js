@@ -158,7 +158,7 @@ define([], function () {
                 {
                     name: name,
                     class_name: "mm_dataField",
-                    date: 'Today'
+                    date: '20.05.2020'
                 });
 
 
