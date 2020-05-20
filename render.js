@@ -147,9 +147,7 @@ define([], function () {
             var mm_textaria = self.render(
                 { ref: '/tmpl/controls/button.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
-                    text: 'Поставить задачу',
-                    text_bold: 'Болт'
-
+                    text: 'Поставить задачу'
                 });
 
 
