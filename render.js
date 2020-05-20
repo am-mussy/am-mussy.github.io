@@ -105,18 +105,20 @@ define([], function () {
                 });
 
 
-            mm_html =
-                `
-            <div>
+            var mm_textaria = self.render(
+                { ref: '/tmpl/controls/textarea.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                {
+                    id: "text",
+                    tab_index: "tab_index",
+                    placeholder: "placeholder",
+                    additional_data: "additional_data",
 
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-            
-            </div>
-            `
+                });
 
 
 
-            var data = mm_select + mm_html;
+
+            var data = mm_select + mm_textaria;
             modal = new Modal({
                 class_name: 'modal-window',
                 init: function ($modal_body) {
