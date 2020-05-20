@@ -124,6 +124,7 @@ define([], function () {
                     id: 'test_select'   //указание id
                 });
 
+            //типы задач
             var mm_taskType = self.render(
                 { ref: '/tmpl/controls/select.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
@@ -140,6 +141,14 @@ define([], function () {
                     tab_index: "tab_index",
                     placeholder: "placeholder",
                     additional_data: "additional_data",
+
+                });
+
+            var mm_textaria = self.render(
+                { ref: '/tmpl/controls/button.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                {
+                    text: 'Поставить задачу',
+                    text_bold: 'Болт'
 
                 });
 
