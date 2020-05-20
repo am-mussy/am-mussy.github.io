@@ -167,7 +167,7 @@ define([], function () {
             //         class_name: "mm_dataField"
             //     });
             var test2 = self.render(
-                { ref: '/tmpl/cards/tasks/controls/type.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                { ref: '/tmpl/common/modal/change_task_type.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     name: name,
                     class_name: "mm_dataField"
