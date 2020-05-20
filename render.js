@@ -159,7 +159,7 @@ define([], function () {
 
             }
             var mm_dataField = self.render(
-                { ref: '/tmpl/list/cells/task_user.twig' }, // объект data в данном случае содержит только ссылку на шаблон
+                { ref: '/tmpl/common/tasks_type_name.twig' }, // объект data в данном случае содержит только ссылку на шаблон
                 {
                     name: name,
                     class_name: "mm_dataField"
