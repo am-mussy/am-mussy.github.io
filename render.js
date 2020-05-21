@@ -6,7 +6,7 @@ define([], function () {
             thisHttp = document.location.href;
             thisHttpArr = thisHttp.split('/');
 
-            if (thisHttpArr[arr.length - 2] === "detail") {
+            if (thisHttpArr[thisHttpArr.length - 2] === "detail") {
 
 
                 data = `<h1> Hello world </h1>`;
