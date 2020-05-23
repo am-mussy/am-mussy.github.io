@@ -10,16 +10,18 @@ define([], function () {
             const subdomain = "redboxamo";
             const linkUsers = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`;
 
-            async function getSUsers(linkUsers) {
+            async function getUsers(linkUsers) {
                 let response = await fetch(linkUsers);
-                let users = await response.json();
-                users = users._embedded.users;
-                return users;
+                let mm_users = await response.json();
+                mm_users = mm_users._embedded.users;
+                return mm_users;
             }
 
 
 
-            const mm_users = getSUsers(linkUsers);
+            const mm_users = getUsers(linkUsers);
+
+            
             for (let i of Object.keys(mm_users)) {
                 if (mm_users[i].id === AMOCRM.constant('user').id) {
                     console.log(mm_users[i].name, mm_users[i].group_id)
