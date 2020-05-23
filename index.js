@@ -44,7 +44,6 @@ define([], function () {
 
       //Записываем список ВОРОНОК в piplines
       const pipelines = await getSalesF(linkPiplines);
-      console.log(pipelines);
 
       const pipelines_arr = [];
       //ВОРОНКИ
