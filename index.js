@@ -140,6 +140,7 @@ define([], function () {
         old_settings = mm_settings;
 
         $("input[name = idgroup]").val(JSON.stringify(old_settings));
+        localStorage.mm_settings = JSON.stringify(old_settings);
         // console.log($("input[name = idgroup]").val());
 
       });

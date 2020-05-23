@@ -6,7 +6,7 @@ define([], function () {
             thisHttp = document.location.href;
             thisHttpArr = thisHttp.split('/');
 
-            if (thisHttpArr[thisHttpArr.length - 2] === "detail") {
+            if (AMOCRM.data.current_entity === "leads") {
 
 
                 data = `<h1> Hello world </h1>`;
@@ -29,20 +29,6 @@ define([], function () {
 
 
 
-
-            //     modal = new Modal({
-            //         class_name: 'modal-window',
-            //         init: function ($modal_body) {
-            //             var $this = $(this);
-            //             $modal_body
-            //                 .trigger('modal:loaded') // запускает отображение модального окна
-            //                 .html(data)
-            //                 .trigger('modal:centrify')  // настраивает модальное окно
-            //                 .append('');
-            //         },
-            //         destroy: function () {
-            //         }
-            // });
 
 
 
