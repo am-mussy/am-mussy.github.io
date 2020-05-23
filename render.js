@@ -6,6 +6,9 @@ define([], function () {
             thisHttp = document.location.href;
             thisHttpArr = thisHttp.split('/');
 
+            let mm_logick = false;
+
+
 
             const subdomain = "redboxamo";
             const linkUsers = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`;
@@ -21,14 +24,23 @@ define([], function () {
 
             const mm_users = await getUsers(linkUsers);
 
-            
+
             for (let i of Object.keys(mm_users)) {
                 if (mm_users[i].id === AMOCRM.constant('user').id) {
-                    console.log(mm_users[i].name, mm_users[i].group_id)
+                    for (let j of JSON.parse(localStorage.mm_settings).checked_groups) {
+                        if (mm_users[i].group_id === j) {
+                            mm_logick = true;
+                        }
+                    }
                 }
             }
 
-            if (AMOCRM.data.current_entity === "leads") {
+
+
+
+
+
+            if (AMOCRM.data.current_entity === "leads" && mm_logick) {
 
 
 
