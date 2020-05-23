@@ -123,6 +123,8 @@ define([], function () {
           checked_groups: [],
         }
 
+        localStorage.removeItem("mm_settings");
+
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) { //дублирование кода?
 
           if ($(this).parent().parent().hasClass('is-checked')) {
