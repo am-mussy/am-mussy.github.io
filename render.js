@@ -30,7 +30,9 @@ define([], function () {
                     for (let j of JSON.parse(localStorage.mm_settings).checked_groups) {
                         if (mm_users[i].group_id === j) {
                             mm_logick = true;
+                            console.log('yes');
                         }
+                        console.log('no');
                     }
                 }
             }
