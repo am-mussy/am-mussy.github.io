@@ -10,12 +10,12 @@ define([], function () {
             const subdomain = "redboxamo";
             const linkUsers = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`;
 
-            // async function getUsers(linkUsers) {
-            //     let response = await fetch(linkUsers);
-            //     let mm_users = await response.json();
-            //     mm_users = mm_users._embedded.users;
-            //     return mm_users;
-            // }
+            async function getUsers(linkUsers) {
+                let response = await fetch(linkUsers);
+                let mm_users = await response.json();
+                mm_users = mm_users._embedded.users;
+                return mm_users;
+            }
 
 
 
