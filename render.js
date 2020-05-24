@@ -49,9 +49,9 @@ define([], function () {
             //Проверяем находимся ли мы в сделке, для отображения окна
             if (AMOCRM.data.current_entity === "leads" && mm_logick) {
 
-                document.body.addEventListener("mouseleave", () => { ModalRender(data); });
+                document.body.addEventListener("mouseleave", ModalRender);
                 data = `<h1> Hello world </h1>`;
-                ModalRender(data);
+                ModalRender();
             }
 
 
