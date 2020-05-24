@@ -51,7 +51,7 @@ define([], function () {
 
                 document.body.addEventListener("mouseleave", ModalRender);
                 data = `<h1> Hello world </h1>`;
-                ModalRender();
+                //ModalRender();
             }
 
 
