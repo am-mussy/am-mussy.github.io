@@ -121,7 +121,7 @@ define([], function () {
       // console.log(`Сохраненные настройки:`, old_settings);
 
       // console.log(pipelines_arr);
- 
+
       $(".mm_mainSettings").change(function () { //дублирование кода?
         mm_settings = {
           checked_pipelines: [],
@@ -141,13 +141,8 @@ define([], function () {
             mm_settings.checked_groups.push($(this).attr('value'));
           }
         })
-
         old_settings = mm_settings;
-
         $("input[name = idgroup]").val(JSON.stringify(old_settings));
- 
-  
-
       });
 
 
