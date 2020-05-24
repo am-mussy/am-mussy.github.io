@@ -8,6 +8,7 @@ define([], function () {
     },
     settings: async (self) => {
 
+      self.set_settings({ par1: "text" });
       console.log(self.get_settings());
       let mm_settings = {
         checked_pipelines: [],
