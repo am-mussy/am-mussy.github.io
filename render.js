@@ -24,12 +24,10 @@ define([], function () {
 
             const mm_users = await getUsers(linkUsers);
 
-            console.log(self.get_settings());
-            console.log(self.get_settings().idgroup);
-            console.log(self.get_settings().idgroup.checked_groups);
+
             for (let i of Object.keys(mm_users)) {
                 if (mm_users[i].id === AMOCRM.constant('user').id) {
-                    for (let j of self.get_settings().idgroups.checked_groups) {
+                    for (let j of self.get_settings().idgroup.checked_groups) {
                         if (String(mm_users[i].group_id) === j) {
                             mm_logick = true;
                             console.log('yes');
