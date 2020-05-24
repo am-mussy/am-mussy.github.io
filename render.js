@@ -8,7 +8,7 @@ define([], function () {
 
         //     let mm_logick = false;
 
-        //     const subdomain = "redboxamo";
+        //     const subdomain = "redboxamo1";
         //     const linkUsers = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`;
 
         //     async function getUsers(linkUsers) {
