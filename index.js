@@ -8,7 +8,7 @@ define([], function () {
     },
     settings: async (self) => {
 
-      console.log(get_settings());
+      console.log(self.get_settings());
       let mm_settings = {
         checked_pipelines: [],
         checked_groups: [],
