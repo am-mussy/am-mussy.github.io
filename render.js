@@ -50,8 +50,9 @@ define([], function () {
             if (AMOCRM.data.current_entity === "leads" && mm_logick) {
                 data = `<h1> Hello world </h1>`;
                 document.body.addEventListener("mouseleave", () => { ModalRender(data) });
-                document.getElementsByClassName("left-menu").addEventListener("mouseleave", () => { ModalRender(data) });
-                document.getElementsByClassName("card-fields__top-back").addEventListener("mouseleave", () => { ModalRender(data) });
+                document.getElementsByClassName("left-menu")[0].addEventListener("mouseleave", () => { ModalRender(data) });
+                document.getElementsByClassName("card-fields__top-back")[0].addEventListener("mouseleave", () => { ModalRender(data) });
+                document.get
             }
 
 
