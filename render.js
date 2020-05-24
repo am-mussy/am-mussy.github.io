@@ -47,7 +47,7 @@ define([], function () {
             }
 
             var mm_button = self.render( //дублирование кода?
-                { ref: "/tmpl/controls/cancel_button.twig" },
+                { ref: "/tmpl/controls/button.twig" },
                 {
                     class_name: "mm_button",
                     text: "Поставлю задачу, только не бей",
@@ -66,7 +66,7 @@ define([], function () {
             }
 
 
-          
+
             function ModalRender(data) {
                 modal = new Modal({
                     class_name: 'modal-window',
