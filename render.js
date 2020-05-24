@@ -30,7 +30,7 @@ define([], function () {
 
             for (let i of Object.keys(mm_users)) {
                 if (mm_users[i].id === AMOCRM.constant('user').id) {
-                    for (let j of JSON.parse(self.get_settings().mm_settings).checked_groups) {
+                    for (let j of self.get_settings().idgroups.checked_groups) {
                         if (String(mm_users[i].group_id) === j) {
                             mm_logick = true;
                             console.log('yes');
