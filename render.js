@@ -24,11 +24,11 @@ define([], function () {
 
             const mm_users = await getUsers(linkUsers);
             console.log(self.get_settings());
-            console.log(self.get_settings().idgroup.checked_groups.length);
+        
 
             for (let i of Object.keys(mm_users)) {
                 if (mm_users[i].id === AMOCRM.constant('user').id) {
-                    if (self.get_settings().idgroup.checked_groups.length > 0) {
+                    if (typeof self.get_settings().idgroup.checked_groups != undefined || self.get_settings().idgroup.checked_groups.length > 0) {
                         for (let j of Object.keys(self.get_settings().idgroup.checked_groups)) {
 
                             if (String(mm_users[i].group_id) === self.get_settings().idgroup.checked_groups[j]) {
