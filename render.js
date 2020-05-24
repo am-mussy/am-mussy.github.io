@@ -46,9 +46,18 @@ define([], function () {
                 console.log("Настройки не заданы");
             }
 
+            var mm_button = self.render( //дублирование кода?
+                { ref: "/tmpl/controls/cancel_button.twig" },
+                {
+                    class_name: "mm_button",
+                    text: "Поставлю задачу, только не бей",
+                }
+            );
+
+
             //Проверяем находимся ли мы в сделке, для отображения окна
             if (AMOCRM.data.current_entity === "leads" && mm_logick) {
-                data = `<h1> Hello world </h1>`;
+                data = mm_button + `<h1> Hello world </h1>`;
                 //document.body.addEventListener("mouseleave", () => { ModalRender(data) });
                 $('.js-switcher-task').trigger('click');
                 $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" })
@@ -57,6 +66,7 @@ define([], function () {
             }
 
 
+          
             function ModalRender(data) {
                 modal = new Modal({
                     class_name: 'modal-window',
