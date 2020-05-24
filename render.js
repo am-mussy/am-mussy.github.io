@@ -51,12 +51,7 @@ define([], function () {
                 data = `<h1> Hello world </h1>`;
                 //document.body.addEventListener("mouseleave", () => { ModalRender(data) });
                 $('.js-switcher-task').trigger('click');
-                setInterval(() => {
-                    $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" })
-                    setInterval(() => {
-                        $('.feed-compose_task-future').css({ "border": "2px solid rgb(46, 54, 64);" })
-                    }, 500);
-                }, 500);
+                $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" })
 
 
             }
