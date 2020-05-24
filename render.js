@@ -23,7 +23,7 @@ define([], function () {
 
 
             const mm_users = await getUsers(linkUsers);
-            console.log(self.get_settings().idgroup.checked_groups);
+            console.log(self.get_settings());
 
             for (let i of Object.keys(mm_users)) {
                 if (mm_users[i].id === AMOCRM.constant('user').id) {
