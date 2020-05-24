@@ -25,7 +25,7 @@ define([], function () {
             if (typeof self.get_settings().idgroup != 'undefined') {
                 for (let i of Object.keys(mm_users)) {
                     if (mm_users[i].id === AMOCRM.constant('user').id) {
-                        if (self.get_settings().idgroup.checked_groups.length > 0 && typeof self.get_settings().idgroup.checked_groups != 'undefined') {
+                        if (typeof self.get_settings().idgroup.checked_groups != 'undefined' && self.get_settings().idgroup.checked_groups.length > 0) {
                             for (let j of Object.keys(self.get_settings().idgroup.checked_groups)) {
 
                                 if (String(mm_users[i].group_id) === self.get_settings().idgroup.checked_groups[j]) {
