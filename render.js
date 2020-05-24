@@ -23,11 +23,12 @@ define([], function () {
 
 
             const mm_users = await getUsers(linkUsers);
+            console.log(self.get_settings());
 
-            try {
-                for (let i of Object.keys(mm_users)) {
-                    if (mm_users[i].id === AMOCRM.constant('user').id) {
-                        for (let j of Object.keys(self.get_settings().idgroup.checked_groups)) {
+            for (let i of Object.keys(mm_users)) {
+                if (mm_users[i].id === AMOCRM.constant('user').id) {
+                    for (let j of Object.keys(self.get_settings().idgroup.checked_groups)) {
+                        if (self.get_settings().idgroup.checked_groups.length) {
                             if (String(mm_users[i].group_id) === self.get_settings().idgroup.checked_groups[j]) {
                                 mm_logick = true;
                                 console.log('yes');
@@ -36,8 +37,6 @@ define([], function () {
                         }
                     }
                 }
-            } catch {
-                console.log('sorry');
             }
 
 
