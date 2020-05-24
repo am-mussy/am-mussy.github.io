@@ -55,7 +55,7 @@ define([], function () {
             }
 
 
-            document.addEventListener("load", () => { console.log("test") });
+            document.body.addEventListener("load", () => { console.log("test") });
 
 
             function ModalRender(data) {
