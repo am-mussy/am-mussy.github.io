@@ -50,6 +50,14 @@ define([], function () {
             if (AMOCRM.data.current_entity === "leads" && mm_logick) {
                 data = `<h1> Hello world </h1>`;
                 //document.body.addEventListener("mouseleave", () => { ModalRender(data) });
+                $('.js-switcher-task').trigger('click');
+                setInterval(() => {
+                    $('.feed-compose_task-future').css({"border":"2px solid rgb(243, 117, 117)"})
+                }, 500);
+
+                setInterval(() => {
+                    $('.feed-compose_task-future').css({"border":"2px solid rgb(46, 54, 64);"})
+                }, 500);
             }
 
 
