@@ -52,12 +52,13 @@ define([], function () {
                 //document.body.addEventListener("mouseleave", () => { ModalRender(data) });
                 $('.js-switcher-task').trigger('click');
                 setInterval(() => {
-                    $('.feed-compose_task-future').css({"border":"2px solid rgb(243, 117, 117)"})
+                    $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" })
+                    setInterval(() => {
+                        $('.feed-compose_task-future').css({ "border": "2px solid rgb(46, 54, 64);" })
+                    }, 500);
                 }, 500);
 
-                setInterval(() => {
-                    $('.feed-compose_task-future').css({"border":"2px solid rgb(46, 54, 64);"})
-                }, 500);
+
             }
 
 
