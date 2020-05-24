@@ -36,8 +36,10 @@ define([], function () {
                         }
                     }
                 }
-            } 
-            
+            } catch {
+                console.log('sorry');
+            }
+
 
 
 
