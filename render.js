@@ -20,7 +20,7 @@ define([], function () {
 
             const mm_users = await getUsers(linkUsers);
             console.log(self.get_settings());
-
+            console.log(typeof self.get_settings().idgroup)
 
             if (self.get_settings().idgroup != "undefined") {
                 for (let i of Object.keys(mm_users)) {
