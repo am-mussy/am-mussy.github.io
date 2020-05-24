@@ -8,8 +8,9 @@ define([], function () {
     },
     settings: async (self) => {
 
-      self.set_settings({ par1: "text" });
-      console.log(self.get_settings());
+
+
+
       let mm_settings = {
         checked_pipelines: [],
         checked_groups: [],
@@ -120,7 +121,7 @@ define([], function () {
       // console.log(`Сохраненные настройки:`, old_settings);
 
       // console.log(pipelines_arr);
-
+      console.log(self.get_settings());
       $(".mm_mainSettings").change(function () { //дублирование кода?
         mm_settings = {
           checked_pipelines: [],
@@ -146,7 +147,7 @@ define([], function () {
         old_settings = mm_settings;
 
         $("input[name = idgroup]").val(JSON.stringify(old_settings));
-        localStorage.mm_settings = JSON.stringify(old_settings);
+        self.set_settings({ mm_settings: JSON.stringify(old_settings) });
         // console.log($("input[name = idgroup]").val());
 
       });
