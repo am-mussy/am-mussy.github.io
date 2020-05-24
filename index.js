@@ -4,8 +4,11 @@ define([], function () {
     onSave: function () {
       console.log("external on save");
 
+
     },
     settings: async (self) => {
+
+      self.get_settings()
       let mm_settings = {
         checked_pipelines: [],
         checked_groups: [],
