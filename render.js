@@ -17,12 +17,12 @@ define([], function () {
                 mm_users = mm_users._embedded.users;
                 return mm_users;
             }
-
+            //self.get_settings().idgroup.checked_groups.length > 0 && 
             const mm_users = await getUsers(linkUsers);
             console.log(self.get_settings());
             for (let i of Object.keys(mm_users)) {
                 if (mm_users[i].id === AMOCRM.constant('user').id) {
-                    if (self.get_settings().idgroup.checked_groups.length > 0 && typeof self.get_settings().idgroup.checked_groups != "undefined") {
+                    if (typeof self.get_settings().idgroup.checked_groups != "undefined") {
                         for (let j of Object.keys(self.get_settings().idgroup.checked_groups)) {
 
                             if (String(mm_users[i].group_id) === self.get_settings().idgroup.checked_groups[j]) {
