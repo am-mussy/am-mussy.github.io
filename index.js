@@ -128,8 +128,6 @@ define([], function () {
           checked_groups: [],
         }
 
-        localStorage.removeItem("mm_settings");
-
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) { //дублирование кода?
 
           if ($(this).parent().parent().hasClass('is-checked')) {
@@ -148,7 +146,7 @@ define([], function () {
 
         $("input[name = idgroup]").val(JSON.stringify(old_settings));
         self.set_settings({ mm_settings: JSON.stringify(old_settings) });
-        // console.log($("input[name = idgroup]").val());
+  
 
       });
 
