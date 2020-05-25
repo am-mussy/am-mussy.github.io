@@ -66,8 +66,8 @@ define([], function () {
             let mm_noTask = await getNoTasks(linkNoTask);
 
             for (i of Object.keys(mm_noTask)) {
-                if (AMOCRM.data.current_card.id === mm_noTask[i].name) {
-                    console.log(mm_noTask[i].id);
+                if (AMOCRM.data.current_card.id === mm_noTask[i].id) {
+                    console.log(mm_noTask[i].name);
                 }
             }
 
