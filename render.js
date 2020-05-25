@@ -58,7 +58,7 @@ define([], function () {
             //Проверяем находимся ли мы в сделке, для отображения окна
             if (AMOCRM.data.current_entity === "leads" && mm_logick) {
                 data = mm_button + `<h1> Hello world </h1>`;
-                document.body.addEventListener("mouseleave", () => { ModalRender(data) });
+               // document.body.addEventListener("mouseleave", () => { ModalRender(data) });
                 $('.js-switcher-task').trigger('click');
                 $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" })
 
