@@ -53,7 +53,7 @@ define([], function () {
                     text: "Поставлю задачу, только не бей",
                 }
             );
-            
+
             const linkNoTask = `https://${subdomain}.amocrm.ru/api/v2/leads?filter[tasks]=1`;
 
             async function getNoTasks(linkNoTask) {
@@ -65,21 +65,23 @@ define([], function () {
 
             let mm_noTask = await getNoTasks(linkNoTask);
 
-            for(i of Object.keys(mm_noTask)){
-                console.log(mm_noTask[i].id);
+            for (i of Object.keys(mm_noTask)) {
+                if (AMOCRM.data.current_card.id === mm_noTask[i].name) {
+                    console.log(mm_noTask[i].id);
+                }
             }
 
 
             //Проверяем находимся ли мы в сделке, для отображения окна
             if (AMOCRM.data.current_entity === "leads" && mm_logick) {
                 data = mm_button + `<h1> Hello world </h1>`;
-               // document.body.addEventListener("mouseleave", () => { ModalRender(data) });
-               $(".card-fields__top-back").mouseleave(()=>{ModalRender(data)})
-               $(".nav__menu-wrapper").mouseleave(()=>{ModalRender(data)})
+                // document.body.addEventListener("mouseleave", () => { ModalRender(data) });
+                $(".card-fields__top-back").mouseleave(() => { ModalRender(data) })
+                $(".nav__menu-wrapper").mouseleave(() => { ModalRender(data) })
 
-               
+
                 $('.js-switcher-task').trigger('click');
-                
+
                 $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" })
 
 
