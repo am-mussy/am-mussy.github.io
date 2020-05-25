@@ -80,14 +80,10 @@ define([], function () {
             if (AMOCRM.data.current_entity === "leads" && mm_bool_setting && mm_bool_noTask) {
                 data = mm_button + `<h1> Hello world </h1>`;
                 // document.body.addEventListener("mouseleave", () => { ModalRender(data) });
-                $(".card-fields__top-back").mouseleave(() => { ModalRender(data) })
-                $(".nav__menu-wrapper").mouseleave(() => { ModalRender(data) })
-
-
+                $(".card-fields__top-back").mouseover(() => { ModalRender(data) })
+                $(".nav__menu-wrapper").mouseover(() => { ModalRender(data) })
                 $('.js-switcher-task').trigger('click');
-
                 $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" })
-
 
             }
 
