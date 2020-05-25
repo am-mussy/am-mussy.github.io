@@ -6,7 +6,8 @@ define([], function () {
             thisHttp = document.location.href;
             thisHttpArr = thisHttp.split('/');
 
-            let mm_logick = false;
+            let mm_bool_setting = false; //Если True - пользоватьль подходит под настройки
+            let mm_bool_noTask = false; //Если True - задачи в сделке нет
 
             const subdomain = "redboxamo1";
             const linkUsers = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`;
@@ -31,7 +32,7 @@ define([], function () {
                             for (let j of Object.keys(self.get_settings().idgroup.checked_groups)) {
 
                                 if (String(mm_users[i].group_id) === self.get_settings().idgroup.checked_groups[j]) {
-                                    mm_logick = true; //Если все условия собледены mm_logick = true -- означает, что логика работает
+                                    mm_bool_setting = true; //Если все условия собледены mm_bool_setting = true -- означает, что логика работает
                                     console.log('yes');
                                 }
                                 console.log('no');
@@ -65,15 +66,18 @@ define([], function () {
 
             let mm_noTask = await getNoTasks(linkNoTask);
 
-            for (i of Object.keys(mm_noTask)) {
-                if (AMOCRM.data.current_card.id === mm_noTask[i].id) {
-                    console.log(mm_noTask[i].name);
+            if (AMOCRM.data.current_entity === "leads") {
+                for (i of Object.keys(mm_noTask)) {
+                    if (AMOCRM.data.current_card.id === mm_noTask[i].id) {
+                        mm_bool_noTask = true;
+                    }
                 }
             }
 
 
+
             //Проверяем находимся ли мы в сделке, для отображения окна
-            if (AMOCRM.data.current_entity === "leads" && mm_logick) {
+            if (AMOCRM.data.current_entity === "leads" && mm_bool_setting && mm_bool_noTask) {
                 data = mm_button + `<h1> Hello world </h1>`;
                 // document.body.addEventListener("mouseleave", () => { ModalRender(data) });
                 $(".card-fields__top-back").mouseleave(() => { ModalRender(data) })
