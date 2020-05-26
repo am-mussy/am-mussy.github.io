@@ -70,34 +70,39 @@ define([], function () {
             let mm_noTask = await getNoTasks(linkNoTask);
 
 
-            function BoolTask() {
-                if (AMOCRM.data.current_entity === "leads" && $(".card-task-wrapper").length === 0) {
-                    mm_bool_noTask = true;
-                    console.log('Задач нет')
-                } else {
-                    mm_bool_noTask = false;
-                    console.log('Задача есть')
+            function BoolTask(CheckTime) {
+                if (AMOCRM.data.current_entity === "leads") {
+                    setInterval(() => {
+                        if ($(".card-task-wrapper").length === 0) {
+                            mm_bool_noTask = true;
+                            if (AMOCRM.data.current_entity === "leads" && mm_bool_setting) {
+                                data = mm_button + `<h1> Hello world </h1>`;
+                                document.body.addEventListener("mouseleave", () => { mRender(data) }); //Уход курсора за body
+                                document.getElementById("common--arrow-left").addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на кнопку назад в сделке
+                                document.getElementById("nav_menu").addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на боковое меню
+                                document.getElementById(AMOCRM.constant('user').id).addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на фото профиля
+                                $('.js-switcher-task').trigger('click'); //эмулируем нажатие кнопки, для отображения интерфейса поставноки задачи
+                                $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" }); //Краная рамка вокруг окна задач
+
+                            }
+                        } else {
+                            mm_bool_noTask = false;
+                            $('.feed-compose_task-future').css({ "border": "0px" });
+                            console.log('Задача есть')
+                        }
+                    }, CheckTime);
+
                 }
-            }
-
-            setInterval(() => {
-                BoolTask()
-            }, 1000);
-
-
-            //Проверяем находимся ли мы в сделке, для отображения окна
-            if (AMOCRM.data.current_entity === "leads" && mm_bool_setting && mm_bool_noTask) {
-                data = mm_button + `<h1> Hello world </h1>`;
-                document.body.addEventListener("mouseleave", () => { mRender(data) });
-                document.getElementById("common--arrow-left").addEventListener("mouseover", () => { mRender(data) });
-                document.getElementById("nav_menu").addEventListener("mouseover", () => { mRender(data) });
-                document.getElementById(AMOCRM.constant('user').id).addEventListener("mouseover", () => { mRender(data) });
-
-
-                $('.js-switcher-task').trigger('click');
-                $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" });
 
             }
+
+
+            BoolTask()
+
+
+
+
+
 
 
             function mRender(data) {
