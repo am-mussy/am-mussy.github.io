@@ -77,7 +77,7 @@ define([], function () {
                         if ($(".card-task-wrapper").length === 0) {
                             mm_bool_noTask = true;
                             if (AMOCRM.data.current_entity === "leads" && mm_bool_setting && !mm_modal_isOpen) {
-
+                                console.log('Задачи нет');
                                 document.body.addEventListener("mouseleave", () => { mRender(data) }); //Уход курсора за body
                                 document.getElementById("common--arrow-left").addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на кнопку назад в сделке
                                 document.getElementById("nav_menu").addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на боковое меню
@@ -89,7 +89,7 @@ define([], function () {
                         } else {
                             mm_bool_noTask = false;
                             $('.feed-compose_task-future').css({ "border": "0px" });
-                            console.log('Задача есть')
+                            console.log('Задача есть');
                         }
                     }, CheckTime);
 
@@ -114,7 +114,7 @@ define([], function () {
 
             function ModalRender(data) {
                 mm_modal_isOpen = true;
-                console.log('Модальное окно открыто')
+                console.log('Модальное окно открыто');
                 modal = new Modal({
                     class_name: 'modal-window',
                     init: function ($modal_body) {
