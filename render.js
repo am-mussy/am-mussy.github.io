@@ -126,6 +126,7 @@ define([], function () {
                             .append('');
                     },
                     destroy: function () {
+                        mm_modal_isOpen = false;
                     }
                 });
             }
