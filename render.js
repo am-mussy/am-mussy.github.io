@@ -102,12 +102,7 @@ define([], function () {
 
             BoolTask(1000, mm_button + `<h1> Hello world </h1>`);
 
-
-
-
-
-
-
+            //Возможно не нужна функция :)
             function mRender(data) {
                 if (AMOCRM.data.current_entity === "leads") {
                     ModalRender(data);
