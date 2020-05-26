@@ -98,7 +98,7 @@ define([], function () {
             }
 
 
-            BoolTask(10000, mm_button + `<h1> Hello world </h1>`);
+            BoolTask(1000, mm_button + `<h1> Hello world </h1>`);
 
             //Возможно не нужна функция :)
             function mRender(data) {
