@@ -69,11 +69,18 @@ define([], function () {
 
             let mm_noTask = await getNoTasks(linkNoTask);
 
-            if (AMOCRM.data.current_entity === "leads" && $(".card-task-wrapper").length === 0) {
-                mm_bool_noTask = true;
-            } else {
-                mm_bool_noTask = false;
+
+            function BoolTask() {
+                if (AMOCRM.data.current_entity === "leads" && $(".card-task-wrapper").length === 0) {
+                    mm_bool_noTask = true;
+                } else {
+                    mm_bool_noTask = false;
+                }
             }
+
+            setInterval(() => {
+                BoolTask()
+            }, 1000);
 
 
             //Проверяем находимся ли мы в сделке, для отображения окна
