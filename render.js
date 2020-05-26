@@ -2,6 +2,9 @@ define([], function () {
 
     return {
         render: async (self, Modal) => {
+
+
+
             console.log('OK');
             thisHttp = document.location.href;
             thisHttpArr = thisHttp.split('/');
@@ -74,18 +77,31 @@ define([], function () {
                 }
             }
 
+            // common--arrow-left -- id back Button
+            // nav_menunav_menu -- id nuv Menu
+            //AMOCRM.constant('user').id -- id 
 
 
             //Проверяем находимся ли мы в сделке, для отображения окна
             if (AMOCRM.data.current_entity === "leads" && mm_bool_setting && mm_bool_noTask) {
                 data = mm_button + `<h1> Hello world </h1>`;
-                // document.body.addEventListener("mouseleave", () => { ModalRender(data) });
-                $(".card-fields__top-back").mouseover(() => { ModalRender(data) })
-                $(".nav__menu-wrapper").mouseover(() => { ModalRender(data) })
+                document.body.addEventListener("mouseleave", () => { ModalRender(data) });
+                document.getElementById("common--arrow-left").addEventListener("mouseover", () => { ModalRender(data) })
+                document.getElementById("nav_menunav_menu").addEventListener("mouseover", () => { ModalRender(data) })
+                document.getElementById(AMOCRM.constant('user').id).addEventListener("mouseover", () => { ModalRender(data) })
+
+
                 $('.js-switcher-task').trigger('click');
                 $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" })
 
+            } else {
+                document.body.removeEventListener("mouseleave", () => { ModalRender(data) });
+                document.removeEventListener("common--arrow-left").addEventListener("mouseover", () => { ModalRender(data) })
+                document.removeEventListener("nav_menunav_menu").addEventListener("mouseover", () => { ModalRender(data) })
+                document.removeEventListener(AMOCRM.constant('user').id).addEventListener("mouseover", () => { ModalRender(data) })
             }
+
+
 
 
 
