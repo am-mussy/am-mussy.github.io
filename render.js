@@ -69,12 +69,8 @@ define([], function () {
 
             let mm_noTask = await getNoTasks(linkNoTask);
 
-            if (AMOCRM.data.current_entity === "leads") {
-                for (i of Object.keys(mm_noTask)) {
-                    if (AMOCRM.data.current_card.id === mm_noTask[i].id) {
-                        mm_bool_noTask = true;
-                    }
-                }
+            if (AMOCRM.data.current_entity === "leads" && $(".card-task-wrapper").length > 0) {
+                mm_bool_noTask = true;
             }
 
 
