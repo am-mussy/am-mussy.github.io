@@ -110,6 +110,7 @@ define([], function () {
             }
 
             function ModalRender(data) {
+                console.log('m');
                 modal = new Modal({
                     class_name: 'modal-window',
                     init: function ($modal_body) {
