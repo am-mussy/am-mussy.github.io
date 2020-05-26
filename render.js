@@ -73,8 +73,10 @@ define([], function () {
             function BoolTask() {
                 if (AMOCRM.data.current_entity === "leads" && $(".card-task-wrapper").length === 0) {
                     mm_bool_noTask = true;
+                    console.log('Задач нет')
                 } else {
                     mm_bool_noTask = false;
+                    console.log('Задача есть')
                 }
             }
 
