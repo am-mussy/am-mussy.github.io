@@ -77,10 +77,6 @@ define([], function () {
                 }
             }
 
-            // common--arrow-left -- id back Button
-            // nav_menunav_menu -- id nuv Menu
-            //AMOCRM.constant('user').id -- id 
-
 
             //Проверяем находимся ли мы в сделке, для отображения окна
             if (AMOCRM.data.current_entity === "leads" && mm_bool_setting && mm_bool_noTask) {
