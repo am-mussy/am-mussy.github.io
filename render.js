@@ -70,13 +70,16 @@ define([], function () {
             let mm_noTask = await getNoTasks(linkNoTask);
 
 
-            function BoolTask(CheckTime) {
+
+            function BoolTask(CheckTime, data) {
+                //CheckTime - интервал проверки
+                //data - данные для модалки
                 if (AMOCRM.data.current_entity === "leads") {
                     setInterval(() => {
                         if ($(".card-task-wrapper").length === 0) {
                             mm_bool_noTask = true;
                             if (AMOCRM.data.current_entity === "leads" && mm_bool_setting) {
-                                data = mm_button + `<h1> Hello world </h1>`;
+
                                 document.body.addEventListener("mouseleave", () => { mRender(data) }); //Уход курсора за body
                                 document.getElementById("common--arrow-left").addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на кнопку назад в сделке
                                 document.getElementById("nav_menu").addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на боковое меню
@@ -97,7 +100,7 @@ define([], function () {
             }
 
 
-            BoolTask()
+            BoolTask(1000, mm_button + `<h1> Hello world </h1>`);
 
 
 
