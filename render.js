@@ -102,7 +102,7 @@ define([], function () {
 
             //Возможно не нужна функция :)
             function mRender(data) {
-                if (AMOCRM.data.current_entity === "leads") {
+                if (AMOCRM.data.current_entity === "leads" && !mm_modal_isOpen) {
                     ModalRender(data);
                 }
             }
