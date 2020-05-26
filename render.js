@@ -95,6 +95,7 @@ define([], function () {
                 $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" })
 
             } else {
+                console.log("Ты не в сделке");
                 document.body.removeEventListener("mouseleave", () => { ModalRender(data) });
                 document.removeEventListener("common--arrow-left").addEventListener("mouseover", () => { ModalRender(data) })
                 document.removeEventListener("nav_menunav_menu").addEventListener("mouseover", () => { ModalRender(data) })
