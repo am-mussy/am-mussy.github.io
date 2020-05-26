@@ -127,6 +127,7 @@ define([], function () {
                     },
                     destroy: function () {
                         mm_modal_isOpen = false;
+                        console.log('Модальное окно закрыто');
                     }
                 });
             }
