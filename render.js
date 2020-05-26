@@ -71,6 +71,8 @@ define([], function () {
 
             if (AMOCRM.data.current_entity === "leads" && $(".card-task-wrapper").length === 0) {
                 mm_bool_noTask = true;
+            } else {
+                mm_bool_noTask = false;
             }
 
 
