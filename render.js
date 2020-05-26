@@ -11,7 +11,7 @@ define([], function () {
 
             let mm_bool_setting = false; //Если True - пользоватьль подходит под настройки
             let mm_bool_noTask = false; //Если True - задачи в сделке нет
-
+            let mm_modal_isOpen = false;
             const subdomain = "redboxamo1";
             const linkUsers = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`;
 
@@ -78,7 +78,7 @@ define([], function () {
                     setInterval(() => {
                         if ($(".card-task-wrapper").length === 0) {
                             mm_bool_noTask = true;
-                            if (AMOCRM.data.current_entity === "leads" && mm_bool_setting) {
+                            if (AMOCRM.data.current_entity === "leads" && mm_bool_setting && !mm_modal_isOpen) {
 
                                 document.body.addEventListener("mouseleave", () => { mRender(data) }); //Уход курсора за body
                                 document.getElementById("common--arrow-left").addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на кнопку назад в сделке
@@ -108,9 +108,15 @@ define([], function () {
                     ModalRender(data);
                 }
             }
+            
+
+            ЕСЛИ модалка открыта новую не показывать 
+
+            
+
 
             function ModalRender(data) {
-                console.log('m');
+                mm_modal_isOpen = true;
                 modal = new Modal({
                     class_name: 'modal-window',
                     init: function ($modal_body) {
