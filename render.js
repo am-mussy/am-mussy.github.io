@@ -94,33 +94,29 @@ define([], function () {
                 $('.js-switcher-task').trigger('click');
                 $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" });
 
-            } else {
-                console.log("Ты не в сделке");
-                document.body.removeEventListener("mouseleave", () => { ModalRender(data) });
-                document.removeEventListener("common--arrow-left").addEventListener("mouseover", () => { ModalRender(data) });
-                document.removeEventListener("nav_menunav_menu").addEventListener("mouseover", () => { ModalRender(data) });
-                document.removeEventListener(AMOCRM.constant('user').id).addEventListener("mouseover", () => { ModalRender(data) });
             }
 
 
 
 
-
-            function ModalRender(data) {
-                modal = new Modal({
-                    class_name: 'modal-window',
-                    init: function ($modal_body) {
-                        var $this = $(this);
-                        $modal_body
-                            .trigger('modal:loaded') // запускает отображение модального окна
-                            .html(data)
-                            .trigger('modal:centrify')  // настраивает модальное окно
-                            .append('');
-                    },
-                    destroy: function () {
-                    }
-                });
+            if (AMOCRM.data.current_entity === "leads") {
+                function ModalRender(data) {
+                    modal = new Modal({
+                        class_name: 'modal-window',
+                        init: function ($modal_body) {
+                            var $this = $(this);
+                            $modal_body
+                                .trigger('modal:loaded') // запускает отображение модального окна
+                                .html(data)
+                                .trigger('modal:centrify')  // настраивает модальное окно
+                                .append('');
+                        },
+                        destroy: function () {
+                        }
+                    });
+                }
             }
+
 
 
         }
