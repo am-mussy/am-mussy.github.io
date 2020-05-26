@@ -36,10 +36,8 @@ define([], function () {
 
                                 if (String(mm_users[i].group_id) === self.get_settings().idgroup.checked_groups[j]) {
                                     mm_bool_setting = true; //Если все условия собледены mm_bool_setting = true -- означает, что логика работает
-                                    console.log('yes');
+                                    console.log('Настройки есть и данный пользователь в списке активированных');
                                 }
-                                console.log('no');
-
                             }
                         }
 
@@ -108,15 +106,15 @@ define([], function () {
                     ModalRender(data);
                 }
             }
-            
 
-            ЕСЛИ модалка открыта новую не показывать 
 
-            
+
+
 
 
             function ModalRender(data) {
                 mm_modal_isOpen = true;
+                console.log('Модальное окно открыто')
                 modal = new Modal({
                     class_name: 'modal-window',
                     init: function ($modal_body) {
