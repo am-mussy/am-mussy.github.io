@@ -93,25 +93,29 @@ define([], function () {
             }
 
 
-
-
-            if (AMOCRM.data.current_entity === "leads") {
-                function ModalRender(data) {
-                    modal = new Modal({
-                        class_name: 'modal-window',
-                        init: function ($modal_body) {
-                            var $this = $(this);
-                            $modal_body
-                                .trigger('modal:loaded') // запускает отображение модального окна
-                                .html(data)
-                                .trigger('modal:centrify')  // настраивает модальное окно
-                                .append('');
-                        },
-                        destroy: function () {
-                        }
-                    });
+            function mRender() {
+                if (AMOCRM.data.current_entity === "leads") {
+                    function ModalRender(data) {
+                        modal = new Modal({
+                            class_name: 'modal-window',
+                            init: function ($modal_body) {
+                                var $this = $(this);
+                                $modal_body
+                                    .trigger('modal:loaded') // запускает отображение модального окна
+                                    .html(data)
+                                    .trigger('modal:centrify')  // настраивает модальное окно
+                                    .append('');
+                            },
+                            destroy: function () {
+                            }
+                        });
+                    }
                 }
             }
+
+
+
+
 
 
 
