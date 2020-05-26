@@ -69,7 +69,7 @@ define([], function () {
 
             let mm_noTask = await getNoTasks(linkNoTask);
 
-            if (AMOCRM.data.current_entity === "leads" && $(".card-task-wrapper").length > 0) {
+            if (AMOCRM.data.current_entity === "leads" && $(".card-task-wrapper").length === 0) {
                 mm_bool_noTask = true;
             }
 
