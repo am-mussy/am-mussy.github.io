@@ -70,10 +70,11 @@ define([], function () {
 
 
             for (let i of Object.keys(mm_noTask)) {
-                let mm_linksNoTask = mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`)
+                let mm_linksNoTask = [];
+                mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`);
             }
 
-            console.log(mm_linksNoTask);
+            window.open(`mm_linksNoTask[0]`);
 
 
             function BoolTask(CheckTime, data) {
