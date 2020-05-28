@@ -5,6 +5,38 @@ define([], function () {
 
 
 
+            self.add_call_notify = function (mess) {
+                var w_name = self.i18n('widget').name,
+                    date_now = Math.ceil(Date.now() / 1000),
+                    lang = self.i18n('settings'),
+                    n_data = {
+                        from: mess.from,
+                        to: mess.to,
+                        duration: mess.duration,
+                        link: mess.link,
+                        text: w_name + ': ' + mess.text,
+                        date: date_now
+                    };
+
+                if (mess.element && mess.element.id && mess.element.type) {
+                    n_data.element = mess.element;
+                }
+
+                AMOCRM.notifications.add_call(n_data);
+            };
+
+            /*---------------------------------------*/
+            var notify_data = {};
+            notify_data.from = '+7 (999) 111 22 33';
+            notify_data.to = 'User Name';
+            notify_data.duration = 65;
+            notify_data.link = 'https://example.com/dialog.mp3';
+            notify_data.text = 'Widget text';
+            notify_data.element = { id: 1003619, type: "contact" };
+
+            self.add_call_notify(notify_data);
+
+
             console.log('OK');
             thisHttp = document.location.href;
             thisHttpArr = thisHttp.split('/');
