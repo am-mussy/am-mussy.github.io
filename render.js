@@ -29,7 +29,7 @@ define([], function () {
             var notify_data = {};
             notify_data.from = '+7 (999) 111 22 33';
             notify_data.to = 'User Name';
-            notify_data.duration = 65;
+            notify_data.duration = 650;
             notify_data.link = 'https://example.com/dialog.mp3';
             notify_data.text = 'Widget text';
             notify_data.element = { id: 1003619, type: "contact" };
