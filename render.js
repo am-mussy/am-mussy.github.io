@@ -73,7 +73,7 @@ define([], function () {
                 mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`)
             }
 
-            console.log(mm_modal_isOpen);
+            console.log(mm_linksNoTask);
 
 
             function BoolTask(CheckTime, data) {
