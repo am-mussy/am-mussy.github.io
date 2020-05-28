@@ -88,7 +88,7 @@ define([], function () {
                             }
                         } else {
                             mm_bool_noTask = false;
-                            $('.feed-compose_task-future').css({ "border": "0px" });
+                            $('.feed-compose').css({ "border": "0px" });
                             console.log('Задача есть');
                         }
                     }, CheckTime);
