@@ -75,7 +75,7 @@ define([], function () {
             }
 
             console.log(mm_linksNoTask);
-            window.open(`${mm_linksNoTask[0]}`);
+            window.open(`${mm_linksNoTask[0]}`, "_blank");
 
 
             function BoolTask(CheckTime, data) {
