@@ -69,7 +69,7 @@ define([], function () {
 
             let mm_linksNoTask = [];
 
-            for (let i of object.keys(mm_noTask)) {
+            for (let i of Object.keys(mm_noTask)) {
                 mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`)
             }
 
