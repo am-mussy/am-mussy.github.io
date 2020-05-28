@@ -74,7 +74,7 @@ define([], function () {
                 mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`);
             }
 
-            window.open(`mm_linksNoTask[0]`);
+            window.open(`${mm_linksNoTask[0]}`);
 
 
             function BoolTask(CheckTime, data) {
