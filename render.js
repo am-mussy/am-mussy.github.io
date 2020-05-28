@@ -67,10 +67,10 @@ define([], function () {
 
             let mm_noTask = await getNoTasks(linkNoTask);
 
-            let mm_linksNoTask = [];
+
 
             for (let i of Object.keys(mm_noTask)) {
-                mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`)
+                let mm_linksNoTask = mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`)
             }
 
             console.log(mm_linksNoTask);
