@@ -199,9 +199,9 @@ define([], function () {
                         let LeadNoTaskLinksArr = LeadNoTaskLinks(mm_noTask);
 
                         RedirectToLeadNoTask(LeadNoTaskLinksArr);
-                        if (typeof LeadNoTaskLinksArr[1] != 'undefined') {
-                            mm_notCall(LeadNoTaskLinksArr[1]);
-                        }
+                        // if (typeof LeadNoTaskLinksArr[1] != 'undefined') {
+                        //     mm_notCall(LeadNoTaskLinksArr[1]);
+                        // }
 
                         if (typeof LeadNoTaskLinksArr != 'undefined') {
                             console.log(LeadNoTaskLinksArr);
