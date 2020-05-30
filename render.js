@@ -5,14 +5,12 @@ define([], function () {
 
 
             function mm_notCall() {
-                var message_params = {
-                    header: "Cделека без задачи",
-                    text: "mm_secret_code",
-                    icon: "https://image.flaticon.com/icons/svg/165/165031.svg",
+                var error_params = {
+                    header: "Внимание",
+                    text: "Соединение с сервером потеряно",
+                    link: "https://learn.javascript.ru/introduction-browser-events"
                 };
-
-                AMOCRM.notifications.show_message(message_params);
-                $("span.notification-inner__from__message").html("<a href='https://www.w3schools.com/html/'>Visit our HTML tutorial</a>")
+                AMOCRM.notifications.show_message_error(error_params);
             }
 
             mm_notCall();
