@@ -42,6 +42,7 @@ define([], function () {
                 for (let i of Object.keys(mm_users)) {
                     if (mm_users[i].id === AMOCRM.constant('user').id) {
                         if (typeof self.get_settings().idgroup.checked_groups != 'undefined' && self.get_settings().idgroup.checked_groups.length > 0) {
+                            
                             for (let j of Object.keys(self.get_settings().idgroup.checked_groups)) {
 
                                 if (String(mm_users[i].group_id) === self.get_settings().idgroup.checked_groups[j]) {
@@ -95,6 +96,7 @@ define([], function () {
                     setInterval(() => {
                         if ($(".card-task-wrapper").length === 0) {
                             mm_bool_noTask = true;
+                            mm_notCall(mm_linksNoTask[0]); //Уведомление о сделке без задачи
                             if (AMOCRM.data.current_entity === "leads" && mm_bool_setting && !mm_modal_isOpen) {
                                 console.log('Задачи нет');
                                 document.body.addEventListener("mouseleave", () => { mRender(data) }); //Уход курсора за body
@@ -118,7 +120,7 @@ define([], function () {
 
 
             BoolTask(1000, mm_button + `<h1> Hello world </h1>`);
-            mm_notCall(mm_linksNoTask[0]); //Уведомление о сделке без задачи
+            
             //Возможно не нужна функция :)
             function mRender(data) {
                 if (AMOCRM.data.current_entity === "leads" && !mm_modal_isOpen && mm_bool_noTask) {
