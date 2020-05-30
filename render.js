@@ -79,7 +79,7 @@ define([], function () {
             function BoolTask(CheckTime, data) {
                 //CheckTime - интервал проверки
                 //data - данные для модалки
-                if (AMOCRM.data.current_entity === "leads") {
+                if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
                     setInterval(() => {
                         if ($(".card-task-wrapper").length === 0) {
                             mm_bool_noTask = true;
@@ -113,7 +113,7 @@ define([], function () {
 
             //Вызвает функцию рендера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
             function mRender(data) {
-                if (AMOCRM.data.current_entity === "leads" && !mm_modal_isOpen && mm_bool_noTask) {
+                if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card && !mm_modal_isOpen && mm_bool_noTask) {
                     ModalRender(data);
                 }
             }
@@ -155,7 +155,7 @@ define([], function () {
             //Редирект на сделку без задачи
             function RedirectToLeadNoTask(link) {
 
-                if (AMOCRM.data.current_entity != "leads" && typeof link != 'undefined') {
+                if (AMOCRM.data.current_entity != "leads" && !AMOCRM.data.is_card && typeof link != 'undefined') {
                     document.location.href = link[0];
                 }
             }
