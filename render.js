@@ -8,6 +8,7 @@ define([], function () {
                 var error_params = {
                     header: "Ошибка",
                     text: "Не удалось установить задачу! Контакт не найден!",
+                    icon: "https://image.flaticon.com/icons/svg/165/165031.svg",
                     date: 1534085310,
                     link: "/contacts/"
                 };
