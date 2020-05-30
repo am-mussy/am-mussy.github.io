@@ -138,7 +138,13 @@ define([], function () {
                 });
             }
 
-
+            //Получаем список сделок без задач
+            async function getNoTasks(linkNoTask) {
+                let response = await fetch(linkNoTask);
+                let mm_noTask = await response.json();
+                mm_noTask = mm_noTask._embedded.items;
+                return mm_noTask;
+            }
 
 
 
@@ -156,14 +162,7 @@ define([], function () {
                     );
 
                     setInterval(() => {
-                        //Получаем список сделок без задач
-                        async function getNoTasks(linkNoTask) {
-                            let response = await fetch(linkNoTask);
-                            let mm_noTask = await response.json();
-                            mm_noTask = mm_noTask._embedded.items;
-                            return mm_noTask;
-                        }
-
+                        
                         //Сделки без задач
                         let mm_noTask = await getNoTasks(linkNoTask);
 
