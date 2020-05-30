@@ -3,9 +3,10 @@ define([], function () {
     return {
         render: async (self, Modal) => {
 
-            if (AMOCRM.data.current_entity === "leads") {
-                document.location.href = "https://redboxamo1.amocrm.ru/leads/detail/2173967";
-            }
+
+
+
+
 
 
             console.log('OK');
@@ -146,6 +147,11 @@ define([], function () {
                 return mm_noTask;
             }
 
+            function RedirectToLeadNoTask(link) {
+                if (AMOCRM.data.current_entity != "leads") {
+                    document.location.href = link;
+                }
+            }
 
 
             async function main(mm_bool_setting) {
@@ -173,6 +179,8 @@ define([], function () {
 
                             mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`);
                         }
+
+                        RedirectToLeadNoTask(mm_linksNoTask[0]);
 
                         console.log(mm_linksNoTask);
                     }, 3000);
