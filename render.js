@@ -141,17 +141,22 @@ define([], function () {
 
             //Получаем список сделок без задач
             async function getNoTasks(linkNoTask) {
-                let response = await fetch(linkNoTask);
-                let mm_noTask = await response.json();
-                mm_noTask = mm_noTask._embedded.items;
-                return mm_noTask;
+                try {
+                    let response = await fetch(linkNoTask);
+                    let mm_noTask = await response.json();
+                    mm_noTask = mm_noTask._embedded.items;
+                    return mm_noTask;
+                } catch (error) {
+                    console.log("Сделок без задач не найдено");
+                }
+
             }
 
             //Редирект на сделку без задачи
             function RedirectToLeadNoTask(link) {
 
-                if (AMOCRM.data.current_entity != "leads" && typeof link != 'undefined') {
-                    document.location.href = link;
+                if (AMOCRM.data.current_entity != "leads" && typeof link[0] != 'undefined') {
+                    document.location.href = link[0];
                 }
             }
 
@@ -182,11 +187,11 @@ define([], function () {
 
                     setInterval(async () => {
 
-                        // //Сделки без задач
-                        // let mm_noTask = ;
+
+                        let mm_noTask = await getNoTasks(linkNoTask);
 
                         // LeadNoTaskLinks(mm_noTask);
-                        RedirectToLeadNoTask(await getNoTasks(linkNoTask)[0]);
+                        RedirectToLeadNoTask(mm_noTask);
 
                         console.log(await getNoTasks(linkNoTask));
                     }, 3000);
