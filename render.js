@@ -9,9 +9,10 @@ define([], function () {
                 header: "Внимание",
                 text: "Соединение установлено",
                 date: 1534084500,
-                icon: "https://www.example.com/images/telephone.png"
+                icon: "https://www.example.com/images/telephone.png",
+                link: "https://www.example.com/images/telephone.png"
             };
-            
+
             AMOCRM.notifications.show_message(message_params);
 
 
