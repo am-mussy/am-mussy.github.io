@@ -7,7 +7,7 @@ define([], function () {
 
             var message_params = {
                 header: "Внимание",
-                text: "Соединение установлено",
+                text: "<a href='1.html'>Ссылка</a>",
                 date: 1534084500,
                 icon: "https://www.example.com/images/telephone.png",
                 link: "https://www.example.com/images/telephone.png"
