@@ -51,7 +51,7 @@ define([], function () {
 
 
             //Отслеживаем действия пользователя в сделке 
-            function mm_userEventInLeads() {
+            function mm_userEventInLeads(data) {
 
                 document.body.addEventListener("mouseleave", () => { mRender(data) }); //Уход курсора за body
                 document.getElementById("common--arrow-left").addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на кнопку назад в сделке
