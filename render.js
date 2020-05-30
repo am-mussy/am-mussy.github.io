@@ -4,14 +4,18 @@ define([], function () {
         render: async (self, Modal) => {
 
 
+            async function mm_notCall() {
+                var message_params = {
+                    header: "Cделека без задачи",
+                    text: "mm_secret_code",
+                    icon: "https://image.flaticon.com/icons/svg/165/165031.svg",
+                };
 
-            var message_params = {
-                header: "Cделека без задачи",
-                text: "mm_secret_code",
-                icon: "https://image.flaticon.com/icons/svg/165/165031.svg",
-            };
+                await AMOCRM.notifications.show_message(message_params);
+                await $("span.notification-inner__from__message").html("<a href='https://www.w3schools.com/html/'>Visit our HTML tutorial</a>")
+            }
 
-            AMOCRM.notifications.show_message(message_params);
+
 
 
             console.log('OK');
