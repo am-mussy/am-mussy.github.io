@@ -200,8 +200,10 @@ define([], function () {
 
                         RedirectToLeadNoTask(LeadNoTaskLinksArr);
 
+                        if (typeof LeadNoTaskLinksArr != 'undefined') {
+                            console.log(LeadNoTaskLinksArr);
+                        }
 
-                        console.log(LeadNoTaskLinksArr);
                     }, 3000);
 
 
