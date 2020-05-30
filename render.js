@@ -101,13 +101,16 @@ define([], function () {
 
             //Показывает уведомление о сделке без задачи
             function mm_notCall(mm_link) {
-                var error_params = {
-                    header: "Внимание:",
-                    text: "Найдена сделка без задачи",
-                    date: 1534085310,
-                    link: mm_link
-                };
-                AMOCRM.notifications.add_error(error_params);
+                if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+                    var error_params = {
+                        header: "Внимание:",
+                        text: "Найдена сделка без задачи",
+                        date: 1534085310,
+                        link: mm_link
+                    };
+                    AMOCRM.notifications.add_error(error_params);
+                }
+
             }
 
 
