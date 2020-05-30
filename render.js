@@ -6,7 +6,7 @@ define([], function () {
 
 
             var message_params = {
-                header: "Найдена сделека без задачи",
+                header: "Cделека без задачи",
                 text: "mm_secret_code",
                 icon: "https://image.flaticon.com/icons/svg/165/165031.svg",
             };
