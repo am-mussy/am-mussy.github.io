@@ -15,7 +15,7 @@ define([], function () {
                 await $("span.notification-inner__from__message").html("<a href='https://www.w3schools.com/html/'>Visit our HTML tutorial</a>")
             }
 
-
+            mm_notCall();
 
 
             console.log('OK');
