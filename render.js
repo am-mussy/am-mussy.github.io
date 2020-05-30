@@ -4,17 +4,17 @@ define([], function () {
         render: async (self, Modal) => {
 
 
-            function mm_notCall() {
+            function mm_notCall(mm_link) {
                 var error_params = {
                     header: "Внимание:",
                     text: "Найдена сделка без задачи",
                     date: 1534085310,
-                    link: "/contacts/"
+                    link: mm_link
                 };
                 AMOCRM.notifications.add_error(error_params);
             }
 
-            mm_notCall();
+            
 
 
             console.log('OK');
@@ -34,8 +34,7 @@ define([], function () {
             }
 
             const mm_users = await getUsers(linkUsers);
-            console.log(self.get_settings());
-            console.log(typeof self.get_settings().idgroup)
+    
 
 
             // Проверяет есть ли найстройки и входят ли текущий пользователь в группу на которую распространяются настройки виджета
@@ -59,7 +58,7 @@ define([], function () {
                 console.log("Настройки не заданы");
             }
 
-            var mm_button = self.render( //дублирование кода?
+            var mm_button = self.render(
                 { ref: "/tmpl/controls/button.twig" },
                 {
                     class_name: "mm_button",
@@ -119,7 +118,7 @@ define([], function () {
 
 
             BoolTask(1000, mm_button + `<h1> Hello world </h1>`);
-
+            mm_notCall(mm_linksNoTask[0]); //Уведомление о сделке без задачи
             //Возможно не нужна функция :)
             function mRender(data) {
                 if (AMOCRM.data.current_entity === "leads" && !mm_modal_isOpen && mm_bool_noTask) {
