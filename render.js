@@ -136,7 +136,7 @@ define([], function () {
 
 
 
-            function main(mm_bool_setting) {
+            async function main(mm_bool_setting) {
                 if (mm_bool_setting) {
 
 
