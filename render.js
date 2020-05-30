@@ -79,7 +79,7 @@ define([], function () {
                             console.log('Задачи нет');
 
                             mm_noTaskLeadsUI(mm_bool_noTask);
-                            mm_userEventInLeads();
+                            mm_userEventInLeads(data);
 
                         } else {
                             mm_bool_noTask = false;
