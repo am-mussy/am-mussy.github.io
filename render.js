@@ -3,13 +3,19 @@ define([], function () {
     return {
         render: async (self, Modal) => {
 
+            if (AMOCRM.data.current_entity === "leads") {
+                document.location.href = "https://redboxamo1.amocrm.ru/leads/detail/2173967";
+            }
+
+
             console.log('OK');
 
+            const subdomain = "redboxamo1"; //субдомен амо
 
             let mm_bool_setting = false; //Если True - пользоватьль подходит под настройки
             let mm_bool_noTask = false; //Если True - задачи в сделке нет
-            let mm_modal_isOpen = false;
-            const subdomain = "redboxamo1";
+            let mm_modal_isOpen = false; //Открыто ли модальное окно
+
             const linkUsers = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`; //Список пользователей 
             const linkNoTask = `https://${subdomain}.amocrm.ru/api/v2/leads?filter[tasks]=1`; //Сделки без задач
 
@@ -149,26 +155,30 @@ define([], function () {
                         }
                     );
 
-                    //Получаем список сделок без задач
-                    async function getNoTasks(linkNoTask) {
-                        let response = await fetch(linkNoTask);
-                        let mm_noTask = await response.json();
-                        mm_noTask = mm_noTask._embedded.items;
-                        return mm_noTask;
-                    }
+                    setInterval(() => {
+                        //Получаем список сделок без задач
+                        async function getNoTasks(linkNoTask) {
+                            let response = await fetch(linkNoTask);
+                            let mm_noTask = await response.json();
+                            mm_noTask = mm_noTask._embedded.items;
+                            return mm_noTask;
+                        }
 
-                    //Сделки без задач
-                    let mm_noTask = await getNoTasks(linkNoTask);
+                        //Сделки без задач
+                        let mm_noTask = await getNoTasks(linkNoTask);
 
-                    // Ссылки на сделки без задач
-                    let mm_linksNoTask = [];
-                    // Получаем ссылки на сделки без задач
-                    for (let i of Object.keys(mm_noTask)) {
+                        // Ссылки на сделки без задач
+                        let mm_linksNoTask = [];
+                        // Получаем ссылки на сделки без задач
+                        for (let i of Object.keys(mm_noTask)) {
 
-                        mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`);
-                    }
+                            mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`);
+                        }
 
-                    console.log(mm_linksNoTask);
+                        console.log(mm_linksNoTask);
+                    }, 3000);
+
+
                     BoolTask(1000, mm_button + `<h1> Hello world </h1>`);
                 } else {
 
