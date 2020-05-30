@@ -8,7 +8,6 @@ define([], function () {
                 var error_params = {
                     header: "Внимание:",
                     text: "Найдена сделка без задачи",
-                    icon: "https://image.flaticon.com/icons/svg/165/165031.svg",
                     date: 1534085310,
                     link: "/contacts/"
                 };
