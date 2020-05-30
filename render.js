@@ -188,7 +188,7 @@ define([], function () {
                         // LeadNoTaskLinks(mm_noTask);
                         RedirectToLeadNoTask(await getNoTasks(linkNoTask)[0]);
 
-                        console.log(mm_linksNoTask);
+                        console.log(await getNoTasks(linkNoTask));
                     }, 3000);
 
 
