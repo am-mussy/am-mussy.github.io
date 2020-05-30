@@ -189,11 +189,12 @@ define([], function () {
 
 
                         let mm_noTask = await getNoTasks(linkNoTask);
+                        let LeadNoTaskLinksArr =  LeadNoTaskLinks(mm_noTask);
 
-                        // LeadNoTaskLinks(mm_noTask);
-                        RedirectToLeadNoTask(mm_noTask);
+                        RedirectToLeadNoTask(LeadNoTaskLinksArr);
 
-                        console.log(await getNoTasks(linkNoTask));
+    
+                        console.log(LeadNoTaskLinksArr);
                     }, 3000);
 
 
