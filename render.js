@@ -149,7 +149,7 @@ define([], function () {
 
             //Редирект на сделку без задачи
             function RedirectToLeadNoTask(link) {
-                if (AMOCRM.data.current_entity != "leads" && ) {
+                if (AMOCRM.data.current_entity != "leads" && await getNoTasks(linkNoTask).length > 0) {
                     document.location.href = link;
                 }
             }
