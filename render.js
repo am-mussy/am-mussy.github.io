@@ -161,8 +161,8 @@ define([], function () {
                         }
                     );
 
-                    setInterval(() => {
-                        
+                    setInterval(async () => {
+
                         //Сделки без задач
                         let mm_noTask = await getNoTasks(linkNoTask);
 
