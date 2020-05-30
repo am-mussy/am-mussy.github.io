@@ -147,6 +147,7 @@ define([], function () {
                     mm_noTask = mm_noTask._embedded.items;
                     return mm_noTask;
                 } catch (error) {
+                    return 404;
                     console.log("Сделок без задач не найдено");
                 }
 
@@ -162,13 +163,16 @@ define([], function () {
 
             // Ссылки на сделки без задач
             function LeadNoTaskLinks(mm_noTask) {
-                let mm_linksNoTask = [];
-                for (let i of Object.keys(mm_noTask)) {
+                if (mm_noTask != 404) {
+                    let mm_linksNoTask = [];
+                    for (let i of Object.keys(mm_noTask)) {
 
-                    mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`);
+                        mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`);
+                    }
+
+                    return mm_linksNoTask;
                 }
 
-                return mm_linksNoTask;
             }
 
 
@@ -189,11 +193,11 @@ define([], function () {
 
 
                         let mm_noTask = await getNoTasks(linkNoTask);
-                        let LeadNoTaskLinksArr =  LeadNoTaskLinks(mm_noTask);
+                        let LeadNoTaskLinksArr = LeadNoTaskLinks(mm_noTask);
 
                         RedirectToLeadNoTask(LeadNoTaskLinksArr);
 
-    
+
                         console.log(LeadNoTaskLinksArr);
                     }, 3000);
 
