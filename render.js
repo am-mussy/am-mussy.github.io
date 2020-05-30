@@ -5,28 +5,14 @@ define([], function () {
 
 
 
-            var errors = AMOCRM.notifications,
-                date_now = Math.ceil(Date.now() / 1000),
-                header = self.get_settings().widget_code,
-                text = 'error'
-            var n_data = {
-                header: header, //код виджета
-                text: '<p>' + text + '</p>', //текст уведомления об ошибке
-                date: date_now //дата
-            },
-                callbacks = {
-                    done: function () {
-                        console.log('done');
-                    }, //успешно добавлено и сохранено AJAX done
-                    fail: function () {
-                        console.log('fail');
-                    }, //AJAX fail
-                    always: function () {
-                        console.log('always');
-                    } //вызывается всегда
-                };
-
-            errors.add_error(n_data, callbacks);
+            var message_params = {
+                header: "Внимание",
+                text: "Соединение установлено",
+                date: 1534084500,
+                icon: "https://www.example.com/images/telephone.png"
+            };
+            
+            AMOCRM.notifications.show_message(message_params);
 
 
             console.log('OK');
