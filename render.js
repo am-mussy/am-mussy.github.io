@@ -147,10 +147,22 @@ define([], function () {
                 return mm_noTask;
             }
 
+            //Редирект на сделку без задачи
             function RedirectToLeadNoTask(link) {
-                if (AMOCRM.data.current_entity != "leads") {
+                if (AMOCRM.data.current_entity != "leads" && ) {
                     document.location.href = link;
                 }
+            }
+
+            // Ссылки на сделки без задач
+            function LeadNoTaskLinks(mm_noTask) {
+                let mm_linksNoTask = [];
+                for (let i of Object.keys(mm_noTask)) {
+
+                    mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`);
+                }
+
+                return mm_linksNoTask;
             }
 
 
@@ -169,18 +181,11 @@ define([], function () {
 
                     setInterval(async () => {
 
-                        //Сделки без задач
-                        let mm_noTask = await getNoTasks(linkNoTask);
+                        // //Сделки без задач
+                        // let mm_noTask = ;
 
-                        // Ссылки на сделки без задач
-                        let mm_linksNoTask = [];
-                        // Получаем ссылки на сделки без задач
-                        for (let i of Object.keys(mm_noTask)) {
-
-                            mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`);
-                        }
-
-                        RedirectToLeadNoTask(mm_linksNoTask[0]);
+                        // LeadNoTaskLinks(mm_noTask);
+                        RedirectToLeadNoTask(await getNoTasks(linkNoTask)[0]);
 
                         console.log(mm_linksNoTask);
                     }, 3000);
