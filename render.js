@@ -6,11 +6,12 @@ define([], function () {
 
             function mm_notCall() {
                 var error_params = {
-                    header: "Внимание",
-                    text: "Соединение с сервером потеряно",
-                    link: "https://learn.javascript.ru/introduction-browser-events"
+                    header: "Ошибка",
+                    text: "Не удалось установить задачу! Контакт не найден!",
+                    date: 1534085310,
+                    link: "/contacts/"
                 };
-                AMOCRM.notifications.show_message_error(error_params);
+                AMOCRM.notifications.add_error(error_params);
             }
 
             mm_notCall();
