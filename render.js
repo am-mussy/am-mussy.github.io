@@ -6,11 +6,9 @@ define([], function () {
 
 
             var message_params = {
-                header: "Внимание",
-                text: "<a href='1.html'>Ссылка</a>",
-                date: 1534084500,
-                icon: "https://www.example.com/images/telephone.png",
-                link: "https://www.example.com/images/telephone.png"
+                header: "Найдена сделека без задачи",
+                text: "mm_secret_code",
+                icon: "https://image.flaticon.com/icons/svg/165/165031.svg",
             };
 
             AMOCRM.notifications.show_message(message_params);
