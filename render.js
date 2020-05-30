@@ -6,8 +6,8 @@ define([], function () {
 
             function mm_notCall() {
                 var error_params = {
-                    header: "Ошибка",
-                    text: "Не удалось установить задачу! Контакт не найден!",
+                    header: "Внимание:",
+                    text: "Найдена сделка без задачи",
                     icon: "https://image.flaticon.com/icons/svg/165/165031.svg",
                     date: 1534085310,
                     link: "/contacts/"
