@@ -9,7 +9,7 @@ define([], function () {
     settings: async (self) => {
 
 
-      const toDay = new Date().getTime();
+      // const toDay = new Date().getTime();
 
 
       let mm_settings = {
