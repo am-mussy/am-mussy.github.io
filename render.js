@@ -181,21 +181,23 @@ define([], function () {
 
             }
 
+            //Кнопка для модалки
+            var mm_button = self.render(
+                { ref: "/tmpl/controls/button.twig" },
+                {
+                    class_name: "mm_button",
+                    text: "Поставлю задачу, только не бей",
+                    id: "mm_button"
+                }
+            );
+
             const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её \n` + mm_button;
 
             async function main(mm_bool_setting) {
                 if (mm_bool_setting) {
 
 
-                    //Кнопка для модалки
-                    var mm_button = self.render(
-                        { ref: "/tmpl/controls/button.twig" },
-                        {
-                            class_name: "mm_button",
-                            text: "Поставлю задачу, только не бей",
-                            id: "mm_button"
-                        }
-                    );
+
 
                     setInterval(async () => {
 
