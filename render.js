@@ -137,7 +137,9 @@ define([], function () {
                             .html(mm_modalData)
                             .trigger('modal:centrify')  // настраивает модальное окно
                             .append('');
-                        $('#mm_button').css({ 'width': '100%' }, { 'margin-top': '50px' });
+                        $('#mm_button').css({ 'width': '100%', 'margin-top': '50px' });
+                        $('.modal-body').css({ 'text-align': 'center'});
+                        $('.modal-body').css({ 'text-align': 'center', 'border': '1.5px solid rgb(243, 117, 117)', 'font-size': '18px' });
                     },
                     destroy: function () {
                         mm_modal_isOpen = false;
