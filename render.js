@@ -81,7 +81,7 @@ define([], function () {
                 //data - данные для модалки
                 if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
                     setInterval(() => {
-                        if ($(".card-task-wrapper").length === 0) {
+                        if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
                             mm_bool_noTask = true;
                             console.log('Задачи нет');
 
@@ -138,7 +138,7 @@ define([], function () {
                             .trigger('modal:centrify')  // настраивает модальное окно
                             .append('');
                         $('#mm_button').css({ 'width': '100%', 'margin-top': '50px' });
-                        $('.modal-body').css({ 'text-align': 'center'});
+                        $('.modal-body').css({ 'text-align': 'center' });
                         $('.modal-body').css({ 'text-align': 'center', 'border': '1.5px solid rgb(243, 117, 117)', 'font-size': '18px' });
                     },
                     destroy: function () {
