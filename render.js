@@ -59,12 +59,12 @@ define([], function () {
 
 
             //Отслеживаем действия пользователя в сделке 
-            function mm_userEventInLeads(data) {
+            function mm_userEventInLeads(mm_modalData) {
 
-                document.body.addEventListener("mouseleave", () => { mRender(data) }); //Уход курсора за body
-                document.getElementById("common--arrow-left").addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на кнопку назад в сделке
-                document.getElementById("nav_menu").addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на боковое меню
-                document.getElementById(AMOCRM.constant('user').id).addEventListener("mouseover", () => { mRender(data) }); //Навели курсор на фото профиля
+                document.body.addEventListener("mouseleave", () => { mRender(mm_modalData) }); //Уход курсора за body
+                document.getElementById("common--arrow-left").addEventListener("mouseover", () => { mRender(mm_modalData) }); //Навели курсор на кнопку назад в сделке
+                document.getElementById("nav_menu").addEventListener("mouseover", () => { mRender(mm_modalData) }); //Навели курсор на боковое меню
+                document.getElementById(AMOCRM.constant('user').id).addEventListener("mouseover", () => { mRender(mm_modalData) }); //Навели курсор на фото профиля
             }
 
             //Менять визуал сделки (используется, если нет задачи)
@@ -77,7 +77,7 @@ define([], function () {
                 }
             }
 
-            function BoolTask(CheckTime, data) {
+            function BoolTask(CheckTime, mm_modalData) {
                 //CheckTime - интервал проверки
                 //data - данные для модалки
                 if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
@@ -87,7 +87,7 @@ define([], function () {
                             console.log('Задачи нет');
 
                             mm_noTaskLeadsUI(mm_bool_noTask);
-                            mm_userEventInLeads(data);
+                            mm_userEventInLeads(mm_modalData);
 
                         } else {
                             mm_bool_noTask = false;
@@ -116,9 +116,9 @@ define([], function () {
 
 
             //Вызвает функцию рендера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
-            function mRender(data) {
+            function mRender(mm_modalData) {
                 if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card && !mm_modal_isOpen && mm_bool_noTask) {
-                    ModalRender(data);
+                    ModalRender(mm_modalData);
                     document.getElementById("mm_button").addEventListener('click', () => {
                         modal.destroy();
                     })
@@ -126,7 +126,7 @@ define([], function () {
             }
 
 
-            function ModalRender(data) {
+            function ModalRender(mm_modalData) {
                 mm_modal_isOpen = true;
                 console.log('Модальное окно открыто');
                 modal = new Modal({
@@ -135,7 +135,7 @@ define([], function () {
                         var $this = $(this);
                         $modal_body
                             .trigger('modal:loaded') // запускает отображение модального окна
-                            .html(data)
+                            .html(mm_modalData)
                             .trigger('modal:centrify')  // настраивает модальное окно
                             .append('');
                     },
