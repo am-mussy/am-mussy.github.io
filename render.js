@@ -119,8 +119,7 @@ define([], function () {
                 if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card && !mm_modal_isOpen && mm_bool_noTask) {
                     ModalRender(data);
                     document.getElementById("mm_button").addEventListener('click', () => {
-                        $('.modal-body').trigger('esc');
-                        console.log('button click');
+                        modal.destroy();
                     })
                 }
             }
