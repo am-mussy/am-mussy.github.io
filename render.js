@@ -10,7 +10,7 @@ define([], function () {
 
 
             console.log('OK');
-
+            const oneDay = 90000000;
             const subdomain = "redboxamo1"; //субдомен амо
 
             let mm_bool_setting = false; //Если True - пользоватьль подходит под настройки
@@ -189,12 +189,12 @@ define([], function () {
                 { ref: "/tmpl/controls/button.twig" },
                 {
                     class_name: "mm_button",
-                    text: "Поставлю задачу, только не бей",
+                    text: "Хорошо!",
                     id: "mm_button"
                 }
             );
 
-            const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её \n` + mm_button;
+            const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её! \n` + mm_button;
 
             async function main(mm_bool_setting) {
                 if (mm_bool_setting) {

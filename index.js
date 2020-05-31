@@ -9,6 +9,7 @@ define([], function () {
     settings: async (self) => {
 
 
+      const toDay = new Date().getTime();
 
 
       let mm_settings = {
@@ -126,6 +127,7 @@ define([], function () {
         mm_settings = {
           checked_pipelines: [],
           checked_groups: [],
+          toDay: toDay,
         }
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) { //дублирование кода?
