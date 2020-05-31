@@ -20,7 +20,6 @@ define([], function () {
             const linkUsers = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`; //Список пользователей 
             const linkNoTask = `https://${subdomain}.amocrm.ru/api/v2/leads?filter[tasks]=1`; //Сделки без задач
 
-            const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её \n` + mm_button;
 
             //Получаем список пользователей
             async function getUsers(linkUsers) {
@@ -182,6 +181,7 @@ define([], function () {
 
             }
 
+            const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её \n` + mm_button;
 
             async function main(mm_bool_setting) {
                 if (mm_bool_setting) {
