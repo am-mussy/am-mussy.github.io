@@ -189,6 +189,7 @@ define([], function () {
                         {
                             class_name: "mm_button",
                             text: "Поставлю задачу, только не бей",
+                            id: "mm_button"
                         }
                     );
 
