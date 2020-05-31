@@ -118,7 +118,10 @@ define([], function () {
             function mRender(data) {
                 if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card && !mm_modal_isOpen && mm_bool_noTask) {
                     ModalRender(data);
-                    document.getElementById("mm_button").addEventListener('click', () => { $('.js-switcher-task').trigger('click'); })
+                    document.getElementById("mm_button").addEventListener('click', () => {
+                        $('.js-switcher-task').trigger('click');
+                        console.log('button click');
+                    })
                 }
             }
 
