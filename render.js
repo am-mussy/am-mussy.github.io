@@ -217,10 +217,10 @@ define([], function () {
                             console.log(LeadNoTaskLinksArr);
                         }
 
-                    }, 3000);
+                    }, 5000);
 
 
-                    BoolTask(1000, mm_modalData);
+                    BoolTask(3000, mm_modalData);
                 } else {
 
                 }
