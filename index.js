@@ -159,7 +159,7 @@ define([], function () {
       $(".mm_userSettings").append("<br>" + mm_button_start + "<br>");
       $(".mm_button_start").css({ "background-color": "rgb(36, 188, 140)", "color": "#005C3B", "float": "right" });
 
-      if ($('.mm_button_start').prop('disabled') == true) {
+      if (mm_settings.demo === 1) {
         $(".mm_button_start").css({ "background-color": "rgb(211, 215, 216)", "color": "#005C3B", "float": "right", "border": "1px solid rgb(36, 188, 140)" })
       }
 
@@ -171,9 +171,7 @@ define([], function () {
         mm_settings.demo = 1;
         console.log('click button');
         $('.mm_button_start').prop('disabled', true);
-        if ($('.mm_button_start').prop('disabled') == true) {
-          $(".mm_button_start").css({ "background-color": "rgb(211, 215, 216)", "color": "#005C3B", "float": "right", "border": "1px solid rgb(36, 188, 140)" })
-        }
+        $(".mm_button_start").css({ "background-color": "rgb(211, 215, 216)", "color": "#005C3B", "float": "right", "border": "1px solid rgb(36, 188, 140)" });
       })
 
 
