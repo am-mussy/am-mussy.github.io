@@ -164,10 +164,8 @@ define([], function () {
       document.getElementById('mm_button_start').addEventListener('click', () => {
 
         console.log(mm_settings);
-        mm_settings.test = today;
-
-
-
+        mm_settings.time = today;
+        mm_settings.demo = true;
         console.log('click button');
         $('.mm_button_start').prop('disabled', true);
 
@@ -175,6 +173,7 @@ define([], function () {
       })
 
 
+      self.get_settings();
 
 
 
