@@ -164,15 +164,7 @@ define([], function () {
       }
 
       //обработчик кнопки "Включить виджет"
-      document.getElementById('mm_button_start').addEventListener('click', () => {
 
-        console.log(mm_settings);
-        old_settings.time = mm_settings.time = new Date().getTime();
-        old_settings.demo = mm_settings.demo = 1;
-        console.log('click button');
-        $('.mm_button_start').prop('disabled', true);
-        $(".mm_button_start").css({ "background-color": "rgb(211, 215, 216)", "color": "#005C3B", "float": "right", "border": "1px solid rgb(36, 188, 140)" });
-      })
 
 
       console.log(self.get_settings());
@@ -184,6 +176,17 @@ define([], function () {
 
         mm_settings.checked_groups = [];
         mm_settings.checked_pipelines = [];
+
+
+        document.getElementById('mm_button_start').addEventListener('click', () => {
+
+          console.log(mm_settings);
+          mm_settings.time = new Date().getTime();
+          mm_settings.demo = 1;
+          console.log('click button');
+          $('.mm_button_start').prop('disabled', true);
+          $(".mm_button_start").css({ "background-color": "rgb(211, 215, 216)", "color": "#005C3B", "float": "right", "border": "1px solid rgb(36, 188, 140)" });
+        })
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
