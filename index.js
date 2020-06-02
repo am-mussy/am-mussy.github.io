@@ -24,6 +24,8 @@ define([], function () {
         checked_pipelines: [],
         checked_groups: [],
       }
+
+
       const subdomain = "redboxamo1"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       let old_settings;
 
@@ -102,7 +104,9 @@ define([], function () {
       document.getElementById('mm_button_start').addEventListener('click', () => {
         console.log('click button');
         $('.mm_button_start').prop('disabled', true);
-        mm_setting.time = today;
+        // mm_setting.time = today;
+
+        console.log(mm_settings);
 
       })
       //GET на получение списка ГРУПП
