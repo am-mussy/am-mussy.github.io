@@ -101,11 +101,15 @@ define([], function () {
       $(".mm_userSettings").append("<br>" + mm_button_start + "<br>");
       $(".mm_button_start").css({ "background-color": "rgb(36, 188, 140)", "color": "#005C3B", "float": "right" });
 
+
+      function mm_time() {
+        mm_setting.time = new Date().getTime();
+      }
       //обработчик кнопки "Включить виджет"
       document.getElementById('mm_button_start').addEventListener('click', () => {
         console.log('click button');
         $('.mm_button_start').prop('disabled', true);
-        mm_setting.time = new Date().getTime();
+        mm_time();
 
         console.log(mm_settings);
 
