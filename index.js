@@ -17,7 +17,7 @@ define([], function () {
 
 
       //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
-      const subdomain = "redboxamo1"; 
+      const subdomain = "redboxamo1";
 
       const today = new Date().getTime();
 
@@ -70,7 +70,7 @@ define([], function () {
       const pipelines = await getSalesF(linkPiplines);
 
       const pipelines_arr = [];
-    
+
       for (let i of Object.keys(pipelines)) { //дублирование кода?
         pipelines_arr.push({
           option: pipelines[i].name,
@@ -87,7 +87,7 @@ define([], function () {
         })
       }
 
-      var data = self.render( 
+      var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           items: pipelines_arr
@@ -96,7 +96,7 @@ define([], function () {
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
-      
+
 
 
 
@@ -113,7 +113,7 @@ define([], function () {
         Groups = Groups._embedded.groups;
         return Groups;
       }
-      
+
       const groups = await getGroups(linkGroups);
       const groups_arr = [];
 
@@ -159,15 +159,15 @@ define([], function () {
       $(".mm_button_start").css({ "background-color": "rgb(36, 188, 140)", "color": "#005C3B", "float": "right" });
 
 
-      
+
       //обработчик кнопки "Включить виджет"
       document.getElementById('mm_button_start').addEventListener('click', () => {
-        
+
         console.log(mm_settings);
-        
-        
-        
-        
+        mm_settings.test = 'test';
+
+
+
         console.log('click button');
         $('.mm_button_start').prop('disabled', true);
 
@@ -179,19 +179,19 @@ define([], function () {
 
 
 
-      $(".mm_mainSettings").change(function () { //дублирование кода?
+      $(".mm_mainSettings").change(function () {
 
         mm_settings.checked_groups = [];
         mm_settings.checked_pipelines = [];
 
-        $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) { //дублирование кода?
+        $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
           if ($(this).parent().parent().hasClass('is-checked')) {
             mm_settings.checked_pipelines.push($(this).attr('value'));
           }
         })
 
-        $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) { //дублирование кода?
+        $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
 
           if ($(this).parent().parent().hasClass('is-checked')) {
             mm_settings.checked_groups.push($(this).attr('value'));
