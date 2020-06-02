@@ -15,6 +15,11 @@ define([], function () {
     },
     settings: async (self) => {
 
+      mm_settings = {
+        checked_pipelines: [],
+        checked_groups: [],
+        toDay: today,
+      }
       console.log(self.get_settings());
       const today = new Date().getTime();
 
@@ -148,11 +153,7 @@ define([], function () {
       // console.log(pipelines_arr);
 
       $(".mm_mainSettings").change(function () { //дублирование кода?
-        mm_settings = {
-          checked_pipelines: [],
-          checked_groups: [],
-          toDay: today,
-        }
+
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) { //дублирование кода?
 
