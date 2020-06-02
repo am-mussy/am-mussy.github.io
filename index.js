@@ -173,7 +173,7 @@ define([], function () {
       })
 
 
-      self.get_settings();
+      console.log(self.get_settings());
 
 
 
