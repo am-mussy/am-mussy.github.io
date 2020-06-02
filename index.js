@@ -10,7 +10,7 @@ define([], function () {
 
 
       const toDay = new Date().getTime();
-
+      console.log(toDay);
 
       let mm_settings = {
         checked_pipelines: [],
