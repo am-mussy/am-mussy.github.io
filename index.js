@@ -105,7 +105,7 @@ define([], function () {
       document.getElementById('mm_button_start').addEventListener('click', () => {
         console.log('click button');
         $('.mm_button_start').prop('disabled', true);
-        // mm_setting.time = today;
+        mm_setting.time = new Date().getTime();
 
         console.log(mm_settings);
 
