@@ -13,7 +13,7 @@ define([], function () {
     checked_groups: [],
   }
 
-  let old_settings = self.get_settings.idgroup;
+  let old_settings;
 
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
   const subdomain = "redboxamo1";
@@ -167,8 +167,8 @@ define([], function () {
       document.getElementById('mm_button_start').addEventListener('click', () => {
 
         console.log(mm_settings);
-        mm_settings.time = new Date().getTime();
-        mm_settings.demo = 1;
+        old_settings.time = mm_settings.time = new Date().getTime();
+        old_settings.demo = mm_settings.demo = 1;
         console.log('click button');
         $('.mm_button_start').prop('disabled', true);
         $(".mm_button_start").css({ "background-color": "rgb(211, 215, 216)", "color": "#005C3B", "float": "right", "border": "1px solid rgb(36, 188, 140)" });
@@ -199,9 +199,9 @@ define([], function () {
           }
         })
 
-        //old_settings = mm_settings;
+        old_settings = mm_settings;
 
-        $("input[name = idgroup]").val(JSON.stringify(mm_settings));
+        $("input[name = idgroup]").val(JSON.stringify(old_settings));
       });
 
 
