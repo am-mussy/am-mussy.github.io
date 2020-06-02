@@ -102,7 +102,7 @@ define([], function () {
       document.getElementById('mm_button_start').addEventListener('click', () => {
         console.log('click button');
         $('.mm_button_start').prop('disabled', true);
-        mm_setting.today = today;
+        mm_setting.time = today;
 
       })
       //GET на получение списка ГРУПП
