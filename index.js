@@ -15,7 +15,7 @@ define([], function () {
     },
     settings: async (self) => {
 
-      console.log(get_settings());
+      console.log(self.get_settings());
       const today = new Date().getTime();
       console.log(toDay);
 
