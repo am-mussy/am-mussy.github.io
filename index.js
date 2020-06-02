@@ -42,7 +42,11 @@ define([], function () {
         `
           <div class="mm_mainSettings">
             <div class="mm_piplineSettings">
-              
+              <p>Как настроить:</p>
+              <p>Выберите пользователей, на которых будет распространятся данный виджет</p>
+              <p>Нажмите на кнопку начать "Начать пробный период"</p>
+              <p>Нажмите сохранить</p>
+
             </div>
             <div class="mm_userSettings">
 
