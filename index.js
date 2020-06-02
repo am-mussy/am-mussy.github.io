@@ -14,19 +14,16 @@ define([], function () {
 
     },
     settings: async (self) => {
-      
+
       const today = new Date().getTime();
-      mm_settings = {
-        checked_pipelines: [],
-        checked_groups: [],
-        toDay: today,
-      }
+
       console.log(self.get_settings());
-      
+
 
       let mm_settings = {
         checked_pipelines: [],
         checked_groups: [],
+        toDay: today,
       }
       const subdomain = "redboxamo1"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       let old_settings;
@@ -148,14 +145,12 @@ define([], function () {
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
-      // console.log("Все воронки:", pipelines_arr)
-      // console.log(`Сохраненные настройки:`, old_settings);
-
-      // console.log(pipelines_arr);
-
       $(".mm_mainSettings").change(function () { //дублирование кода?
 
-
+        mm_settings = {
+          checked_pipelines: [],
+          checked_groups: [],
+        }
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) { //дублирование кода?
 
           if ($(this).parent().parent().hasClass('is-checked')) {
