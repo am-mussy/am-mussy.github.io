@@ -14,14 +14,15 @@ define([], function () {
 
     },
     settings: async (self) => {
-
+      
+      const today = new Date().getTime();
       mm_settings = {
         checked_pipelines: [],
         checked_groups: [],
         toDay: today,
       }
       console.log(self.get_settings());
-      const today = new Date().getTime();
+      
 
       let mm_settings = {
         checked_pipelines: [],
