@@ -19,14 +19,11 @@ define([], function () {
       //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       const subdomain = "redboxamo1";
 
-      const today = new Date().getTime();
-
-      //Настройки
-      let mm_settings = {
-        checked_pipelines: [],
-        checked_groups: [],
-        demo: false
-      }
+        //Настройки
+        let mm_settings = {
+          checked_pipelines: [],
+          checked_groups: [],
+        }
 
 
       let old_settings;
@@ -165,8 +162,8 @@ define([], function () {
       document.getElementById('mm_button_start').addEventListener('click', () => {
 
         console.log(mm_settings);
-        mm_settings.time = today;
-        mm_settings.demo = true;
+        mm_settings.time = new Date().getTime();
+        mm_settings.demo = 1;
         console.log('click button');
         $('.mm_button_start').prop('disabled', true);
 
