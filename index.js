@@ -7,6 +7,20 @@
 
 define([], function () {
 
+  //Настройки
+  let mm_settings = {
+    checked_pipelines: [],
+    checked_groups: [],
+  }
+
+  let old_settings;
+
+  //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
+  const subdomain = "redboxamo1";
+
+
+
+
   return {
     onSave: function () {
       console.log("external on save");
@@ -16,17 +30,6 @@ define([], function () {
     settings: async (self) => {
 
 
-      //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
-      const subdomain = "redboxamo1";
-
-        //Настройки
-        let mm_settings = {
-          checked_pipelines: [],
-          checked_groups: [],
-        }
-
-
-      let old_settings;
 
       if ($("input[name = idgroup]").val().length > 0) {
         old_settings = JSON.parse($("input[name = idgroup]").val());
