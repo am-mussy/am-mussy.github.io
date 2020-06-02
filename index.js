@@ -24,7 +24,8 @@ define([], function () {
       //Настройки
       let mm_settings = {
         checked_pipelines: [],
-        checked_groups: []
+        checked_groups: [],
+        demo: false
       }
 
 
