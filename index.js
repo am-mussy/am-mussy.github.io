@@ -205,6 +205,7 @@ define([], function () {
 
 
       $(".mm_mainSettings").trigger("change");
+      $(".mm_button_start").trigger("change");
     }
   };
 });
