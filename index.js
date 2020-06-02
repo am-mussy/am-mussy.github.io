@@ -164,7 +164,7 @@ define([], function () {
       document.getElementById('mm_button_start').addEventListener('click', () => {
 
         console.log(mm_settings);
-        mm_settings.test = 'test';
+        mm_settings.test = today;
 
 
 
