@@ -17,7 +17,6 @@ define([], function () {
 
       console.log(self.get_settings());
       const today = new Date().getTime();
-      console.log(toDay);
 
       let mm_settings = {
         checked_pipelines: [],
