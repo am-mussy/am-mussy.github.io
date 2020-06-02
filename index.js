@@ -88,13 +88,13 @@ define([], function () {
       var mm_button_start = self.render(
         { ref: "/tmpl/controls/button.twig" },
         {
-            class_name: "mm_button_start",
-            text: "Включить виджет",
-            id: "mm_button_start"
+          class_name: "mm_button_start",
+          text: "Включить виджет",
+          id: "mm_button_start"
         }
       );
-      
-      $(".mm_piplineSettings").append("<br>" + mm_button_start + "<br>");
+
+      $(".mm_userSettings").append("<br>" + mm_button_start + "<br>");
 
       //GET на получение списка ГРУПП
       const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
