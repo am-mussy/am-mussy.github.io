@@ -23,7 +23,6 @@ define([], function () {
       let mm_settings = {
         checked_pipelines: [],
         checked_groups: [],
-        toDay: today,
       }
       const subdomain = "redboxamo1"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       let old_settings;
