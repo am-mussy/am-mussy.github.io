@@ -166,6 +166,7 @@ define([], function () {
 
       if (self.get_settings.idgroup.demo === 1) {
         $(".mm_button_start").css({ "background-color": "rgb(211, 215, 216)", "color": "#005C3B", "float": "right", "border": "1px solid rgb(36, 188, 140)" })
+        $('.mm_button_start').prop('disabled', true);
       }
 
       //обработчик кнопки "Включить виджет"
