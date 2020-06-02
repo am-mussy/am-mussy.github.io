@@ -169,7 +169,7 @@ define([], function () {
         mm_settings.demo = 1;
         console.log('click button');
         $('.mm_button_start').prop('disabled', true);
-
+        $(".mm_mainSettings").change();
 
       })
 
@@ -205,7 +205,7 @@ define([], function () {
 
 
       $(".mm_mainSettings").trigger("change");
-      $(".mm_button_start").trigger("change");
+      
     }
   };
 });
