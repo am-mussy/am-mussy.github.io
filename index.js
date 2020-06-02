@@ -146,10 +146,14 @@ define([], function () {
 
       $(".mm_mainSettings").change(function () { //дублирование кода?
 
-        mm_settings = {
-          checked_pipelines: [],
-          checked_groups: [],
-        }
+        // mm_settings = {
+        //   checked_pipelines: [],
+        //   checked_groups: [],
+        // }
+
+        mm_settings.checked_groups = [];
+        mm_settings.checked_pipelines = [];
+
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) { //дублирование кода?
 
           if ($(this).parent().parent().hasClass('is-checked')) {
