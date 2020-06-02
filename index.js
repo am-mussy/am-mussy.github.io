@@ -15,19 +15,19 @@ define([], function () {
     },
     settings: async (self) => {
 
+
+      //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
+      const subdomain = "redboxamo1"; 
+
       const today = new Date().getTime();
 
-      console.log(self.get_settings());
-
-
+      //Настройки
       let mm_settings = {
         checked_pipelines: [],
-        checked_groups: [],
-        time: today
+        checked_groups: []
       }
 
 
-      const subdomain = "redboxamo1"; //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
       let old_settings;
 
       if ($("input[name = idgroup]").val().length > 0) {
@@ -36,6 +36,7 @@ define([], function () {
 
 
 
+      // Разметка настроек
       $(".widget_settings_block__descr").after(
         `
           <div class="mm_mainSettings">
@@ -51,7 +52,13 @@ define([], function () {
 
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
-      //GET на получение списка ВОРОНОК
+
+
+
+
+
+
+      // Получаем список воронок, записываем их в массив, что бы потом сформировать список в настройках
       async function getSalesF(linkPiplines) {
         let response = await fetch(linkPiplines);
         let salesFunnels = await response.json();
@@ -63,8 +70,7 @@ define([], function () {
       const pipelines = await getSalesF(linkPiplines);
 
       const pipelines_arr = [];
-      //ВОРОНКИ
-
+    
       for (let i of Object.keys(pipelines)) { //дублирование кода?
         pipelines_arr.push({
           option: pipelines[i].name,
@@ -81,7 +87,7 @@ define([], function () {
         })
       }
 
-      var data = self.render( //дублирование кода?
+      var data = self.render( 
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           items: pipelines_arr
@@ -89,32 +95,16 @@ define([], function () {
       );
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
-      var mm_button_start = self.render(
-        { ref: "/tmpl/controls/button.twig" },
-        {
-          class_name: "mm_button_start",
-          text: "Включить виджет",
-          id: "mm_button_start"
-        }
-      );
 
-      $(".mm_userSettings").append("<br>" + mm_button_start + "<br>");
-      $(".mm_button_start").css({ "background-color": "rgb(36, 188, 140)", "color": "#005C3B", "float": "right" });
+      
 
 
-      function mm_time() {
-        mm_setting.time = new Date().getTime();
-      }
-      //обработчик кнопки "Включить виджет"
-      document.getElementById('mm_button_start').addEventListener('click', () => {
-        console.log('click button');
-        $('.mm_button_start').prop('disabled', true);
-        mm_time();
 
-        console.log(mm_settings);
 
-      })
-      //GET на получение списка ГРУПП
+
+
+
+      //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
       const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
 
       async function getGroups(linkGroups) {  //дублирование кода?
@@ -123,9 +113,8 @@ define([], function () {
         Groups = Groups._embedded.groups;
         return Groups;
       }
-
+      
       const groups = await getGroups(linkGroups);
-
       const groups_arr = [];
 
       for (let i of Object.keys(groups)) { //дублирование кода?
@@ -144,7 +133,8 @@ define([], function () {
         })
       }
 
-      var data = self.render( //дублирование кода?
+      //Список групп
+      var data = self.render(
         { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
         {
           items: groups_arr
@@ -153,12 +143,43 @@ define([], function () {
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
-      $(".mm_mainSettings").change(function () { //дублирование кода?
 
-        // mm_settings = {
-        //   checked_pipelines: [],
-        //   checked_groups: [],
-        // }
+
+      //Кнопка начала демо-режима
+      var mm_button_start = self.render(
+        { ref: "/tmpl/controls/button.twig" },
+        {
+          class_name: "mm_button_start",
+          text: "Включить виджет",
+          id: "mm_button_start"
+        }
+      );
+
+      $(".mm_userSettings").append("<br>" + mm_button_start + "<br>");
+      $(".mm_button_start").css({ "background-color": "rgb(36, 188, 140)", "color": "#005C3B", "float": "right" });
+
+
+      
+      //обработчик кнопки "Включить виджет"
+      document.getElementById('mm_button_start').addEventListener('click', () => {
+        
+        console.log(mm_settings);
+        
+        
+        
+        
+        console.log('click button');
+        $('.mm_button_start').prop('disabled', true);
+
+
+      })
+
+
+
+
+
+
+      $(".mm_mainSettings").change(function () { //дублирование кода?
 
         mm_settings.checked_groups = [];
         mm_settings.checked_pipelines = [];
@@ -176,7 +197,9 @@ define([], function () {
             mm_settings.checked_groups.push($(this).attr('value'));
           }
         })
+
         old_settings = mm_settings;
+
         $("input[name = idgroup]").val(JSON.stringify(old_settings));
       });
 
