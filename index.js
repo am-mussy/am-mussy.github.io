@@ -15,8 +15,8 @@ define([], function () {
     },
     settings: async (self) => {
 
-
-      const toDay = new Date().getTime();
+      console.log(get_settings());
+      const today = new Date().getTime();
       console.log(toDay);
 
       let mm_settings = {
@@ -95,7 +95,15 @@ define([], function () {
       );
 
       $(".mm_userSettings").append("<br>" + mm_button_start + "<br>");
+      $(".mm_button_start").css({ "background-color": "rgb(36, 188, 140)", "color": "#005C3B", "float": "right" });
 
+      //обработчик кнопки "Включить виджет"
+      document.getElementById('mm_button_start').addEventListener('click', () => {
+        console.log('click button');
+        $('.mm_button_start').prop('disabled', true);
+        mm_setting.today = today;
+
+      })
       //GET на получение списка ГРУПП
       const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
 
@@ -144,7 +152,7 @@ define([], function () {
         mm_settings = {
           checked_pipelines: [],
           checked_groups: [],
-          toDay: toDay,
+          toDay: today,
         }
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) { //дублирование кода?
