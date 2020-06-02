@@ -13,7 +13,7 @@ define([], function () {
     checked_groups: [],
   }
 
-  let old_settings;
+  let old_settings = self.get_settings.idgroup;
 
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
   const subdomain = "redboxamo1";
@@ -199,9 +199,9 @@ define([], function () {
           }
         })
 
-        old_settings = mm_settings;
+        //old_settings = mm_settings;
 
-        $("input[name = idgroup]").val(JSON.stringify(old_settings));
+        $("input[name = idgroup]").val(JSON.stringify(mm_settings));
       });
 
 
