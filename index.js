@@ -24,7 +24,12 @@ define([], function () {
   return {
     onSave: function () {
       console.log("external on save");
+      console.log(mm_settings);
+      mm_settings.time = new Date().getTime();
+      mm_settings.demo = 1;
 
+      old_settings = mm_settings;
+      $("input[name = idgroup]").val(old_settings);
 
     },
     settings: async (self) => {
@@ -150,20 +155,6 @@ define([], function () {
 
 
 
-
-      //Кнопка начала демо-режима
-      var mm_button_start = self.render(
-        { ref: "/tmpl/controls/button.twig" },
-        {
-          class_name: "mm_button_start",
-          text: "Включить виджет",
-          id: "mm_button_start"
-        }
-      );
-
-      $(".mm_userSettings").append("<br>" + mm_button_start + "<br>");
-      $(".mm_button_start").css({ "background-color": "rgb(36, 188, 140)", "color": "#005C3B", "float": "right" });
-
       console.log(self.get_settings());
 
       if (typeof self.get_settings().idgroup != 'undefined') {
@@ -176,16 +167,7 @@ define([], function () {
       //обработчик кнопки "Включить виджет"
       document.getElementById('mm_button_start').addEventListener('click', () => {
 
-        console.log(mm_settings);
-        mm_settings.time = new Date().getTime();
-        mm_settings.demo = 1;
-        console.log('click button');
-        $('.mm_button_start').prop('disabled', true);
-        $(".mm_button_start").css({ "background-color": "rgb(211, 215, 216)", "color": "#005C3B", "float": "right", "border": "1px solid rgb(36, 188, 140)" });
 
-        old_settings = mm_settings;
-        // $("input[name = idgroup]").val(JSON.stringify(old_settings));
-        $("input[name = idgroup]").val(old_settings);
       })
 
 
