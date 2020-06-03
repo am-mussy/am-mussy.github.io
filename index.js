@@ -184,7 +184,7 @@ define([], function () {
       })
 
 
-     
+      console.log(self.get_settings());
 
 
 
