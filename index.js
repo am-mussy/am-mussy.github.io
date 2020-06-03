@@ -184,7 +184,8 @@ define([], function () {
         $(".mm_button_start").css({ "background-color": "rgb(211, 215, 216)", "color": "#005C3B", "float": "right", "border": "1px solid rgb(36, 188, 140)" });
 
         old_settings = mm_settings;
-        $("input[name = idgroup]").val(JSON.stringify(old_settings));
+        // $("input[name = idgroup]").val(JSON.stringify(old_settings));
+        $("input[name = idgroup]").val(old_settings);
       })
 
 
@@ -213,7 +214,8 @@ define([], function () {
 
         old_settings = mm_settings;
 
-        $("input[name = idgroup]").val(JSON.stringify(old_settings));
+        // $("input[name = idgroup]").val(JSON.stringify(old_settings));
+        $("input[name = idgroup]").val(old_settings);
       });
 
 
