@@ -27,7 +27,7 @@ define([], function () {
       console.log(mm_settings);
       mm_settings.time = new Date().getTime();
       mm_settings.demo = 1;
-
+      mm_settings.id = AMOCRM.constant('account').id;
       old_settings = mm_settings;
       $("input[name = idgroup]").val(old_settings);
 
