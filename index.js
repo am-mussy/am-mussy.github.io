@@ -33,7 +33,7 @@ define([], function () {
 
 
       //post
-      fetch('https://webhook.site/0325228d-d41f-422e-a7a0-16c6e6a3f678', {
+      fetch('https://redbox-back.now.sh/api/index.js', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
