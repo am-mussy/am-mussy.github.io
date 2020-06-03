@@ -164,7 +164,7 @@ define([], function () {
       $(".mm_userSettings").append("<br>" + mm_button_start + "<br>");
       $(".mm_button_start").css({ "background-color": "rgb(36, 188, 140)", "color": "#005C3B", "float": "right" });
 
-
+      console.log(self.get_settings());
 
       if (typeof self.get_settings().idgroup != 'undefined') {
         if (self.get_settings().idgroup.demo === 1) {
