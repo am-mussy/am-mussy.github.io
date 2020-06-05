@@ -22,7 +22,7 @@ define([], function () {
 
 
   return {
-    onSave: function () {
+    onSave: async function () {
       console.log("external on save");
       console.log(mm_settings);
       mm_settings.time = new Date().getTime();
