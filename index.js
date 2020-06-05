@@ -38,7 +38,7 @@ define([], function () {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: mm_settings,
+        body: JSON.stringify(mm_settings),
       })
         .then(response => response.json())
         .then(data => {
