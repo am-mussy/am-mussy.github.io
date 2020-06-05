@@ -32,26 +32,15 @@ define([], function () {
       $("input[name = idgroup]").val(old_settings);
 
 
-      //post
-      fetch('https://redbox-back.now.sh/api/index.js', {
+      //post  https://redbox-back.now.sh/api/index.js'
+
+      await fetch('https://redbox-back.now.sh/api/index.js', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify(mm_settings),
+        body: JSON.stringify(mm_settings)
       })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-
-
-
-
-
 
 
 
