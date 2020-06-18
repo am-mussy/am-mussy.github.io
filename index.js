@@ -14,7 +14,7 @@ define([], function () {
   }
 
   let old_settings;
-  const responseDBJSON
+
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
   const subdomain = "redboxamo2";
 
@@ -36,7 +36,7 @@ define([], function () {
           },
         })
 
-        responseDBJSON = await responseDB.json()
+        const responseDBJSON = await responseDB.json()
         console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
       } catch (error) {
         console.log('Error', error)
