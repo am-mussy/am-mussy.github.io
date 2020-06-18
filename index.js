@@ -66,7 +66,6 @@ define([], function () {
           <div class="mm_mainSettings">
             <div class="mm_piplineSettings">
               <h3>Как настроить:</h3>
-              До конца пробного периода: ${responseDBJSON.trialStart}
               <br>
               <p>1. Выберите пользователей, на которых будет распространятся данный виджет</p>
               <p>2. Нажмите на кнопку начать "Начать пробный период"</p>
