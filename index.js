@@ -73,7 +73,7 @@ define([], function () {
               <p>1. Выберите пользователей, на которых будет распространятся данный виджет</p>
               <p>2. Нажмите на кнопку начать "Начать пробный период"</p>
               <p>3. Нажмите сохранить</p>
-
+              <br>
             </div>
             <div class="mm_userSettings">
 
@@ -88,7 +88,7 @@ define([], function () {
 
 
 
-      $(".mm_piplineSettings").append(`${14 - (Date.now() - x.trialStart) / 86400000}`)
+      $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
 
