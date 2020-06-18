@@ -207,8 +207,8 @@ define([], function () {
 
         old_settings = mm_settings;
 
-        // $("input[name = idgroup]").val(JSON.stringify(old_settings));
-        $("input[name = idgroup]").val(old_settings);
+        $("input[name = idgroup]").val(JSON.stringify(old_settings));
+        // $("input[name = idgroup]").val(old_settings);
       });
 
 
