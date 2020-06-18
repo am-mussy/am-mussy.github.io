@@ -85,10 +85,10 @@ define([], function () {
       let x = await toDataBase(dataDB)
       console.log(x)
       console.log(x.trialStart)
-      
 
 
-      $(".mm_piplineSettings").append(`${14 - (Date.now() - x)}`)
+
+      $(".mm_piplineSettings").append(`${14 - (Date.now() - x.trialStart) / 86400000}`)
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
 
