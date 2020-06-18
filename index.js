@@ -82,8 +82,12 @@ define([], function () {
         `
       );
 
-      console.log(await toDataBase(dataDB).trialStart)
-      let x = 0
+      let x = await toDataBase(dataDB)
+      console.log(x)
+      console.log(x.trialStart)
+      
+
+
       $(".mm_piplineSettings").append(`${14 - (Date.now() - x)}`)
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
