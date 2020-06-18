@@ -61,6 +61,7 @@ define([], function () {
 
 
       // Разметка настроек
+      $(".widget_settings_block__descr").after(JSON.stringify(responseDBJSON.trialStart))
       $(".widget_settings_block__descr").after(
         `
           <div class="mm_mainSettings">
