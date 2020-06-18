@@ -23,34 +23,34 @@ define([], function () {
     name: 'task'
   }
 
+  function toDataBase(dataDB) {
+    try {
+      const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
+        method: 'POST',
+        body: JSON.stringify(dataDB),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+
+      const responseDBJSON = await responseDB.json()
+
+      console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
+    } catch (error) {
+      console.log('Error', error)
+    }
+  }
+
+
 
   return {
     onSave: async function () {
-      console.log("external on save");
-      try {
-        const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
-          method: 'POST',
-          body: JSON.stringify(dataDB),
-          headers: {
-            'Content-Type': 'application/json'
-          },
-        })
-
-        const responseDBJSON = await responseDB.json()
-        console.log(await responseDB.json())
-        console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
-      } catch (error) {
-        console.log('Error', error)
-      }
-
-
-
-
-
-
-
+      console.log("external on save")
+      toDataBase(dataDB)
 
     },
+
+
     settings: async (self) => {
 
 
