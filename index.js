@@ -63,7 +63,7 @@ define([], function () {
 
 
       // Разметка настроек
-      $(".widget_settings_block__descr").after(JSON.stringify(await toDataBase(dataDB).trialStart))
+      $(".mm_piplineSettings").append('sasd')
       $(".widget_settings_block__descr").after(
         `
           <div class="mm_mainSettings">
