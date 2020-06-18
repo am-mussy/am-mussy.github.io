@@ -6,6 +6,8 @@
 
 
 define([], function () {
+  //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
+  const subdomain = "redboxamo2";
 
   //Настройки
   let mm_settings = {
@@ -15,15 +17,12 @@ define([], function () {
 
   let old_settings;
 
-  //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
-  const subdomain = "redboxamo2";
-
   dataDB = {
     subdomain: subdomain,
     name: 'task'
   }
 
-  function toDataBase(dataDB) {
+  async function toDataBase(dataDB) {
     try {
       const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
         method: 'POST',
@@ -46,7 +45,7 @@ define([], function () {
   return {
     onSave: async function () {
       console.log("external on save")
-      toDataBase(dataDB)
+      await toDataBase(dataDB)
 
     },
 
