@@ -33,7 +33,7 @@ define([], function () {
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
-        body: data
+        body: dataDB
       })
 
 
