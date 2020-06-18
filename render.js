@@ -42,7 +42,7 @@ define([], function () {
 
 
 
-            if (await toDataBase(dataDB) != 0) {
+            if (await toDataBase(dataDB) == 0) {
                 trial = true
             }
 
