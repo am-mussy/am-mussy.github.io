@@ -63,7 +63,7 @@ define([], function () {
 
 
       // Разметка настроек
-      $(".mm_piplineSettings").append('sasd')
+
       $(".widget_settings_block__descr").after(
         `
           <div class="mm_mainSettings">
@@ -81,7 +81,7 @@ define([], function () {
           </div>
         `
       );
-
+      $(".mm_piplineSettings").append(`asdasd`)
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
 
