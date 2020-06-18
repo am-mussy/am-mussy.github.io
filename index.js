@@ -16,7 +16,7 @@ define([], function () {
   let old_settings;
 
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
-  const subdomain = "redboxamo1";
+  const subdomain = "redboxamo2";
 
   dataDB = {
     subdomain: subdomain,

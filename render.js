@@ -11,7 +11,7 @@ define([], function () {
 
             console.log('OK');
             const oneDay = 90000000;
-            const subdomain = "redboxamo1"; //субдомен амо
+            const subdomain = "redboxamo2"; //субдомен амо
 
             let mm_bool_setting = false; //Если True - пользоватьль подходит под настройки
             let mm_bool_noTask = false; //Если True - задачи в сделке нет
