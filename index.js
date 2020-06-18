@@ -37,7 +37,7 @@ define([], function () {
         })
 
         const json = await responseDB.json()
-        console.log('Успех', stringify(json))
+        console.log('Успех', JSON.stringify(json))
       } catch (error) {
         console.log('Error', error)
       }
