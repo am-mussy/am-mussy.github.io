@@ -27,16 +27,24 @@ define([], function () {
   return {
     onSave: async function () {
       console.log("external on save");
+      try {
+        const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
+          method: 'POST',
+          body: JSON.stringify(dataDB),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
 
-      const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(dataDB)
-      })
+        const json = await responseDB.json()
+        console.log('Успех', stringify(json))
+      } catch (error) {
+        console.log('Error', error)
+      }
 
-      const json = await responseDB.json();
+
+
+
 
 
 
