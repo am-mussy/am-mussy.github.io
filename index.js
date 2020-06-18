@@ -83,6 +83,8 @@ define([], function () {
       );
 
       x = Number(JSON.stringify(await toDataBase(dataDB).trialStart))
+
+      console.log(x)
       $(".mm_piplineSettings").append(`${14 - (Date.now() - x)}`)
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
