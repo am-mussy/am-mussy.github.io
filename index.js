@@ -36,7 +36,7 @@ define([], function () {
 
       console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
 
-      return responseDBJSON
+      return Math.round(14 - (Date.now() - responseDBJSON.trialStart) / 86400000)
     } catch (error) {
       console.log('Error', error)
     }
@@ -83,12 +83,12 @@ define([], function () {
       );
 
       let x = await toDataBase(dataDB)
-      console.log(x)
-      console.log(x.trialStart)
+
+      $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
+      // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
 
 
 
-      $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
 
