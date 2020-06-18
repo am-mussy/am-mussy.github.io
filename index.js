@@ -81,7 +81,9 @@ define([], function () {
           </div>
         `
       );
-      $(".mm_piplineSettings").append(`${14 - (Date.now() - Number(JSON.stringify(await toDataBase(dataDB).trialStart)))}`)
+
+      x = Number(JSON.stringify(await toDataBase(dataDB).trialStart))
+      $(".mm_piplineSettings").append(`${14 - (Date.now() - x)}`)
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
 
