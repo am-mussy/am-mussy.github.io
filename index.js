@@ -35,6 +35,8 @@ define([], function () {
       const responseDBJSON = await responseDB.json()
 
       console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
+
+      return responseDBJSON
     } catch (error) {
       console.log('Error', error)
     }
@@ -61,7 +63,7 @@ define([], function () {
 
 
       // Разметка настроек
-      // $(".widget_settings_block__descr").after(JSON.stringify(responseDBJSON.trialStart))
+      $(".widget_settings_block__descr").after(JSON.stringify(await toDataBase(dataDB).trialStart))
       $(".widget_settings_block__descr").after(
         `
           <div class="mm_mainSettings">
