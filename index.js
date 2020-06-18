@@ -36,8 +36,8 @@ define([], function () {
           },
         })
 
-        const json = await responseDB.json()
-        console.log('Успех', JSON.stringify(json))
+        const responseDBJSON = await responseDB.json()
+        console.log('Успех', JSON.stringify(json.trialStart))
       } catch (error) {
         console.log('Error', error)
       }
@@ -66,7 +66,7 @@ define([], function () {
           <div class="mm_mainSettings">
             <div class="mm_piplineSettings">
               <h3>Как настроить:</h3>
-              До конца пробного периода: ${json.trialStart}
+              До конца пробного периода: ${responseDBJSON.trialStart}
               <br>
               <p>1. Выберите пользователей, на которых будет распространятся данный виджет</p>
               <p>2. Нажмите на кнопку начать "Начать пробный период"</p>
