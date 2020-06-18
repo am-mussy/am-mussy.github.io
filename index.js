@@ -81,7 +81,7 @@ define([], function () {
           </div>
         `
       );
-      $(".mm_piplineSettings").append(`<p>31. asdasd</p>`)
+      $(".mm_piplineSettings").append(`${await toDataBase(dataDB)}`)
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
 
