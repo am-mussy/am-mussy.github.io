@@ -18,7 +18,10 @@ define([], function () {
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
   const subdomain = "redboxamo1";
 
-
+  dataDB = {
+    subdomain: subdomain,
+    name: 'task'
+  }
 
 
   return {
@@ -30,10 +33,7 @@ define([], function () {
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
-        body: {
-          subdomain,
-          name: 'task'
-        }
+        body: data
       })
 
 
