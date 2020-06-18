@@ -24,22 +24,16 @@ define([], function () {
   return {
     onSave: async function () {
       console.log("external on save");
-      // console.log(mm_settings);
-      // mm_settings.time = new Date().getTime();
-      // mm_settings.demo = 1;
-      // mm_settings.id = AMOCRM.constant('account').id;
-      // old_settings = mm_settings;
-      // $("input[name = idgroup]").val(old_settings);
 
-
-      //post  https://redbox-back.now.sh/api/index.js'
-
-      await fetch('https://redbox-back.now.sh/api/index.js', {
+      await fetch('https://widgets-flax.vercel.app/api/status', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify(mm_settings)
+        body: {
+          subdomain,
+          name: 'task'
+        }
       })
 
 
