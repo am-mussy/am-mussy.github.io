@@ -82,7 +82,7 @@ define([], function () {
         `
       );
 
-      x = Number(JSON.stringify(await toDataBase(dataDB).trialStart))
+      x = await toDataBase(dataDB).trialStart
 
       console.log(x)
       $(".mm_piplineSettings").append(`${14 - (Date.now() - x)}`)
