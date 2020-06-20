@@ -13,6 +13,8 @@ define([], function () {
   let mm_settings = {
     checked_pipelines: [],
     checked_groups: [],
+    name: '',
+    phone: '',
   }
 
   let old_settings;
@@ -142,7 +144,8 @@ define([], function () {
       var data = self.render(
         { ref: "/tmpl/controls/input.twig" },
         {
-          placeholder: "Ваше Имя:"
+          placeholder: "Ваше Имя:",
+          class_name: "username"
         }
       );
       $(".userdata").append("<br>" + data + "<br>");
@@ -150,7 +153,8 @@ define([], function () {
       var data = self.render(
         { ref: "/tmpl/controls/input.twig" },
         {
-          placeholder: "Номер телефона:"
+          placeholder: "Номер телефона:",
+          class_name: "userphone"
         }
       );
       $(".userdata").append("<br>" + data + "<br>");
@@ -204,8 +208,16 @@ define([], function () {
 
       $(".mm_mainSettings").change(function () {
 
-        mm_settings.checked_groups = [];
-        mm_settings.checked_pipelines = [];
+        mm_settings.checked_groups = []
+        mm_settings.checked_pipelines = []
+        mm_settings.phone = ''
+        mm_settings.name = ''
+
+
+
+        mm_settings.phone = $(".userphone").val()
+        mm_settings.name = $(".username").val()
+
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
