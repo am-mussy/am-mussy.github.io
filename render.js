@@ -255,13 +255,12 @@ define([], function () {
             } else {
                 console.log('Проблная версия закончилась')
 
-                var message_params = {
+                var error_params = {
                     header: "Пробный период окончен",
                     text: "Для продления напишите на redbox@gmail.com",
-                    date: 1534084500,
-                    icon: "https://image.flaticon.com/icons/svg/165/165031.svg"
+                    link: "/contacts/list/?term=4951234567"
                 };
-                AMOCRM.notifications.show_message(message_params);
+                AMOCRM.notifications.add_error(error_params);
             }
         }
     }
