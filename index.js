@@ -47,6 +47,7 @@ define([], function () {
     }
   }
 
+  console.log(await toDataBase(dataDB))
 
 
   return {
