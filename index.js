@@ -68,9 +68,12 @@ define([], function () {
         `
           <div class="mm_mainSettings">
             <div class="userdata">
+            <br>
             <p>Данные пользователя:</p>
             </div>
             <div class="mm_piplineSettings">
+              <br>
+              <br>
               <h3>Как настроить:</h3>
               <br>
               <p>1. Выберите пользователей, на которых будет распространятся данный виджет</p>
