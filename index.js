@@ -47,7 +47,7 @@ define([], function () {
     }
   }
 
-
+  await toDataBase(dataDB)
 
   return {
     onSave: async function () {
