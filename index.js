@@ -36,19 +36,14 @@ define([], function () {
 
       console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
 
-      let datareturn = {
-        trialDay: Math.round(14 - (Date.now() - responseDBJSON.trialStart) / 86400000),
-        rawdata: responseDBJSON
-      }
-
-      console.log(datareturn)
-      return datareturn
+      return responseDBJSON
     } catch (error) {
       console.log('Error', error)
     }
   }
 
-  await toDataBase(dataDB)
+
+  console.log(await toDataBase(dataDB))
 
   return {
     onSave: async function () {
