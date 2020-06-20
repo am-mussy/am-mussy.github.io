@@ -4,23 +4,21 @@ define([], function () {
         render: async (self, Modal) => {
 
             async function toDataBase(dataDB) {
-                try {
-                    const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
-                        method: 'POST',
-                        body: JSON.stringify(dataDB),
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                    })
 
-                    const responseDBJSON = await responseDB.json()
+                const responseDB = await fetch('https://widgets-flax.vercel.app/api/statuss', {
+                    method: 'POST',
+                    body: JSON.stringify(dataDB),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                })
 
-                    console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
+                const responseDBJSON = await responseDB.json()
 
-                    return Math.round(14 - (Date.now() - responseDBJSON.trialStart) / 86400000)
-                } catch (error) {
-                    console.log('Error', error)
-                }
+                console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
+
+                return Math.round(14 - (Date.now() - responseDBJSON.trialStart) / 86400000)
+
             }
 
 
@@ -41,10 +39,20 @@ define([], function () {
             const linkNoTask = `https://${subdomain}.amocrm.ru/api/v2/leads?filter[tasks]=1`; //Сделки без задач
 
 
-
-            if (await toDataBase(dataDB) == 0) {
-                trial = true
+            try {
+                if (await toDataBase(dataDB) == 0) {
+                    trial = true
+                }
+            } catch (error) {
+                var message_params = {
+                    header: "Ошибка REDBOX:",
+                    text: "Помощь: redbox@gmail.com",
+                    date: 1534084500,
+                    icon: "https://image.flaticon.com/icons/svg/165/165031.svg"
+                };
+                AMOCRM.notifications.show_message(message_params);
             }
+
 
             if (trial) {
                 //Получаем список пользователей
