@@ -67,6 +67,9 @@ define([], function () {
       $(".widget_settings_block__descr").after(
         `
           <div class="mm_mainSettings">
+            <div class="userdata">
+            <p>Данные пользователя:</p>
+            </div>
             <div class="mm_piplineSettings">
               <h3>Как настроить:</h3>
               <br>
@@ -82,9 +85,8 @@ define([], function () {
         `
       );
 
-      let x = await toDataBase(dataDB)
 
-      $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
+      $(".userdata").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
       // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
 
 
@@ -134,19 +136,28 @@ define([], function () {
       );
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
+      var data = self.render(
+        { ref: "/tmpl/controls/input.twig" },
+        {
+          placeholder: "Ваше Имя:"
+        }
+      );
+      $(".userdata").append("<br>" + data + "<br>");
 
-
-
-
-
-
+      var data = self.render(
+        { ref: "/tmpl/controls/input.twig" },
+        {
+          placeholder: "Номер телефона:"
+        }
+      );
+      $(".userdata").append("<br>" + data + "<br>");
 
 
 
       //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
       const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
 
-      async function getGroups(linkGroups) {  //дублирование кода?
+      async function getGroups(linkGroups) {
         let response = await fetch(linkGroups);
         let Groups = await response.json();
         Groups = Groups._embedded.groups;
@@ -156,7 +167,7 @@ define([], function () {
       const groups = await getGroups(linkGroups);
       const groups_arr = [];
 
-      for (let i of Object.keys(groups)) { //дублирование кода?
+      for (let i of Object.keys(groups)) {
         groups_arr.push({
           option: groups[i].name,
           name: groups[i].name,
@@ -182,21 +193,6 @@ define([], function () {
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
-      var data = self.render(
-        { ref: "/tmpl/controls/input.twig" },
-        {
-          placeholder: "Ваше Имя:"
-        }
-      );
-      $(".mm_piplineSettings").append("<br>" + data + "<br>");
-
-      var data = self.render(
-        { ref: "/tmpl/controls/input.twig" },
-        {
-          placeholder: "Номер телефона:"
-        }
-      );
-      $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
 
