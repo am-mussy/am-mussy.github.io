@@ -60,8 +60,6 @@ define([], function () {
 
       if ($("input[name = idgroup]").val().length > 0) {
         old_settings = JSON.parse($("input[name = idgroup]").val());
-        $(".userphone").val(old_settings.phone)
-        $(".username").val(old_settings.name)
       }
 
 
@@ -212,8 +210,12 @@ define([], function () {
 
         mm_settings.checked_groups = []
         mm_settings.checked_pipelines = []
-        mm_settings.phone = ''
-        mm_settings.name = ''
+        
+        if (old_settings.name.length > 0 && old_settings.phone.length > 0) {
+          $(".userphone").val(old_settings.phone)
+          $(".username").val(old_settings.name)
+        }
+
 
 
 
