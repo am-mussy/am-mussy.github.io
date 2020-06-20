@@ -48,6 +48,7 @@ define([], function () {
   }
 
   console.log(await toDataBase(dataDB))
+  console.log(await toDataBase(dataDB).rawdata)
 
 
   return {
