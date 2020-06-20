@@ -43,7 +43,6 @@ define([], function () {
   }
 
 
-  console.log(await toDataBase(dataDB))
 
   return {
     onSave: async function () {
@@ -83,10 +82,10 @@ define([], function () {
         `
       );
 
+      let x = await toDataBase(dataDB)
 
-
-      $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB).trialDay} </h2>`)
-
+      $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
+      // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
 
 
 
