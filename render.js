@@ -257,7 +257,7 @@ define([], function () {
 
                 var message_params = {
                     header: "Внимание:",
-                    text: "Пробный период подошел к концу./nДля продления напишите нам на email: redbox@gmail.com",
+                    text: "Пробный период подошел к концу.\n Для продления напишите нам на email: redbox@gmail.com",
                     date: 1534084500,
                     icon: "https://image.flaticon.com/icons/svg/165/165031.svg"
                 };
