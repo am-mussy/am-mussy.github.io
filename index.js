@@ -47,8 +47,6 @@ define([], function () {
     }
   }
 
-  console.log(await toDataBase(dataDB))
-  console.log(await toDataBase(dataDB).rawdata)
 
 
   return {
@@ -89,7 +87,7 @@ define([], function () {
         `
       );
 
-      let x = await toDataBase(dataDB)
+
 
       $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB).trialDay} </h2>`)
 
