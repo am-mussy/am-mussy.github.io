@@ -210,11 +210,11 @@ define([], function () {
 
         mm_settings.checked_groups = []
         mm_settings.checked_pipelines = []
-        
-        if (old_settings.name.length > 0 && old_settings.phone.length > 0) {
-          $(".userphone").val(old_settings.phone)
-          $(".username").val(old_settings.name)
-        }
+
+
+        $(".userphone").val(old_settings.phone)
+        $(".username").val(old_settings.name)
+
 
 
 
