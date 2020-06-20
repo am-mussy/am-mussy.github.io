@@ -36,7 +36,7 @@ define([], function () {
 
       console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
 
-      return responseDBJSON
+      return Math.round(14 - (Date.now() - responseDBJSON.trialStart) / 86400000)
     } catch (error) {
       console.log('Error', error)
     }
