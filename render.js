@@ -258,7 +258,7 @@ define([], function () {
                 var error_params = {
                     header: "Пробный период окончен",
                     text: "Для продления напишите на redbox@gmail.com",
-                    link: "/contacts/list/?term=4951234567"
+                    link: "https://www.gooogle.ru"
                 };
                 AMOCRM.notifications.add_error(error_params);
             }
