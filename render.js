@@ -255,6 +255,7 @@ define([], function () {
             } else {
                 console.log('Проблная версия закончилась')
 
+
                 var message_params = {
                     header: "Внимание у REDBOX:",
                     text: "Пробный период окончен",
@@ -263,13 +264,18 @@ define([], function () {
                 };
                 AMOCRM.notifications.show_message(message_params);
 
-                var message_params = {
-                    header: "Для продления:",
-                    text: "Напишите нам redbox@gmail.com",
-                    date: 1534084500,
-                    icon: "https://image.flaticon.com/icons/svg/165/165031.svg"
-                };
-                AMOCRM.notifications.show_message(message_params);
+                setTimeout(() => {
+                    var message_params = {
+                        header: "Для продления:",
+                        text: "Напишите нам redbox@gmail.com",
+                        date: 1534084500,
+                        icon: "https://image.flaticon.com/icons/svg/165/165031.svg"
+                    };
+                    AMOCRM.notifications.show_message(message_params);
+
+                }, 3000);
+
+
             }
         }
     }
