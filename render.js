@@ -5,7 +5,7 @@ define([], function () {
 
             async function toDataBase(dataDB) {
 
-                const responseDB = await fetch('https://widgets-flax.vercel.app/api/statuss', {
+                const responseDB = await fetch('https:///wwidgets-flax.vercel.app/api/statuss', {
                     method: 'POST',
                     body: JSON.stringify(dataDB),
                     headers: {
