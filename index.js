@@ -26,8 +26,6 @@ define([], function () {
   dataDB = {
     subdomain: subdomain,
     name: 'task',
-    username: '1',
-    userphone: 'm'
   }
 
   async function toDataBase(dataDB) {
