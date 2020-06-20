@@ -60,6 +60,8 @@ define([], function () {
 
       if ($("input[name = idgroup]").val().length > 0) {
         old_settings = JSON.parse($("input[name = idgroup]").val());
+        $(".userphone").val(old_settings.phone)
+        $(".username").val(old_settings.name)
       }
 
 
