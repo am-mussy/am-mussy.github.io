@@ -36,7 +36,10 @@ define([], function () {
 
       console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
 
-      return Math.round(14 - (Date.now() - responseDBJSON.trialStart) / 86400000)
+      return {
+        trialDay: Math.round(14 - (Date.now() - responseDBJSON.trialStart) / 86400000),
+        rawdata: responseDBJSON
+      }
     } catch (error) {
       console.log('Error', error)
     }
@@ -84,8 +87,8 @@ define([], function () {
 
       let x = await toDataBase(dataDB)
 
-      $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
-      // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
+      $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB).trialDay} </h2>`)
+
 
 
 
