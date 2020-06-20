@@ -9,9 +9,7 @@ define([], function () {
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
   const subdomain = "redboxamo2";
   let old_settings;
-  if ($("input[name = idgroup]").val().length > 0) {
-    old_settings = JSON.parse($("input[name = idgroup]").val());
-  }
+
 
   //Настройки
   let mm_settings = {
@@ -25,7 +23,7 @@ define([], function () {
 
   dataDB = {
     subdomain: subdomain,
-    name: 'task',
+    name: 'task'
   }
 
   async function toDataBase(dataDB) {
@@ -60,7 +58,9 @@ define([], function () {
 
     settings: async (self) => {
 
-
+      if ($("input[name = idgroup]").val().length > 0) {
+        old_settings = JSON.parse($("input[name = idgroup]").val());
+      }
 
 
 
