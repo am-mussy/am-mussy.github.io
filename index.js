@@ -206,14 +206,13 @@ define([], function () {
       console.log(self.get_settings());
 
 
+      $(".userphone").val(old_settings.phone)
+      $(".username").val(old_settings.name)
+
       $(".mm_mainSettings").change(function () {
 
         mm_settings.checked_groups = []
         mm_settings.checked_pipelines = []
-
-
-        $(".userphone").val(old_settings.phone)
-        $(".username").val(old_settings.name)
 
 
 
