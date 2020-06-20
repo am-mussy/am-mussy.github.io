@@ -41,6 +41,7 @@ define([], function () {
         rawdata: responseDBJSON
       }
 
+      console.log(datareturn)
       return datareturn
     } catch (error) {
       console.log('Error', error)
