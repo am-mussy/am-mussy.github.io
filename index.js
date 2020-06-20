@@ -182,6 +182,23 @@ define([], function () {
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
+      var data = self.render(
+        { ref: "/tmpl/controls/input.twig" },
+        {
+          placeholder: "Ваше Имя:"
+        }
+      );
+      $(".mm_piplineSettings").append("<br>" + data + "<br>");
+
+      var data = self.render(
+        { ref: "/tmpl/controls/input.twig" },
+        {
+          placeholder: "Номер телефона:"
+        }
+      );
+      $(".mm_piplineSettings").append("<br>" + data + "<br>");
+
+
 
       console.log(self.get_settings());
 
