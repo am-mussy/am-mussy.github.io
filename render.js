@@ -3,6 +3,7 @@ define([], function () {
     return {
         render: async (self, Modal) => {
 
+
             async function toDataBase(dataDB) {
 
                 const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
@@ -29,6 +30,10 @@ define([], function () {
             console.log('OK');
             const oneDay = 90000000;
             const subdomain = location.host.split('.')[0] //субдомен амо
+            dataDB = {
+                subdomain: subdomain,
+                name: 'task',
+            }
 
             let trial = false;
             let mm_bool_setting = false; //Если True - пользоватьль подходит под настройки
