@@ -28,7 +28,7 @@ define([], function () {
 
             console.log('OK');
             const oneDay = 90000000;
-            const subdomain = "redboxamo2"; //субдомен амо
+            const subdomain = location.host.split('.')[0] //субдомен амо
 
             let trial = false;
             let mm_bool_setting = false; //Если True - пользоватьль подходит под настройки
@@ -40,7 +40,8 @@ define([], function () {
 
 
             try {
-                if (await toDataBase(dataDB) != 0) {
+                x = await toDataBase(dataDB)
+                if (x != 0) {
                     trial = true
                 }
             } catch (error) {

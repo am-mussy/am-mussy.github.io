@@ -7,7 +7,8 @@
 
 define([], function () {
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
-  const subdomain = "redboxamo2";
+
+  const subdomain = location.host.split('.')[0]
   let old_settings;
 
 
