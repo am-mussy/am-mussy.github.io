@@ -63,11 +63,11 @@ define([], function () {
       dataDB = {
         subdomain: subdomain,
         name: 'task',
-        username: old_settings.email,
-        userphone: old_settings.phone
+        username: 'test@test.com',
+        userphone: '111111'
       }
 
-
+      console.log(dataDB)
 
       // Разметка настроек
 
