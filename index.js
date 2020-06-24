@@ -149,7 +149,7 @@ define([], function () {
         { ref: "/tmpl/controls/input.twig" },
         {
           placeholder: "Ваш email:",
-          class_name: "useremail"
+          class_name: "mail"
         }
       );
       $(".userdata").append("<br>" + data + "<br>");
@@ -211,7 +211,7 @@ define([], function () {
 
 
       $(".userphone").val(old_settings.phone)
-      $(".useremail").val(old_settings.email)
+      $(".mail").val(old_settings.email)
 
       $(".mm_mainSettings").change(function () {
 
@@ -223,7 +223,7 @@ define([], function () {
 
 
         mm_settings.phone = $(".userphone").val()
-        mm_settings.email = $(".email").val()
+        mm_settings.email = $(".mail").val()
 
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
