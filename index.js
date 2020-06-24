@@ -49,7 +49,7 @@ define([], function () {
     onSave: async function () {
       console.log("external on save")
       await toDataBase(dataDB)
-
+      location.reload()
     },
 
 
