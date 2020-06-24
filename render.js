@@ -30,10 +30,14 @@ define([], function () {
             console.log('OK');
             const oneDay = 90000000;
             const subdomain = location.host.split('.')[0] //субдомен амо
+            console.log(subdomain)
             dataDB = {
-                subdomain: subdomain,
                 name: 'task',
+                subdomain: subdomain,
+                phone: self.get_settings().idgroup.phone,
+                username: self.get_settings().idgroup.email,
             }
+
 
             let trial = false;
             let mm_bool_setting = false; //Если True - пользоватьль подходит под настройки
