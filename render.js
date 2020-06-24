@@ -32,12 +32,11 @@ define([], function () {
             const subdomain = location.host.split('.')[0] //субдомен амо
             console.log(subdomain)
             dataDB = {
-                name: 'task',
                 subdomain: subdomain,
-                phone: self.get_settings().idgroup.phone,
-                username: self.get_settings().idgroup.email,
+                name: 'task',
+                username: 'test@test.com',
+                userphone: '111111'
             }
-
 
             let trial = false;
             let mm_bool_setting = false; //Если True - пользоватьль подходит под настройки
