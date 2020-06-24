@@ -63,7 +63,7 @@ define([], function () {
       dataDB = {
         subdomain: subdomain,
         name: 'task',
-        username: old_settings.name,
+        username: old_settings.email,
         userphone: old_settings.phone
       }
 
