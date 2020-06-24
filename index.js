@@ -64,7 +64,7 @@ define([], function () {
         subdomain: subdomain,
         name: 'task',
         username: 'test@test.com',
-        userphone: '111111'
+        phone: '111111'
       }
 
       console.log(dataDB)
