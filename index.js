@@ -16,10 +16,9 @@ define([], function () {
   let mm_settings = {
     checked_pipelines: [],
     checked_groups: [],
-    name: '',
+    email: '',
     phone: '',
   }
-
 
 
 
@@ -63,8 +62,8 @@ define([], function () {
       dataDB = {
         subdomain: subdomain,
         name: 'task',
-        username: 'test@test.com',
-        phone: '111111'
+        username: old_settings.email,
+        phone: old_settings.phone
       }
 
       console.log(dataDB)

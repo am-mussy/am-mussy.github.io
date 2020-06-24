@@ -35,8 +35,8 @@ define([], function () {
             dataDB = {
                 subdomain: subdomain,
                 name: 'task',
-                username: 'test@test.com',
-                phone: '111111'
+                username: self.get_settings().idgroup.email,
+                phone: self.get_settings().idgroup.phone
             }
 
             console.log(dataDB)
