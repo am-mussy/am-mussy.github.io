@@ -246,7 +246,7 @@ define([], function () {
                 async function main(mm_bool_setting) {
                     if (mm_bool_setting) {
 
-
+                        BoolTask(3000, mm_modalData);
                         setInterval(async () => {
 
 
@@ -269,7 +269,7 @@ define([], function () {
                         }, 5000);
 
 
-                        BoolTask(3000, mm_modalData);
+
                     } else {
 
                     }
