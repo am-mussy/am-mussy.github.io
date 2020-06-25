@@ -135,6 +135,12 @@ define([], function () {
                         mm_noTaskLeadsUI(mm_bool_noTask);
                         console.log('Задача есть');
                     }
+
+                    if (isTimerOn && !AMOCRM.data.is_card) {
+                        console.log('stop timer lead')
+                        clearInterval(timer)
+                        isTimerOn = false
+                    }
                 }
 
                 async function forTimer2() {
