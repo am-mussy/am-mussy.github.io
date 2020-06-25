@@ -140,6 +140,8 @@ define([], function () {
                         try {
                             console.log('stop timer lead')
                             clearInterval(timer)
+                        } catch {
+
                         }
 
                     }
@@ -167,10 +169,6 @@ define([], function () {
                         isTimerOn = true
                         let timer = setInterval(forTimer, CheckTime);
 
-                    } else if (isTimerOn && !AMOCRM.data.is_card) {
-                        console.log('stop timer lead')
-                        clearInterval(timer)
-                        isTimerOn = false
                     }
 
                 }
