@@ -162,6 +162,7 @@ define([], function () {
                     } else if (isTimerOn) {
                         console.log('stop timer lead')
                         clearInterval(timer)
+                        isTimerOn = false
                     }
 
                 }
@@ -272,6 +273,7 @@ define([], function () {
                     } else if (isTimerOn) {
                         console.log('stop timer global')
                         clearInterval(timer1)
+                        isTimer1On = false
                     }
                 }
 
