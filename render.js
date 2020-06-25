@@ -159,7 +159,7 @@ define([], function () {
                         isTimerOn = true
                         let timer = setInterval(forTimer, CheckTime);
 
-                    } else if (isTimerOn) {
+                    } else if (isTimerOn && !AMOCRM.data.is_card) {
                         console.log('stop timer lead')
                         clearInterval(timer)
                         isTimerOn = false
@@ -270,7 +270,7 @@ define([], function () {
                         isTimer1On = true
                         let timer1 = setInterval(await forTimer2(), 5000);
                         BoolTask(3000, mm_modalData);
-                    } else if (isTimer1On) {
+                    } else if (isTimer1On && !mm_bool_setting) {
                         console.log('stop timer global')
                         clearInterval(timer1)
                         isTimer1On = false
