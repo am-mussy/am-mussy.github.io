@@ -302,7 +302,6 @@ define([], function () {
 
                         isTimer1On = true
                         let timer1 = setInterval(await forTimer2(), 5000);
-                        BoolTask(3000, mm_modalData);
                     }
                 }
 
