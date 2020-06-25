@@ -245,9 +245,10 @@ define([], function () {
                             if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
                                 //let timer = setInterval(forTimer, CheckTime);
                                 if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
-                                    mm_bool_noTask = true;
-                                    console.log('Задачи нет');
+
                                     setInterval(() => {
+                                        mm_bool_noTask = true;
+                                        console.log('Задачи нет');
                                         mm_noTaskLeadsUI(mm_bool_noTask);
                                         mm_userEventInLeads(mm_modalData);
                                     }, 1000);
