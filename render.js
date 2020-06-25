@@ -126,7 +126,7 @@ define([], function () {
                     //CheckTime - интервал проверки
                     //data - данные для модалки
                     if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-                        let timer = setInterval(() => {
+                        var timer = setInterval(() => {
                             if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
                                 mm_bool_noTask = true;
                                 console.log('Задачи нет');
