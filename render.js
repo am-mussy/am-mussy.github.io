@@ -123,35 +123,7 @@ define([], function () {
                 }
                 let isTimerOn = false
 
-                setTimeout(() => {
-                    //Показывает уведомление о сделке без задачи
-                    function mm_notCall(mm_link) {
-                        if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-                            var error_params = {
-                                header: "Внимание:",
-                                text: "Найдена сделка без задачи",
-                                date: 1534085310,
-                                link: mm_link
-                            };
-                            AMOCRM.notifications.add_error(error_params);
-                        }
 
-                    }
-
-                    function BoolTask(CheckTime, mm_modalData) {
-                        //CheckTime - интервал проверки
-                        //data - данные для модалки
-                        if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-
-                            isTimerOn = true
-                            let timer = setInterval(forTimer(isTimerOn), CheckTime);
-
-                        }
-
-                    }
-
-
-                }, 500);
 
 
 
@@ -306,7 +278,35 @@ define([], function () {
                     }
                 }
 
+                setTimeout(() => {
+                    //Показывает уведомление о сделке без задачи
+                    function mm_notCall(mm_link) {
+                        if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+                            var error_params = {
+                                header: "Внимание:",
+                                text: "Найдена сделка без задачи",
+                                date: 1534085310,
+                                link: mm_link
+                            };
+                            AMOCRM.notifications.add_error(error_params);
+                        }
 
+                    }
+
+                    function BoolTask(CheckTime, mm_modalData) {
+                        //CheckTime - интервал проверки
+                        //data - данные для модалки
+                        if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+
+                            isTimerOn = true
+                            let timer = setInterval(forTimer(isTimerOn), CheckTime);
+
+                        }
+
+                    }
+
+
+                }, 500);
                 main(mm_bool_setting);
             } else {
                 console.log('Проблная версия закончилась')
