@@ -122,22 +122,28 @@ define([], function () {
                     }
                 }
 
+                function BoolTask(CheckTime, mm_modalData) {
+                    //CheckTime - интервал проверки
+                    //data - данные для модалки
+                    if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+                        setInterval(() => {
+                            if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
+                                mm_bool_noTask = true;
+                                console.log('Задачи нет');
 
-                function forTimer() {
+                                mm_noTaskLeadsUI(mm_bool_noTask);
+                                mm_userEventInLeads(mm_modalData);
 
+                            } else {
+                                mm_bool_noTask = false;
+                                mm_noTaskLeadsUI(mm_bool_noTask);
+                                console.log('Задача есть');
+                            }
+                        }, CheckTime);
+
+                    }
 
                 }
-
-                // function BoolTask(CheckTime, mm_modalData) {
-                //     //CheckTime - интервал проверки
-                //     //data - данные для модалки
-                //     if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-                //         var timer = setInterval(forTimer, CheckTime);
-
-                //     }
-
-                // }
-
 
                 //Показывает уведомление о сделке без задачи
                 function mm_notCall(mm_link) {
@@ -236,30 +242,12 @@ define([], function () {
 
                 const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её! \n` + mm_button;
 
-                async function main(mm_bool_setting, CheckTime) {
+                async function main(mm_bool_setting) {
                     if (mm_bool_setting) {
 
-                        //BoolTask(3000, mm_modalData);
+
                         setInterval(async () => {
 
-                            if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-                                //let timer = setInterval(forTimer, CheckTime);
-                                if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
-
-
-                                    mm_bool_noTask = true;
-                                    console.log('Задачи нет');
-                                    mm_noTaskLeadsUI(mm_bool_noTask);
-                                    mm_userEventInLeads(mm_modalData);
-
-
-
-                                } else {
-                                    mm_bool_noTask = false;
-                                    mm_noTaskLeadsUI(mm_bool_noTask);
-                                    console.log('Задача есть');
-                                }
-                            }
 
                             let mm_noTask = await getNoTasks(linkNoTask);
                             let LeadNoTaskLinksArr = LeadNoTaskLinks(mm_noTask);
@@ -273,11 +261,10 @@ define([], function () {
                                 console.log(LeadNoTaskLinksArr);
                             }
 
-
-                        }, 3000);
-
+                        }, 5000);
 
 
+                        BoolTask(3000, mm_modalData);
                     } else {
 
                     }
