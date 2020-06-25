@@ -144,6 +144,7 @@ define([], function () {
                         }, CheckTime);
 
                     } else {
+                        console.log('stop timer lead')
                         clearInterval(timer)
                     }
 
@@ -270,6 +271,7 @@ define([], function () {
 
                         BoolTask(3000, mm_modalData);
                     } else {
+                        console.log('stop timer global')
                         clearInterval(timer1)
                     }
                 }
