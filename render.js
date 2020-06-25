@@ -254,7 +254,8 @@ define([], function () {
                         setInterval(async () => {
 
                             if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-                                let timer = setInterval(forTimer, CheckTime);
+                                //let timer = setInterval(forTimer, CheckTime);
+                                forTimer()
                             }
 
                             let mm_noTask = await getNoTasks(linkNoTask);
