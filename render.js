@@ -267,10 +267,10 @@ define([], function () {
                 async function main(mm_bool_setting) {
                     if (mm_bool_setting) {
 
-                        isTimerOn = true
+                        isTimer1On = true
                         let timer1 = setInterval(await forTimer2(), 5000);
                         BoolTask(3000, mm_modalData);
-                    } else if (isTimerOn) {
+                    } else if (isTimer1On) {
                         console.log('stop timer global')
                         clearInterval(timer1)
                         isTimer1On = false
