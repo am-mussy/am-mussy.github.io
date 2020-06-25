@@ -180,7 +180,19 @@ define([], function () {
 
 
 
+                //Показывает уведомление о сделке без задачи
+                function mm_notCall(mm_link) {
+                    if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+                        var error_params = {
+                            header: "Внимание:",
+                            text: "Найдена сделка без задачи",
+                            date: 1534085310,
+                            link: mm_link
+                        };
+                        AMOCRM.notifications.add_error(error_params);
+                    }
 
+                }
 
 
                 //Вызвает функцию рендера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
@@ -263,50 +275,38 @@ define([], function () {
                     }
                 );
 
+
+
+            
+
                 const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её! \n` + mm_button;
                 let isTimer1On = false
                 async function main(mm_bool_setting) {
                     if (mm_bool_setting) {
 
+
+                        setTimeout(() => {
+
+                            if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+
+                                isTimerOn = true
+                                let timer = setInterval(forTimer(isTimerOn), 300);
+
+                            }
+
+
+                        }, 500);
+
+
+
+
                         isTimer1On = true
                         let timer1 = setInterval(await forTimer2(), 5000);
                         BoolTask(3000, mm_modalData);
-                    } else if (isTimer1On && !mm_bool_setting) {
-                        console.log('stop timer global')
-                        clearInterval(timer1)
-                        isTimer1On = false
                     }
                 }
 
-                setTimeout(() => {
-                    //Показывает уведомление о сделке без задачи
-                    function mm_notCall(mm_link) {
-                        if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-                            var error_params = {
-                                header: "Внимание:",
-                                text: "Найдена сделка без задачи",
-                                date: 1534085310,
-                                link: mm_link
-                            };
-                            AMOCRM.notifications.add_error(error_params);
-                        }
 
-                    }
-
-                    function BoolTask(CheckTime, mm_modalData) {
-                        //CheckTime - интервал проверки
-                        //data - данные для модалки
-                        if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-
-                            isTimerOn = true
-                            let timer = setInterval(forTimer(isTimerOn), CheckTime);
-
-                        }
-
-                    }
-
-
-                }, 500);
                 main(mm_bool_setting);
             } else {
                 console.log('Проблная версия закончилась')
