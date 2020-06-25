@@ -246,12 +246,12 @@ define([], function () {
                                 //let timer = setInterval(forTimer, CheckTime);
                                 if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
 
-                                    setTimeout(() => {
-                                        mm_bool_noTask = true;
-                                        console.log('Задачи нет');
-                                        mm_noTaskLeadsUI(mm_bool_noTask);
-                                        mm_userEventInLeads(mm_modalData);
-                                    }, 500);
+
+                                    mm_bool_noTask = true;
+                                    console.log('Задачи нет');
+                                    mm_noTaskLeadsUI(mm_bool_noTask);
+                                    mm_userEventInLeads(mm_modalData);
+
 
 
                                 } else {
