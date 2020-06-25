@@ -122,26 +122,42 @@ define([], function () {
                     }
                 }
 
+                function forTimer() {
+                    if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
+                        mm_bool_noTask = true;
+                        console.log('Задачи нет');
+
+                        mm_noTaskLeadsUI(mm_bool_noTask);
+                        mm_userEventInLeads(mm_modalData);
+
+                    } else {
+                        mm_bool_noTask = false;
+                        mm_noTaskLeadsUI(mm_bool_noTask);
+                        console.log('Задача есть');
+                    }
+                }
+
+                async function forTimer2() {
+                    let mm_noTask = await getNoTasks(linkNoTask);
+                    let LeadNoTaskLinksArr = LeadNoTaskLinks(mm_noTask);
+
+                    RedirectToLeadNoTask(LeadNoTaskLinksArr);
+                    // if (typeof LeadNoTaskLinksArr[1] != 'undefined') {
+                    //     mm_notCall(LeadNoTaskLinksArr[1]);
+                    // }
+
+                    if (typeof LeadNoTaskLinksArr != 'undefined') {
+                        console.log(LeadNoTaskLinksArr);
+                    }
+                }
+
                 function BoolTask(CheckTime, mm_modalData) {
                     //CheckTime - интервал проверки
                     //data - данные для модалки
                     if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
 
 
-                        let timer = setInterval(() => {
-                            if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
-                                mm_bool_noTask = true;
-                                console.log('Задачи нет');
-
-                                mm_noTaskLeadsUI(mm_bool_noTask);
-                                mm_userEventInLeads(mm_modalData);
-
-                            } else {
-                                mm_bool_noTask = false;
-                                mm_noTaskLeadsUI(mm_bool_noTask);
-                                console.log('Задача есть');
-                            }
-                        }, CheckTime);
+                        let timer = setInterval(forTimer, CheckTime);
 
                     } else {
                         console.log('stop timer lead')
@@ -251,22 +267,7 @@ define([], function () {
                     if (mm_bool_setting) {
 
 
-                        let timer1 = setInterval(async () => {
-
-
-                            let mm_noTask = await getNoTasks(linkNoTask);
-                            let LeadNoTaskLinksArr = LeadNoTaskLinks(mm_noTask);
-
-                            RedirectToLeadNoTask(LeadNoTaskLinksArr);
-                            // if (typeof LeadNoTaskLinksArr[1] != 'undefined') {
-                            //     mm_notCall(LeadNoTaskLinksArr[1]);
-                            // }
-
-                            if (typeof LeadNoTaskLinksArr != 'undefined') {
-                                console.log(LeadNoTaskLinksArr);
-                            }
-
-                        }, 5000);
+                        let timer1 = setInterval(await forTimer2(), 5000);
 
 
                         BoolTask(3000, mm_modalData);
