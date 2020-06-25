@@ -122,7 +122,7 @@ define([], function () {
                     }
                 }
                 let isTimerOn = false
-                function forTimer() {
+                function forTimer(isTimerOn) {
                     if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
                         mm_bool_noTask = true;
                         console.log('Задачи нет');
@@ -136,10 +136,11 @@ define([], function () {
                         console.log('Задача есть');
                     }
 
-                    if (!AMOCRM.data.is_card) {
+                    if (!AMOCRM.data.is_card && isTimerOn) {
                         try {
                             console.log('stop timer lead')
                             clearInterval(timer)
+                            isTimerOn = false
                         } catch {
 
                         }
@@ -167,7 +168,7 @@ define([], function () {
                     if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
 
                         isTimerOn = true
-                        let timer = setInterval(forTimer, CheckTime);
+                        let timer = setInterval(forTimer(isTimerOn), CheckTime);
 
                     }
 
