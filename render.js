@@ -122,6 +122,50 @@ define([], function () {
                     }
                 }
                 let isTimerOn = false
+
+                setTimeout(() => {
+                    //Показывает уведомление о сделке без задачи
+                    function mm_notCall(mm_link) {
+                        if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+                            var error_params = {
+                                header: "Внимание:",
+                                text: "Найдена сделка без задачи",
+                                date: 1534085310,
+                                link: mm_link
+                            };
+                            AMOCRM.notifications.add_error(error_params);
+                        }
+
+                    }
+
+                    function BoolTask(CheckTime, mm_modalData) {
+                        //CheckTime - интервал проверки
+                        //data - данные для модалки
+                        if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+
+                            isTimerOn = true
+                            let timer = setInterval(forTimer(isTimerOn), CheckTime);
+
+                        }
+
+                    }
+
+
+                }, 500);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 function forTimer(isTimerOn) {
                     if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
                         mm_bool_noTask = true;
@@ -162,31 +206,9 @@ define([], function () {
                     }
                 }
 
-                function BoolTask(CheckTime, mm_modalData) {
-                    //CheckTime - интервал проверки
-                    //data - данные для модалки
-                    if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
 
-                        isTimerOn = true
-                        let timer = setInterval(forTimer(isTimerOn), CheckTime);
 
-                    }
 
-                }
-
-                //Показывает уведомление о сделке без задачи
-                function mm_notCall(mm_link) {
-                    if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-                        var error_params = {
-                            header: "Внимание:",
-                            text: "Найдена сделка без задачи",
-                            date: 1534085310,
-                            link: mm_link
-                        };
-                        AMOCRM.notifications.add_error(error_params);
-                    }
-
-                }
 
 
                 //Вызвает функцию рендера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
