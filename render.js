@@ -127,6 +127,11 @@ define([], function () {
                     //data - данные для модалки
                     if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
                         let timer = setInterval(() => {
+
+                            if (!AMOCRM.data.is_card) {
+                                clearInterval(timer)
+                            }
+
                             if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
                                 mm_bool_noTask = true;
                                 console.log('Задачи нет');
@@ -140,9 +145,7 @@ define([], function () {
                                 console.log('Задача есть');
                             }
 
-                            if (!AMOCRM.data.is_card) {
-                                clearInterval(timer)
-                            }
+
                         }, CheckTime);
 
                     }
