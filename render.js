@@ -274,7 +274,7 @@ define([], function () {
                                 clearInterval(timer)
                             }
 
-                        }, 1000);
+                        }, 3000);
 
 
 
