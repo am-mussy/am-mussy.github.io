@@ -136,10 +136,12 @@ define([], function () {
                         console.log('Задача есть');
                     }
 
-                    if (isTimerOn && !AMOCRM.data.is_card) {
-                        console.log('stop timer lead')
-                        clearInterval(timer)
-                        isTimerOn = false
+                    if (!AMOCRM.data.is_card) {
+                        try {
+                            console.log('stop timer lead')
+                            clearInterval(timer)
+                        }
+
                     }
                 }
 
