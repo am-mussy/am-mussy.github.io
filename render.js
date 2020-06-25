@@ -145,7 +145,7 @@ define([], function () {
 
                 }
 
-                clearInterval(timer)
+
                 //Показывает уведомление о сделке без задачи
                 function mm_notCall(mm_link) {
                     if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
@@ -260,6 +260,10 @@ define([], function () {
 
                             if (typeof LeadNoTaskLinksArr != 'undefined') {
                                 console.log(LeadNoTaskLinksArr);
+                            }
+
+                            if (!AMOCRM.data.is_card) {
+                                clearInterval(timer)
                             }
 
                         }, 5000);
