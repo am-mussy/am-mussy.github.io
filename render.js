@@ -121,7 +121,7 @@ define([], function () {
                         $('.feed-compose').css({ "border": "0px" });
                     }
                 }
-                let isTimerOn
+                let isTimerOn = false
                 function forTimer() {
                     if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
                         mm_bool_noTask = true;
@@ -263,7 +263,7 @@ define([], function () {
                 );
 
                 const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её! \n` + mm_button;
-                let isTimer1On
+                let isTimer1On = false
                 async function main(mm_bool_setting) {
                     if (mm_bool_setting) {
 
