@@ -121,7 +121,7 @@ define([], function () {
                         $('.feed-compose').css({ "border": "0px" });
                     }
                 }
-
+                let isTimerOn
                 function forTimer() {
                     if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
                         mm_bool_noTask = true;
@@ -156,10 +156,10 @@ define([], function () {
                     //data - данные для модалки
                     if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
 
-
+                        isTimerOn = true
                         let timer = setInterval(forTimer, CheckTime);
 
-                    } else {
+                    } else if (isTimerOn) {
                         console.log('stop timer lead')
                         clearInterval(timer)
                     }
@@ -262,14 +262,14 @@ define([], function () {
                 );
 
                 const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её! \n` + mm_button;
-
+                let isTimer1On
                 async function main(mm_bool_setting) {
                     if (mm_bool_setting) {
 
-
+                        isTimerOn = true
                         let timer1 = setInterval(await forTimer2(), 5000);
                         BoolTask(3000, mm_modalData);
-                    } else {
+                    } else if (isTimerOn) {
                         console.log('stop timer global')
                         clearInterval(timer1)
                     }
