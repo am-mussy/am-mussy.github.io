@@ -270,9 +270,6 @@ define([], function () {
                                 console.log(LeadNoTaskLinksArr);
                             }
 
-                            if (!AMOCRM.data.is_card) {
-                                clearInterval(timer)
-                            }
 
                         }, 1000);
 
