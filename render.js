@@ -268,8 +268,6 @@ define([], function () {
 
 
                         let timer1 = setInterval(await forTimer2(), 5000);
-
-
                         BoolTask(3000, mm_modalData);
                     } else {
                         console.log('stop timer global')
