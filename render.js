@@ -139,15 +139,15 @@ define([], function () {
                     }
                 }
 
-                function BoolTask(CheckTime, mm_modalData) {
-                    //CheckTime - интервал проверки
-                    //data - данные для модалки
-                    if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-                        var timer = setInterval(forTimer, CheckTime);
+                // function BoolTask(CheckTime, mm_modalData) {
+                //     //CheckTime - интервал проверки
+                //     //data - данные для модалки
+                //     if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+                //         var timer = setInterval(forTimer, CheckTime);
 
-                    }
+                //     }
 
-                }
+                // }
 
 
                 //Показывает уведомление о сделке без задачи
@@ -247,12 +247,15 @@ define([], function () {
 
                 const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её! \n` + mm_button;
 
-                async function main(mm_bool_setting) {
+                async function main(mm_bool_setting, CheckTime) {
                     if (mm_bool_setting) {
 
-                        BoolTask(3000, mm_modalData);
+                        //BoolTask(3000, mm_modalData);
                         setInterval(async () => {
 
+                            if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+                                let timer = setInterval(forTimer, CheckTime);
+                            }
 
                             let mm_noTask = await getNoTasks(linkNoTask);
                             let LeadNoTaskLinksArr = LeadNoTaskLinks(mm_noTask);
@@ -280,7 +283,7 @@ define([], function () {
                 }
 
 
-                main(mm_bool_setting);
+                main(mm_bool_setting, 3000);
             } else {
                 console.log('Проблная версия закончилась')
 
