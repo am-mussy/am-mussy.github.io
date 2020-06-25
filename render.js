@@ -277,7 +277,7 @@ define([], function () {
 
 
 
-            
+
 
                 const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её! \n` + mm_button;
                 let isTimer1On = false
@@ -289,9 +289,9 @@ define([], function () {
 
                             if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
 
-                                isTimerOn = true
-                                let timer = setInterval(forTimer(isTimerOn), 300);
 
+                                let timer = setInterval(forTimer(isTimerOn), 300);
+                                isTimerOn = true
                             }
 
 
