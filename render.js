@@ -284,7 +284,7 @@ define([], function () {
                 }
 
 
-                main(mm_bool_setting, 3000);
+                main(mm_bool_setting);
             } else {
                 console.log('Проблная версия закончилась')
 
