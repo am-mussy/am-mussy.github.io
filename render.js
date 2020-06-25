@@ -251,7 +251,7 @@ define([], function () {
                                         console.log('Задачи нет');
                                         mm_noTaskLeadsUI(mm_bool_noTask);
                                         mm_userEventInLeads(mm_modalData);
-                                    }, 1000);
+                                    }, 500);
 
 
                                 } else {
