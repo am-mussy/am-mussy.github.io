@@ -247,9 +247,11 @@ define([], function () {
                                 if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
                                     mm_bool_noTask = true;
                                     console.log('Задачи нет');
+                                    setInterval(() => {
+                                        mm_noTaskLeadsUI(mm_bool_noTask);
+                                        mm_userEventInLeads(mm_modalData);
+                                    }, 1000);
 
-                                    mm_noTaskLeadsUI(mm_bool_noTask);
-                                    mm_userEventInLeads(mm_modalData);
 
                                 } else {
                                     mm_bool_noTask = false;
