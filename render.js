@@ -125,18 +125,7 @@ define([], function () {
 
                 function forTimer() {
 
-                    if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
-                        mm_bool_noTask = true;
-                        console.log('Задачи нет');
 
-                        mm_noTaskLeadsUI(mm_bool_noTask);
-                        mm_userEventInLeads(mm_modalData);
-
-                    } else {
-                        mm_bool_noTask = false;
-                        mm_noTaskLeadsUI(mm_bool_noTask);
-                        console.log('Задача есть');
-                    }
                 }
 
                 // function BoolTask(CheckTime, mm_modalData) {
@@ -255,7 +244,18 @@ define([], function () {
 
                             if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
                                 //let timer = setInterval(forTimer, CheckTime);
-                                forTimer()
+                                if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
+                                    mm_bool_noTask = true;
+                                    console.log('Задачи нет');
+
+                                    mm_noTaskLeadsUI(mm_bool_noTask);
+                                    mm_userEventInLeads(mm_modalData);
+
+                                } else {
+                                    mm_bool_noTask = false;
+                                    mm_noTaskLeadsUI(mm_bool_noTask);
+                                    console.log('Задача есть');
+                                }
                             }
 
                             let mm_noTask = await getNoTasks(linkNoTask);
@@ -274,7 +274,7 @@ define([], function () {
                                 clearInterval(timer)
                             }
 
-                        }, 3000);
+                        }, 1000);
 
 
 
