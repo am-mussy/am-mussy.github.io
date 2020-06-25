@@ -126,7 +126,9 @@ define([], function () {
                     //CheckTime - интервал проверки
                     //data - данные для модалки
                     if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-                        setInterval(() => {
+
+
+                        timer = setInterval(() => {
                             if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
                                 mm_bool_noTask = true;
                                 console.log('Задачи нет');
@@ -141,6 +143,8 @@ define([], function () {
                             }
                         }, CheckTime);
 
+                    } else {
+                        clearInterval(timer)
                     }
 
                 }
@@ -246,7 +250,7 @@ define([], function () {
                     if (mm_bool_setting) {
 
 
-                        setInterval(async () => {
+                        let timer1 = setInterval(async () => {
 
 
                             let mm_noTask = await getNoTasks(linkNoTask);
@@ -266,7 +270,7 @@ define([], function () {
 
                         BoolTask(3000, mm_modalData);
                     } else {
-
+                        clearInterval(timer1)
                     }
                 }
 
