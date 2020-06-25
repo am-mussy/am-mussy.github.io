@@ -121,64 +121,29 @@ define([], function () {
                         $('.feed-compose').css({ "border": "0px" });
                     }
                 }
-                let isTimerOn = false
 
+                function BoolTask(CheckTime, mm_modalData) {
+                    //CheckTime - интервал проверки
+                    //data - данные для модалки
+                    if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+                        setInterval(() => {
+                            if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
+                                mm_bool_noTask = true;
+                                console.log('Задачи нет');
 
+                                mm_noTaskLeadsUI(mm_bool_noTask);
+                                mm_userEventInLeads(mm_modalData);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                function forTimer(isTimerOn) {
-                    if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
-                        mm_bool_noTask = true;
-                        console.log('Задачи нет');
-
-                        mm_noTaskLeadsUI(mm_bool_noTask);
-                        mm_userEventInLeads(mm_modalData);
-
-                    } else {
-                        mm_bool_noTask = false;
-                        mm_noTaskLeadsUI(mm_bool_noTask);
-                        console.log('Задача есть');
-                    }
-
-                    if (!AMOCRM.data.is_card && isTimerOn) {
-                        try {
-                            console.log('stop timer lead')
-                            clearInterval(timer)
-                            isTimerOn = false
-                        } catch {
-
-                        }
+                            } else {
+                                mm_bool_noTask = false;
+                                mm_noTaskLeadsUI(mm_bool_noTask);
+                                console.log('Задача есть');
+                            }
+                        }, CheckTime);
 
                     }
+
                 }
-
-                async function forTimer2() {
-                    let mm_noTask = await getNoTasks(linkNoTask);
-                    let LeadNoTaskLinksArr = LeadNoTaskLinks(mm_noTask);
-
-                    RedirectToLeadNoTask(LeadNoTaskLinksArr);
-                    // if (typeof LeadNoTaskLinksArr[1] != 'undefined') {
-                    //     mm_notCall(LeadNoTaskLinksArr[1]);
-                    // }
-
-                    if (typeof LeadNoTaskLinksArr != 'undefined') {
-                        console.log(LeadNoTaskLinksArr);
-                    }
-                }
-
-
 
                 //Показывает уведомление о сделке без задачи
                 function mm_notCall(mm_link) {
@@ -275,33 +240,33 @@ define([], function () {
                     }
                 );
 
-
-
-
-
                 const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её! \n` + mm_button;
-                let isTimer1On = false
+
                 async function main(mm_bool_setting) {
                     if (mm_bool_setting) {
 
 
-                        setTimeout(() => {
-
-                            if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
+                        setInterval(async () => {
 
 
-                                let timer = setInterval(forTimer(isTimerOn), 300);
-                                isTimerOn = true
+                            let mm_noTask = await getNoTasks(linkNoTask);
+                            let LeadNoTaskLinksArr = LeadNoTaskLinks(mm_noTask);
+
+                            RedirectToLeadNoTask(LeadNoTaskLinksArr);
+                            // if (typeof LeadNoTaskLinksArr[1] != 'undefined') {
+                            //     mm_notCall(LeadNoTaskLinksArr[1]);
+                            // }
+
+                            if (typeof LeadNoTaskLinksArr != 'undefined') {
+                                console.log(LeadNoTaskLinksArr);
                             }
 
-
-                        }, 500);
-
+                        }, 5000);
 
 
+                        BoolTask(3000, mm_modalData);
+                    } else {
 
-                        isTimer1On = true
-                        let timer1 = setInterval(await forTimer2(), 5000);
                     }
                 }
 
