@@ -167,7 +167,8 @@ define([], function () {
       var data = self.render(
         { ref: "/tmpl/controls/checkbox.twig" },
         {
-          text: "Я согласен с лицензионным соглашением и передачей данных аккаунта amoCRM (адрес электронной почты, API-ключ, URL аккаунта)"
+          text: "Я согласен с лицензионным соглашением и передачей данных аккаунта amoCRM (адрес электронной почты, API-ключ, URL аккаунта)",
+          checked: true
         }
       );
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
