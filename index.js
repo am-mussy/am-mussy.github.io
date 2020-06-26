@@ -171,7 +171,7 @@ define([], function () {
           checked: true
         }
       );
-      $(".mm_piplineSettings").append("<br>" + data + "<br>");
+      $(".userdata").append("<br>" + data + "<br>");
 
 
       //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
