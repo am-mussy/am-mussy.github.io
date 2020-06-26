@@ -35,11 +35,11 @@ define([], function () {
 
       const responseDBJSON = await responseDB.json()
 
-      console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
+      //console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
 
       return Math.round(14 - (Date.now() - responseDBJSON.trialStart) / 86400000)
     } catch (error) {
-      console.log('Error', error)
+      //console.log('Error', error)
     }
   }
 
@@ -47,7 +47,7 @@ define([], function () {
 
   return {
     onSave: async function () {
-      console.log("external on save")
+      //console.log("external on save")
       await toDataBase(dataDB)
       location.reload()
     },
@@ -66,7 +66,7 @@ define([], function () {
         phone: old_settings.phone
       }
 
-      console.log(dataDB)
+      //console.log(dataDB)
 
       // Разметка настроек
 
@@ -207,7 +207,7 @@ define([], function () {
 
 
 
-      console.log(self.get_settings());
+      //console.log(self.get_settings());
 
 
       $(".userphone").val(old_settings.phone)

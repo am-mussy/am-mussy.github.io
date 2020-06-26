@@ -16,7 +16,7 @@ define([], function () {
 
                 const responseDBJSON = await responseDB.json()
 
-                console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
+                ////console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
 
                 return Math.round(14 - (Date.now() - responseDBJSON.trialStart) / 86400000)
 
@@ -27,10 +27,10 @@ define([], function () {
 
 
 
-            console.log('OK');
+            //console.log('OK');
             const oneDay = 90000000;
             const subdomain = location.host.split('.')[0] //субдомен амо
-            console.log(subdomain)
+            //console.log(subdomain)
 
             dataDB = {
                 subdomain: subdomain,
@@ -39,7 +39,7 @@ define([], function () {
                 phone: self.get_settings().idgroup.phone
             }
 
-            console.log(dataDB)
+            //console.log(dataDB)
 
             let trial = false;
             let mm_bool_setting = false; //Если True - пользоватьль подходит под настройки
@@ -87,7 +87,7 @@ define([], function () {
 
                                     if (String(mm_users[i].group_id) === self.get_settings().idgroup.checked_groups[j]) {
                                         mm_bool_setting = true; //Если все условия собледены mm_bool_setting = true -- означает, что логика работает
-                                        console.log('Настройки есть и данный пользователь в списке активированных');
+                                        //console.log('Настройки есть и данный пользователь в списке активированных');
                                     }
                                 }
                             }
@@ -96,7 +96,7 @@ define([], function () {
                     }
                 } else {
                     //Такое сообщение можно увидеть только единожды при загрузки виджета в систему впервые
-                    console.log("Настройки не заданы");
+                    //console.log("Настройки не заданы");
                 }
 
 
@@ -134,7 +134,7 @@ define([], function () {
 
                             if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
                                 mm_bool_noTask = true;
-                                console.log('Задачи нет');
+                                //console.log('Задачи нет');
 
                                 mm_noTaskLeadsUI(mm_bool_noTask);
                                 mm_userEventInLeads(mm_modalData);
@@ -142,7 +142,7 @@ define([], function () {
                             } else {
                                 mm_bool_noTask = false;
                                 mm_noTaskLeadsUI(mm_bool_noTask);
-                                console.log('Задача есть');
+                                //console.log('Задача есть');
                             }
 
 
@@ -180,7 +180,7 @@ define([], function () {
 
                 function ModalRender(mm_modalData) {
                     mm_modal_isOpen = true;
-                    console.log('Модальное окно открыто');
+                    //console.log('Модальное окно открыто');
                     modal = new Modal({
                         class_name: 'modal-window',
                         init: function ($modal_body) {
@@ -196,7 +196,7 @@ define([], function () {
                         },
                         destroy: function () {
                             mm_modal_isOpen = false;
-                            console.log('Модальное окно закрыто');
+                            //console.log('Модальное окно закрыто');
                         }
                     });
                 }
@@ -210,7 +210,7 @@ define([], function () {
                         return mm_noTask;
                     } catch (error) {
                         return 404;
-                        console.log("Сделок без задач не найдено");
+                        //console.log("Сделок без задач не найдено");
                     }
 
                 }
@@ -265,7 +265,7 @@ define([], function () {
                             // }
 
                             if (typeof LeadNoTaskLinksArr != 'undefined') {
-                                console.log(LeadNoTaskLinksArr);
+                                //console.log(LeadNoTaskLinksArr);
                             }
 
                         }, 5000);
@@ -280,7 +280,7 @@ define([], function () {
 
                 main(mm_bool_setting);
             } else {
-                console.log('Проблная версия закончилась')
+                //console.log('Проблная версия закончилась')
 
 
                 var message_params = {
