@@ -163,6 +163,14 @@ define([], function () {
       );
       $(".userdata").append("<br>" + data + "<br>");
 
+      //соглашение
+      var data = self.render(
+        { ref: "/tmpl/controls/checkbox.twig" },
+        {
+          text: "Я согласен с лицензионным соглашением и передачей данных аккаунта amoCRM (адрес электронной почты, API-ключ, URL аккаунта)"
+        }
+      );
+      $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
       //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
