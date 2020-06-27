@@ -113,7 +113,7 @@ define([], function () {
         `
       );
 
-      if (!toDataBasePaid(dataDB)) {
+      if (!await toDataBasePaid(dataDB)) {
         $(".userdata").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
         // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
       }
