@@ -43,6 +43,26 @@ define([], function () {
     }
   }
 
+  async function toDataBasePaid(dataDB) {
+    try {
+      const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
+        method: 'POST',
+        body: JSON.stringify(dataDB),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+
+      const responseDBJSON = await responseDB.json()
+
+      //console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
+
+      return responseDBJSON.paid
+    } catch (error) {
+      //console.log('Error', error)
+    }
+  }
+
 
 
   return {
@@ -83,8 +103,7 @@ define([], function () {
               <h3>Как настроить:</h3>
               <br>
               <p>1. Выберите пользователей, на которых будет распространятся данный виджет</p>
-              <p>2. Нажмите на кнопку начать "Начать пробный период"</p>
-              <p>3. Нажмите сохранить</p>
+              <p>2. Нажмите сохранить</p>
               <br>
             </div>
             <div class="mm_userSettings">
@@ -94,9 +113,11 @@ define([], function () {
         `
       );
 
+      if (!toDataBasePaid(dataDB)) {
+        $(".userdata").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
+        // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
+      }
 
-      $(".userdata").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
-      // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
 
 
 
