@@ -76,6 +76,8 @@ define([], function () {
     settings: async (self) => {
 
 
+
+      console.log({ self: self.get_settings() })
       let old_settings
 
       let x = $("input[name = idgroup]").val()
@@ -87,13 +89,15 @@ define([], function () {
       console.log({ x })
       console.log({ old_settings })
 
+
+
+
       dataDB = {
         subdomain: subdomain,
         name: 'task',
-        username: old_settings.email,
-        phone: old_settings.phone
+        username: self.get_settings().idgroup ? self.get_settings().idgroup.email : null,
+        phone: self.get_settings().idgroup ? self.get_settings().idgroup.phone : null
       }
-
 
 
 
