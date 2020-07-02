@@ -75,11 +75,17 @@ define([], function () {
 
     settings: async (self) => {
 
+
+      let old_settings
+
+      let x = $("input[name = idgroup]").val()
+
       if ($("input[name = idgroup]").val().length > 0) {
         old_settings = JSON.parse($("input[name = idgroup]").val());
       }
 
-      console.log({old_settings})
+      console.log({ x })
+      console.log({ old_settings })
 
       dataDB = {
         subdomain: subdomain,
