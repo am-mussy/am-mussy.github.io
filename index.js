@@ -79,7 +79,7 @@ define([], function () {
         old_settings = JSON.parse($("input[name = idgroup]").val());
       }
 
-      console.log(old_settings)
+      console.log({old_settings})
 
       dataDB = {
         subdomain: subdomain,
