@@ -78,16 +78,17 @@ define([], function () {
 
 
       console.log({ self: self.get_settings() })
-      let old_settings
 
-      let x = $("input[name = idgroup]").val()
+      let old_settings = self.get_settings().idgroup
 
-      if ($("input[name = idgroup]").val().length > 0) {
-        old_settings = JSON.parse($("input[name = idgroup]").val());
-      }
+      // let x = $("input[name = idgroup]").val()
 
-      console.log({ x })
-      console.log({ old_settings })
+      // if ($("input[name = idgroup]").val().length > 0) {
+      //   old_settings = JSON.parse($("input[name = idgroup]").val());
+      // }
+
+      // console.log({ x })
+      // console.log({ old_settings })
 
 
 
@@ -95,8 +96,8 @@ define([], function () {
       dataDB = {
         subdomain: subdomain,
         name: 'task',
-        username: self.get_settings().idgroup ? self.get_settings().idgroup.email : null,
-        phone: self.get_settings().idgroup ? self.get_settings().idgroup.phone : null
+        username: old_settings ? old_settings.email : null,
+        phone: old_settings ? old_settings.phone : null
       }
 
 
@@ -199,15 +200,6 @@ define([], function () {
       );
       $(".userdata").append("<br>" + data + "<br>");
 
-      //соглашение
-      var data = self.render(
-        { ref: "/tmpl/controls/checkbox.twig" },
-        {
-          text: "Я согласен с лицензионным соглашением и передачей данных аккаунта amoCRM (адрес электронной почты, API-ключ, URL аккаунта)",
-          checked: true
-        }
-      );
-      $(".userdata").append("<br>" + data + "<br>");
 
 
       //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
