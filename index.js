@@ -79,12 +79,19 @@ define([], function () {
         old_settings = JSON.parse($("input[name = idgroup]").val());
       }
 
-      dataDB = {
-        subdomain: subdomain,
-        name: 'task',
-        username: old_settings.email,
-        phone: old_settings.phone
+
+      try {
+        dataDB = {
+          subdomain: subdomain,
+          name: 'task',
+          username: old_settings.email,
+          phone: old_settings.phone
+        }
+      } catch (error) {
+        console.log(error)
       }
+
+
 
       //console.log(dataDB)
 
