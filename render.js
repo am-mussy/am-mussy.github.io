@@ -1,244 +1,17 @@
+// добавить оплаченый виджет
+
+
 define([], function () {
 
     return {
         render: async (self, Modal) => {
 
+            //функцию рендера повешенная на листемера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
+            const mRender = () => {
 
-            async function toDataBase(dataDB) {
+                if (!(AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card && !self.modalIsOpen && !$(".card-task-wrapper").length)) return
 
-                const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
-                    method: 'POST',
-                    body: JSON.stringify(dataDB),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                })
-
-                const responseDBJSON = await responseDB.json()
-
-                ////console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
-
-                return Math.round(14 - (Date.now() - responseDBJSON.trialStart) / 86400000)
-
-            }
-
-
-
-
-
-
-            //console.log('OK');
-            const oneDay = 90000000;
-            const subdomain = location.host.split('.')[0] //субдомен амо
-            //console.log(subdomain)
-
-            dataDB = {
-                subdomain: subdomain,
-                name: 'task',
-                username: self.get_settings().idgroup.email,
-                phone: self.get_settings().idgroup.phone
-            }
-
-            //console.log(dataDB)
-
-            let trial = false;
-            let mm_bool_setting = false; //Если True - пользоватьль подходит под настройки
-            let mm_bool_noTask = false; //Если True - задачи в сделке нет
-            let mm_modal_isOpen = false; //Открыто ли модальное окно
-
-            const linkUsers = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`; //Список пользователей 
-            const linkNoTask = `https://${subdomain}.amocrm.ru/api/v2/leads?filter[tasks]=1`; //Сделки без задач
-
-
-            try {
-                x = await toDataBase(dataDB)
-                if (x != 0) {
-                    trial = true
-                }
-            } catch (error) {
-                var message_params = {
-                    header: "Ошибка REDBOX:",
-                    text: "Помощь: redbox@gmail.com",
-                    date: 1534084500,
-                    icon: "https://image.flaticon.com/icons/svg/165/165031.svg"
-                };
-                AMOCRM.notifications.show_message(message_params);
-            }
-
-
-            if (trial) {
-                //Получаем список пользователей
-                async function getUsers(linkUsers) {
-                    let response = await fetch(linkUsers);
-                    let mm_users = await response.json();
-                    mm_users = mm_users._embedded.users;
-                    return mm_users;
-                }
-
-                const mm_users = await getUsers(linkUsers);
-
-                // Проверяет есть ли найстройки и входят ли текущий пользователь в группу на которую распространяются настройки виджета
-                if (typeof self.get_settings().idgroup != 'undefined') {
-                    for (let i of Object.keys(mm_users)) {
-                        if (mm_users[i].id === AMOCRM.constant('user').id) {
-                            if (typeof self.get_settings().idgroup.checked_groups != 'undefined' && self.get_settings().idgroup.checked_groups.length > 0) {
-
-                                for (let j of Object.keys(self.get_settings().idgroup.checked_groups)) {
-
-                                    if (String(mm_users[i].group_id) === self.get_settings().idgroup.checked_groups[j]) {
-                                        mm_bool_setting = true; //Если все условия собледены mm_bool_setting = true -- означает, что логика работает
-                                        //console.log('Настройки есть и данный пользователь в списке активированных');
-                                    }
-                                }
-                            }
-
-                        }
-                    }
-                } else {
-                    //Такое сообщение можно увидеть только единожды при загрузки виджета в систему впервые
-                    //console.log("Настройки не заданы");
-                }
-
-
-
-
-
-                //Отслеживаем действия пользователя в сделке 
-                function mm_userEventInLeads(mm_modalData) {
-
-                    document.body.addEventListener("mouseleave", () => { mRender(mm_modalData) }); //Уход курсора за body
-                    document.getElementById("common--arrow-left").addEventListener("mouseover", () => { mRender(mm_modalData) }); //Навели курсор на кнопку назад в сделке
-                    document.getElementById("nav_menu").addEventListener("mouseover", () => { mRender(mm_modalData) }); //Навели курсор на боковое меню
-                    document.getElementById(AMOCRM.constant('user').id).addEventListener("mouseover", () => { mRender(mm_modalData) }); //Навели курсор на фото профиля
-                }
-
-                //Менять визуал сделки (используется, если нет задачи)
-                function mm_noTaskLeadsUI(mm_bool_noTask) {
-                    if (mm_bool_noTask) {
-                        $('.js-switcher-task').trigger('click'); //эмулируем нажатие кнопки, для отображения интерфейса поставноки задачи
-                        $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" }); //Краная рамка вокруг окна задач
-                    } else {
-                        $('.feed-compose').css({ "border": "0px" });
-                    }
-                }
-
-                function BoolTask(CheckTime, mm_modalData) {
-                    //CheckTime - интервал проверки
-                    //data - данные для модалки
-                    if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-                        let timer = setInterval(() => {
-
-                            if (!AMOCRM.data.is_card) {
-                                clearInterval(timer)
-                            }
-
-                            if (AMOCRM.data.is_card && $(".card-task-wrapper").length === 0) {
-                                mm_bool_noTask = true;
-                                //console.log('Задачи нет');
-
-                                mm_noTaskLeadsUI(mm_bool_noTask);
-                                mm_userEventInLeads(mm_modalData);
-
-                            } else {
-                                mm_bool_noTask = false;
-                                mm_noTaskLeadsUI(mm_bool_noTask);
-                                //console.log('Задача есть');
-                            }
-
-
-                        }, CheckTime);
-
-                    }
-
-                }
-
-                //Показывает уведомление о сделке без задачи
-                function mm_notCall(mm_link) {
-                    if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card) {
-                        var error_params = {
-                            header: "Внимание:",
-                            text: "Найдена сделка без задачи",
-                            date: 1534085310,
-                            link: mm_link
-                        };
-                        AMOCRM.notifications.add_error(error_params);
-                    }
-
-                }
-
-
-                //Вызвает функцию рендера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
-                function mRender(mm_modalData) {
-                    if (AMOCRM.data.current_entity === "leads" && AMOCRM.data.is_card && !mm_modal_isOpen && mm_bool_noTask) {
-                        ModalRender(mm_modalData);
-                        document.getElementById("mm_button").addEventListener('click', () => {
-                            modal.destroy();
-                        })
-                    }
-                }
-
-
-                function ModalRender(mm_modalData) {
-                    mm_modal_isOpen = true;
-                    //console.log('Модальное окно открыто');
-                    modal = new Modal({
-                        class_name: 'modal-window',
-                        init: function ($modal_body) {
-                            var $this = $(this);
-                            $modal_body
-                                .trigger('modal:loaded') // запускает отображение модального окна
-                                .html(mm_modalData)
-                                .trigger('modal:centrify')  // настраивает модальное окно
-                                .append('');
-                            $('#mm_button').css({ 'width': '100%', 'margin-top': '50px' });
-                            $('.modal-body').css({ 'text-align': 'center' });
-                            $('.modal-body').css({ 'text-align': 'center', 'border': '1.5px solid rgb(243, 117, 117)', 'font-size': '18px' });
-                        },
-                        destroy: function () {
-                            mm_modal_isOpen = false;
-                            //console.log('Модальное окно закрыто');
-                        }
-                    });
-                }
-
-                //Получаем список сделок без задач
-                async function getNoTasks(linkNoTask) {
-                    try {
-                        let response = await fetch(linkNoTask);
-                        let mm_noTask = await response.json();
-                        mm_noTask = mm_noTask._embedded.items;
-                        return mm_noTask;
-                    } catch (error) {
-                        return 404;
-                        //console.log("Сделок без задач не найдено");
-                    }
-
-                }
-
-                //Редирект на сделку без задачи
-                function RedirectToLeadNoTask(link) {
-
-                    if (AMOCRM.data.current_entity != "leads" && !AMOCRM.data.is_card && typeof link != 'undefined') {
-                        document.location.href = link[0];
-                    }
-                }
-
-                // Ссылки на сделки без задач
-                function LeadNoTaskLinks(mm_noTask) {
-                    if (mm_noTask != 404) {
-                        let mm_linksNoTask = [];
-                        for (let i of Object.keys(mm_noTask)) {
-
-                            mm_linksNoTask.push(`https://${subdomain}.amocrm.ru/leads/detail/${mm_noTask[i].id}`);
-                        }
-
-                        return mm_linksNoTask;
-                    }
-
-                }
-
-                //Кнопка для модалки
-                var mm_button = self.render(
+                let mm_button = self.render(
                     { ref: "/tmpl/controls/button.twig" },
                     {
                         class_name: "mm_button",
@@ -249,61 +22,161 @@ define([], function () {
 
                 const mm_modalData = `${AMOCRM.constant('user').name}, в этой сделки нет задачи. Поставь её! \n` + mm_button;
 
-                async function main(mm_bool_setting) {
-                    if (mm_bool_setting) {
 
+                self.modalIsOpen = true;
 
-                        setInterval(async () => {
-
-
-                            let mm_noTask = await getNoTasks(linkNoTask);
-                            let LeadNoTaskLinksArr = LeadNoTaskLinks(mm_noTask);
-
-                            RedirectToLeadNoTask(LeadNoTaskLinksArr);
-                            // if (typeof LeadNoTaskLinksArr[1] != 'undefined') {
-                            //     mm_notCall(LeadNoTaskLinksArr[1]);
-                            // }
-
-                            if (typeof LeadNoTaskLinksArr != 'undefined') {
-                                //console.log(LeadNoTaskLinksArr);
-                            }
-
-                        }, 5000);
-
-
-                        BoolTask(3000, mm_modalData);
-                    } else {
-
+                //console.log('Модальное окно открыто');
+                modal = new Modal({
+                    class_name: 'modal-window',
+                    init: function ($modal_body) {
+                        var $this = $(this);
+                        $modal_body
+                            .trigger('modal:loaded') // запускает отображение модального окна
+                            .html(mm_modalData)
+                            .trigger('modal:centrify')  // настраивает модальное окно
+                            .append('');
+                        $('#mm_button').css({ 'width': '100%', 'margin-top': '50px' });
+                        $('.modal-body').css({ 'text-align': 'center' });
+                        $('.modal-body').css({ 'text-align': 'center', 'border': '1.5px solid rgb(243, 117, 117)', 'font-size': '18px' });
+                    },
+                    destroy: function () {
+                        self.modalIsOpen = false;
+                        //console.log('Модальное окно закрыто');
                     }
+                });
+
+                document.getElementById("mm_button").addEventListener('click', () => {
+                    modal.destroy();
+                })
+
+            }
+
+            const removeListeners = () => {
+                document.body.removeEventListener("mouseleave", mRender)
+                document.getElementById("common--arrow-left").removeEventListener("mouseover", mRender)
+                document.getElementById("nav_menu").removeEventListener("mouseover", mRender)
+                document.getElementById(AMOCRM.constant('user').id).removeEventListener("mouseover", mRender)
+            }
+
+            removeListeners()
+            clearInterval(self.systemInterval)
+            clearInterval(self.leadInterval)
+
+            const subdomain = AMOCRM.constant('account').subdomain //субдомен амо
+
+            //Глобальный интервал, проверяет сделки без задачи в системе 
+            self.systemInterval = setInterval(async () => {
+                if (AMOCRM.data.is_card && AMOCRM.data.current_entity === "leads") return
+
+                try {
+                    const getNoTaskUrl = `https://${subdomain}.amocrm.ru/api/v2/leads?filter[tasks]=1`; //Сделки без задач
+                    const response = await fetch(getNoTaskUrl);
+                    let mm_noTask = await response.json();
+                    mm_noTask = mm_noTask._embedded.items;
+
+                    document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${Object.keys(mm_noTask)[0].id}`
+                } catch (error) {
+                    //Может вернуть пустоту
                 }
 
+            }, 5000);
 
-                main(mm_bool_setting);
-            } else {
-                //console.log('Проблная версия закончилась')
+            dataDB = {
+                subdomain: subdomain,
+                name: 'task',
+                username: self.get_settings().idgroup.email,
+                phone: self.get_settings().idgroup.phone
+            }
 
+            const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
+                method: 'POST',
+                body: JSON.stringify(dataDB),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
 
-                var message_params = {
-                    header: "Внимание у REDBOX:",
-                    text: "Пробный период окончен",
-                    date: 1534084500,
+            const widgetServerSettings = await responseDB.json()
+            const work = widgetServerSettings.paid || Math.round(14 - (Date.now() - widgetServerSettings.trialStart) / 86400000) > 0
+
+            //если виджет не оплчен или закончился триал
+            if (!work) {
+
+                let message_params = {
+                    header: "Виджет:",
+                    text: "Обязательные сделки",
+                    date: new Date(),
                     icon: "https://image.flaticon.com/icons/svg/165/165031.svg"
                 };
                 AMOCRM.notifications.show_message(message_params);
 
                 setTimeout(() => {
                     var message_params = {
-                        header: "Для продления:",
+                        header: "Оплатите виджет:",
                         text: "Напишите нам redbox@gmail.com",
-                        date: 1534084500,
+                        date: new Date(),
                         icon: "https://image.flaticon.com/icons/svg/165/165031.svg"
                     };
                     AMOCRM.notifications.show_message(message_params);
 
                 }, 3000);
-
-
+                return
             }
+
+            //Если нет настроек групп - выходим
+            if (!(self.get_settings().idgroup && self.get_settings().idgroup.checked_groups && self.get_settings().idgroup.checked_groups.length)) return
+
+            //Проверяем группу текущего пользователя (настройки)
+            const getUsersUrl = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`; //Список пользователей 
+            const response = await fetch(getUsersUrl);
+            const mm_users = await response.json();
+            const amo_users = mm_users._embedded.users;
+
+            let isUser
+            for (let i of Object.keys(amo_users)) {
+                if (amo_users[i].id === AMOCRM.constant('user').id) {
+
+                    for (let j of Object.keys(self.get_settings().idgroup.checked_groups)) {
+
+                        if (String(amo_users[i].group_id) === self.get_settings().idgroup.checked_groups[j]) {
+                            isUser = true;
+                        }
+                    }
+
+                }
+            }
+
+            if (!isUser) return
+
+            if (!(AMOCRM.data.is_card && AMOCRM.data.current_entity === "leads")) return
+
+            self.leadInterval = setInterval(() => {
+
+                //Если в сделке нет задачи
+                if (!$(".card-task-wrapper").length) {
+
+                    $('.js-switcher-task').trigger('click'); //эмулируем нажатие кнопки, для отображения интерфейса поставноки задачи
+                    $('.feed-compose_task-future').css({ "border": "2px solid rgb(243, 117, 117)" }); //Краная рамка вокруг окна задач
+
+                    if (self.listenersAdded) return
+
+                    document.body.addEventListener("mouseleave", mRender); //Уход курсора за body
+                    document.getElementById("common--arrow-left").addEventListener("mouseover", mRender); //Навели курсор на кнопку назад в сделке
+                    document.getElementById("nav_menu").addEventListener("mouseover", mRender); //Навели курсор на боковое меню
+                    document.getElementById(AMOCRM.constant('user').id).addEventListener("mouseover", mRender); //Навели курсор на фото профиля
+
+                    self.listenersAdded = true
+
+                } else {
+
+                    //Возвращаем UI обратно 
+                    $('.feed-compose').css({ "border": "0px" });
+                    removeListeners()
+                }
+
+            }, 3000);
+
+
         }
     }
 });

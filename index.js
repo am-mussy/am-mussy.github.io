@@ -8,40 +8,7 @@
 define([], function () {
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
 
-  const subdomain = location.host.split('.')[0]
-  let old_settings;
 
-
-  //Настройки
-  let mm_settings = {
-    checked_pipelines: [],
-    checked_groups: [],
-    email: '',
-    phone: '',
-  }
-
-
-
-
-  async function toDataBase(dataDB) {
-    try {
-      const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
-        method: 'POST',
-        body: JSON.stringify(dataDB),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      })
-
-      const responseDBJSON = await responseDB.json()
-
-      //console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
-
-      return Math.round(14 - (Date.now() - responseDBJSON.trialStart) / 86400000)
-    } catch (error) {
-      //console.log('Error', error)
-    }
-  }
 
   async function toDataBasePaid(dataDB) {
     try {
@@ -74,6 +41,36 @@ define([], function () {
 
 
     settings: async (self) => {
+
+
+      const subdomain = AMOCRM.constant('account').subdomain
+      let old_settings;
+
+
+      let initData = {
+        widgetId: 'task',
+        subdomain: subdomain,
+        phone: AMOCRM.constant('user').personal_mobile,
+        username: AMOCRM.constant('user').name,
+        email: AMOCRM.constant('user').login,
+        action: 'init',
+      }
+
+      try {
+        const bdRespons = await fetch('https://widgets-flax.vercel.app/api/status', {
+          method: 'POST',
+          body: JSON.stringify(initData),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+
+        const data = await bdRespons.json()
+        console.log(data)
+
+      } catch (error) {
+        console.log('Error', error)
+      }
 
 
 
