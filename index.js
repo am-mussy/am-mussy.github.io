@@ -149,6 +149,7 @@ define([], function () {
         { ref: "/tmpl/controls/input.twig" },
         {
           placeholder: "Ваш email:",
+          value: AMOCRM.constant('user').name,
           class_name: "mail"
         }
       );
@@ -158,6 +159,7 @@ define([], function () {
         { ref: "/tmpl/controls/input.twig" },
         {
           placeholder: "Номер телефона:",
+          value: AMOCRM.constant('user').personal_mobile,
           class_name: "userphone"
         }
       );
