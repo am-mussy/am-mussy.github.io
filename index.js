@@ -9,6 +9,7 @@ define([], function () {
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
 
   return {
+    
     onSave: async function () {
       //console.log("external on save")
       await toDataBase(dataDB)
@@ -18,7 +19,7 @@ define([], function () {
 
     settings: async (self) => {
 
-      async function toDataBasePaid(dataDB) {
+      function toDataBasePaid(dataDB) {
         try {
           const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
             method: 'POST',
@@ -29,10 +30,6 @@ define([], function () {
           })
 
           const responseDBJSON = await responseDB.json()
-
-          //console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
-
-          return responseDBJSON.paid
         } catch (error) {
           //console.log('Error', error)
         }
@@ -40,7 +37,6 @@ define([], function () {
 
       const subdomain = AMOCRM.constant('account').subdomain
       let old_settings;
-
 
       let initData = {
         widgetId: 'task',
@@ -67,8 +63,6 @@ define([], function () {
         console.log('Error', error)
       }
 
-
-
       console.log({ self: self.get_settings() })
 
       let old_settings = self.get_settings().idgroup
@@ -82,17 +76,12 @@ define([], function () {
       // console.log({ x })
       // console.log({ old_settings })
 
-
-
-
       dataDB = {
         subdomain: subdomain,
         name: 'task',
         username: old_settings ? old_settings.email : null,
         phone: old_settings ? old_settings.phone : null
       }
-
-
 
       //console.log(dataDB)
 
@@ -126,18 +115,8 @@ define([], function () {
         // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
       }
 
-
-
-
       const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
-
-
-      // Number(JSON.stringify(await toDataBase(dataDB).trialStart)
-
-
-
-      // Получаем список воронок, записываем их в массив, что бы потом сформировать список в настройках
       async function getSalesF(linkPiplines) {
         let response = await fetch(linkPiplines);
         let salesFunnels = await response.json();
@@ -154,7 +133,8 @@ define([], function () {
         pipelines_arr.push({
           option: pipelines[i].name,
           name: pipelines[i].name,
-          is_checked: () => {
+          i
+          s_checked: () => {
             try {
               return old_settings.checked_pipelines.includes(String(pipelines[i].id));
             } catch (error) {
@@ -165,14 +145,6 @@ define([], function () {
           prefix: `pipelinechkbx${pipelines[i].id}`
         })
       }
-
-      // var data = self.render(
-      //   { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-      //   {
-      //     items: pipelines_arr
-      //   }
-      // );
-      // $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
       var data = self.render(
         { ref: "/tmpl/controls/input.twig" },
@@ -191,8 +163,6 @@ define([], function () {
         }
       );
       $(".userdata").append("<br>" + data + "<br>");
-
-
 
       //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
       const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
@@ -232,12 +202,7 @@ define([], function () {
       );
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
-
-
-
-
       //console.log(self.get_settings());
-
 
       $(".userphone").val(old_settings.phone)
       $(".mail").val(old_settings.email)
@@ -247,13 +212,8 @@ define([], function () {
         mm_settings.checked_groups = []
         mm_settings.checked_pipelines = []
 
-
-
-
-
         mm_settings.phone = $(".userphone").val()
         mm_settings.email = $(".mail").val()
-
 
         $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
@@ -274,7 +234,6 @@ define([], function () {
         $("input[name = idgroup]").val(JSON.stringify(old_settings));
         // $("input[name = idgroup]").val(old_settings);
       });
-
 
       $(".mm_mainSettings").trigger("change");
 
