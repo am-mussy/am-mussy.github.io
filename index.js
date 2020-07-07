@@ -19,222 +19,222 @@ define([], function () {
 
     settings: async (self) => {
 
-      function toDataBasePaid(dataDB) {
-        try {
-          const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
-            method: 'POST',
-            body: JSON.stringify(dataDB),
-            headers: {
-              'Content-Type': 'application/json'
-            },
-          })
+      // function toDataBasePaid(dataDB) {
+      //   try {
+      //     const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
+      //       method: 'POST',
+      //       body: JSON.stringify(dataDB),
+      //       headers: {
+      //         'Content-Type': 'application/json'
+      //       },
+      //     })
 
-          const responseDBJSON = await responseDB.json()
-        } catch (error) {
-          //console.log('Error', error)
-        }
-      }
-
-      const subdomain = AMOCRM.constant('account').subdomain
-      let old_settings;
-
-      let initData = {
-        widgetId: 'task',
-        subdomain: subdomain,
-        phone: AMOCRM.constant('user').personal_mobile,
-        username: AMOCRM.constant('user').name,
-        email: AMOCRM.constant('user').login,
-        action: 'init',
-      }
-
-      try {
-        const bdRespons = await fetch('https://widgets-flax.vercel.app/api/status', {
-          method: 'POST',
-          body: JSON.stringify(initData),
-          headers: {
-            'Content-Type': 'application/json'
-          },
-        })
-
-        const data = await bdRespons.json()
-        console.log(data)
-
-      } catch (error) {
-        console.log('Error', error)
-      }
-
-      console.log({ self: self.get_settings() })
-
-      let old_settings = self.get_settings().idgroup
-
-      // let x = $("input[name = idgroup]").val()
-
-      // if ($("input[name = idgroup]").val().length > 0) {
-      //   old_settings = JSON.parse($("input[name = idgroup]").val());
+      //     const responseDBJSON = await responseDB.json()
+      //   } catch (error) {
+      //     //console.log('Error', error)
+      //   }
       // }
 
-      // console.log({ x })
-      // console.log({ old_settings })
+      // const subdomain = AMOCRM.constant('account').subdomain
+      // let old_settings;
 
-      dataDB = {
-        subdomain: subdomain,
-        name: 'task',
-        username: old_settings ? old_settings.email : null,
-        phone: old_settings ? old_settings.phone : null
-      }
+      // let initData = {
+      //   widgetId: 'task',
+      //   subdomain: subdomain,
+      //   phone: AMOCRM.constant('user').personal_mobile,
+      //   username: AMOCRM.constant('user').name,
+      //   email: AMOCRM.constant('user').login,
+      //   action: 'init',
+      // }
 
-      //console.log(dataDB)
+      // try {
+      //   const bdRespons = await fetch('https://widgets-flax.vercel.app/api/status', {
+      //     method: 'POST',
+      //     body: JSON.stringify(initData),
+      //     headers: {
+      //       'Content-Type': 'application/json'
+      //     },
+      //   })
 
-      // Разметка настроек
+      //   const data = await bdRespons.json()
+      //   console.log(data)
 
-      $(".widget_settings_block__descr").after(
-        `
-          <div class="mm_mainSettings">
-            <div class="userdata">
-            <br>
-            <p>Данные пользователя:</p>
-            </div>
-            <div class="mm_piplineSettings">
-              <br>
-              <br>
-              <h3>Как настроить:</h3>
-              <br>
-              <p>1. Выберите пользователей, на которых будет распространятся данный виджет</p>
-              <p>2. Нажмите сохранить</p>
-              <br>
-            </div>
-            <div class="mm_userSettings">
+      // } catch (error) {
+      //   console.log('Error', error)
+      // }
 
-            </div>
-          </div>
-        `
-      );
+      // console.log({ self: self.get_settings() })
 
-      if (!await toDataBasePaid(dataDB)) {
-        $(".userdata").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
-        // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
-      }
+      // let old_settings = self.get_settings().idgroup
 
-      const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
+      // // let x = $("input[name = idgroup]").val()
 
-      async function getSalesF(linkPiplines) {
-        let response = await fetch(linkPiplines);
-        let salesFunnels = await response.json();
-        salesFunnels = salesFunnels._embedded.items;
-        return salesFunnels;
-      }
+      // // if ($("input[name = idgroup]").val().length > 0) {
+      // //   old_settings = JSON.parse($("input[name = idgroup]").val());
+      // // }
 
-      //Записываем список ВОРОНОК в piplines
-      const pipelines = await getSalesF(linkPiplines);
+      // // console.log({ x })
+      // // console.log({ old_settings })
 
-      const pipelines_arr = [];
+      // dataDB = {
+      //   subdomain: subdomain,
+      //   name: 'task',
+      //   username: old_settings ? old_settings.email : null,
+      //   phone: old_settings ? old_settings.phone : null
+      // }
 
-      for (let i of Object.keys(pipelines)) { //дублирование кода?
-        pipelines_arr.push({
-          option: pipelines[i].name,
-          name: pipelines[i].name,
-          s_checked: () => {
-            try {
-              return old_settings.checked_pipelines.includes(String(pipelines[i].id));
-            } catch (error) {
-              return false;
-            }
-          },
-          id: pipelines[i].id,
-          prefix: `pipelinechkbx${pipelines[i].id}`
-        })
-      }
+      // //console.log(dataDB)
 
-      var data = self.render(
-        { ref: "/tmpl/controls/input.twig" },
-        {
-          placeholder: "Ваш email:",
-          class_name: "mail"
-        }
-      );
-      $(".userdata").append("<br>" + data + "<br>");
+      // // Разметка настроек
 
-      var data = self.render(
-        { ref: "/tmpl/controls/input.twig" },
-        {
-          placeholder: "Номер телефона:",
-          class_name: "userphone"
-        }
-      );
-      $(".userdata").append("<br>" + data + "<br>");
+      // $(".widget_settings_block__descr").after(
+      //   `
+      //     <div class="mm_mainSettings">
+      //       <div class="userdata">
+      //       <br>
+      //       <p>Данные пользователя:</p>
+      //       </div>
+      //       <div class="mm_piplineSettings">
+      //         <br>
+      //         <br>
+      //         <h3>Как настроить:</h3>
+      //         <br>
+      //         <p>1. Выберите пользователей, на которых будет распространятся данный виджет</p>
+      //         <p>2. Нажмите сохранить</p>
+      //         <br>
+      //       </div>
+      //       <div class="mm_userSettings">
 
-      //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
-      const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
+      //       </div>
+      //     </div>
+      //   `
+      // );
 
-      async function getGroups(linkGroups) {
-        let response = await fetch(linkGroups);
-        let Groups = await response.json();
-        Groups = Groups._embedded.groups;
-        return Groups;
-      }
+      // if (!await toDataBasePaid(dataDB)) {
+      //   $(".userdata").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
+      //   // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
+      // }
 
-      const groups = await getGroups(linkGroups);
-      const groups_arr = [];
+      // const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
 
-      for (let i of Object.keys(groups)) {
-        groups_arr.push({
-          option: groups[i].name,
-          name: groups[i].name,
-          is_checked: () => {
-            try {
-              return old_settings.checked_groups.includes(String(groups[i].id));
-            } catch (error) {
-              return false;
-            }
-          },
-          id: groups[i].id,
-          prefix: `groupschkbx${groups[i].id}`
-        })
-      }
+      // async function getSalesF(linkPiplines) {
+      //   let response = await fetch(linkPiplines);
+      //   let salesFunnels = await response.json();
+      //   salesFunnels = salesFunnels._embedded.items;
+      //   return salesFunnels;
+      // }
 
-      //Список групп
-      var data = self.render(
-        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-        {
-          items: groups_arr
-        }
-      );
-      $(".mm_piplineSettings").append("<br>" + data + "<br>");
+      // //Записываем список ВОРОНОК в piplines
+      // const pipelines = await getSalesF(linkPiplines);
 
-      //console.log(self.get_settings());
+      // const pipelines_arr = [];
 
-      $(".userphone").val(old_settings.phone)
-      $(".mail").val(old_settings.email)
+      // for (let i of Object.keys(pipelines)) { //дублирование кода?
+      //   pipelines_arr.push({
+      //     option: pipelines[i].name,
+      //     name: pipelines[i].name,
+      //     s_checked: () => {
+      //       try {
+      //         return old_settings.checked_pipelines.includes(String(pipelines[i].id));
+      //       } catch (error) {
+      //         return false;
+      //       }
+      //     },
+      //     id: pipelines[i].id,
+      //     prefix: `pipelinechkbx${pipelines[i].id}`
+      //   })
+      // }
 
-      $(".mm_mainSettings").change(function () {
+      // var data = self.render(
+      //   { ref: "/tmpl/controls/input.twig" },
+      //   {
+      //     placeholder: "Ваш email:",
+      //     class_name: "mail"
+      //   }
+      // );
+      // $(".userdata").append("<br>" + data + "<br>");
 
-        mm_settings.checked_groups = []
-        mm_settings.checked_pipelines = []
+      // var data = self.render(
+      //   { ref: "/tmpl/controls/input.twig" },
+      //   {
+      //     placeholder: "Номер телефона:",
+      //     class_name: "userphone"
+      //   }
+      // );
+      // $(".userdata").append("<br>" + data + "<br>");
 
-        mm_settings.phone = $(".userphone").val()
-        mm_settings.email = $(".mail").val()
+      // //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
+      // const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
 
-        $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
+      // async function getGroups(linkGroups) {
+      //   let response = await fetch(linkGroups);
+      //   let Groups = await response.json();
+      //   Groups = Groups._embedded.groups;
+      //   return Groups;
+      // }
 
-          if ($(this).parent().parent().hasClass('is-checked')) {
-            mm_settings.checked_pipelines.push($(this).attr('value'));
-          }
-        })
+      // const groups = await getGroups(linkGroups);
+      // const groups_arr = [];
 
-        $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
+      // for (let i of Object.keys(groups)) {
+      //   groups_arr.push({
+      //     option: groups[i].name,
+      //     name: groups[i].name,
+      //     is_checked: () => {
+      //       try {
+      //         return old_settings.checked_groups.includes(String(groups[i].id));
+      //       } catch (error) {
+      //         return false;
+      //       }
+      //     },
+      //     id: groups[i].id,
+      //     prefix: `groupschkbx${groups[i].id}`
+      //   })
+      // }
 
-          if ($(this).parent().parent().hasClass('is-checked')) {
-            mm_settings.checked_groups.push($(this).attr('value'));
-          }
-        })
+      // //Список групп
+      // var data = self.render(
+      //   { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+      //   {
+      //     items: groups_arr
+      //   }
+      // );
+      // $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
-        old_settings = mm_settings;
+      // //console.log(self.get_settings());
 
-        $("input[name = idgroup]").val(JSON.stringify(old_settings));
-        // $("input[name = idgroup]").val(old_settings);
-      });
+      // $(".userphone").val(old_settings.phone)
+      // $(".mail").val(old_settings.email)
 
-      $(".mm_mainSettings").trigger("change");
+      // $(".mm_mainSettings").change(function () {
+
+      //   mm_settings.checked_groups = []
+      //   mm_settings.checked_pipelines = []
+
+      //   mm_settings.phone = $(".userphone").val()
+      //   mm_settings.email = $(".mail").val()
+
+      //   $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
+
+      //     if ($(this).parent().parent().hasClass('is-checked')) {
+      //       mm_settings.checked_pipelines.push($(this).attr('value'));
+      //     }
+      //   })
+
+      //   $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
+
+      //     if ($(this).parent().parent().hasClass('is-checked')) {
+      //       mm_settings.checked_groups.push($(this).attr('value'));
+      //     }
+      //   })
+
+      //   old_settings = mm_settings;
+
+      //   $("input[name = idgroup]").val(JSON.stringify(old_settings));
+      //   // $("input[name = idgroup]").val(old_settings);
+      // });
+
+      // $(".mm_mainSettings").trigger("change");
 
     }
   };
