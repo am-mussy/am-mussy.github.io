@@ -84,8 +84,8 @@ define([], function () {
             dataDB = {
                 subdomain: subdomain,
                 name: 'task',
-                username: self.get_settings().idgroup.email,
-                phone: self.get_settings().idgroup.phone
+                // username: self.get_settings().idgroup.email,
+                // phone: self.get_settings().idgroup.phone
             }
 
             const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
