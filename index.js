@@ -8,30 +8,6 @@
 define([], function () {
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
 
-
-
-  async function toDataBasePaid(dataDB) {
-    try {
-      const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
-        method: 'POST',
-        body: JSON.stringify(dataDB),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      })
-
-      const responseDBJSON = await responseDB.json()
-
-      //console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
-
-      return responseDBJSON.paid
-    } catch (error) {
-      //console.log('Error', error)
-    }
-  }
-
-
-
   return {
     onSave: async function () {
       //console.log("external on save")
@@ -42,6 +18,25 @@ define([], function () {
 
     settings: async (self) => {
 
+      async function toDataBasePaid(dataDB) {
+        try {
+          const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
+            method: 'POST',
+            body: JSON.stringify(dataDB),
+            headers: {
+              'Content-Type': 'application/json'
+            },
+          })
+
+          const responseDBJSON = await responseDB.json()
+
+          //console.log('Успех', JSON.stringify(responseDBJSON.trialStart))
+
+          return responseDBJSON.paid
+        } catch (error) {
+          //console.log('Error', error)
+        }
+      }
 
       const subdomain = AMOCRM.constant('account').subdomain
       let old_settings;
