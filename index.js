@@ -19,6 +19,14 @@ define([], function () {
 
     settings: async (self) => {
 
+      let mm_settings = {
+        phone: AMOCRM.constant('user').personal_mobile,
+        username: AMOCRM.constant('user').name,
+        email: AMOCRM.constant('user').login,
+        checked_groups: []
+      }
+
+      console.log(mm_settings)
       // function toDataBasePaid(dataDB) {
       //   try {
       //     const responseDB = await fetch('https://widgets-flax.vercel.app/api/status', {
@@ -216,34 +224,34 @@ define([], function () {
 
       $(".mm_mainSettings").change(function () {
 
-        mm_settings.checked_groups = []
-        mm_settings.checked_pipelines = []
 
-        mm_settings.phone = $(".userphone").val()
-        mm_settings.email = $(".mail").val()
 
-        $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
+        //   mm_settings.checked_groups = []
+        //   mm_settings.phone = $(".userphone").val()
+        //   mm_settings.email = $(".mail").val()
 
-          if ($(this).parent().parent().hasClass('is-checked')) {
-            mm_settings.checked_pipelines.push($(this).attr('value'));
-          }
-        })
+        //   $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
 
-        $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
+        //     if ($(this).parent().parent().hasClass('is-checked')) {
+        //       mm_settings.checked_pipelines.push($(this).attr('value'));
+        //     }
+        //   })
 
-          if ($(this).parent().parent().hasClass('is-checked')) {
-            mm_settings.checked_groups.push($(this).attr('value'));
-          }
-        })
+        //   $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
 
-        old_settings = mm_settings;
+        //     if ($(this).parent().parent().hasClass('is-checked')) {
+        //       mm_settings.checked_groups.push($(this).attr('value'));
+        //     }
+        //   })
 
-        $("input[name = idgroup]").val(JSON.stringify(old_settings));
-        // $("input[name = idgroup]").val(old_settings);
-      });
+        //   old_settings = mm_settings;
 
-      $(".mm_mainSettings").trigger("change");
+        //   $("input[name = idgroup]").val(JSON.stringify(old_settings));
+        //   // $("input[name = idgroup]").val(old_settings);
+        // });
 
-    }
+        // $(".mm_mainSettings").trigger("change");
+
+      }
   };
-});
+  });
