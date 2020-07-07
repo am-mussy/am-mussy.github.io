@@ -133,7 +133,6 @@ define([], function () {
         pipelines_arr.push({
           option: pipelines[i].name,
           name: pipelines[i].name,
-          i
           s_checked: () => {
             try {
               return old_settings.checked_pipelines.includes(String(pipelines[i].id));
