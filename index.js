@@ -205,8 +205,14 @@ define([], function () {
 
       //console.log(self.get_settings());
 
-      $(".userphone").val(old_settings.phone)
-      $(".mail").val(old_settings.email)
+
+      try {
+        $(".userphone").val(old_settings.phone)
+        $(".mail").val(old_settings.email)
+      } catch (error) {
+        console.log(error)
+      }
+
 
       $(".mm_mainSettings").change(function () {
 
