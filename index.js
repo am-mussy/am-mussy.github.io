@@ -9,10 +9,10 @@ define([], function () {
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
 
   return {
-    
+
     onSave: async function () {
       //console.log("external on save")
-  
+
       location.reload()
     },
 
@@ -65,7 +65,7 @@ define([], function () {
 
       console.log({ self: self.get_settings() })
 
-      let old_settings = self.get_settings().idgroup
+      // let old_settings = self.get_settings().idgroup
 
       // let x = $("input[name = idgroup]").val()
 
