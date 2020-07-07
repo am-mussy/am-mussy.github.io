@@ -11,8 +11,7 @@ define([], function () {
   return {
 
     onSave: async function () {
-      //console.log("external on save")
-
+      console.log("external on save")
       location.reload()
     },
 
@@ -23,7 +22,7 @@ define([], function () {
         phone: AMOCRM.constant('user').personal_mobile,
         username: AMOCRM.constant('user').name,
         email: AMOCRM.constant('user').login,
-        checked_groups: []
+        checked_groups: [],
       }
 
       console.log(mm_settings)
@@ -116,26 +115,26 @@ define([], function () {
             </div>
           </div>
         `
-      );
+      )
 
       // if (!await toDataBasePaid(dataDB)) {
       //   $(".userdata").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
       //   // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
       // }
 
-      const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
+      const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`
 
       async function getSalesF(linkPiplines) {
-        let response = await fetch(linkPiplines);
-        let salesFunnels = await response.json();
-        salesFunnels = salesFunnels._embedded.items;
-        return salesFunnels;
+        let response = await fetch(linkPiplines)
+        let salesFunnels = await response.json()
+        salesFunnels = salesFunnels._embedded.items
+        return salesFunnels
       }
 
       //Записываем список ВОРОНОК в piplines
-      const pipelines = await getSalesF(linkPiplines);
+      const pipelines = await getSalesF(linkPiplines)
 
-      const pipelines_arr = [];
+      const pipelines_arr = []
 
       for (let i of Object.keys(pipelines)) { //дублирование кода?
         pipelines_arr.push({
@@ -160,8 +159,9 @@ define([], function () {
           value: AMOCRM.constant('user').name,
           class_name: "mail"
         }
-      );
-      $(".userdata").append("<br>" + data + "<br>");
+      )
+
+      $(".userdata").append("<br>" + data + "<br>")
 
       var data = self.render(
         { ref: "/tmpl/controls/input.twig" },
@@ -170,11 +170,12 @@ define([], function () {
           value: AMOCRM.constant('user').personal_mobile,
           class_name: "userphone"
         }
-      );
-      $(".userdata").append("<br>" + data + "<br>");
+      )
+
+      $(".userdata").append("<br>" + data + "<br>")
 
       //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
-      const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
+      const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`
 
       async function getGroups(linkGroups) {
         let response = await fetch(linkGroups);
@@ -183,8 +184,8 @@ define([], function () {
         return Groups;
       }
 
-      const groups = await getGroups(linkGroups);
-      const groups_arr = [];
+      const groups = await getGroups(linkGroups)
+      const groups_arr = []
 
       for (let i of Object.keys(groups)) {
         groups_arr.push({
@@ -209,10 +210,10 @@ define([], function () {
           items: groups_arr
         }
       );
+
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
-      //console.log(self.get_settings());
-
+      //console.log(self.get_settings())
 
       try {
         $(".userphone").val(old_settings.phone)
@@ -223,8 +224,6 @@ define([], function () {
 
 
       $(".mm_mainSettings").change(function () {
-
-
 
         //   mm_settings.checked_groups = []
         //   mm_settings.phone = $(".userphone").val()
@@ -252,6 +251,10 @@ define([], function () {
 
         // $(".mm_mainSettings").trigger("change");
 
-      }
-  };
-  });
+      })
+
+
+    }
+  }
+});
+
