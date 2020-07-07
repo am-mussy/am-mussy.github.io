@@ -229,21 +229,21 @@ define([], function () {
         //   mm_settings.phone = $(".userphone").val()
         //   mm_settings.email = $(".mail").val()
 
-        $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
+        // $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
+
+        //   if ($(this).parent().parent().hasClass('is-checked')) {
+        //     mm_settings.checked_pipelines.push($(this).attr('value'));
+        //   }
+        // })
+
+
+        $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
 
           if ($(this).parent().parent().hasClass('is-checked')) {
-            mm_settings.checked_pipelines.push($(this).attr('value'));
+            mm_settings.checked_groups.push($(this).attr('value'));
           }
         })
-
         console.log(mm_settings)
-        //   $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
-
-        //     if ($(this).parent().parent().hasClass('is-checked')) {
-        //       mm_settings.checked_groups.push($(this).attr('value'));
-        //     }
-        //   })
-
         //   old_settings = mm_settings;
 
         //   $("input[name = idgroup]").val(JSON.stringify(old_settings));
