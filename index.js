@@ -136,21 +136,21 @@ define([], function () {
 
 
 
-      for (let i of Object.keys(pipelines)) { //дублирование кода?
-        pipelines_arr.push({
-          option: pipelines[i].name,
-          name: pipelines[i].name,
-          s_checked: () => {
-            try {
-              return old_settings.checked_pipelines.includes(String(pipelines[i].id));
-            } catch (error) {
-              console.log(error)
-            }
-          },
-          id: pipelines[i].id,
-          prefix: `pipelinechkbx${pipelines[i].id}`
-        })
-      }
+      // for (let i of Object.keys(pipelines)) { //дублирование кода?
+      //   pipelines_arr.push({
+      //     option: pipelines[i].name,
+      //     name: pipelines[i].name,
+      //     s_checked: () => {
+      //       try {
+      //         return old_settings.checked_pipelines.includes(String(pipelines[i].id));
+      //       } catch (error) {
+      //         console.log(error)
+      //       }
+      //     },
+      //     id: pipelines[i].id,
+      //     prefix: `pipelinechkbx${pipelines[i].id}`
+      //   })
+      // }
 
       var data = self.render(
         { ref: "/tmpl/controls/input.twig" },
@@ -193,7 +193,7 @@ define([], function () {
           name: groups[i].name,
           is_checked: () => {
             try {
-              return self.settings().idgroup.checked_groups.includes(String(groups[i].id));
+              return old_settings.idgroup.checked_groups.includes(String(groups[i].id));
             } catch (error) {
               return false;
             }
