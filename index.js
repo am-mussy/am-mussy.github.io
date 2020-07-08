@@ -10,7 +10,7 @@ define([], function () {
 
   return {
 
-    onSave: async function () {
+    onSave: async function (self) {
       console.log("external on save")
       console.log({ self: self.get_settings() })
       location.reload()
