@@ -193,7 +193,7 @@ define([], function () {
           name: groups[i].name,
           is_checked: () => {
             try {
-              return old_settings.idgroup.checked_groups.includes(String(groups[i].id));
+              return old_settings.checked_groups.includes(String(groups[i].id));
             } catch (error) {
               return false;
             }
