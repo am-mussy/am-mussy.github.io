@@ -240,18 +240,20 @@ define([], function () {
         $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
 
           if ($(this).parent().parent().hasClass('is-checked')) {
-            mm_settings.checked_groups.push($(this).attr('value'));
+            mm_settings.checked_groups.push($(this).attr('value'))
           }
         })
         console.log(mm_settings)
 
         //   old_settings = mm_settings;
 
-        //   $("input[name = idgroup]").val(JSON.stringify(old_settings));
-        //   // $("input[name = idgroup]").val(old_settings);
-        // });
+        $("input[name = idgroup]").val(JSON.stringify(mm_settings))
+        $("input[name = idgroup]").val(mm_settings)
 
-        // $(".mm_mainSettings").trigger("change");
+
+        $(".mm_mainSettings").trigger("change")
+
+        console.log($("input[name = idgroup]").val(mm_settings))
 
       })
 
