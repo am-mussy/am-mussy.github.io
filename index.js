@@ -72,7 +72,7 @@ define([], function () {
 
       console.log({ self: self.get_settings() })
 
-      // let old_settings = self.get_settings().idgroup
+      let old_settings = self.get_settings().idgroup
 
       // let x = $("input[name = idgroup]").val()
 
@@ -135,6 +135,8 @@ define([], function () {
       const pipelines = await getSalesF(linkPiplines)
 
       const pipelines_arr = []
+
+
 
       for (let i of Object.keys(pipelines)) { //дублирование кода?
         pipelines_arr.push({
