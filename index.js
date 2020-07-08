@@ -72,8 +72,8 @@ define([], function () {
 
       console.log({ self: self.get_settings() })
 
-      let old_settings = JSON.parse(self.get_settings().idgroup)
-      console.log(old_settings)
+      //let old_settings = JSON.parse(self.get_settings().idgroup)
+      console.log(JSON.parse(self.get_settings().idgroup)
 
       // let x = $("input[name = idgroup]").val()
 
