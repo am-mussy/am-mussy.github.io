@@ -1,4 +1,3 @@
-
 define([], function () {
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
 
@@ -66,7 +65,7 @@ define([], function () {
 
       console.log({ self: self.get_settings() })
 
-      old_settings = JSON.parse(self.get_settings().idgroup)
+      old_settings = JSON.parse(self.get_settings())
 
 
       // let x = $("input[name = idgroup]").val()
