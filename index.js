@@ -243,17 +243,17 @@ define([], function () {
             mm_settings.checked_groups.push($(this).attr('value'))
           }
         })
-        console.log(mm_settings)
 
         //   old_settings = mm_settings;
 
         $("input[name = idgroup]").val(JSON.stringify(mm_settings))
         $("input[name = idgroup]").val(mm_settings)
 
+        console.log($("input[name = idgroup]").val())
 
-        $(".mm_mainSettings").trigger("change")
+        // $(".mm_mainSettings").trigger("change")
 
-        console.log($("input[name = idgroup]").val(mm_settings))
+
 
       })
 
