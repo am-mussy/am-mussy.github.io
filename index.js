@@ -246,8 +246,8 @@ define([], function () {
 
         //   old_settings = mm_settings;
 
-        // $("input[name = idgroup]").val(JSON.stringify(mm_settings))
-        $("input[name = idgroup]").val(mm_settings)
+        $("input[name = idgroup]").val(JSON.stringify(mm_settings))
+        //$("input[name = idgroup]").val(mm_settings)
 
         console.log($("input[name = idgroup]").val())
 
