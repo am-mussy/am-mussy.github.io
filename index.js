@@ -64,15 +64,13 @@ define([], function () {
       }
 
       console.log({ self: self.get_settings() })
+      try {
+        old_settings = JSON.parse(self.get_settings().idgroup)
+      } catch (error) {
+        old_settings = self.get_settings().idgroup
+      }
 
-      old_settings = JSON.parse(self.get_settings())
-      test = self.get_settings()
-      console.log(test)
-      test = test.idgroup
-      console.log(test)
-
-      console.log(JSON.parse(test))
-
+      console.log(old_settings)
 
       // let x = $("input[name = idgroup]").val()
 
