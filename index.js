@@ -72,9 +72,8 @@ define([], function () {
 
       console.log({ self: self.get_settings() })
 
-      let old_settings = JSON.parse(self.get_settings().idgroup)
+      old_settings = JSON.parse(self.get_settings().idgroup)
 
-      console.log(JSON.parse(self.get_settings().idgroup))
 
       // let x = $("input[name = idgroup]").val()
 
@@ -148,7 +147,7 @@ define([], function () {
             try {
               return old_settings.checked_pipelines.includes(String(pipelines[i].id));
             } catch (error) {
-              return false;
+              console.log(error)
             }
           },
           id: pipelines[i].id,
@@ -219,12 +218,12 @@ define([], function () {
 
       //console.log(self.get_settings())
 
-      try {
-        $(".userphone").val(old_settings.phone)
-        $(".mail").val(old_settings.email)
-      } catch (error) {
-        console.log(error)
-      }
+      // try {
+      //   $(".userphone").val(old_settings.phone)
+      //   $(".mail").val(old_settings.email)
+      // } catch (error) {
+      //   console.log(error)
+      // }
 
 
       $(".mm_mainSettings").change(function () {
