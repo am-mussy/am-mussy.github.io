@@ -11,6 +11,7 @@ define([], function () {
   return {
 
     onSave: async function (self) {
+      console.log(self.get_settings())
       console.log("external on save")
     },
 
