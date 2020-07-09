@@ -119,14 +119,15 @@ define([], function () {
           `)
 
 
-          var data = self.render(
-            { ref: "/tmpl/controls/button.twig" },
-            {
-              class_name: "button_buy",
-              text: "Купить"
-            }
-          );
-          $(".userdata").append("<br>" + data + "<br>");
+          // var data = self.render(
+          //   { ref: "/tmpl/controls/button.twig" },
+          //   {
+          //     class_name: "button_buy",
+          //     text: "Купить"
+          //   }
+          // );
+
+          // $(".userdata").append("<br>" + data + "<br>");
         }
 
       } catch (error) {
