@@ -5,6 +5,36 @@ define([], function () {
 
     onSave: async function (self) {
       console.log(self.get_settings())
+
+
+      let trialData = {
+        widgetId: 'task',
+        subdomain: subdomain,
+        phone: $('.mail').val(),
+        username: AMOCRM.constant('user').name,
+        email: $('.userphone').val(),
+        action: 'trialStart',
+      }
+
+      try {
+        const bdRespons = await fetch('https://widgets-flax.vercel.app/api/status', {
+          method: 'POST',
+          body: JSON.stringify(initData),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+
+        const data = await bdRespons.json()
+        console.log(data)
+      } catch {
+        console.log(error)
+      }
+
+
+
+
+
       console.log("external on save")
     },
 
@@ -55,8 +85,6 @@ define([], function () {
           `)
 
         }
-
-
 
       } catch (error) {
         console.log('Error', error)
