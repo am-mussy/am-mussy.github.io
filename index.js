@@ -9,7 +9,7 @@ define([], function () {
 
       let trialData = {
         widgetId: 'task',
-        subdomain: subdomain,
+        subdomain: AMOCRM.constant('account').subdomain,
         phone: $('.mail').val(),
         username: AMOCRM.constant('user').name,
         email: $('.userphone').val(),
