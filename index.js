@@ -143,12 +143,13 @@ define([], function () {
 
       $(".header").after(
         ` 
-          <hr>
+          
           <div class="mm_mainSettings">
             <div class="userdata">
             <br>
             <p>Данные пользователя:</p>
             </div>
+            <hr>
             <div class="mm_piplineSettings">
             </div>
             <div class="mm_userSettings">
