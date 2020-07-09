@@ -72,6 +72,8 @@ define([], function () {
         const data = await bdRespons.json()
         console.log(data)
 
+        //Отображение настроек, описания и т.д в зависимоти от статуса
+
         if (data.status === 'new') {
           $(".button-input-inner__text").html('Начать пробный период')
           $(".widget_settings_block__descr").after(`
@@ -84,6 +86,26 @@ define([], function () {
             </div>
           `)
 
+        } else if (data.status === 'trial') {
+
+          $(".widget_settings_block__descr").after(`
+            <div class="header">
+            <br>
+             На данный момент, в тестовом режиме!
+             Что бы приобрести виджет нажминте на кнопку "Купить"
+            <br>
+            </div>
+          `)
+
+          //js-widget-save
+
+          // var data = self.render(
+          //   { ref: "/tmpl/controls/button.twig" },
+          //   {
+          //     class_name: "button_buy",
+          //     text : "Купить"
+          //   }
+          // );
         }
 
       } catch (error) {
@@ -149,29 +171,6 @@ define([], function () {
         return salesFunnels
       }
 
-      //Записываем список ВОРОНОК в piplines
-      const pipelines = await getSalesF(linkPiplines)
-
-      const pipelines_arr = []
-
-
-
-      // for (let i of Object.keys(pipelines)) { //дублирование кода?
-      //   pipelines_arr.push({
-      //     option: pipelines[i].name,
-      //     name: pipelines[i].name,
-      //     s_checked: () => {
-      //       try {
-      //         return old_settings.checked_pipelines.includes(String(pipelines[i].id));
-      //       } catch (error) {
-      //         console.log(error)
-      //       }
-      //     },
-      //     id: pipelines[i].id,
-      //     prefix: `pipelinechkbx${pipelines[i].id}`
-      //   })
-      // }
-
       var data = self.render(
         { ref: "/tmpl/controls/input.twig" },
         {
@@ -233,29 +232,19 @@ define([], function () {
 
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
-      //console.log(self.get_settings())
 
-      // try {
-      //   $(".userphone").val(old_settings.phone)
-      //   $(".mail").val(old_settings.email)
-      // } catch (error) {
-      //   console.log(error)
-      // }
-
-
+      var data = self.render(
+        { ref: "/tmpl/controls/button.twig" },
+        {
+          class_name: "button_buy",
+          text : "Купить"
+        }
+      );
+      $(".mm_piplineSettings").append("<br>" + data + "<br>");
+      //Обновление данных при изменении настроек
       $(".mm_mainSettings").change(function () {
 
         mm_settings.checked_groups = []
-        //   mm_settings.phone = $(".userphone").val()
-        //   mm_settings.email = $(".mail").val()
-
-        // $('[ID *= "cbx_drop_pipelinechkbx"]').each(function (index) {
-
-        //   if ($(this).parent().parent().hasClass('is-checked')) {
-        //     mm_settings.checked_pipelines.push($(this).attr('value'));
-        //   }
-        // })
-
 
         $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
 
@@ -264,14 +253,9 @@ define([], function () {
           }
         })
 
-        //   old_settings = mm_settings;
-
         $("input[name = idgroup]").val(JSON.stringify(mm_settings))
-        //$("input[name = idgroup]").val(mm_settings)
 
         console.log($("input[name = idgroup]").val())
-
-        // $(".mm_mainSettings").trigger("change")
       })
 
 
