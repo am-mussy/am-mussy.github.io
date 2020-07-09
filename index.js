@@ -19,7 +19,7 @@ define([], function () {
       try {
         const bdRespons = await fetch('https://widgets-flax.vercel.app/api/status', {
           method: 'POST',
-          body: JSON.stringify(initData),
+          body: JSON.stringify(trialData),
           headers: {
             'Content-Type': 'application/json'
           },
