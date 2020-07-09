@@ -41,6 +41,8 @@ define([], function () {
 
     settings: async (self) => {
 
+
+
       let mm_settings = {
         phone: AMOCRM.constant('user').personal_mobile,
         username: AMOCRM.constant('user').name,
@@ -59,6 +61,25 @@ define([], function () {
         email: AMOCRM.constant('user').login,
         action: 'init',
       }
+
+      $(".header").after(
+        ` 
+          
+          <div class="mm_mainSettings">
+            <div class="userdata">
+            <br>
+            <p>Данные пользователя:</p>
+            </div>
+            <hr>
+            <div class="mm_piplineSettings">
+            </div>
+            <div class="mm_userSettings">
+
+            </div>
+          </div>
+        `
+      )
+
 
       try {
         const bdRespons = await fetch('https://widgets-flax.vercel.app/api/status', {
@@ -141,23 +162,7 @@ define([], function () {
 
       // Разметка настроек
 
-      $(".header").after(
-        ` 
-          
-          <div class="mm_mainSettings">
-            <div class="userdata">
-            <br>
-            <p>Данные пользователя:</p>
-            </div>
-            <hr>
-            <div class="mm_piplineSettings">
-            </div>
-            <div class="mm_userSettings">
 
-            </div>
-          </div>
-        `
-      )
 
       // if (!await toDataBasePaid(dataDB)) {
       //   $(".userdata").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
