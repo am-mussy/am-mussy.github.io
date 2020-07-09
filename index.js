@@ -27,7 +27,7 @@ define([], function () {
 
         const data = await bdRespons.json()
         console.log(data)
-      } catch {
+      } catch (error) {
         console.log(error)
       }
 
