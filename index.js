@@ -97,15 +97,15 @@ define([], function () {
             </div>
           `)
 
-          //js-widget-save
 
-          // var data = self.render(
-          //   { ref: "/tmpl/controls/button.twig" },
-          //   {
-          //     class_name: "button_buy",
-          //     text : "Купить"
-          //   }
-          // );
+          var data = self.render(
+            { ref: "/tmpl/controls/button.twig" },
+            {
+              class_name: "button_buy",
+              text: "Купить"
+            }
+          );
+          $(".userdata").after("<br>" + data + "<br>");
         }
 
       } catch (error) {
@@ -235,14 +235,7 @@ define([], function () {
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
 
 
-      var data = self.render(
-        { ref: "/tmpl/controls/button.twig" },
-        {
-          class_name: "button_buy",
-          text: "Купить"
-        }
-      );
-      $(".mm_piplineSettings").append("<br>" + data + "<br>");
+
       //Обновление данных при изменении настроек
       $(".mm_mainSettings").change(function () {
 
