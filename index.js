@@ -91,8 +91,8 @@ define([], function () {
           $(".widget_settings_block__descr").after(`
             <div class="header">
             <br>
-             На данный момент, в тестовом режиме!
-             Что бы приобрести виджет нажминте на кнопку "Купить"
+            <p> На данный момент, в тестовом режиме! </p>
+            <p> Что бы приобрести виджет нажминте на кнопку "Купить" </p>
             <br>
             </div>
           `)
@@ -237,7 +237,7 @@ define([], function () {
         { ref: "/tmpl/controls/button.twig" },
         {
           class_name: "button_buy",
-          text : "Купить"
+          text: "Купить"
         }
       );
       $(".mm_piplineSettings").append("<br>" + data + "<br>");
