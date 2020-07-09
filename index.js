@@ -142,7 +142,8 @@ define([], function () {
       // Разметка настроек
 
       $(".header").after(
-        `
+        ` 
+          <hr>
           <div class="mm_mainSettings">
             <div class="userdata">
             <br>
