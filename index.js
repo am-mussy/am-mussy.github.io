@@ -31,17 +31,11 @@ define([], function () {
         console.log(error)
       }
 
-
-
-
-
       console.log("external on save")
     },
 
 
     settings: async (self) => {
-
-
 
       let mm_settings = {
         phone: AMOCRM.constant('user').personal_mobile,
@@ -61,25 +55,6 @@ define([], function () {
         email: AMOCRM.constant('user').login,
         action: 'init',
       }
-
-      $(".header").after(
-        ` 
-          
-          <div class="mm_mainSettings">
-            <div class="userdata">
-            <br>
-            <p>Данные пользователя:</p>
-            </div>
-            <hr>
-            <div class="mm_piplineSettings">
-            </div>
-            <div class="mm_userSettings">
-
-            </div>
-          </div>
-        `
-      )
-
 
       try {
         const bdRespons = await fetch('https://widgets-flax.vercel.app/api/status', {
@@ -107,6 +82,24 @@ define([], function () {
             </div>
           `)
 
+          $(".header").after(
+            ` 
+              
+              <div class="mm_mainSettings">
+                <div class="userdata">
+                <br>
+                <p>Данные пользователя:</p>
+                </div>
+                <hr>
+                <div class="mm_piplineSettings">
+                </div>
+                <div class="mm_userSettings">
+    
+                </div>
+              </div>
+            `
+          )
+
         } else if (data.status === 'trial') {
 
           $(".widget_settings_block__descr").after(`
@@ -118,16 +111,32 @@ define([], function () {
             </div>
           `)
 
+          $(".header").after(
+            ` 
+              
+              <div class="mm_mainSettings">
+                <div class="userdata">
+                <br>
+                <p>Данные пользователя:</p>
+                </div>
+                <hr>
+                <div class="mm_piplineSettings">
+                </div>
+                <div class="mm_userSettings">
+    
+                </div>
+              </div>
+            `
+          )
+          var data = self.render(
+            { ref: "/tmpl/controls/button.twig" },
+            {
+              class_name: "button_buy",
+              text: "Купить"
+            }
+          );
 
-          // var data = self.render(
-          //   { ref: "/tmpl/controls/button.twig" },
-          //   {
-          //     class_name: "button_buy",
-          //     text: "Купить"
-          //   }
-          // );
-
-          // $(".userdata").append("<br>" + data + "<br>");
+          $(".userdata").append("<br>" + data + "<br>");
         }
 
       } catch (error) {
@@ -162,7 +171,6 @@ define([], function () {
       //console.log(dataDB)
 
       // Разметка настроек
-
 
 
       // if (!await toDataBasePaid(dataDB)) {
