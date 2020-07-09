@@ -42,6 +42,8 @@ define([], function () {
         const data = await bdRespons.json()
         console.log(data)
 
+        if(data.status === 'new') $(".button-input-inner__text").html('Начать пробный период')
+
       } catch (error) {
         console.log('Error', error)
       }
