@@ -105,7 +105,7 @@ define([], function () {
               text: "Купить"
             }
           );
-          $(".userdata").after("<br>" + data + "<br>");
+          $(".userdata").append("<br>" + data + "<br>");
         }
 
       } catch (error) {
