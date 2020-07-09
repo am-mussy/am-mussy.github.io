@@ -45,9 +45,11 @@ define([], function () {
         if (data.status === 'new') {
           $(".button-input-inner__text").html('Начать пробный период')
           $(".widget_settings_block__descr").after(`
+            <div class="header">
              <p>Проверьте правильно ли введен ваш номер телефона и email</p>
              <p>Выберите группу пользователей для которой будет работать данный виджет</p>
              <p>Нажмите "Начать пробный период"</p>
+            </div>
           `)
 
         }
@@ -87,7 +89,7 @@ define([], function () {
 
       // Разметка настроек
 
-      $(".widget_settings_block__descr").after(
+      $(".header").after(
         `
           <div class="mm_mainSettings">
             <div class="userdata">
