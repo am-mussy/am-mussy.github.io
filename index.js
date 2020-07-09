@@ -42,7 +42,17 @@ define([], function () {
         const data = await bdRespons.json()
         console.log(data)
 
-        if(data.status === 'new') $(".button-input-inner__text").html('Начать пробный период')
+        if (data.status === 'new') {
+          $(".button-input-inner__text").html('Начать пробный период')
+          $(".widget_settings_block__descr").after(`
+             <p>Проверьте правильно ли введен ваш номер телефона и email</p>
+             <p>Выберите группу пользователей для которой будет работать данный виджет</p>
+             <p>Нажмите "Начать пробный период"</p>
+          `)
+
+        }
+
+
 
       } catch (error) {
         console.log('Error', error)
@@ -85,13 +95,6 @@ define([], function () {
             <p>Данные пользователя:</p>
             </div>
             <div class="mm_piplineSettings">
-              <br>
-              <br>
-              <h3>Как настроить:</h3>
-              <br>
-              <p>1. Выберите пользователей, на которых будет распространятся данный виджет</p>
-              <p>2. Нажмите сохранить</p>
-              <br>
             </div>
             <div class="mm_userSettings">
 
