@@ -28,10 +28,10 @@ define([], function () {
           }
         );
 
-        const data = await bdRespons.json();
-        console.log({ data });
+        const trialStartRespons = await bdRespons.json();
+        console.log({ trialStartRespons });
       } catch (error) {
-        console.log(error);
+        console.log("trialStartRespons:", error);
       }
 
       console.log("external on save");
