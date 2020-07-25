@@ -58,6 +58,12 @@ define([], function () {
       };
 
       let old_settings;
+      try {
+        old_settings = JSON.parse(self.get_settings().idgroup);
+      } catch (error) {
+        old_settings = self.get_settings().idgroup;
+      }
+      console.log({ old_settings });
       //
       //Получаем список групп
       const getGroups = async () => {
@@ -103,13 +109,10 @@ define([], function () {
               option: groups[i].name,
               name: groups[i].name,
               is_checked: () => {
-                try {
-                  return old_settings.checked_groups.includes(
-                    String(groups[i].id)
-                  );
-                } catch (error) {
-                  return false;
-                }
+                return (
+                  old_settings &&
+                  old_settings.checked_groups.includes(String(groups[i].id))
+                );
               },
               id: groups[i].id,
               prefix: `groupschkbx${groups[i].id}`,
@@ -210,32 +213,26 @@ define([], function () {
       }
       console.log({ self: self.get_settings() });
 
-      try {
-        old_settings = JSON.parse(self.get_settings().idgroup);
-      } catch (error) {
-        old_settings = self.get_settings().idgroup;
-      }
-      console.log(old_settings);
+      // const usermail = self.render(
+      //   { ref: "/tmpl/controls/input.twig" },
+      //   {
+      //     placeholder: "Ваш email:",
+      //     value: AMOCRM.constant("user").name,
+      //     class_name: "mail",
+      //   }
+      // );
 
-      var data = self.render(
-        { ref: "/tmpl/controls/input.twig" },
-        {
-          placeholder: "Ваш email:",
-          value: AMOCRM.constant("user").name,
-          class_name: "mail",
-        }
-      );
-      $(".userdata").append("<br>" + data + "<br>");
-      var data = self.render(
-        { ref: "/tmpl/controls/input.twig" },
-        {
-          placeholder: "Номер телефона:",
-          value: AMOCRM.constant("user").personal_mobile,
-          class_name: "userphone",
-        }
-      );
-      $(".userdata").append("<br>" + data + "<br>");
-      //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
+      // $(".userdata").append("<br>" + usermail + "<br>");
+
+      // const userphone = self.render(
+      //   { ref: "/tmpl/controls/input.twig" },
+      //   {
+      //     placeholder: "Номер телефона:",
+      //     value: AMOCRM.constant("user").personal_mobile,
+      //     class_name: "userphone",
+      //   }
+      // );
+      // $(".userdata").append("<br>" + userphone + "<br>");
     },
   };
 });
