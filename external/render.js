@@ -72,31 +72,10 @@ define([], function () {
           .getElementById(AMOCRM.constant("user").id)
           .removeEventListener("mouseover", mRender);
       };
-
+      const subdomain = AMOCRM.constant("account").subdomain; //субдомен амо
       removeListeners();
       clearInterval(self.systemInterval);
       clearInterval(self.leadInterval);
-
-      const subdomain = AMOCRM.constant("account").subdomain; //субдомен амо
-
-      //Глобальный интервал, проверяет сделки без задачи в системе
-      self.systemInterval = setInterval(async () => {
-        if (AMOCRM.data.is_card && AMOCRM.data.current_entity === "leads")
-          return;
-
-        try {
-          const getNoTaskUrl = `https://${subdomain}.amocrm.ru/api/v2/leads?filter[tasks]=1`; //Сделки без задач
-          const response = await fetch(getNoTaskUrl);
-          let mm_noTask = await response.json();
-          mm_noTask = mm_noTask._embedded.items;
-
-          document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${
-            Object.keys(mm_noTask)[0].id
-          }`;
-        } catch (error) {
-          //Может вернуть пустоту
-        }
-      }, 5000);
 
       dataDB = {
         subdomain: subdomain,
@@ -122,6 +101,9 @@ define([], function () {
       );
 
       const widgetServerSettings = await responseDB.json();
+
+      if (widgetServerSettings.status === "new") return true;
+
       const work =
         widgetServerSettings.paid ||
         Math.round(
@@ -147,8 +129,27 @@ define([], function () {
           };
           AMOCRM.notifications.show_message(message_params);
         }, 3000);
-        return;
+        return true;
       }
+
+      //Глобальный интервал, проверяет сделки без задачи в системе
+      self.systemInterval = setInterval(async () => {
+        if (AMOCRM.data.is_card && AMOCRM.data.current_entity === "leads")
+          return;
+
+        try {
+          const getNoTaskUrl = `https://${subdomain}.amocrm.ru/api/v2/leads?filter[tasks]=1`; //Сделки без задач
+          const response = await fetch(getNoTaskUrl);
+          let mm_noTask = await response.json();
+          mm_noTask = mm_noTask._embedded.items;
+
+          document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${
+            Object.keys(mm_noTask)[0].id
+          }`;
+        } catch (error) {
+          //Может вернуть пустоту
+        }
+      }, 5000);
 
       //Если нет настроек групп - выходим
       if (
