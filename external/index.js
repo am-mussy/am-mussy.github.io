@@ -37,6 +37,7 @@ define([], function () {
 
     settings: async (self) => {
       console.log("settings");
+      const subdomain = AMOCRM.constant("account").subdomain;
       const initData = {
         subdomain: subdomain,
         widgetId: "task",
@@ -56,7 +57,6 @@ define([], function () {
         checked_groups: [],
       };
 
-      const subdomain = AMOCRM.constant("account").subdomain;
       let old_settings;
       //
       //Получаем список групп
