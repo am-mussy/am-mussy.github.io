@@ -131,8 +131,11 @@ define([], function () {
             }
           );
           console.log({ selectGroups });
+
           $(".widget_settings_block__descr").append(
-            "<br>" + selectGroups + "<br>"
+            `
+            <p>Выбередите отделы, для которых будет работать виджет. </p>
+            <br> ${selectGroups} <br>`
           );
 
           //Обновление данных при изменении настроек
