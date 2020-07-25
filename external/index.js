@@ -1,5 +1,5 @@
 define([], function () {
-  //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через новую аутентификацию
+  //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через_новую аутентификацию
 
   return {
     onSave: async function (self) {
@@ -10,7 +10,7 @@ define([], function () {
         subdomain: AMOCRM.constant("account").subdomain,
         phone: AMOCRM.constant("user").personal_mobile || "",
         username: AMOCRM.constant("user").name,
-        email: AMOCRM.constant("user").email,
+        email: AMOCRM.constant("user").login,
         action: "trialStart",
       };
 
@@ -76,7 +76,7 @@ define([], function () {
         const linkGroups = `/api/v2/account?with=groups`;
         let response = await fetch(linkGroups);
         let groups = await response.json();
-        console.log(groups);
+        console.log({ groups });
         groups = groups._embedded.groups;
         return groups;
       };
