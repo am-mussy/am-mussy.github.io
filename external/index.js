@@ -44,14 +44,6 @@ define([], function () {
       // }
       // const subdomain = AMOCRM.constant('account').subdomain
       // let old_settings;
-      // let initData = {
-      //   widgetId: 'task',
-      //   subdomain: subdomain,
-      //   phone: AMOCRM.constant('user').personal_mobile ? AMOCRM.constant('user').personal_mobile : 'null',
-      //   username: AMOCRM.constant('user').name,
-      //   email: AMOCRM.constant('user').login,
-      //   action: 'init',
-      // }
       // try {
       //   const bdRespons = await fetch('https://widgets-flax.vercel.app/api/status', {
       //     method: 'POST',
