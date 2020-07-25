@@ -122,7 +122,7 @@ define([], function () {
               prefix: `groupschkbx${groups[i].id}`,
             });
           }
-
+          console.log({ groups_arr });
           //Список групп
           const selectGroups = self.render(
             { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
@@ -130,6 +130,7 @@ define([], function () {
               items: groups_arr,
             }
           );
+          console.log({ selectGroups });
           $(".mm_piplineSettings").append("<br>" + selectGroups + "<br>");
 
           //Обновление данных при изменении настроек
