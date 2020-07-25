@@ -101,34 +101,34 @@ define([], function () {
           </div>
         `);
 
-        // //Вставка селектора групп
-        // const groups = await getGroups();
-        // console.log({ groups });
-        // const groups_arr = [];
-        // for (let i of Object.keys(groups)) {
-        //   console.log({ i });
-        //   groups_arr.push({
-        //     option: groups[i].name,
-        //     name: groups[i].name,
-        //     is_checked: () => {
-        //       return (
-        //         old_settings &&
-        //         old_settings.checked_groups.includes(String(groups[i].id))
-        //       );
-        //     },
-        //     id: groups[i].id,
-        //     prefix: `groupschkbx${groups[i].id}`,
-        //   });
-        // }
-        // console.log({ groups_arr });
-        // //Список групп
-        // const selectGroups = self.render(
-        //   { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-        //   {
-        //     items: groups_arr,
-        //   }
-        // );
-        // console.log({ selectGroups });
+        //Вставка селектора групп
+        const groups = await getGroups();
+        console.log({ groups });
+        const groups_arr = [];
+        for (let i of Object.keys(groups)) {
+          console.log({ i });
+          groups_arr.push({
+            option: groups[i].name,
+            name: groups[i].name,
+            is_checked: () => {
+              return (
+                old_settings &&
+                old_settings.checked_groups.includes(String(groups[i].id))
+              );
+            },
+            id: groups[i].id,
+            prefix: `groupschkbx${groups[i].id}`,
+          });
+        }
+        console.log({ groups_arr });
+        //Список групп
+        const selectGroups = self.render(
+          { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+          {
+            items: groups_arr,
+          }
+        );
+        console.log({ selectGroups });
 
         // $(".widget_settings_block__descr").append(
         //   `
