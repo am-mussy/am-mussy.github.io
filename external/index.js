@@ -202,8 +202,8 @@ define([], function () {
           `);
       } else if (serverResponse.status === "paid") {
         console.log("status: paid");
-        $(".mm_header").after(
-          `
+        $(".widget_settings_block").append(
+          ` <div style="border-top: 1px solid rgb(211, 214, 215); margin: 20px -30px 20px;"></div>
             <p>В случае возниковновения проблем пишите нам: support@widgetfactory.digitel</p>
           `
         );
