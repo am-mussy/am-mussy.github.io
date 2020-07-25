@@ -187,7 +187,7 @@ define([], function () {
           }
         );
         $(".widget_settings_block").append(`
-            <div style="border-top: 1px solid rgb(211, 214, 215); margin: 20px -30px 10px;"></div>
+            <div style="border-top: 1px solid rgb(211, 214, 215); margin: 20px -30px 20px;"></div>
             <div class="mm_header"> 
               <div style="margin-bottom: 10px">
                 <p> Окончание пробного периода через ${daysLeft} дн. </p>
