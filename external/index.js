@@ -46,9 +46,9 @@ define([], function () {
 
       const subdomain = AMOCRM.constant("account").subdomain;
       let old_settings;
-
+      //
       //Получаем список групп
-      const getGroups = async (linkGroups) => {
+      const getGroups = async () => {
         const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
         let response = await fetch(linkGroups);
         let Groups = await response.json();
