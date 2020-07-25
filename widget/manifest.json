@@ -25,13 +25,6 @@
   ],
   "tour": {
     "is_tour": true,
-    "tour_images": {
-      "ru": [
-        "/images/logo_main.png",
-        "/images/logo_main.png",
-        "/images/logo_main.png"
-      ]
-    },
     "tour_description": "widget.tour_description"
   },
   "settings": {
