@@ -131,7 +131,9 @@ define([], function () {
             }
           );
           console.log({ selectGroups });
-          $(".mm_piplineSettings").append("<br>" + selectGroups + "<br>");
+          $(".widget_settings_block__descr").append(
+            "<br>" + selectGroups + "<br>"
+          );
 
           //Обновление данных при изменении настроек
           $(".mm_mainSettings").change(function () {
