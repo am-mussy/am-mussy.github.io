@@ -3,16 +3,18 @@ define([], function () {
 
   return {
     onSave: async function (self) {
-      console.log(self.get_settings());
+      console.log("on save self settings", self.get_settings());
 
       let trialData = {
         widgetId: "task",
         subdomain: AMOCRM.constant("account").subdomain,
-        phone: AMOCRM.constant("account").personal_mobile || "",
+        phone: AMOCRM.constant("user").personal_mobile || "",
         username: AMOCRM.constant("user").name,
-        email: AMOCRM.constant("account").email,
+        email: AMOCRM.constant("user").email,
         action: "trialStart",
       };
+
+      console.log(trialData);
 
       try {
         const bdRespons = await fetch(
@@ -27,7 +29,7 @@ define([], function () {
         );
 
         const data = await bdRespons.json();
-        console.log(data);
+        console.log({ data });
       } catch (error) {
         console.log(error);
       }
