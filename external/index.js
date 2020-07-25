@@ -68,7 +68,7 @@ define([], function () {
       //Получаем список групп
       const getGroups = async () => {
         console.log("groups");
-        const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
+        const linkGroups = `/api/v2/account?with=groups`;
         let response = await fetch(linkGroups);
         let groups = await response.json();
         console.log(groups);
