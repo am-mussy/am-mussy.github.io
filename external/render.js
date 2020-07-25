@@ -100,7 +100,7 @@ define([], function () {
 
       dataDB = {
         subdomain: subdomain,
-        name: "task",
+        widgetId: "task",
         username: self.get_settings().idgroup
           ? self.get_settings().idgroup.email
           : AMOCRM.constant("user").login,
