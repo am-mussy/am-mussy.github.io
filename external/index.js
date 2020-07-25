@@ -139,7 +139,7 @@ define([], function () {
       $(".widget_settings_block__descr").append(
         `
           <p style="font-weight:bold; margin-bottom: 5px; margin-top: 10px;">Выберите отделы, для которых будет работать виджет. </p>
-          ${selectGroups} <br>`
+          ${selectGroups}`
       );
 
       //Обновление данных при изменении настроек
@@ -175,7 +175,7 @@ define([], function () {
             text: "Купить",
           }
         );
-        $(".widget_settings_block").append("<br>" + button + "<br>");
+        $(".widget_settings_block").append(button + "<br>");
       } else if (data.status === "paid") {
         console.log("status: paid");
         $(".mm_header").after(
