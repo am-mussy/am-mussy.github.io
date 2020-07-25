@@ -76,85 +76,84 @@ define([], function () {
         return groups;
       };
 
-      try {
-        const bdRespons = await fetch(
-          "https://widgets-flax.vercel.app/api/status",
-          {
-            method: "POST",
-            body: JSON.stringify(initData),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const data = await bdRespons.json();
-        console.log("fetch status:", data);
+      const bdRespons = await fetch(
+        "https://widgets-flax.vercel.app/api/status",
+        {
+          method: "POST",
+          body: JSON.stringify(initData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await bdRespons.json();
+      console.log("fetch status:", data);
 
-        $(".widget_settings_block__fields .button-input-inner__text").html(
-          "Начать пробный период"
-        );
+      $(".widget_settings_block__fields .button-input-inner__text").html(
+        "Начать пробный период"
+      );
 
-        //Вставка видео
-        $(".widget_settings_block__descr").append(`
+      //Вставка видео
+      $(".widget_settings_block__descr").append(`
           <div>
             <iframe width="593" height="333" src="https://www.youtube.com/embed/Oap2be7bR0c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         `);
 
-        //Вставка селектора групп
-        const groups = await getGroups();
-        console.log({ groups });
-        const groups_arr = [];
-        for (let i of Object.keys(groups)) {
-          console.log({ i });
-          groups_arr.push({
-            option: groups[i].name,
-            name: groups[i].name,
-            is_checked: () => {
-              return (
-                old_settings &&
-                old_settings.checked_groups.includes(String(groups[i].id))
-              );
-            },
-            id: groups[i].id,
-            prefix: `groupschkbx${groups[i].id}`,
-          });
+      //Вставка селектора групп
+      const groups = await getGroups();
+      console.log({ groups });
+      const groups_arr = [];
+      for (let i of Object.keys(groups)) {
+        console.log({ i });
+        groups_arr.push({
+          option: groups[i].name,
+          name: groups[i].name,
+          is_checked: () => {
+            return (
+              old_settings &&
+              old_settings.checked_groups.includes(String(groups[i].id))
+            );
+          },
+          id: groups[i].id,
+          prefix: `groupschkbx${groups[i].id}`,
+        });
+      }
+      console.log({ groups_arr });
+      //Список групп
+      const selectGroups = self.render(
+        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+        {
+          items: groups_arr,
+          class_name: "mm_select",
         }
-        console.log({ groups_arr });
-        //Список групп
-        const selectGroups = self.render(
-          { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-          {
-            items: groups_arr,
-            class_name: "mm_select",
-          }
-        );
-        console.log({ selectGroups });
+      );
+      console.log({ selectGroups });
 
-        $(".widget_settings_block__descr").append(
-          `
+      $(".widget_settings_block__descr").append(
+        `
           <p style="font-weight:bold; margin-bottom: 5px; margin-top: 10px;">Выберите отделы, для которых будет работать виджет. </p>
           ${selectGroups} <br>`
-        );
+      );
 
-        //Обновление данных при изменении настроек
-        $(".mm_select").change(function () {
-          console.log("selector changed");
-          mm_settings.checked_groups = [];
-          $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
-            if ($(this).parent().parent().hasClass("is-checked")) {
-              mm_settings.checked_groups.push($(this).attr("value"));
-            }
-          });
-          $("input[name = idgroup]").val(JSON.stringify(mm_settings));
-          console.log($("input[name = idgroup]").val());
+      //Обновление данных при изменении настроек
+      $(".mm_select").change(function () {
+        console.log("selector changed");
+        mm_settings.checked_groups = [];
+        $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
+          if ($(this).parent().parent().hasClass("is-checked")) {
+            mm_settings.checked_groups.push($(this).attr("value"));
+          }
         });
+        $("input[name = idgroup]").val(JSON.stringify(mm_settings));
+        console.log($("input[name = idgroup]").val());
+      });
 
-        if (data.status === "new") {
-          console.log("status: new");
-        } else if (data.status === "trial") {
-          console.log("status: trile");
-          $(".widget_settings_block__descr").append(`
+      if (data.status === "new") {
+        console.log("status: new");
+      } else if (data.status === "trial") {
+        console.log("status: trile");
+        $(".widget_settings_block__descr").append(`
             <div class="mm_header">
             <br>
             <p> На данный момент, в тестовом режиме! </p>
@@ -162,8 +161,8 @@ define([], function () {
             <br>
             </div>
           `);
-          $(".mm_header").after(
-            `
+        $(".mm_header").after(
+          `
               <div class="mm_mainSettings">
                 <div class="userdata">
                 <br>
@@ -177,29 +176,27 @@ define([], function () {
                 </div>
               </div>
             `
-          );
+        );
 
-          const button = self.render(
-            { ref: "/tmpl/controls/button.twig" },
-            {
-              class_name: "button_buy",
-              text: "Купить",
-            }
-          );
-          $(".userdata").append("<br>" + button + "<br>");
-        } else if (data.status === "paid") {
-          console.log("status: paid");
-          $(".mm_header").after(
-            `
+        const button = self.render(
+          { ref: "/tmpl/controls/button.twig" },
+          {
+            class_name: "button_buy",
+            text: "Купить",
+          }
+        );
+        $(".userdata").append("<br>" + button + "<br>");
+      } else if (data.status === "paid") {
+        console.log("status: paid");
+        $(".mm_header").after(
+          `
               <div class="mm_mainSettings">
                 <p>Форма обратной связи</p>
               </div>
             `
-          );
-        }
-      } catch (error) {
-        console.log("widget.settings error", error);
+        );
       }
+
       console.log({ self: self.get_settings() });
 
       // const usermail = self.render(
