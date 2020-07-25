@@ -133,8 +133,7 @@ define([], function () {
 
         $(".widget_settings_block__descr").append(
           `
-          <br>
-          <p>Выберите отделы, для которых будет работать виджет. </p>
+          <p style="font-weight:bold; margin-bottom: 5px; margin-top: 10px;">Выберите отделы, для которых будет работать виджет. </p>
           ${selectGroups} <br>`
         );
 
