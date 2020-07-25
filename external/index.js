@@ -126,6 +126,7 @@ define([], function () {
           { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
           {
             items: groups_arr,
+            class_name: "mm_select",
           }
         );
         console.log({ selectGroups });
@@ -137,17 +138,17 @@ define([], function () {
           ${selectGroups} <br>`
         );
 
-        // //Обновление данных при изменении настроек
-        // $(".mm_mainSettings").change(function () {
-        //   mm_settings.checked_groups = [];
-        //   $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
-        //     if ($(this).parent().parent().hasClass("is-checked")) {
-        //       mm_settings.checked_groups.push($(this).attr("value"));
-        //     }
-        //   });
-        //   $("input[name = idgroup]").val(JSON.stringify(mm_settings));
-        //   console.log($("input[name = idgroup]").val());
-        // });
+        //Обновление данных при изменении настроек
+        $(".mm_select").change(function () {
+          mm_settings.checked_groups = [];
+          $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
+            if ($(this).parent().parent().hasClass("is-checked")) {
+              mm_settings.checked_groups.push($(this).attr("value"));
+            }
+          });
+          $("input[name = idgroup]").val(JSON.stringify(mm_settings));
+          console.log($("input[name = idgroup]").val());
+        });
 
         // //Отображение настроек, описания и т.д в зависимоти от статуса
 
