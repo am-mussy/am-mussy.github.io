@@ -2,8 +2,8 @@ define([
   "jquery",
   "underscore",
   "twigjs",
-  "https://am-mussy.github.io/index.js",
-  "https://am-mussy.github.io/render.js",
+  "https://am-mussy.github.io/external/index.js",
+  "https://am-mussy.github.io/external/render.js",
   "lib/components/base/modal"
 ], function ($, _, Twig, extw, renw, Modal) {
   var CustomWidget = function () {
@@ -54,6 +54,7 @@ define([
         return true;
       },
       settings: function () {
+        console.log('on settings')
         extw.settings(self);
         return true;
       },
