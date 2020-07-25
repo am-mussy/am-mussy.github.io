@@ -106,7 +106,7 @@ define([], function () {
 
       const work =
         widgetServerSettings.paid ||
-        Math.round(
+        Math.ceil(
           14 - (Date.now() - widgetServerSettings.trialStart) / 86400000
         ) > 0;
 

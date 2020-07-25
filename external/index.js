@@ -159,7 +159,7 @@ define([], function () {
         console.log("status: new");
       } else if (serverResponse.status === "trial") {
         console.log("status: trile");
-        const daysLeft = Math.round(
+        const daysLeft = Math.ceil(
           14 - (Date.now() - serverResponse.trialStart) / 86400000
         );
 
@@ -190,7 +190,13 @@ define([], function () {
             <div style="border-top: 1px solid rgb(211, 214, 215); margin: 20px -30px 20px;"></div>
             <div class="mm_header"> 
               <div style="margin-bottom: 10px">
-                <p> Окончание пробного периода через ${daysLeft} дн. </p>
+                ${
+                  daysLeft < 0
+                    ? "<p> Окончание пробного периода через " +
+                      daysLeft +
+                      " дн. </p>"
+                    : "<p> Пробный период окончен </p>"
+                }
                 <p> Что бы приобрести виджет, нажмите на кнопку "Купить" </p>
               </div>
               <div>
@@ -204,7 +210,7 @@ define([], function () {
         console.log("status: paid");
         $(".widget_settings_block").append(
           ` <div style="border-top: 1px solid rgb(211, 214, 215); margin: 20px -30px 20px;"></div>
-            <p>В случае возниковновения проблем пишите нам: support@widgetfactory.digitel</p>
+            <p>В случае возниковновения проблем пишите нам: support@widgetfactory.digital</p>
           `
         );
       }
