@@ -150,65 +150,65 @@ define([], function () {
           console.log($("input[name = idgroup]").val());
         });
 
-        // //Отображение настроек, описания и т.д в зависимоти от статуса
+        //Отображение настроек, описания и т.д в зависимоти от статуса
 
-        // $(".widget_settings_block__fields .button-input-inner__text").html(
-        //   "Начать пробный период"
-        // );
+        $(".widget_settings_block__fields .button-input-inner__text").html(
+          "Начать пробный период"
+        );
 
-        // //Вставка видео
-        // $(".widget_settings_block__descr").append(`
-        //     <div>
-        //       <iframe width="593" height="333" src="https://www.youtube.com/embed/Oap2be7bR0c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        //     </div>
-        //   `);
+        //Вставка видео
+        $(".widget_settings_block__descr").append(`
+            <div>
+              <iframe width="593" height="333" src="https://www.youtube.com/embed/Oap2be7bR0c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          `);
 
-        // //Вставка селектора групп
-        // const groups = await getGroups();
-        // console.log({ groups });
-        // const groups_arr = [];
-        // for (let i of Object.keys(groups)) {
-        //   console.log({ i });
-        //   groups_arr.push({
-        //     option: groups[i].name,
-        //     name: groups[i].name,
-        //     is_checked: () => {
-        //       return (
-        //         old_settings &&
-        //         old_settings.checked_groups.includes(String(groups[i].id))
-        //       );
-        //     },
-        //     id: groups[i].id,
-        //     prefix: `groupschkbx${groups[i].id}`,
-        //   });
-        // }
-        // console.log({ groups_arr });
-        // //Список групп
-        // const selectGroups = self.render(
-        //   { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-        //   {
-        //     items: groups_arr,
-        //   }
-        // );
-        // console.log({ selectGroups });
+        //Вставка селектора групп
+        const groups = await getGroups();
+        console.log({ groups });
+        const groups_arr = [];
+        for (let i of Object.keys(groups)) {
+          console.log({ i });
+          groups_arr.push({
+            option: groups[i].name,
+            name: groups[i].name,
+            is_checked: () => {
+              return (
+                old_settings &&
+                old_settings.checked_groups.includes(String(groups[i].id))
+              );
+            },
+            id: groups[i].id,
+            prefix: `groupschkbx${groups[i].id}`,
+          });
+        }
+        console.log({ groups_arr });
+        //Список групп
+        const selectGroups = self.render(
+          { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+          {
+            items: groups_arr,
+          }
+        );
+        console.log({ selectGroups });
 
-        // $(".widget_settings_block__descr").append(
-        //   `
-        //     <p>Выбередите отделы, для которых будет работать виджет. </p>
-        //     <br> ${selectGroups} <br>`
-        // );
+        $(".widget_settings_block__descr").append(
+          `
+            <p>Выбередите отделы, для которых будет работать виджет. </p>
+            <br> ${selectGroups} <br>`
+        );
 
-        // //Обновление данных при изменении настроек
-        // $(".mm_mainSettings").change(function () {
-        //   mm_settings.checked_groups = [];
-        //   $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
-        //     if ($(this).parent().parent().hasClass("is-checked")) {
-        //       mm_settings.checked_groups.push($(this).attr("value"));
-        //     }
-        //   });
-        //   $("input[name = idgroup]").val(JSON.stringify(mm_settings));
-        //   console.log($("input[name = idgroup]").val());
-        // });
+        //Обновление данных при изменении настроек
+        $(".mm_mainSettings").change(function () {
+          mm_settings.checked_groups = [];
+          $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
+            if ($(this).parent().parent().hasClass("is-checked")) {
+              mm_settings.checked_groups.push($(this).attr("value"));
+            }
+          });
+          $("input[name = idgroup]").val(JSON.stringify(mm_settings));
+          console.log($("input[name = idgroup]").val());
+        });
         if (data.status === "new") {
           console.log("status: new");
         } else if (data.status === "trial") {
