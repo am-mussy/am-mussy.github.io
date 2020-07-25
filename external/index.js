@@ -36,14 +36,26 @@ define([], function () {
     },
 
     settings: async (self) => {
+      console.log("settings");
       let mm_settings = {
         phone: AMOCRM.constant("user").personal_mobile,
         username: AMOCRM.constant("user").name,
         email: AMOCRM.constant("user").login,
         checked_groups: [],
       };
+
       const subdomain = AMOCRM.constant("account").subdomain;
       let old_settings;
+
+      //Получаем список групп
+      const getGroups = async (linkGroups) => {
+        const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
+        let response = await fetch(linkGroups);
+        let Groups = await response.json();
+        Groups = Groups._embedded.groups;
+        return Groups;
+      };
+
       try {
         const bdRespons = await fetch(
           "https://widgets-flax.vercel.app/api/status",
@@ -56,9 +68,10 @@ define([], function () {
           }
         );
         const data = await bdRespons.json();
-        console.log(data);
+        console.log("fetch status:", data);
         //Отображение настроек, описания и т.д в зависимоти от статуса
         if (data.status === "new") {
+          console.log("status: new");
           $(".button-input-inner__text").html("Начать пробный период");
           $(".widget_settings_block__descr").after(`
             <div class="header">
@@ -85,6 +98,7 @@ define([], function () {
             `
           );
         } else if (data.status === "trial") {
+          console.log("status: trile");
           $(".widget_settings_block__descr").after(`
             <div class="header">
             <br>
@@ -108,19 +122,30 @@ define([], function () {
               </div>
             `
           );
-          var data = self.render(
+
+          const button = self.render(
             { ref: "/tmpl/controls/button.twig" },
             {
               class_name: "button_buy",
               text: "Купить",
             }
           );
-          $(".userdata").append("<br>" + data + "<br>");
+          $(".userdata").append("<br>" + button + "<br>");
+        } else if (data.status === "paid") {
+          console.log("status: paid");
+          $(".header").after(
+            `
+              <div class="mm_mainSettings">
+                <p>Форма обратной связи</p>
+              </div>
+            `
+          );
         }
       } catch (error) {
-        console.log("Error", error);
+        console.log("widget.settings error", error);
       }
       console.log({ self: self.get_settings() });
+
       try {
         old_settings = JSON.parse(self.get_settings().idgroup);
       } catch (error) {
@@ -145,13 +170,7 @@ define([], function () {
       //   $(".userdata").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
       //   // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
       // }
-      const linkPiplines = `https://${subdomain}.amocrm.ru/api/v2/pipelines`;
-      async function getSalesF(linkPiplines) {
-        let response = await fetch(linkPiplines);
-        let salesFunnels = await response.json();
-        salesFunnels = salesFunnels._embedded.items;
-        return salesFunnels;
-      }
+
       var data = self.render(
         { ref: "/tmpl/controls/input.twig" },
         {
@@ -171,49 +190,44 @@ define([], function () {
       );
       $(".userdata").append("<br>" + data + "<br>");
       //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
-      const linkGroups = `https://${subdomain}.amocrm.ru/api/v2/account?with=groups`;
-      async function getGroups(linkGroups) {
-        let response = await fetch(linkGroups);
-        let Groups = await response.json();
-        Groups = Groups._embedded.groups;
-        return Groups;
-      }
-      const groups = await getGroups(linkGroups);
-      const groups_arr = [];
-      for (let i of Object.keys(groups)) {
-        groups_arr.push({
-          option: groups[i].name,
-          name: groups[i].name,
-          is_checked: () => {
-            try {
-              return old_settings.checked_groups.includes(String(groups[i].id));
-            } catch (error) {
-              return false;
-            }
-          },
-          id: groups[i].id,
-          prefix: `groupschkbx${groups[i].id}`,
-        });
-      }
-      //Список групп
-      var data = self.render(
-        { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-        {
-          items: groups_arr,
-        }
-      );
-      $(".mm_piplineSettings").append("<br>" + data + "<br>");
-      //Обновление данных при изменении настроек
-      $(".mm_mainSettings").change(function () {
-        mm_settings.checked_groups = [];
-        $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
-          if ($(this).parent().parent().hasClass("is-checked")) {
-            mm_settings.checked_groups.push($(this).attr("value"));
-          }
-        });
-        $("input[name = idgroup]").val(JSON.stringify(mm_settings));
-        console.log($("input[name = idgroup]").val());
-      });
+
+      // const groups = await getGroups(linkGroups);
+      // const groups_arr = [];
+      // for (let i of Object.keys(groups)) {
+      //   groups_arr.push({
+      //     option: groups[i].name,
+      //     name: groups[i].name,
+      //     is_checked: () => {
+      //       try {
+      //         return old_settings.checked_groups.includes(String(groups[i].id));
+      //       } catch (error) {
+      //         return false;
+      //       }
+      //     },
+      //     id: groups[i].id,
+      //     prefix: `groupschkbx${groups[i].id}`,
+      //   });
+      // }
+
+      // //Список групп
+      // var data = self.render(
+      //   { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+      //   {
+      //     items: groups_arr,
+      //   }
+      // );
+      // $(".mm_piplineSettings").append("<br>" + data + "<br>");
+      // //Обновление данных при изменении настроек
+      // $(".mm_mainSettings").change(function () {
+      //   mm_settings.checked_groups = [];
+      //   $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
+      //     if ($(this).parent().parent().hasClass("is-checked")) {
+      //       mm_settings.checked_groups.push($(this).attr("value"));
+      //     }
+      //   });
+      //   $("input[name = idgroup]").val(JSON.stringify(mm_settings));
+      //   console.log($("input[name = idgroup]").val());
+      // });
     },
   };
 });
