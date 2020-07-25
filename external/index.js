@@ -38,7 +38,7 @@ define([], function () {
     settings: async (self) => {
       console.log("settings");
       const subdomain = AMOCRM.constant("account").subdomain;
-
+      console.log({ setting: self.get_settings() });
       const initData = {
         subdomain: subdomain,
         widgetId: "task",
@@ -50,8 +50,8 @@ define([], function () {
           : AMOCRM.constant("user").personal_mobile,
         action: "status",
       };
-
-      console.log(initData);
+      //s
+      console.log({ initData });
 
       let mm_settings = {
         phone: AMOCRM.constant("user").personal_mobile,
