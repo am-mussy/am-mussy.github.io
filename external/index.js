@@ -145,16 +145,17 @@ define([], function () {
             console.log($("input[name = idgroup]").val());
           });
 
-          //   <div class="header">
-          //     <br>
-          //       <p> ● Проверьте правильно ли введен ваше имя и номер телефона</p>
-          //       <p> ● Выберите группу пользователей для которой будет работать данный виджет</p>
-          //       <p> ● Нажмите "Начать пробный период"</p>
-          //     <br>
-          //   </div>
-          // `);
+          $(".widget_settings_block__descr").after(`
+            <div class="mm_header">
+              <br>
+                <p> ● Проверьте правильно ли введен ваше имя и номер телефона</p>
+                <p> ● Выберите группу пользователей для которой будет работать данный виджет</p>
+                <p> ● Нажмите "Начать пробный период"</p>
+              <br>
+            </div>
+          `);
 
-          $(".header").after(
+          $(".mm_header").after(
             `
               <div class="mm_mainSettings">
                 <div class="userdata">
@@ -172,14 +173,14 @@ define([], function () {
         } else if (data.status === "trial") {
           console.log("status: trile");
           $(".widget_settings_block__descr").after(`
-            <div class="header">
+            <div class="mm_header">
             <br>
             <p> На данный момент, в тестовом режиме! </p>
             <p> Что бы приобрести виджет нажминте на кнопку "Купить" </p>
             <br>
             </div>
           `);
-          $(".header").after(
+          $(".mm_header").after(
             `
               <div class="mm_mainSettings">
                 <div class="userdata">
@@ -188,6 +189,7 @@ define([], function () {
                 </div>
                 <hr>
                 <div class="mm_piplineSettings">
+                <p> test </p>
                 </div>
                 <div class="mm_userSettings">
                 </div>
@@ -205,7 +207,7 @@ define([], function () {
           $(".userdata").append("<br>" + button + "<br>");
         } else if (data.status === "paid") {
           console.log("status: paid");
-          $(".header").after(
+          $(".mm_header").after(
             `
               <div class="mm_mainSettings">
                 <p>Форма обратной связи</p>
