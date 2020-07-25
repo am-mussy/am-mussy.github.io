@@ -188,13 +188,16 @@ define([], function () {
         );
         $(".widget_settings_block").append(`
             <div class="mm_header">
-            <br>
-            <p> Окончание пробного периода через ${daysLeft} дн. </p>
-            <p> Что бы приобрести виджет нажминте на кнопку "Купить" </p>
-            ${usermailInput}
-            ${userphoneInput}
-            ${buyButton}
-            <br>
+              <hr>
+              <div style="margin-bottom: 10px">
+                <p> Окончание пробного периода через ${daysLeft} дн. </p>
+                <p> Что бы приобрести виджет, нажмите на кнопку "Купить" </p>
+              </div>
+              <div>
+                ${usermailInput}
+                ${userphoneInput}
+                ${buyButton}
+              </div>
             </div>
           `);
       } else if (serverResponse.status === "paid") {
