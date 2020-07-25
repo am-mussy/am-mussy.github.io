@@ -138,7 +138,7 @@ define([], function () {
           return;
 
         try {
-          const getNoTaskUrl = `https://${subdomain}.amocrm.ru/api/v2/leads?filter[tasks]=1&filter[responsible_user_id]=${
+          const getNoTaskUrl = `https://${subdomain}.amocrm.ru/api/v4/leads?filter[tasks]=1&filter[responsible_user_id]=${
             AMOCRM.constant("user").id
           }`; //Сделки без задач
           const response = await fetch(getNoTaskUrl);
