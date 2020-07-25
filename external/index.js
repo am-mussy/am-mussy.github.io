@@ -87,19 +87,65 @@ define([], function () {
           $(".widget_settings_block__fields .button-input-inner__text").html(
             "Начать пробный период"
           );
+
+          //Вставка видео
           $(".widget_settings_block__descr").after(`
             <div>
               <iframe width="593" height="333" src="https://www.youtube.com/embed/Oap2be7bR0c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-
-            <div class="header">
-              <br>
-                <p> ● Проверьте правильно ли введен ваше имя и номер телефона</p>
-                <p> ● Выберите группу пользователей для которой будет работать данный виджет</p>
-                <p> ● Нажмите "Начать пробный период"</p>
-              <br>
-            </div>
           `);
+
+          //Вставка селектора групп
+          const groups = await getGroups(linkGroups);
+          const groups_arr = [];
+          for (let i of Object.keys(groups)) {
+            groups_arr.push({
+              option: groups[i].name,
+              name: groups[i].name,
+              is_checked: () => {
+                try {
+                  return old_settings.checked_groups.includes(
+                    String(groups[i].id)
+                  );
+                } catch (error) {
+                  return false;
+                }
+              },
+              id: groups[i].id,
+              prefix: `groupschkbx${groups[i].id}`,
+            });
+          }
+
+          //Список групп
+          var data = self.render(
+            { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
+            {
+              items: groups_arr,
+            }
+          );
+          $(".mm_piplineSettings").append("<br>" + data + "<br>");
+
+          //Обновление данных при изменении настроек
+          $(".mm_mainSettings").change(function () {
+            mm_settings.checked_groups = [];
+            $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
+              if ($(this).parent().parent().hasClass("is-checked")) {
+                mm_settings.checked_groups.push($(this).attr("value"));
+              }
+            });
+            $("input[name = idgroup]").val(JSON.stringify(mm_settings));
+            console.log($("input[name = idgroup]").val());
+          });
+
+          //   <div class="header">
+          //     <br>
+          //       <p> ● Проверьте правильно ли введен ваше имя и номер телефона</p>
+          //       <p> ● Выберите группу пользователей для которой будет работать данный виджет</p>
+          //       <p> ● Нажмите "Начать пробный период"</p>
+          //     <br>
+          //   </div>
+          // `);
+
           $(".header").after(
             `
               <div class="mm_mainSettings">
@@ -190,44 +236,6 @@ define([], function () {
       );
       $(".userdata").append("<br>" + data + "<br>");
       //Получаем группы и записываем их в массив, что бы потом сформировать список в настройках
-
-      // const groups = await getGroups(linkGroups);
-      // const groups_arr = [];
-      // for (let i of Object.keys(groups)) {
-      //   groups_arr.push({
-      //     option: groups[i].name,
-      //     name: groups[i].name,
-      //     is_checked: () => {
-      //       try {
-      //         return old_settings.checked_groups.includes(String(groups[i].id));
-      //       } catch (error) {
-      //         return false;
-      //       }
-      //     },
-      //     id: groups[i].id,
-      //     prefix: `groupschkbx${groups[i].id}`,
-      //   });
-      // }
-
-      // //Список групп
-      // var data = self.render(
-      //   { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
-      //   {
-      //     items: groups_arr,
-      //   }
-      // );
-      // $(".mm_piplineSettings").append("<br>" + data + "<br>");
-      // //Обновление данных при изменении настроек
-      // $(".mm_mainSettings").change(function () {
-      //   mm_settings.checked_groups = [];
-      //   $('[ID *= "cbx_drop_groupschkbx"]').each(function (index) {
-      //     if ($(this).parent().parent().hasClass("is-checked")) {
-      //       mm_settings.checked_groups.push($(this).attr("value"));
-      //     }
-      //   });
-      //   $("input[name = idgroup]").val(JSON.stringify(mm_settings));
-      //   console.log($("input[name = idgroup]").val());
-      // });
     },
   };
 });
