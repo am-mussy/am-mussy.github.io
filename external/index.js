@@ -117,13 +117,13 @@ define([], function () {
           }
 
           //Список групп
-          var data = self.render(
+          const selectGroups = self.render(
             { ref: "/tmpl/controls/checkboxes_dropdown.twig" },
             {
               items: groups_arr,
             }
           );
-          $(".mm_piplineSettings").append("<br>" + data + "<br>");
+          $(".mm_piplineSettings").append("<br>" + selectGroups + "<br>");
 
           //Обновление данных при изменении настроек
           $(".mm_mainSettings").change(function () {
