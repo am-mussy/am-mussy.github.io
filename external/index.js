@@ -187,8 +187,8 @@ define([], function () {
           }
         );
         $(".widget_settings_block").append(`
-            <div class="mm_header">
-              <hr>
+            <div style="border-top: 1px solid rgb(211, 214, 215); margin: 20px -30px 0px;"></div>
+            <div class="mm_header"> 
               <div style="margin-bottom: 10px">
                 <p> Окончание пробного периода через ${daysLeft} дн. </p>
                 <p> Что бы приобрести виджет, нажмите на кнопку "Купить" </p>
