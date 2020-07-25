@@ -191,7 +191,7 @@ define([], function () {
             <div class="mm_header"> 
               <div style="margin-bottom: 10px">
                 ${
-                  daysLeft < 0
+                  daysLeft > 0
                     ? "<p> Окончание пробного периода через " +
                       daysLeft +
                       " дн. </p>"
