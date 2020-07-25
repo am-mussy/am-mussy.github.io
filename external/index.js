@@ -159,7 +159,7 @@ define([], function () {
         console.log("status: new");
       } else if (data.status === "trial") {
         console.log("status: trile");
-        $(".widget_settings_block__descr").append(`
+        $(".widget_settings_block").append(`
             <div class="mm_header">
             <br>
             <p> На данный момент, в тестовом режиме! </p>
@@ -167,22 +167,6 @@ define([], function () {
             <br>
             </div>
           `);
-        $(".mm_header").after(
-          `
-              <div class="mm_mainSettings">
-                <div class="userdata">
-                <br>
-                <p>Данные пользователя:</p>
-                </div>
-                <hr>
-                <div class="mm_piplineSettings">
-                <p> test </p>
-                </div>
-                <div class="mm_userSettings">
-                </div>
-              </div>
-            `
-        );
 
         const button = self.render(
           { ref: "/tmpl/controls/button.twig" },
@@ -191,7 +175,7 @@ define([], function () {
             text: "Купить",
           }
         );
-        $(".userdata").append("<br>" + button + "<br>");
+        $(".widget_settings_block").append("<br>" + button + "<br>");
       } else if (data.status === "paid") {
         console.log("status: paid");
         $(".mm_header").after(
