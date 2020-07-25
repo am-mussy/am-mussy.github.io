@@ -84,7 +84,9 @@ define([], function () {
         //Отображение настроек, описания и т.д в зависимоти от статуса
         if (data.status === "new") {
           console.log("status: new");
-          $(".button-input-inner__text").html("Начать пробный период");
+          $(".widget_settings_block__fields .button-input-inner__text").html(
+            "Начать пробный период"
+          );
           $(".widget_settings_block__descr").after(`
             <div class="header">
             <br>
@@ -164,24 +166,6 @@ define([], function () {
         old_settings = self.get_settings().idgroup;
       }
       console.log(old_settings);
-      // let x = $("input[name = idgroup]").val()
-      // if ($("input[name = idgroup]").val().length > 0) {
-      //   old_settings = JSON.parse($("input[name = idgroup]").val());
-      // }
-      // console.log({ x })
-      // console.log({ old_settings })
-      // dataDB = {
-      //   subdomain: subdomain,
-      //   name: 'task',
-      //   username: old_settings ? old_settings.email : null,
-      //   phone: old_settings ? old_settings.phone : null
-      // }
-      //console.log(dataDB)
-      // Разметка настроек
-      // if (!await toDataBasePaid(dataDB)) {
-      //   $(".userdata").append(`<h2>Дней до конца тестового периода: ${await toDataBase(dataDB)} </h2>`)
-      //   // $(".mm_piplineSettings").append(`<h2>Дней до конца тестового периода: ${Math.round(14 - (Date.now() - x.trialStart) / 86400000)} </h2>`)
-      // }
 
       var data = self.render(
         { ref: "/tmpl/controls/input.twig" },
