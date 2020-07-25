@@ -97,7 +97,7 @@ define([], function () {
           );
 
           //Вставка видео
-          $(".widget_settings_block__descr").after(`
+          $(".widget_settings_block__descr").append(`
             <div>
               <iframe width="593" height="333" src="https://www.youtube.com/embed/Oap2be7bR0c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -145,7 +145,7 @@ define([], function () {
             console.log($("input[name = idgroup]").val());
           });
 
-          $(".widget_settings_block__descr").after(`
+          $(".widget_settings_block__descr").append(`
             <div class="mm_header">
               <br>
                 <p> ● Проверьте правильно ли введен ваше имя и номер телефона</p>
@@ -172,7 +172,7 @@ define([], function () {
           );
         } else if (data.status === "trial") {
           console.log("status: trile");
-          $(".widget_settings_block__descr").after(`
+          $(".widget_settings_block__descr").append(`
             <div class="mm_header">
             <br>
             <p> На данный момент, в тестовом режиме! </p>
