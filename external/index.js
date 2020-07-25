@@ -93,10 +93,11 @@ define([], function () {
       );
       const data = await bdRespons.json();
       console.log("fetch status:", data);
-
-      $(".widget_settings_block__fields .button-input-inner__text").html(
-        "Начать пробный период"
-      );
+      if (data.status === "new") {
+        $(".widget_settings_block__fields .button-input-inner__text").html(
+          "Начать пробный период"
+        );
+      }
 
       //Вставка видео
       $(".widget_settings_block__descr").append(`
