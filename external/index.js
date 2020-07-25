@@ -37,6 +37,18 @@ define([], function () {
 
     settings: async (self) => {
       console.log("settings");
+      const initData = {
+        subdomain: subdomain,
+        widgetId: "task",
+        username: self.get_settings().idgroup
+          ? self.get_settings().idgroup.email
+          : AMOCRM.constant("user").login,
+        phone: self.get_settings().idgroup
+          ? self.get_settings().idgroup.phone
+          : AMOCRM.constant("user").personal_mobile,
+        action: "status",
+      };
+
       let mm_settings = {
         phone: AMOCRM.constant("user").personal_mobile,
         username: AMOCRM.constant("user").name,
