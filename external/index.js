@@ -100,6 +100,7 @@ define([], function () {
               <iframe width="593" height="333" src="https://www.youtube.com/embed/Oap2be7bR0c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
           `);
+          // t
 
           //Вставка селектора групп
           const groups = await getGroups();
