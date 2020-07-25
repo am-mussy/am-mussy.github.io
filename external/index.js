@@ -8,9 +8,9 @@ define([], function () {
       let trialData = {
         widgetId: "task",
         subdomain: AMOCRM.constant("account").subdomain,
-        phone: $(".mail").val(),
+        phone: AMOCRM.constant("account").personal_mobile || "",
         username: AMOCRM.constant("user").name,
-        email: $(".userphone").val(),
+        email: AMOCRM.constant("account").email,
         action: "trialStart",
       };
 
@@ -38,6 +38,7 @@ define([], function () {
     settings: async (self) => {
       console.log("settings");
       const subdomain = AMOCRM.constant("account").subdomain;
+
       const initData = {
         subdomain: subdomain,
         widgetId: "task",
@@ -49,6 +50,8 @@ define([], function () {
           : AMOCRM.constant("user").personal_mobile,
         action: "status",
       };
+
+      console.log(initData);
 
       let mm_settings = {
         phone: AMOCRM.constant("user").personal_mobile,
