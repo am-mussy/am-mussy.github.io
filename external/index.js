@@ -91,9 +91,9 @@ define([], function () {
           },
         }
       );
-      const data = await bdRespons.json();
-      console.log("fetch status:", data);
-      if (data.status === "new") {
+      const serverResponse = await bdRespons.json();
+      console.log("fetch status:", serverResponse);
+      if (serverResponse.status === "new") {
         $(".widget_settings_block__fields .button-input-inner__text").html(
           "Начать пробный период"
         );
@@ -155,60 +155,58 @@ define([], function () {
         console.log($("input[name = idgroup]").val());
       });
 
-      if (data.status === "new") {
+      if (serverResponse.status === "new") {
         console.log("status: new");
-      } else if (data.status === "trial") {
+      } else if (serverResponse.status === "trial") {
         console.log("status: trile");
-        $(".widget_settings_block").append(`
-            <div class="mm_header">
-            <br>
-            <p> На данный момент, в тестовом режиме! </p>
-            <p> Что бы приобрести виджет нажминте на кнопку "Купить" </p>
-            <br>
-            </div>
-          `);
+        const daysLeft = Math.round(
+          14 - (Date.now() - serverResponse.trialStart) / 86400000
+        );
 
-        const button = self.render(
+        const usermailInput = self.render(
+          { ref: "/tmpl/controls/input.twig" },
+          {
+            placeholder: "Ваш email:",
+            value: AMOCRM.constant("user").name,
+            class_name: "mail",
+          }
+        );
+        const buyButton = self.render(
           { ref: "/tmpl/controls/button.twig" },
           {
             class_name: "button_buy",
             text: "Купить",
           }
         );
-        $(".widget_settings_block").append(button + "<br>");
-      } else if (data.status === "paid") {
+        const userphoneInput = self.render(
+          { ref: "/tmpl/controls/input.twig" },
+          {
+            placeholder: "Номер телефона:",
+            value: AMOCRM.constant("user").personal_mobile,
+            class_name: "userphone",
+          }
+        );
+        $(".widget_settings_block").append(`
+            <div class="mm_header">
+            <br>
+            <p> Окончание пробного периода через ${daysLeft} дн. </p>
+            <p> Что бы приобрести виджет нажминте на кнопку "Купить" </p>
+            ${usermailInput}
+            ${userphoneInput}
+            ${buyButton}
+            <br>
+            </div>
+          `);
+      } else if (serverResponse.status === "paid") {
         console.log("status: paid");
         $(".mm_header").after(
           `
-              <div class="mm_mainSettings">
-                <p>Форма обратной связи</p>
-              </div>
-            `
+            <p>В случае возниковновения проблем пишите нам: support@widgetfactory.digitel</p>
+          `
         );
       }
 
       console.log({ self: self.get_settings() });
-
-      // const usermail = self.render(
-      //   { ref: "/tmpl/controls/input.twig" },
-      //   {
-      //     placeholder: "Ваш email:",
-      //     value: AMOCRM.constant("user").name,
-      //     class_name: "mail",
-      //   }
-      // );
-
-      // $(".userdata").append("<br>" + usermail + "<br>");
-
-      // const userphone = self.render(
-      //   { ref: "/tmpl/controls/input.twig" },
-      //   {
-      //     placeholder: "Номер телефона:",
-      //     value: AMOCRM.constant("user").personal_mobile,
-      //     class_name: "userphone",
-      //   }
-      // );
-      // $(".userdata").append("<br>" + userphone + "<br>");
     },
   };
 });
