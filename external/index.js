@@ -130,12 +130,12 @@ define([], function () {
         );
         console.log({ selectGroups });
 
-        // $(".widget_settings_block__descr").append(
-        //   `
-        //   <br>
-        //   <p>Выберите отделы, для которых будет работать виджет. </p>
-        //   ${selectGroups} <br>`
-        // );
+        $(".widget_settings_block__descr").append(
+          `
+          <br>
+          <p>Выберите отделы, для которых будет работать виджет. </p>
+          ${selectGroups} <br>`
+        );
 
         // //Обновление данных при изменении настроек
         // $(".mm_mainSettings").change(function () {
