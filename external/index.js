@@ -96,7 +96,7 @@ define([], function () {
           `);
 
           //Вставка селектора групп
-          const groups = await getGroups(linkGroups);
+          const groups = await getGroups();
           const groups_arr = [];
           for (let i of Object.keys(groups)) {
             groups_arr.push({
