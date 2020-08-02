@@ -2,6 +2,14 @@ define([], function () {
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через_новую аутентификацию
 
   return {
+    async getLeadsCount(responsible_user_id) {
+      const piplines_req = "api/v4/leads/pipelines";
+
+      let pipelines_res = await fetch(piplinesRes);
+      let piplinesList = await pipelines_res.json();
+      console.log({ piplinesList });
+    },
+
     onSave: async function (self) {
       console.log("on save self settings", self.get_settings());
 
@@ -227,6 +235,7 @@ define([], function () {
 
     render: async (self, Modal) => {
       console.log("rend");
+      getLeadsCount();
       //функцию рендера повешенная на листемера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
       const mRender = () => {
         if (
