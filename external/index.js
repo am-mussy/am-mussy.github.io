@@ -215,6 +215,13 @@ define([], function () {
         );
       }
 
+      $(".widget_settings_block").append(
+        ` <div style="border-top: 1px solid rgb(211, 214, 215); margin: 20px -30px 20px;"></div>
+          <p>Продукт компании <a href="https://widgetfactory.digital" target="_blank"> WidgetFactory </a> </p>
+          <p>В случае возниковновения проблем пишите нам: support@widgetfactory.digital</p>
+        `
+      );
+
       console.log({ self: self.get_settings() });
     },
   };
