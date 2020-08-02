@@ -26,6 +26,16 @@ define([], function () {
     );
 
     console.log({ statuses });
+    const getURL = await fetch("https://widgets-flax.vercel.app/api/status", {
+      method: "POST",
+      body: JSON.stringify({ statuses }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const s = await getURL.json();
+    console.log({ s });
   };
 
   return {
