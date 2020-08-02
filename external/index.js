@@ -37,7 +37,7 @@ define([], function () {
     const s = await getURL.json();
     console.log({ s });
 
-    const getLeadsUrl = "/api/v4/leads?" + decodeUriComponent(s.result);
+    const getLeadsUrl = "/api/v4/leads?" + decodeURIComponent(s.result);
     console.log({ getLeadsUrl });
 
     const getLeadsResult = await fetch(getLeadsUrl);
