@@ -3,33 +3,29 @@ define([], function () {
 
   const getLeadsCount = async (responsible_user_id) => {
     console.log("getLeadsCount");
-    // const piplines_req = "/api/v4/leads/pipelines";
+    const piplines_req = "/api/v4/leads/pipelines";
 
-    // let pipelines_res = await fetch(piplines_req);
-    // let piplinesList = await pipelines_res.json();
+    let pipelines_res = await fetch(piplines_req);
+    let piplinesList = await pipelines_res.json();
 
-    // const statuses = piplinesList._embedded.pipelines.reduce((acc, element) => {
-    //   return (acc += element._embedded.statuses
-    //     .filter((status) => ![142, 143].includes(status.id))
-    //     .map((status) => "filter[statuses]=" + status.id)
-    //     .join("&"));
-    // }, "");
+    const statuses = piplinesList._embedded.pipelines.reduce(
+      (acc, pipeline) => {
+        return [
+          ...acc,
+          ...pipeline._embedded.statuses
+            .filter((status) => ![142, 143].includes(status.id))
+            .map((status) => {
+              return {
+                pipeline_id: pipeline.id,
+                status_id: status.id,
+              };
+            }),
+        ];
+      },
+      []
+    );
 
-    // console.log({ statuses });
-    // //
-    // const getNoTaskUrl = `/api/v4/leads?filter[tasks]=1&` + statuses;
-    // if (responsible_user_id)
-    //   getNoTaskUrl += `filter[responsible_user_id]=${
-    //     AMOCRM.constant("user").id
-    //   }`;
-
-    // console.log({ getNoTaskUrl });
-    // const response = await fetch(getNoTaskUrl);
-    // let mm_noTask = await response.json();
-    // console.log({ mm_noTask });
-
-    const qs = require("https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.js");
-    console.log(qs.stringify({ test: "test" }));
+    console.log({ statuses });
   };
 
   return {
