@@ -16,6 +16,17 @@ define([], function () {
     }, "");
 
     console.log({ statuses });
+    //
+    const getNoTaskUrl =
+      `https://${subdomain}.amocrm.ru/api/v4/leads?filter[tasks]=1&` + statuses;
+    if (responsible_user_id)
+      getNoTaskUrl += `filter[responsible_user_id]=${
+        AMOCRM.constant("user").id
+      }`;
+
+    const response = await fetch(getNoTaskUrl);
+    let mm_noTask = await response.json();
+    console.log({ mm_noTask });
   };
 
   return {
