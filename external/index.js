@@ -36,6 +36,13 @@ define([], function () {
 
     const s = await getURL.json();
     console.log({ s });
+
+    const getLeadsUrl = "/api/v4/leads?" + s.result;
+    console.log({ getLeadsUrl });
+
+    const getLeadsResult = await fetch(getLeadsUrl);
+    const leads = await getLeadsResult.json();
+    console.log({ leads });
   };
 
   return {
