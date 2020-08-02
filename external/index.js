@@ -37,7 +37,7 @@ define([], function () {
     const s = await getURL.json();
     console.log({ s });
 
-    const getLeadsUrl =
+    let getLeadsUrl =
       "/api/v4/leads?" + decodeURIComponent(s.result) + `&filter[tasks]=1`;
 
     if (responsible_user_id)
