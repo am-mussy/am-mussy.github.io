@@ -23,6 +23,7 @@ define([], function () {
         AMOCRM.constant("user").id
       }`;
 
+    console.log({ getNoTaskUrl });
     const response = await fetch(getNoTaskUrl);
     let mm_noTask = await response.json();
     console.log({ mm_noTask });
