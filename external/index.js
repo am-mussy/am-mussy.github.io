@@ -20,7 +20,7 @@ define([], function () {
       ];
     }
 
-    console.log({ piplinesList });
+    console.log({ statuses });
   };
 
   return {
