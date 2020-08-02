@@ -26,7 +26,7 @@ define([], function () {
     );
 
     console.log({ statuses });
-    const getURL = await fetch("https://widgets-flax.vercel.app/api/status", {
+    const getURL = await fetch("https://widgets-flax.vercel.app/api/getquery", {
       method: "POST",
       body: JSON.stringify({ statuses }),
       headers: {
