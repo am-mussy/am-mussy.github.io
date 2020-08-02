@@ -13,8 +13,7 @@ define([], function () {
         ...acc,
         ...element._embedded.statuses
           .filter((status) => ![142, 143].includes(status.id))
-          .map((status) => "filter[statuses]=" + status.id)
-          .join("&"),
+          .map((status) => "filter[statuses]=" + status.id),
       ];
     }, []);
 
