@@ -274,7 +274,7 @@ define([], function () {
 
     render: async (self, Modal) => {
       console.log("rend");
-      getLeadsCount("6217741");
+      getLeadsCount(6217741);
       //функцию рендера повешенная на листемера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
       const mRender = () => {
         if (
