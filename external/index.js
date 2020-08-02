@@ -8,17 +8,16 @@ define([], function () {
     let pipelines_res = await fetch(piplines_req);
     let piplinesList = await pipelines_res.json();
 
-    //piplinesList._embedded.statuses;
-    let statuses = [];
-
-    for (const i of piplinesList._embedded.pipelines) {
-      statuses = [
-        ...statuses,
-        ...i._embedded.statuses
+    const statuses = piplinesList._embedded.pipelines.reduce((acc, element) => {
+      acc = [
+        ...acc,
+        ...element._embedded.statuses
           .map((status) => status.id)
           .filter((id) => ![142, 143].includes(id)),
       ];
-    }
+
+      return acc;
+    }, []);
 
     console.log({ statuses });
   };
