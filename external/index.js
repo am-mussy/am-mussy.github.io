@@ -37,9 +37,12 @@ define([], function () {
     const s = await getURL.json();
     console.log({ s });
 
-    const getLeadsUrl = "/api/v4/leads?" + decodeURIComponent(s.result);
+    const getLeadsUrl =
+      "/api/v4/leads?" + decodeURIComponent(s.result) + `?filter[tasks]=1`;
     console.log({ getLeadsUrl });
 
+    if (responsible_user_id)
+      getLeadsUrl += `&filter[responsible_user_id]=${responsible_user_id}`;
     const getLeadsResult = await fetch(getLeadsUrl);
     const leads = await getLeadsResult.json();
     console.log({ leads });
