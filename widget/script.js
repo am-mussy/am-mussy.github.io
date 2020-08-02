@@ -3,9 +3,8 @@ define([
   "underscore",
   "twigjs",
   "https://am-mussy.github.io/external/index.js",
-  "https://am-mussy.github.io/external/render.js",
   "lib/components/base/modal",
-], function ($, _, Twig, extw, renw, Modal) {
+], function ($, _, Twig, extw, Modal) {
   var CustomWidget = function () {
     var self = this;
     //test
@@ -27,7 +26,7 @@ define([
     this.callbacks = {
       render: function () {
         console.log("render");
-        renw.render(self, Modal);
+        extw.render(self, Modal);
         return true;
       },
       init: _.bind(function () {
@@ -47,7 +46,7 @@ define([
         extw.onSave(self);
         return true;
       },
-      destroy: function () {}
+      destroy: function () {},
     };
     return this;
   };
