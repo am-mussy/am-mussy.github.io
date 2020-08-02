@@ -25,20 +25,20 @@ define([], function () {
       []
     );
 
-    console.log({ statuses });
-    const getURL = await fetch("https://widgets-flax.vercel.app/api/getquery", {
-      method: "POST",
-      body: JSON.stringify({ filter: { statuses } }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    // console.log({ statuses });
+    // const getURL = await fetch("https://widgets-flax.vercel.app/api/getquery", {
+    //   method: "POST",
+    //   body: JSON.stringify({ filter: { statuses } }),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
 
-    const s = await getURL.json();
-    console.log({ s });
+    // const s = await getURL.json();
+    // console.log({ s });
 
     let getLeadsUrl =
-      "/api/v4/leads?" + decodeURIComponent(s.result) + `&filter[tasks]=1`;
+      "/api/v4/leads?" + $.param({ filter: { statuses } }) + `&filter[tasks]=1`;
 
     if (responsible_user_id)
       getLeadsUrl += `&filter[responsible_user_id]=${responsible_user_id}`;
