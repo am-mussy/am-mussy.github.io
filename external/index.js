@@ -28,7 +28,7 @@ define([], function () {
     console.log({ statuses });
     const getURL = await fetch("https://widgets-flax.vercel.app/api/getquery", {
       method: "POST",
-      body: JSON.stringify({ filter: statuses }),
+      body: JSON.stringify({ filter: { statuses } }),
       headers: {
         "Content-Type": "application/json",
       },
