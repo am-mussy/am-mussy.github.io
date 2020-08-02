@@ -10,7 +10,7 @@ define([], function () {
 
     //piplinesList._embedded.statuses;
 
-    for (const i of piplinesList._embedded.statuses.id) {
+    for (const i of piplinesList._embedded.pipelines) {
       console.log(i);
     }
 
