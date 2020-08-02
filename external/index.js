@@ -9,9 +9,15 @@ define([], function () {
     let piplinesList = await pipelines_res.json();
 
     //piplinesList._embedded.statuses;
+    let statuses = [];
 
     for (const i of piplinesList._embedded.pipelines) {
-      console.log(i);
+      statuses = [
+        ...statuses,
+        ...i._embedded.statuses
+          .map((status) => status.id)
+          .filter((id) => ![142, 143].includes(id)),
+      ];
     }
 
     console.log({ piplinesList });
