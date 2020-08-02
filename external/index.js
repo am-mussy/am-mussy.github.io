@@ -5,7 +5,7 @@ define([], function () {
     console.log("getLeadsCount");
     const piplines_req = "/api/v4/leads/pipelines";
 
-    let pipelines_res = await fetch(piplinesRes);
+    let pipelines_res = await fetch(piplines_req);
     let piplinesList = await pipelines_res.json();
     console.log({ piplinesList });
   };
