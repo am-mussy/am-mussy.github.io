@@ -7,22 +7,6 @@ define([
 ], function ($, _, Twig, extw, Modal) {
   var CustomWidget = function () {
     var self = this;
-    //test
-    this.getTemplate = _.bind(function (template, params, callback) {
-      params = typeof params == "object" ? params : {};
-      template = template || "";
-
-      return this.render(
-        {
-          href: "/templates/" + template + ".twig",
-          base_path: this.params.path,
-          v: this.get_version(),
-          load: callback,
-        },
-        params
-      );
-    }, this);
-
     this.callbacks = {
       render: function () {
         console.log("render");
