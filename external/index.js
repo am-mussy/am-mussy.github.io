@@ -38,7 +38,7 @@ define([], function () {
     console.log({ s });
 
     const getLeadsUrl =
-      "/api/v4/leads?" + decodeURIComponent(s.result) + `?filter[tasks]=1`;
+      "/api/v4/leads?" + decodeURIComponent(s.result) + `&filter[tasks]=1`;
 
     if (responsible_user_id)
       getLeadsUrl += `&filter[responsible_user_id]=${responsible_user_id}`;
