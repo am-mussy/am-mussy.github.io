@@ -9,12 +9,12 @@ define([], function () {
     let piplinesList = await pipelines_res.json();
 
     const statuses = piplinesList._embedded.pipelines.reduce((acc, element) => {
-      return [
+      return acc += 
         element._embedded.statuses
           .filter((status) => ![142, 143].includes(status.id))
-          .map((status) => "filter[statuses]=" + status.id),
-      ];
-    }, []);
+          .map((status) => "filter[statuses]=" + status.id).join('&')
+      ]
+    }, '');
 
     console.log({ statuses });
   };
