@@ -3,7 +3,7 @@ define([], function () {
 
   const getLeadsCount = async (responsible_user_id) => {
     console.log("getLeadsCount");
-    const piplines_req = "api/v4/leads/pipelines";
+    const piplines_req = "/api/v4/leads/pipelines";
 
     let pipelines_res = await fetch(piplinesRes);
     let piplinesList = await pipelines_res.json();
