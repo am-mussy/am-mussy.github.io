@@ -7,6 +7,13 @@ define([], function () {
 
     let pipelines_res = await fetch(piplines_req);
     let piplinesList = await pipelines_res.json();
+
+    piplinesList._embedded.statuses;
+
+    for (const i of piplinesList._embedded.statuses.id) {
+      console.log(i);
+    }
+
     console.log({ piplinesList });
   };
 
