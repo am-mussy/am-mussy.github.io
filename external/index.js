@@ -1,8 +1,9 @@
 define([], function () {
   //Потом нужно будет либо выводить это в настройки, либо автоматом поцеплять через_новую аутентификацию
-
+  const self2 = this;
   return {
     async getLeadsCount(responsible_user_id) {
+      console.log("getLeadsCount");
       const piplines_req = "api/v4/leads/pipelines";
 
       let pipelines_res = await fetch(piplinesRes);
@@ -235,7 +236,7 @@ define([], function () {
 
     render: async (self, Modal) => {
       console.log("rend");
-      getLeadsCount();
+      self2.getLeadsCount();
       //функцию рендера повешенная на листемера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
       const mRender = () => {
         if (
