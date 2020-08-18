@@ -254,19 +254,21 @@ define([], function () {
             </div>
           `);
 
+        const buyData = {
+          subdomain: subdomain,
+          widgetId: "task",
+          username: self.get_settings().idgroup
+            ? self.get_settings().idgroup.email
+            : AMOCRM.constant("user").login,
+          phone: self.get_settings().idgroup
+            ? self.get_settings().idgroup.phone
+            : AMOCRM.constant("user").personal_mobile,
+          action: "buy",
+        };
+
         let buttonBuy = document.getElementsByClassName('button_buy')
         buttonBuy[0].addEventListener("click", () => {
-          const buyData = {
-            subdomain: subdomain,
-            widgetId: "task",
-            username: self.get_settings().idgroup
-              ? self.get_settings().idgroup.email
-              : AMOCRM.constant("user").login,
-            phone: self.get_settings().idgroup
-              ? self.get_settings().idgroup.phone
-              : AMOCRM.constant("user").personal_mobile,
-            action: "buy",
-          };
+
 
           const buyRespons = await fetch(
             "https://widgets-flax.vercel.app/api/status",
