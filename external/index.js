@@ -254,36 +254,38 @@ define([], function () {
             </div>
           `);
 
-        const buyData = {
-          subdomain: subdomain,
-          widgetId: "task",
-          username: self.get_settings().idgroup
-            ? self.get_settings().idgroup.email
-            : AMOCRM.constant("user").login,
-          phone: self.get_settings().idgroup
-            ? self.get_settings().idgroup.phone
-            : AMOCRM.constant("user").personal_mobile,
-          action: "buy",
-        };
+
 
         let buttonBuy = document.getElementsByClassName('button_buy')
 
-        function buyResponsF() {
+        // function buyResponsF() {
 
-          const buyRespons = await fetch(
-            "https://widgets-flax.vercel.app/api/status",
-            {
-              method: "POST",
-              body: JSON.stringify(buyData),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
+        //   const buyData = {
+        //     subdomain: subdomain,
+        //     widgetId: "task",
+        //     username: self.get_settings().idgroup
+        //       ? self.get_settings().idgroup.email
+        //       : AMOCRM.constant("user").login,
+        //     phone: self.get_settings().idgroup
+        //       ? self.get_settings().idgroup.phone
+        //       : AMOCRM.constant("user").personal_mobile,
+        //     action: "buy",
+        //   };
 
-          const buyRespons = await buyRespons.json();
-          console.log(buyRespons)
-        }
+        //   const buyRespons = await fetch(
+        //     "https://widgets-flax.vercel.app/api/status",
+        //     {
+        //       method: "POST",
+        //       body: JSON.stringify(buyData),
+        //       headers: {
+        //         "Content-Type": "application/json",
+        //       },
+        //     }
+        //   );
+
+        //   const buyRespons = await buyRespons.json();
+        //   console.log(buyRespons)
+        // }
 
 
         buttonBuy[0].addEventListener("click", buyResponsF)
