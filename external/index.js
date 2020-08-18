@@ -267,8 +267,8 @@ define([], function () {
         };
 
         let buttonBuy = document.getElementsByClassName('button_buy')
-        buttonBuy[0].addEventListener("click", () => {
 
+        function buyResponsF() {
 
           const buyRespons = await fetch(
             "https://widgets-flax.vercel.app/api/status",
@@ -281,9 +281,12 @@ define([], function () {
             }
           );
 
-          // const buyRespons = await buyRespons.json();
-          // console.log(buyRespons)
-        })
+          const buyRespons = await buyRespons.json();
+          console.log(buyRespons)
+        }
+
+
+        buttonBuy[0].addEventListener("click", buyResponsF)
 
       } else if (serverResponse.status === "paid") {
         console.log("status: paid");
