@@ -255,7 +255,7 @@ define([], function () {
           `);
 
         let buttonBuy = document.getElementsByClassName('button_buy')
-        buttonBuy.addEventListener('click', console.log('hell'))
+        buttonBuy[0].addEventListener('click', console.log('hell'))
 
       } else if (serverResponse.status === "paid") {
         console.log("status: paid");
