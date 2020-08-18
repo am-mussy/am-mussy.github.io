@@ -259,7 +259,7 @@ define([], function () {
 
         let buttonBuy = document.getElementsByClassName('button_buy')
 
-        function buyResponsF() {
+        async function buyResponsF() {
 
           const buyData = {
             subdomain: subdomain,
