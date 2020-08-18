@@ -270,19 +270,19 @@ define([], function () {
         buttonBuy[0].addEventListener("click", () => {
 
 
-          const buyRespons = await fetch(
-            "https://widgets-flax.vercel.app/api/status",
-            {
-              method: "POST",
-              body: JSON.stringify(buyData),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
+          // const buyRespons = await fetch(
+          //   "https://widgets-flax.vercel.app/api/status",
+          //   {
+          //     method: "POST",
+          //     body: JSON.stringify(buyData),
+          //     headers: {
+          //       "Content-Type": "application/json",
+          //     },
+          //   }
+          // );
 
-          const buyRespons = await buyRespons.json();
-          console.log(buyRespons)
+          // const buyRespons = await buyRespons.json();
+          // console.log(buyRespons)
         })
 
       } else if (serverResponse.status === "paid") {
