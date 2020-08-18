@@ -238,12 +238,12 @@ define([], function () {
             <div class="mm_header"> 
               <div style="margin-bottom: 10px">
                 ${
-                  daysLeft > 0
-                    ? "<p> Окончание пробного периода через " +
-                      daysLeft +
-                      " дн. </p>"
-                    : "<p> Пробный период окончен </p>"
-                }
+          daysLeft > 0
+            ? "<p> Окончание пробного периода через " +
+            daysLeft +
+            " дн. </p>"
+            : "<p> Пробный период окончен </p>"
+          }
                 <p> Что бы приобрести виджет, нажмите на кнопку "Купить" </p>
               </div>
               <div>
@@ -253,6 +253,10 @@ define([], function () {
               </div>
             </div>
           `);
+
+        let buttonBuy = document.getElementsByClassName('button_buy')
+        buttonBuy.addEventListener('click', console.log('hell'))
+
       } else if (serverResponse.status === "paid") {
         console.log("status: paid");
         $(".widget_settings_block").append(
@@ -270,6 +274,10 @@ define([], function () {
       );
 
       console.log({ self: self.get_settings() });
+
+
+
+
     },
 
     render: async (self, Modal) => {
@@ -298,7 +306,7 @@ define([], function () {
 
         const mm_modalData =
           `${
-            AMOCRM.constant("user").name
+          AMOCRM.constant("user").name
           }, в этой сделки нет задачи. Поставь её! \n` + mm_button;
 
         self.modalIsOpen = true;
@@ -412,7 +420,7 @@ define([], function () {
         try {
           const getNoTaskUrl = `https://${subdomain}.amocrm.ru/api/v4/leads?filter[tasks]=1&filter[responsible_user_id]=${
             AMOCRM.constant("user").id
-          }`; //Сделки без задач
+            }`; //Сделки без задач
           const response = await fetch(getNoTaskUrl);
           let mm_noTask = await response.json();
           console.log({ mm_noTask });
@@ -420,7 +428,7 @@ define([], function () {
 
           document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${
             Object.keys(mm_noTask)[0].id
-          }`;
+            }`;
         } catch (error) {
           //Может вернуть пустоту
         }
