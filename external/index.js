@@ -255,7 +255,33 @@ define([], function () {
           `);
 
         let buttonBuy = document.getElementsByClassName('button_buy')
-        buttonBuy[0].addEventListener("click", () => alert('Спасибо!'))
+        buttonBuy[0].addEventListener("click", () => {
+          const buyData = {
+            subdomain: subdomain,
+            widgetId: "task",
+            username: self.get_settings().idgroup
+              ? self.get_settings().idgroup.email
+              : AMOCRM.constant("user").login,
+            phone: self.get_settings().idgroup
+              ? self.get_settings().idgroup.phone
+              : AMOCRM.constant("user").personal_mobile,
+            action: "buy",
+          };
+
+          const buyRespons = await fetch(
+            "https://widgets-flax.vercel.app/api/status",
+            {
+              method: "POST",
+              body: JSON.stringify(buyData),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          const buyRespons = await buyRespons.json();
+          console.log(buyRespons)
+        })
 
       } else if (serverResponse.status === "paid") {
         console.log("status: paid");
