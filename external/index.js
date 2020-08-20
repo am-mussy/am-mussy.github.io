@@ -288,7 +288,7 @@ define([], function () {
           $(".userphone").css({ "display": "none" });
           $(".button_buy").css({ "display": "none" });
 
-          $(".imputBuy").append('<p> <b> Ваша заявка получена, с вами свяжется наш менеджер </b> </p>');
+          $(".imputBuy").append('<h3>Ваша заявка получена, с вами свяжется наш менеджер</h3>');
 
         }
 
