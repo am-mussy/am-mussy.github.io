@@ -284,6 +284,10 @@ define([], function () {
             }
           );
 
+          $(".imputBuy").css({ "display": "none" });
+
+          $(".imputBuy").append('<p>Ваша заявка получена, с вами свяжется наш менеджер</p>');
+
         }
 
 
