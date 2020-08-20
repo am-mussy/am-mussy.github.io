@@ -284,9 +284,11 @@ define([], function () {
             }
           );
 
-          $(".imputBuy").css({ "display": "none" });
+          $(".mail").css({ "display": "none" });
+          $(".userphone").css({ "display": "none" });
+          $(".button_buy").css({ "display": "none" });
 
-          $(".imputBuy").append('<p>Ваша заявка получена, с вами свяжется наш менеджер</p>');
+          $(".imputBuy").append('<p> <b> Ваша заявка получена, с вами свяжется наш менеджер </b> </p>');
 
         }
 
