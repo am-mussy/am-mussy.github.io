@@ -246,7 +246,7 @@ define([], function () {
           }
                 <p> Что бы приобрести виджет, нажмите на кнопку "Купить" </p>
               </div>
-              <div>
+              <div class='imputBuy'>
                 ${usermailInput}
                 ${userphoneInput}
                 ${buyButton}
