@@ -456,6 +456,7 @@ define([], function () {
           return;
 
         try {
+          console.log('try redirect')
           const getNoTaskUrl = `https://${subdomain}.amocrm.ru/api/v4/leads?filter[tasks]=1&filter[responsible_user_id]=${
             AMOCRM.constant("user").id
             }`; //Сделки без задач
