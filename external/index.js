@@ -456,7 +456,7 @@ define([], function () {
           return;
 
         try {
-          console.log('try redirect')
+          c
           const getNoTaskUrl = `https://${subdomain}.amocrm.ru/api/v4/leads?filter[tasks]=1&filter[responsible_user_id]=${
             AMOCRM.constant("user").id
             }`; //Сделки без задач
@@ -464,7 +464,7 @@ define([], function () {
           let mm_noTask = await response.json();
           console.log({ mm_noTask });
           mm_noTask = mm_noTask._embedded.items;
-
+          onsole.log('try redirect')
           document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${
             Object.keys(mm_noTask)[0].id
             }`;
