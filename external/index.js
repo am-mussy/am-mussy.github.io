@@ -44,7 +44,7 @@ define([], function () {
       getLeadsUrl += `&filter[responsible_user_id]=${responsible_user_id}`;
     console.log({ getLeadsUrl });
     const getLeadsResult = await fetch(getLeadsUrl);
-    const leads = await getLeadsResult.json();
+    const leads = getLeadsResult.json();
     console.log({ leads });
   };
 
