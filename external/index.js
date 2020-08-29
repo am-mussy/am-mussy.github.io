@@ -451,7 +451,8 @@ define([], function () {
 
           if (!lastLeads.length) return;
 
-          document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${lastLeads[0].id}`;
+          if (AMOCRM.data.current_entity === "leads_pipelins")
+            document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${lastLeads[0].id}`;
         } catch (error) {
           //Может вернуть пустоту
         }
