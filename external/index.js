@@ -446,11 +446,12 @@ define([], function () {
           return;
 
         try {
-          let lastLead = await getLeadsCount(AMOCRM.constant("user").id);
-          console.log({ lastLead });
-          document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${
-            Object.keys(mm_noTask)[0].id
-          }`;
+          let lastLeads = await getLeadsCount(AMOCRM.constant("user").id);
+          console.log({ lastLeads });
+
+          if (!lastLeads.length) return;
+
+          document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${lastLeads[0].id}`;
         } catch (error) {
           //Может вернуть пустоту
         }
