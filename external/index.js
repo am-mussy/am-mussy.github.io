@@ -25,23 +25,11 @@ define([], function () {
       []
     );
 
-    // console.log({ statuses });
-    // const getURL = await fetch("https://widgets-flax.vercel.app/api/getquery", {
-    //   method: "POST",
-    //   body: JSON.stringify({ filter: { statuses } }),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
+    let getLeadsUrl = "/api/v4/leads?" + $.param({ filter: { statuses } }); //+ `&filter[tasks]=1`;
 
-    // const s = await getURL.json();
-    // console.log({ s });
+    //if (responsible_user_id)
+    //  getLeadsUrl += `&filter[responsible_user_id]=${responsible_user_id}`;
 
-    let getLeadsUrl =
-      "/api/v4/leads?" + $.param({ filter: { statuses } }) + `&filter[tasks]=1`;
-
-    if (responsible_user_id)
-      getLeadsUrl += `&filter[responsible_user_id]=${responsible_user_id}`;
     console.log({ getLeadsUrl });
     const getLeadsResult = await fetch(getLeadsUrl);
     const leads = await getLeadsResult.json();
@@ -238,12 +226,12 @@ define([], function () {
             <div class="mm_header"> 
               <div style="margin-bottom: 10px">
                 ${
-          daysLeft > 0
-            ? "<p> Окончание пробного периода через " +
-            daysLeft +
-            " дн. </p>"
-            : "<p> Пробный период окончен </p>"
-          }
+                  daysLeft > 0
+                    ? "<p> Окончание пробного периода через " +
+                      daysLeft +
+                      " дн. </p>"
+                    : "<p> Пробный период окончен </p>"
+                }
                 <p> Что бы приобрести виджет, нажмите на кнопку "Купить" </p>
               </div>
               <div class='imputBuy'>
@@ -254,13 +242,9 @@ define([], function () {
             </div>
           `);
 
-
-
-
-        let buttonBuy = document.getElementsByClassName('button_buy')
+        let buttonBuy = document.getElementsByClassName("button_buy");
 
         async function buyResponsF() {
-
           const buyData = {
             subdomain: subdomain,
             widgetId: "task",
@@ -284,17 +268,16 @@ define([], function () {
             }
           );
 
-          $(".mail").css({ "display": "none" });
-          $(".userphone").css({ "display": "none" });
-          $(".button_buy").css({ "display": "none" });
+          $(".mail").css({ display: "none" });
+          $(".userphone").css({ display: "none" });
+          $(".button_buy").css({ display: "none" });
 
-          $(".imputBuy").append('<h3>Ваша заявка получена, с вами свяжется наш менеджер</h3>');
-
+          $(".imputBuy").append(
+            "<h3>Ваша заявка получена, с вами свяжется наш менеджер</h3>"
+          );
         }
 
-
-        buttonBuy[0].addEventListener("click", buyResponsF)
-
+        buttonBuy[0].addEventListener("click", buyResponsF);
       } else if (serverResponse.status === "paid") {
         console.log("status: paid");
         $(".widget_settings_block").append(
@@ -312,16 +295,13 @@ define([], function () {
       );
 
       console.log({ self: self.get_settings() });
-
-
-
-
     },
 
     render: async (self, Modal) => {
       console.log("rend");
       getLeadsCount(6217741);
       //функцию рендера повешенная на листемера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
+      //Подсвечивает окно постановки задачи(примечание), при попытке увести курсор за пределы области сделки - показывает окно предупреждеине
       const mRender = () => {
         if (
           !(
@@ -344,7 +324,7 @@ define([], function () {
 
         const mm_modalData =
           `${
-          AMOCRM.constant("user").name
+            AMOCRM.constant("user").name
           }, в этой сделки нет задачи. Поставь её! \n` + mm_button;
 
         self.modalIsOpen = true;
@@ -456,18 +436,11 @@ define([], function () {
           return;
 
         try {
-          c
-          const getNoTaskUrl = `https://${subdomain}.amocrm.ru/api/v4/leads?filter[tasks]=1&filter[responsible_user_id]=${
-            AMOCRM.constant("user").id
-            }`; //Сделки без задач
-          const response = await fetch(getNoTaskUrl);
-          let mm_noTask = await response.json();
-          console.log({ mm_noTask });
-          mm_noTask = mm_noTask._embedded.items;
-          onsole.log('try redirect')
+          let lastLead = await getLeadsCount();
+          console.log("try redirect");
           document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${
             Object.keys(mm_noTask)[0].id
-            }`;
+          }`;
         } catch (error) {
           //Может вернуть пустоту
         }
