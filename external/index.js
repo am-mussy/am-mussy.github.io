@@ -98,7 +98,7 @@ define([], function () {
           : AMOCRM.constant("user").personal_mobile,
         action: "status",
       };
-      //s
+
       console.log({ initData });
 
       let mm_settings = {
@@ -152,7 +152,7 @@ define([], function () {
           </div>
         `);
 
-      noTaskCount = await getLeadsCount().length;
+      let noTaskCount = (await getLeadsCount()).length;
       console.log({ noTaskCount });
       $(".widget_settings_block__descr").append(`<p>${noTaskCount}</p>)`);
       //Вставка селектора групп
