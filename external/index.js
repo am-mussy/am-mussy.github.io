@@ -25,11 +25,14 @@ define([], function () {
       []
     );
 
-    let getLeadsUrl =
-      "/api/v4/leads?" + $.param({ filter: { statuses, tasks: 1 } }); //+ `&filter[tasks]=1`;
+    let params;
+    if (!responsible_user_id) {
+      params = $.param({ filter: { statuses, tasks: 1 } });
+    } else {
+      params = $.param({ filter: { statuses, tasks: 1, responsible_user_id } });
+    }
 
-    //if (responsible_user_id)
-    //  getLeadsUrl += `&filter[responsible_user_id]=${responsible_user_id}`;
+    let getLeadsUrl = "/api/v4/leads?" + params;
 
     console.log({ getLeadsUrl });
     const getLeadsResult = await fetch(getLeadsUrl);
