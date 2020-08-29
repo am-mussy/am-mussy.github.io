@@ -155,9 +155,7 @@ define([], function () {
       let noTaskCount = (await getLeadsCount()).length;
       console.log({ noTaskCount });
       $(".widget_settings_block__descr").append(
-        `<p>Сделок без задач: ${
-          noTaskCount > 2 ? "Более пятисот" : noTaskCount
-        }</p>)`
+        `<p>Сделок без задач: ${noTaskCount > 499 ? "500+" : noTaskCount}</p>)`
       );
       //Вставка селектора групп
       const groups = await getGroups();
