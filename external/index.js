@@ -303,7 +303,6 @@ define([], function () {
 
     render: async (self, Modal) => {
       console.log("rend");
-      getLeadsCount(6217741);
       //функцию рендера повешенная на листемера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
       //Подсвечивает окно постановки задачи(примечание), при попытке увести курсор за пределы области сделки - показывает окно предупреждеине
       const mRender = () => {
@@ -440,8 +439,9 @@ define([], function () {
           return;
 
         try {
-          let lastLead = await getLeadsCount();
+          let lastLead = await getLeadsCount(AMOCRM.constant("user").id);
           console.log("try redirect");
+
           document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${
             Object.keys(mm_noTask)[0].id
           }`;
