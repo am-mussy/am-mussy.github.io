@@ -25,7 +25,8 @@ define([], function () {
       []
     );
 
-    let getLeadsUrl = "/api/v4/leads?" + $.param({ filter: { statuses } }); //+ `&filter[tasks]=1`;
+    let getLeadsUrl =
+      "/api/v4/leads?" + $.param({ filter: { statuses, tasks: 1 } }); //+ `&filter[tasks]=1`;
 
     //if (responsible_user_id)
     //  getLeadsUrl += `&filter[responsible_user_id]=${responsible_user_id}`;
