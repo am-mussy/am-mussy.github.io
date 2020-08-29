@@ -36,8 +36,15 @@ define([], function () {
 
     console.log({ getLeadsUrl });
     const getLeadsResult = await fetch(getLeadsUrl);
-    const leads = await getLeadsResult.json();
-    console.log({ leads });
+    try {
+      const leads = await getLeadsResult.json();
+      console.log({ leads });
+      console.log(leads._embedded.leads);
+      return leads._embedded.leads;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
   };
 
   return {
