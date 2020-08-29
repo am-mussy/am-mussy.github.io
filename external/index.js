@@ -447,8 +447,7 @@ define([], function () {
 
         try {
           let lastLead = await getLeadsCount(AMOCRM.constant("user").id);
-          console.log("try redirect");
-
+          console.log({ lastLead });
           document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${
             Object.keys(mm_noTask)[0].id
           }`;
