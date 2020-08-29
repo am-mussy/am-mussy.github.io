@@ -156,7 +156,7 @@ define([], function () {
       console.log({ noTaskCount });
       $(".widget_settings_block__descr").append(
         `<p>Сделок без задач: ${
-          noTaskCount > 499 ? "Более пятисот" : noTaskCount
+          noTaskCount > 2 ? "Более пятисот" : noTaskCount
         }</p>)`
       );
       //Вставка селектора групп
