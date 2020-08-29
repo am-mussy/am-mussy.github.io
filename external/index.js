@@ -152,6 +152,8 @@ define([], function () {
           </div>
         `);
 
+      noTaskCount = await getLeadsCount().length;
+      $(".widget_settings_block__descr").append(`<p>${noTaskCount}</p>)`);
       //Вставка селектора групп
       const groups = await getGroups();
       console.log({ groups });
