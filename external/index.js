@@ -353,7 +353,7 @@ define([], function () {
             $(".modal-body").css({ "text-align": "center" });
             $(".modal-body").css({
               "text-align": "center",
-              border: "1.5px solid rgb(243, 117, 117)",
+              border: "1px solid rgb(243, 117, 117)",
               "font-size": "18px",
             });
           },
