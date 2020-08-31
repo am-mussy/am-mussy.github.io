@@ -4,9 +4,9 @@ define([
   "twigjs",
   "lib/components/base/modal",
 ], function ($, _, Twig, Modal) {
-  var CustomWidget = async function () {
+  var CustomWidget = function () {
     var self = this;
-    this.getLeadsCount = async function () {
+    self.getLeadsCount = async function () {
       console.log("getLeadsCount");
       const piplines_req = "/api/v4/leads/pipelines";
 
@@ -31,6 +31,7 @@ define([
       );
 
       let params;
+      let responsible_user_id = AMOCRM.constant("user").id;
       if (!responsible_user_id) {
         params = $.param({ filter: { statuses, tasks: 1 } });
       } else {
@@ -174,6 +175,17 @@ define([
           };
           AMOCRM.notifications.show_message(message_params);
 
+          //Если нет настроек групп - выходим
+          if (
+            !(
+              self.get_settings().idgroup &&
+              self.get_settings().idgroup.checked_groups &&
+              self.get_settings().idgroup.checked_groups.length
+            )
+          )
+            return;
+
+          console.log('должны были выйти уже')
           setTimeout(() => {
             var message_params = {
               header: "Оплатите виджет:",
@@ -185,34 +197,6 @@ define([
           }, 3000);
           return true;
         }
-
-        //Глобальный интервал, проверяет сделки без задачи в системе
-        self.systemInterval = setInterval(async () => {
-          if (AMOCRM.data.is_card && AMOCRM.data.current_entity === "leads")
-            return;
-
-          try {
-            let lastLeads = await this.getLeadsCount(AMOCRM.constant("user").id);
-            console.log({ lastLeads });
-
-            if (!lastLeads.length) return;
-
-            if (AMOCRM.data.current_entity === "leads-pipeline")
-              document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${lastLeads[0].id}`;
-          } catch (error) {
-            //Может вернуть пустоту
-          }
-        }, 5000);
-
-        //Если нет настроек групп - выходим
-        if (
-          !(
-            self.get_settings().idgroup &&
-            self.get_settings().idgroup.checked_groups &&
-            self.get_settings().idgroup.checked_groups.length
-          )
-        )
-          return;
 
         //Проверяем группу текущего пользователя (настройки)
         const getUsersUrl = `https://${subdomain}.amocrm.ru/api/v2/account?with=users`; //Список пользователей
@@ -231,12 +215,37 @@ define([
                 self.get_settings().idgroup.checked_groups[j]
               ) {
                 isUser = true;
+                console.log('Пользователь состоит в нужной группе')
+              } else {
+                isUser = false;
+                console.log('Пользователь не состоит в нужной группе')
               }
             }
           }
         }
 
         if (!isUser) return;
+        //Глобальный интервал, проверяет сделки без задачи в системе
+        self.systemInterval = setInterval(async () => {
+          if (AMOCRM.data.is_card && AMOCRM.data.current_entity === "leads")
+            return;
+
+          try {
+            let lastLeads = await self.getLeadsCount(AMOCRM.constant("user").id);
+            console.log({ lastLeads });
+
+            if (!lastLeads.length) return;
+
+            if (AMOCRM.data.current_entity === "leads-pipeline")
+              document.location.href = `https://${subdomain}.amocrm.ru/leads/detail/${lastLeads[0].id}`;
+          } catch (error) {
+            //Может вернуть пустоту
+          }
+        }, 5000);
+
+
+
+
 
         if (!(AMOCRM.data.is_card && AMOCRM.data.current_entity === "leads"))
           return;
@@ -277,7 +286,7 @@ define([
         console.log("init");
         return true;
       }, this),
-      bind_actions: async function () {
+      bind_actions: function () {
         console.log("bind_actions");
         return true;
       },
@@ -350,7 +359,7 @@ define([
           </div>
         `);
 
-        let noTaskCount = (await this.getLeadsCount()).length;
+        let noTaskCount = (await self.getLeadsCount()).length;
         console.log({ noTaskCount });
         $(".widget_settings_block__descr").append(
           `<p>Сделок без задач: ${noTaskCount > 499 ? "500+" : noTaskCount}</p>`
