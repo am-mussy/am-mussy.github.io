@@ -204,7 +204,7 @@ define([
         const mm_users = await response.json();
         const amo_users = mm_users._embedded.users;
 
-        let isUser;
+        let isUser = false;
         for (let i of Object.keys(amo_users)) {
           if (amo_users[i].id === AMOCRM.constant("user").id) {
             for (let j of Object.keys(
