@@ -144,19 +144,25 @@ define([
           action: "status",
         };
 
-        const responseDB = await fetch(
-          "https://widgets-flax.vercel.app/api/status",
-          {
-            method: "POST",
-            body: JSON.stringify(dataDB),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        console.log({ dataDB })
+        try {
+          const responseDB = await fetch(
+            "https://widgets-flax.vercel.app/api/status",
+            {
+              method: "POST",
+              body: JSON.stringify(dataDB),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+        } catch (error) {
+          console.log(error)
+        }
+
 
         const widgetServerSettings = await responseDB.json();
-
+        console.log({ widgetServerSettings })
         if (widgetServerSettings.status === "new") return true;
 
         const work =
@@ -480,16 +486,21 @@ define([
               action: "buy",
             };
 
-            const buyRespons = await fetch(
-              "https://widgets-flax.vercel.app/api/status",
-              {
-                method: "POST",
-                body: JSON.stringify(buyData),
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            );
+            try {
+              const buyRespons = await fetch(
+                "https://widgets-flax.vercel.app/api/status",
+                {
+                  method: "POST",
+                  body: JSON.stringify(buyData),
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              );
+            } catch (error) {
+              console.log(error)
+            }
+
 
             $(".mail").css({ display: "none" });
             $(".userphone").css({ display: "none" });
