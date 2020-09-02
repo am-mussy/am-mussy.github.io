@@ -35,14 +35,20 @@ define([
       if (!responsible_user_id) {
         params = $.param({ filter: { statuses, tasks: 1 } });
       } else {
-        params = $.param({ filter: { statuses, tasks: 1, responsible_user_id } });
+        params = $.param({
+          filter: { statuses, tasks: 1, responsible_user_id },
+        });
       }
 
       let getLeadsUrl = "/api/v4/leads?" + params;
 
       console.log({ getLeadsUrl });
       const getLeadsResult = await fetch(getLeadsUrl);
+      console.log("getleads response status", getLeadsResult.status);
       try {
+        if (getLeadsResult.status === 204) {
+          return [];
+        }
         const leads = await getLeadsResult.json();
         console.log({ leads });
         console.log(leads._embedded.leads);
@@ -51,11 +57,18 @@ define([
         console.log(error);
         return [];
       }
-    }
+    };
     this.callbacks = {
-
       render: async function () {
+        console.log({ settings: self.get_settings() });
 
+        let jsonSettings = !self.get_settings().idgroup
+          ? null
+          : typeof self.get_settings().idgroup === "string"
+          ? JSON.parse(self.get_settings().idgroup)
+          : self.get_settings().idgroup;
+
+        console.log({ jsonSettings });
         console.log("render");
         //функцию рендера повешенная на листемера, если мы находимся в сделке и в ней нет задачи и модальное окно не открыто
         //Подсвечивает окно постановки задачи(примечание), при попытке увести курсор за пределы области сделки - показывает окно предупреждеине
@@ -81,7 +94,7 @@ define([
 
           const mm_modalData =
             `${
-            AMOCRM.constant("user").name
+              AMOCRM.constant("user").name
             }, в этой сделки нет задачи. Поставь её! \n` + mm_button;
 
           self.modalIsOpen = true;
@@ -132,21 +145,30 @@ define([
         clearInterval(self.systemInterval);
         clearInterval(self.leadInterval);
 
+        const username = !jsonSettings
+          ? AMOCRM.constant("user").login
+          : jsonSettings.email;
+
+        const phone = !jsonSettings
+          ? AMOCRM.constant("user").personal_mobile
+          : jsonSettings.phone;
+
+        console.log({ USERNAME: username, PHONE: phone });
+
         dataDB = {
           subdomain: subdomain,
           widgetId: "task",
-          username: self.get_settings().idgroup
-            ? self.get_settings().idgroup.email
-            : AMOCRM.constant("user").login,
-          phone: self.get_settings().idgroup
-            ? self.get_settings().idgroup.phone
-            : AMOCRM.constant("user").personal_mobile,
+          username,
+          phone,
           action: "status",
         };
 
-        console.log({ dataDB })
+        console.log({ dataDB });
+
+        let responseDB;
+
         try {
-          const responseDB = await fetch(
+          responseDB = await fetch(
             "https://widgets-flax.vercel.app/api/status",
             {
               method: "POST",
@@ -157,12 +179,11 @@ define([
             }
           );
         } catch (error) {
-          console.log(error)
+          console.log("ошибка fetch 1", error);
         }
 
-
         const widgetServerSettings = await responseDB.json();
-        console.log({ widgetServerSettings })
+        console.log({ widgetServerSettings });
         if (widgetServerSettings.status === "new") return true;
 
         const work =
@@ -184,14 +205,14 @@ define([
           //Если нет настроек групп - выходим
           if (
             !(
-              self.get_settings().idgroup &&
-              self.get_settings().idgroup.checked_groups &&
-              self.get_settings().idgroup.checked_groups.length
+              jsonSettings &&
+              jsonSettings.checked_groups &&
+              jsonSettings.checked_groups.length
             )
           )
             return;
 
-          console.log('должны были выйти уже')
+          console.log("должны были выйти уже");
           setTimeout(() => {
             var message_params = {
               header: "Оплатите виджет:",
@@ -211,20 +232,18 @@ define([
         const amo_users = mm_users._embedded.users;
 
         let isUser = false;
+
+        console.log("CHECK USER settings", jsonSettings);
+
         for (let i of Object.keys(amo_users)) {
           if (amo_users[i].id === AMOCRM.constant("user").id) {
-            for (let j of Object.keys(
-              self.get_settings().idgroup.checked_groups
-            )) {
-              if (
-                String(amo_users[i].group_id) ===
-                self.get_settings().idgroup.checked_groups[j]
-              ) {
+            for (let group of jsonSettings.checked_groups) {
+              if (amo_users[i].group_id === Number(group)) {
                 isUser = true;
-                console.log('Пользователь состоит в нужной группе')
+                console.log("Пользователь состоит в нужной группе");
               } else {
                 isUser = false;
-                console.log('Пользователь не состоит в нужной группе')
+                console.log("Пользователь не состоит в нужной группе");
               }
             }
           }
@@ -237,7 +256,9 @@ define([
             return;
 
           try {
-            let lastLeads = await self.getLeadsCount(AMOCRM.constant("user").id);
+            let lastLeads = await self.getLeadsCount(
+              AMOCRM.constant("user").id
+            );
             console.log({ lastLeads });
 
             if (!lastLeads.length) return;
@@ -248,10 +269,6 @@ define([
             //Может вернуть пустоту
           }
         }, 5000);
-
-
-
-
 
         if (!(AMOCRM.data.is_card && AMOCRM.data.current_entity === "leads"))
           return;
@@ -300,14 +317,21 @@ define([
         console.log("on settings");
         const subdomain = AMOCRM.constant("account").subdomain;
         console.log({ setting: self.get_settings() });
+
+        let jsonSettings = !self.get_settings().idgroup
+          ? null
+          : typeof self.get_settings().idgroup === "string"
+          ? JSON.parse(self.get_settings().idgroup)
+          : self.get_settings().idgroup;
+
         const initData = {
           subdomain: subdomain,
           widgetId: "task",
-          username: self.get_settings().idgroup
-            ? self.get_settings().idgroup.email
+          username: jsonSettings
+            ? jsonSettings.email
             : AMOCRM.constant("user").login,
-          phone: self.get_settings().idgroup
-            ? self.get_settings().idgroup.phone
+          phone: jsonSettings
+            ? jsonSettings.phone
             : AMOCRM.constant("user").personal_mobile,
           action: "status",
         };
@@ -322,11 +346,9 @@ define([
         };
 
         let old_settings;
-        try {
-          old_settings = JSON.parse(self.get_settings().idgroup);
-        } catch (error) {
-          old_settings = self.get_settings().idgroup;
-        }
+
+        old_settings = jsonSettings;
+
         console.log({ old_settings });
         //
         //Получаем список групп
@@ -455,12 +477,12 @@ define([
             <div class="mm_header"> 
               <div style="margin-bottom: 10px">
                 ${
-            daysLeft > 0
-              ? "<p> Окончание пробного периода через " +
-              daysLeft +
-              " дн. </p>"
-              : "<p> Пробный период окончен </p>"
-            }
+                  daysLeft > 0
+                    ? "<p> Окончание пробного периода через " +
+                      daysLeft +
+                      " дн. </p>"
+                    : "<p> Пробный период окончен </p>"
+                }
                 <p> Что бы приобрести виджет, нажмите на кнопку "Купить" </p>
               </div>
               <div class='imputBuy'>
@@ -477,11 +499,11 @@ define([
             const buyData = {
               subdomain: subdomain,
               widgetId: "task",
-              username: self.get_settings().idgroup
-                ? self.get_settings().idgroup.email
+              username: jsonSettings
+                ? jsonSettings.email
                 : AMOCRM.constant("user").login,
-              phone: self.get_settings().idgroup
-                ? self.get_settings().idgroup.phone
+              phone: jsonSettings
+                ? jsonSettings.phone
                 : AMOCRM.constant("user").personal_mobile,
               action: "buy",
             };
@@ -498,9 +520,8 @@ define([
                 }
               );
             } catch (error) {
-              console.log(error)
+              console.log(error);
             }
-
 
             $(".mail").css({ display: "none" });
             $(".userphone").css({ display: "none" });
@@ -569,7 +590,7 @@ define([
         //extw.onSave(self);
         return true;
       },
-      destroy: function () { },
+      destroy: function () {},
     };
     return this;
   };
