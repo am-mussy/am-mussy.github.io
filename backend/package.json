@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "faunadb": "^2.14.2"
+    "faunadb": "^2.14.2",
+    "mongoose": "^5.10.7",
+    "telegraf": "^3.38.0"
   }
 }
